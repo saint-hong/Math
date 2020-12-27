@@ -83,10 +83,10 @@
     - A 행렬의 행벡터와 B 행렬의 열벡터가 한번씩 내적하여 스칼라 값으로 구성된 C 행렬이 된다.
     - 벡터의 내적은 스칼라가 되고, 행렬의 내적은 행렬이 된다.
 - 행렬의 곱셈 법칙
-    - 교환법칙이 성립하지 않는다. 곱하는 행렬의 순서가 바뀌면 값이 달라진다. $AB \neq BA$ <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%20AB%20%5Cneq%20BA"/>
-    - 덧셈에 대한 분배벅칙은 성립한다. $(A+B)C = AC + BC \neq CA + CB$
-    - 덧셈/뺄셈의 전치연산도 분배법칙이 성립한다. $(A+B)^T = A^T + B^T$
-    - 곱셈의 전치연산은 순서가 바뀐다. $(AB)^T = B^TA^T$
+    - 교환법칙이 성립하지 않는다. 곱하는 행렬의 순서가 바뀌면 값이 달라진다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20AB%20%5Cneq%20BA"/>
+    - 덧셈에 대한 분배벅칙은 성립한다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20%28A&plus;B%29C%20%3D%20AC%20&plus;%20BC%20%5Cneq%20CA%20&plus;%20CB"/>
+    - 덧셈/뺄셈의 전치연산도 분배법칙이 성립한다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20%28A&plus;B%29%5ET%20%3D%20A%5ET%20&plus;%20B%5ET"/>
+    - 곱셈의 전치연산은 순서가 바뀐다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20%28AB%29%5ET%20%3D%20B%5ETA%5ET"/>
 - 행렬 X 의 평균
     - X_bar = ((ones @ ones.T) @ X) / N   (N 은 X 의 행의 길이)
 - 곱셈의 연결
