@@ -118,7 +118,7 @@
 - 잔차의 크기로 선형회귀모델의 성능을 파악할 수 있다. 잔차의 크기가 작을 수록 좋은 모델. 실제값에 가깝다는 의미.
 - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Ctiny%20e%5ETe%24%20%3D%20%24%5Csum_%7Bi%3D1%7D%5EN%28y_i-w%5ETx_i%29%5E2%24%20%3D%20%24%28y_i-Xw%29%5ET%28y_i-Xw%29%24%20%3D%20%24y%5ETy-y%5ETXw-w%5ETX%5ETy_i&plus;w%5ETX%5ETXw"/>
 - ```벡터의 이차형식 quadratic form``` : <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20w%5ETX%5ETXw"/>
-    - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20X%5ETX"/>가 정방행렬이 된다. 이것을 A 라고 하면, $w^TAw$ 가 된다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20X%5ETX"/>가 정방행렬이 된다. 이것을 A 라고 하면, <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20w%5ETAw"/> 가 된다.
     - 행벡터 x 정방행렬 x 열벡터 의 형태
     - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20w%5ETAw%24%20%3D%20%24%5Csum_%7Bi%3D1%7D%5EN%5Csum_%7Bj%3Di%7D%5ENa_%7Bi%2Cj%7Dx_ix_j"/>
 - RSS 는 결과가 스칼라 값이다.
