@@ -40,7 +40,7 @@
 ### 행렬의 행 표기법과 열 표기법
 - 행렬은 열벡터와 행벡터로 이루어져 있다.
 - 열 벡터의 묶음으로 볼 수도 있고, 행벡터의 묶음으로 볼 수도 있다.
-- 벡터가 기본적으로 열벡터이므로, 행벡터로 표기할 때는 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_cm%20r_%7Bi%7D%5E%7BT%7D"/> 라고 쓴다. 열 벡터 r 을 전치 연산한 것.
+- 벡터가 기본적으로 열벡터이므로, 행벡터로 표기할 때는 **<img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_cm%20r_%7Bi%7D%5E%7BT%7D"/>** 라고 쓴다. 열 벡터 r 을 전치 연산한 것.
 
 ### 특수한 벡터와 행렬
 - 영벡터 zeros-vector : 모든 요소가 0인 벡터
