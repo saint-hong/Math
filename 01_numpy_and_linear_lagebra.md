@@ -40,7 +40,7 @@
 ### 행렬의 행 표기법과 열 표기법
 - 행렬은 열벡터와 행벡터로 이루어져 있다.
 - 열 벡터의 묶음으로 볼 수도 있고, 행벡터의 묶음으로 볼 수도 있다.
-- 벡터가 기본적으로 열벡터이므로, 행벡터로 표기할 때는 ```<img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_cm%20r_%7Bi%7D%5E%7BT%7D"/>``` 라고 쓴다. 열 벡터 r 을 전치 연산한 것.
+- 벡터가 기본적으로 열벡터이므로, 행벡터로 표기할 때는 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%20r_%7Bi%7D%5ET"/> 라고 쓴다. 열 벡터 r 을 전치 연산한 것.
 
 ### 특수한 벡터와 행렬
 - 영벡터 zeros-vector : 모든 요소가 0인 벡터
@@ -61,7 +61,7 @@
 - 브로드캐스팅 broadcasting : 벡터와 행렬의 연산은 같은 크기끼리 가능하다. 스칼라는 예외적으로 같은 크기의 1벡터를 곱해서 크기를 맞춰준다.
 - 평균 제거 벡터, 0-평균 벡터 : 모든 요소에서 요소의 평균값을 뺀 것
 - 선형조합 linear combination : 벡터나 행렬에 스칼라를 곱한 후 더하거나 뺀 것.
-- ```내적 inner product``` : 벡터의 곱셈 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Clarge%20x%5ETy"/>
+- ```내적 inner product``` : 벡터의 곱셈 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%20x%5ETy"/>
     - 조건1) 벡터의 차원이 같아야 한다.
     - 조건2) 앞의 벡터가 행벡터이고 뒤의 벡터가 열벡터이어야 한다. 
     - 요소별 연산으로 같은 위치끼리 곱한 후 더해 준다. 따라서 벡터의 곱의 결과는 스칼라이다.
@@ -75,7 +75,7 @@
     - x 벡터와 가중치 벡터 w 와의 가중합으로 y 에 대한 예측값을 계산하는 수식
     - 보스턴 집값 문제
     - 단점 : 현실의 비선형적 데이터를 예측하기 어려울 수 있다. 이를 보완한 수정 선형회귀 모델을 사용한다.
-- 제곱합 : 데이터를 제곱한 뒤 모두 더한 값. 분산이나 표준편차 등을 구할 때 사용. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Clarge%20x%5ETx"/>
+- 제곱합 : 데이터를 제곱한 뒤 모두 더한 값. 분산이나 표준편차 등을 구할 때 사용. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%20x%5ETx"/>
 
 ### 행렬과 행렬의 곱셈
 - A 행렬의 열의 수와 B 행렬의 행의 수가 같아야 한다.
@@ -83,7 +83,7 @@
     - A 행렬의 행벡터와 B 행렬의 열벡터가 한번씩 내적하여 스칼라 값으로 구성된 C 행렬이 된다.
     - 벡터의 내적은 스칼라가 되고, 행렬의 내적은 행렬이 된다.
 - 행렬의 곱셈 법칙
-    - 교환법칙이 성립하지 않는다. 곱하는 행렬의 순서가 바뀌면 값이 달라진다. $AB \neq BA$
+    - 교환법칙이 성립하지 않는다. 곱하는 행렬의 순서가 바뀌면 값이 달라진다. $AB \neq BA$ <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Clarge%20AB%20%5Cneq%20BA"/>
     - 덧셈에 대한 분배벅칙은 성립한다. $(A+B)C = AC + BC \neq CA + CB$
     - 덧셈/뺄셈의 전치연산도 분배법칙이 성립한다. $(A+B)^T = A^T + B^T$
     - 곱셈의 전치연산은 순서가 바뀐다. $(AB)^T = B^TA^T$
