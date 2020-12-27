@@ -116,7 +116,7 @@
 ### 잔차의 크기
 - ```잔차제곱합 RSS residual sum of squares``` : 잔차 벡터의 각 원소를 제곱한 후 더한 값.
 - 잔차의 크기로 선형회귀모델의 성능을 파악할 수 있다. 잔차의 크기가 작을 수록 좋은 모델. 실제값에 가깝다는 의미.
-- <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20e%5ETe%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%28y_i-w%5ETx_i%29%5E2%20%3D%20%28y_i-Xw%29%5ET%28y_i-Xw%29%20%3D%20y%5ETy-y%5ETXw-w%5ETX%5ETy_i&plus;w%5ETX%5ETXw"/>
+- <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Ctiny%20e%5ETe%24%20%3D%20%24%5Csum_%7Bi%3D1%7D%5EN%28y_i-w%5ETx_i%29%5E2%24%20%3D%20%24%28y_i-Xw%29%5ET%28y_i-Xw%29%24%20%3D%20%24y%5ETy-y%5ETXw-w%5ETX%5ETy_i&plus;w%5ETX%5ETXw"/>
 - ```벡터의 이차형식 quadratic form``` : <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20w%5ETX%5ETXw"/>
     - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20X%5ETX"/>가 정방행렬이 된다. 이것을 A 라고 하면, $w^TAw$ 가 된다.
     - 행벡터 x 정방행렬 x 열벡터 의 형태
@@ -244,7 +244,7 @@
     - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20e%5ETe%3D%5C%7Ce%5C%7C%5E2%3D%28Ax-b%29%5ET%28Ax-b%29"/>
     - 이 값을 최소화하는 x 값 : <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20x%20%3D%20%5Ctext%7Barg%7D%20%5Cmin_x%20e%5ETe%20%3D%20%5Ctext%7Barg%7D%20%5Cmin_x%20%5C%3B%20%28Ax-b%29%5ET%28Ax-b%29"/>
 - 의사역행렬 pseudo inverse : 역행렬과 유사한 행렬
-    - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20Ax%3Db%20%5CRightarrow%20A%5ETAx%3DA%5ETb%20%5CRightarrow%20%28A%5ETA%29%5E%7B-1%7D%28A%5ETA%29x%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%20%5CRightarrow%20x%3D%28%28A%5ETA%29%5E%7B-1%7DA%5ET%29b"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Ctiny%20Ax%3Db%20%5CRightarrow%20A%5ETAx%3DA%5ETb%20%5CRightarrow%20%28A%5ETA%29%5E%7B-1%7D%28A%5ETA%29x%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%20%5CRightarrow%20x%3D%28%28A%5ETA%29%5E%7B-1%7DA%5ET%29b"/>
     - $((A^TA)^{-1}A^T)b$ 을 의사역행렬 이라고 한다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20A%5E%7B-1%7D"/> 과 유사하다.
     - 의사역행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20%28%28A%5ETA%29%5E%7B-1%7DA%5ET%29"/> 를 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20A%5E%7B&plus;%7D"/>로 표기한다.
     - 그러므로 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20x%3DA%5E%7B&plus;%7Db"/> 가 된다.
