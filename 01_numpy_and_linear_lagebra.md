@@ -245,7 +245,7 @@
     - 이 값을 최소화하는 x 값 : <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20x%20%3D%20%5Ctext%7Barg%7D%20%5Cmin_x%20e%5ETe%20%3D%20%5Ctext%7Barg%7D%20%5Cmin_x%20%5C%3B%20%28Ax-b%29%5ET%28Ax-b%29"/>
 - 의사역행렬 pseudo inverse : 역행렬과 유사한 행렬
     - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cbg_white%20%5Ctiny%20Ax%3Db%20%5CRightarrow%20A%5ETAx%3DA%5ETb%20%5CRightarrow%20%28A%5ETA%29%5E%7B-1%7D%28A%5ETA%29x%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%20%5CRightarrow%20x%3D%28%28A%5ETA%29%5E%7B-1%7DA%5ET%29b"/>
-    - $((A^TA)^{-1}A^T)b$ 을 의사역행렬 이라고 한다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20A%5E%7B-1%7D"/> 과 유사하다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%28%28A%5ETA%29%5E%7B-1%7DA%5ET%29b"/> 을 의사역행렬 이라고 한다. <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20A%5E%7B-1%7D"/> 과 유사하다.
     - 의사역행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20%28%28A%5ETA%29%5E%7B-1%7DA%5ET%29"/> 를 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20A%5E%7B&plus;%7D"/>로 표기한다.
     - 그러므로 <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clarge%20x%3DA%5E%7B&plus;%7Db"/> 가 된다.
     - 역행렬은 정방행렬만 가능하다.
