@@ -7,7 +7,7 @@
 - n 차원 공간에서의 벡터 a 는 평행이동 할 수 있다.
 - 벡터의 길이는 놈 norm 으로 정의한다.
     - ```벡터의 길이``` : <img src="https://latex.codecogs.com/gif.latex?%5C%7Ca%5C%7C%3D%5Csqrt%7Ba%5ETa%7D%3D%5Csqrt%7Ba_%7B1%7D%5E2&plus;a_%7B2%7D%5E2&plus;a_%7B3%7D%5E2&plus;...&plus;a_%7BN%7D%5E2%7D"/>
-    - 원래 놈의 제곱은 이런 형태이다. <img src="https://latex.codecogs.com/gif.latex?%5C%7Ca%5C%7C%5E2%3Da%5ETa%3D%5Csum_%7Bi%3D1%7D%5EN%5Csum_%7Bj%3D1%7D%5ENa_%7Bi%2Cj%7D%5E2"/>
+    - 원래 놈의 제곱은 이런 형태이다. https://latex.codecogs.com/gif.latex?%5C%7Ca%5C%7C%5E2%3Da%5ETa%3D%5Csum_%7Bi%3D1%7D%5EN%5Csum_%7Bj%3D1%7D%5ENa_%7Bi%2Cj%7D%5E2
 
 #### 스칼라와 벡터의 곱
 - 양의 실수 c 와 벡터 a 를 곱하면 방향은 고정, 길이가 실수 크기만큼 커진다.
