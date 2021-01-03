@@ -242,7 +242,7 @@
 - ```고윳값분해 eigenvalue decomposition, 고유분해 eigen-decomposition``` : 정방행렬 A 에서 고유벡터와 고윳값을 찾는 행위
 - 행렬 A 에 대하여 고윳값과 고유벡터는 다음 식을 만족한다.
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Av%20%3D%5Clambda%20v"/>
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28A-%5Clambda%20I%29v%3D0
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28A-%5Clambda%20I%29v%3D0"/>
 - 어떤 벡터 v 가 고유벡터이면, 이 벡터에 실수를 곱한 모든 cv 벡터, v와 방향이 같은 벡터는 모두 고유벡터가 된다.
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%28cv%29%3DcAv%3Dc%20%5Clambda%20v%3D%5Clambda%28cv%29"/>
     - 고유벡터는 길이가 1인 단위벡터로 정규화 하여 표시한다. : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cdfrac%7Bv%7D%7B%5C%7Cv%5C%7C%7D"/>
