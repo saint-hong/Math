@@ -277,7 +277,7 @@
 #### 대각화
 - ```대각화 diagonalization``` : N 차원 정방행렬을 인수분해 하는 행위.
     - 고유벡터행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V"/> : 고유벡터를 열벡터로 옆으로 쌓아서 만든 행렬, <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D"/>, 정방행렬
-    - 고유값행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda"/> : 고윳값을 대각성분으로 가지는 대각행렬, <img src-"https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D"/>, 정방행렬
+    - 고유값행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda"/> : 고윳값을 대각성분으로 가지는 대각행렬, <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D"/>, 정방행렬
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20AV%3D%5CLambda%20V"/>
     - V 의 역행렬이 존재한다면 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5E%7B-1%7D"/>
 - ```정방행렬에 대한 고윳값-고유벡터의 성질```
