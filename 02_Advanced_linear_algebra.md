@@ -250,8 +250,8 @@
 #### 특성방정식
 - 정방행렬 A 만 주어졌을 때 고윳값과 고유벡터를 구하는 방법.
 - 고윳값은 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A-%5Clambda%20I"/> 의 행렬식의 값을 0으로 만드는 특성방정식 characteristic equation 의 해와 같다.
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20det%28A-%5Clambda%20I%29%3D0
-    - 이 조건에 의해서 https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A-%5Clambda%20I 는 역행렬을 갖지 않는다는 것을 알 수 있다. (역행렬 공식 확인)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20det%28A-%5Clambda%20I%29%3D0"/>
+    - 이 조건에 의해서 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A-%5Clambda%20I"/> 는 역행렬을 갖지 않는다는 것을 알 수 있다. (역행렬 공식 확인)
     - 특성방정식의 해를 구하면 고윳값을 구할 수 있고, 행렬과 고윳값을 알고 있기 때문에 고유벡터도 구할 수 있게 된다.
     - 고윳값은 특성방정식의 해에 따라서 1개 (중복고윳값), 2개, 또는 실수가 아닌 복소수인 경우 로 달라지게 된다.
 
@@ -260,14 +260,14 @@
 
 #### 고윳값과 대각합/행렬식
 - 대각합과 행렬식은 벡터와 행렬의 크기에 해당하는 개념들.
-- 어떤 행렬의 고윳값이 https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Clambda_1%2C%20%5Clambda_2%2C%20%5Ccdots%2C%20%5Clambda_n 라고 할 떄, 모든 고윳값의 합은 행렬의 대각합과 같고, 모든 고윳값의 곱은 행렬의 행렬식 값과 같다.
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20tr%28A%29%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Clambda_i
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20det%28A%29%3D%5Cprod_%7Bi%3D1%7D%5EN%20%5Clambda_i
+- 어떤 행렬의 고윳값이 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Clambda_1%2C%20%5Clambda_2%2C%20%5Ccdots%2C%20%5Clambda_n"/> 라고 할 떄, 모든 고윳값의 합은 행렬의 대각합과 같고, 모든 고윳값의 곱은 행렬의 행렬식 값과 같다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20tr%28A%29%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Clambda_i"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20det%28A%29%3D%5Cprod_%7Bi%3D1%7D%5EN%20%5Clambda_i"/>
     - ```역행렬의 존재여부는 고윳값 중에 0 이 있느냐 없느냐로 판단 가능하다. 고윳값 중에 0 이 있으면, det(A) 가 0이 된다.```
 
 #### 고유벡터의 계산
 - 고윳값을 알면 다음 연립방정식을 풀어 고유벡터를 구할 수 있다.
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28A-%5Clambda%20I%29v%3D0
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28A-%5Clambda%20I%29v%3D0"/>
     - 고윳값 각각 고유벡터를 구해야 한다.
     - 고윳값이 1개일때 고유벡터도 1개이거나 경우에 따라서 여러개 일 수 있다. v_11 = 2/3v_12 를 만족하는 모든 벡터 가 될 수도 있다.
     - 항등행렬 I 의 고윳값은 1 하나이지만, 고유벡터는 임의의 2차원 벡터 모두가 될 수 있다.
@@ -276,16 +276,16 @@
 
 #### 대각화
 - ```대각화 diagonalization``` : N 차원 정방행렬을 인수분해 하는 행위.
-    - 고유벡터행렬 https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V : 고유벡터를 열벡터로 옆으로 쌓아서 만든 행렬, https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D, 정방행렬
-    - 고유값행렬 https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda : 고윳값을 대각성분으로 가지는 대각행렬, https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D, 정방행렬
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20AV%3D%5CLambda%20V
-    - V 의 역행렬이 존재한다면 : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5E%7B-1%7D
+    - 고유벡터행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V"/> : 고유벡터를 열벡터로 옆으로 쌓아서 만든 행렬, <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D"/>, 정방행렬
+    - 고유값행렬 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda"/> : 고윳값을 대각성분으로 가지는 대각행렬, <img src-"https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5CLambda%20%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D"/>, 정방행렬
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20AV%3D%5CLambda%20V"/>
+    - V 의 역행렬이 존재한다면 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5E%7B-1%7D"/>
 - ```정방행렬에 대한 고윳값-고유벡터의 성질```
     - 고윳값은 복소수이다.
     - 고윳값은 N 개이다. (N 차원 정방행렬의 고윳값은 N 개이다.)
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20AV%3D%5CLambda%20V
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20trA%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_i , (대각합은 고윳값들의 합과 같다.)
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20detA%3D%5Cprod_%7Bi%3D1%7D%5EN%5Clambda_i , (행렬식은 고윳값들의 곱과 같다.)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20AV%3D%5CLambda%20V"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20trA%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_i"/> , (대각합은 고윳값들의 합과 같다.)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20detA%3D%5Cprod_%7Bi%3D1%7D%5EN%5Clambda_i"/> , (행렬식은 고윳값들의 곱과 같다.)
 
 #### 대각화 가능
 - ```행렬이 대각화가능 하려면 고유벡터가 선형독립이어야 한다.```
@@ -293,43 +293,43 @@
 
 #### 고윳값과 역행렬
 - ```대각화가능한 행렬에 0인 고윳값이 없으면 항상 역행렬이 존재한다.```
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5E%7B-1%7D%3D%28V%5CLambda%20V%5E%7B-1%7D%29%5E%7B-1%7D%3DV%5CLambda%5E%7B-1%7D%20V%5E%7B-1%7D
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5E%7B-1%7D%3D%28V%5CLambda%20V%5E%7B-1%7D%29%5E%7B-1%7D%3DV%5CLambda%5E%7B-1%7D%20V%5E%7B-1%7D"/>
     - 고윳값행렬은 고윳값의 대각행렬이다. 대각행렬의 역행렬은 대각요소들의 역수이므로, 고윳값이 0이 있으면 역행렬을 만들 수 없다.
     - 또한 A 의 행렬식은 고윳값의 곱과 같다는 정의에 의해서 고윳값 중에 0 이 있으면, 행렬식 값이 0 이므로 역행렬이 존재하지 않는다.
 
 #### 대칭행렬의 고유분해
-- 대칭행렬의 성질 : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20S%5ET%3DS%2C%5C%2C%5C%2C%20S%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D , (정방행렬만 대칭행렬이 가능하다.)
+- 대칭행렬의 성질 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20S%5ET%3DS%2C%5C%2C%5C%2C%20S%5Cin%5Cmathbf%20%7BR%7D%5E%7BN%5Ctimes%20N%7D"/> , (정방행렬만 대칭행렬이 가능하다.)
 - ```행렬 A가 실수인 대칭행렬이면, 고윳값이 실수이고, 고유벡터는 서로 직교한다.```
     - 고유벡터가 단위벡터로 정규화 된 상태이면, 고유벡터행렬 V 는 정규직교 행렬이다.
-    - 정규직교 행렬의 성질 : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5ETV%3DVV%5ET%3DI , https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5E%7B-1%7D%3DV%5ET , (https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_i%5ETv_j%3D0%20%5C%3B%5C%3B%20%28i%5Cneq%20j%29, https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_i%5ETv_j%3D1%20%5C%3B%5C%3B%20%28i%3Dj%29)
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5ET
+    - 정규직교 행렬의 성질 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5ETV%3DVV%5ET%3DI"/> , <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5E%7B-1%7D%3DV%5ET"/> , (<img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_i%5ETv_j%3D0%20%5C%3B%5C%3B%20%28i%5Cneq%20j%29"/>, <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_i%5ETv_j%3D1%20%5C%3B%5C%3B%20%28i%3Dj%29"/>)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5ET"/>
     - ```따라서 실수인 대칭행렬은 항상 대각화가능하다.```
 
 #### 대칭행렬과 랭크-1 행렬
 - N 차원 대칭행렬 A 를 N 개의 랭크-1 행렬의 합으로 나타낼 수 있다.
 - 로우랭크에 속하는 랭크-1행렬은 N 차원 벡터 1개로 만들 수 있는 정방행렬이다. rank=1
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A_i%3Dv_iv_i%5ET
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_i%20v_iv_i%5ET%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_iA%3D%5Clambda_1%20A_1&plus;%5Ccdots&plus;%20%5Clambda_N%20A_N
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A_i%3Dv_iv_i%5ET"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_i%20v_iv_i%5ET%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_iA%3D%5Clambda_1%20A_1&plus;%5Ccdots&plus;%20%5Clambda_N%20A_N"/>
 - 만약 고윳값 중에 0 이 없다면, 역행렬도 랭크-1 행렬로 나타낼 수 있다.
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5E%7B-1%7D%3DV%5CLambda%5E%7B-1%7D%20V%5ET%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Cdfrac%7B1%7D%7B%5Clambda_i%7Dv_iv_i%5ET%3D%5Cdfrac%7B1%7D%7B%5Clambda_1%7DA_1&plus;%5Ccdots&plus;%5Cdfrac%7B1%7D%7B%5Clambda_N%7DA_N
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5E%7B-1%7D%3DV%5CLambda%5E%7B-1%7D%20V%5ET%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Cdfrac%7B1%7D%7B%5Clambda_i%7Dv_iv_i%5ET%3D%5Cdfrac%7B1%7D%7B%5Clambda_1%7DA_1&plus;%5Ccdots&plus;%5Cdfrac%7B1%7D%7B%5Clambda_N%7DA_N"/>
 
 #### 대칭행렬의 고윳값 부호
 - 대칭행렬을 랭크-1 행렬의 합으로 나타낼 수 있고, 고유벡터가 서로 직교한다는 성질을 사용하면 다음 정리가 가능하다.
 - ```각 정리에 대한 증명 중요!!!```
-    - 대칭행렬이 양의 정부호이면, 모든 고윳값이 양의 정부호이다. 역도 성립한다. : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20PS%20%5Cleftrightarrow%20%5Clambda_i%3E0
-    - 대칭행렬렬이 양의 준정부호이면, 모든 고윳값은 0 이거나 양수이다. 역도 성립한다. : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20PSD%20%5Cleftrightarrow%20%5Clambda_i%20%5Cge%200
+    - 대칭행렬이 양의 정부호이면, 모든 고윳값이 양의 정부호이다. 역도 성립한다. : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20PS%20%5Cleftrightarrow%20%5Clambda_i%3E0"/>
+    - 대칭행렬렬이 양의 준정부호이면, 모든 고윳값은 0 이거나 양수이다. 역도 성립한다. : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20PSD%20%5Cleftrightarrow%20%5Clambda_i%20%5Cge%200"/>
     - 양의 준정부호 정리에서 실제로 고윳값은 0 이 될 수 없다. 벡터 x 와 고유벡터 vi 가 직교할 때 0 이되는데, 고유벡터 v 집합은 N 차원 벡터공간에서 기저벡터를 이루기때문에 모든 기저벡터와 직교하는 벡터는 존재하지 않는다. 따라서 양의 정부호이다.
 - ```대칭행렬에 대한 고윳값-고유벡터의 성질```
     - 고윳값은 실수이다.
-    - 고유벡터행렬의 전치연산은 역행렬과 같다. : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5ET%20%3D%20V%5E%7B-1%7D
-    - 행렬 A 는 고유벡터행렬과 고윳값행렬, 고유벡터행렬의 전치연산의 곱이다. : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5ET
-    - 행렬 A 는 랭크-1 행렬의 합으로 나타낼 수 있다. : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_i%20v_iv_i%5ET
+    - 고유벡터행렬의 전치연산은 역행렬과 같다. : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5ET%20%3D%20V%5E%7B-1%7D"/>
+    - 행렬 A 는 고유벡터행렬과 고윳값행렬, 고유벡터행렬의 전치연산의 곱이다. : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3DV%5CLambda%20V%5ET"/>
+    - 행렬 A 는 랭크-1 행렬의 합으로 나타낼 수 있다. : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%3D%5Csum_%7Bi%3D1%7D%5EN%5Clambda_i%20v_iv_i%5ET"/>
 
 #### 분산행렬
-- ```분산행렬 scatter matrix``` : 임의의 실수 행렬 X 에 대하여 https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20X%5ETX 인 정방행렬. 확률분포에서 사용된다.
+- ```분산행렬 scatter matrix``` : 임의의 실수 행렬 X 에 대하여 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20X%5ETX"/> 인 정방행렬. 확률분포에서 사용된다.
 - 분산행렬의 정리
     - ```분산행렬은 양의 준정부호이고 고윳값은 0보다 크거나 같다.```
-    - 분산행렬의 이차형식으로 증명 : https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x%5ET%28X%5ETX%29x%3D%28Xx%29%5ET%28Xx%29%3Du%5ETu%3D%5C%7Cu%5C%7C%5E2%20%5Cge%200
+    - 분산행렬의 이차형식으로 증명 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x%5ET%28X%5ETX%29x%3D%28Xx%29%5ET%28Xx%29%3Du%5ETu%3D%5C%7Cu%5C%7C%5E2%20%5Cge%200"/>
     - 분산행렬의 이차형식을 정리하면 어떤 행렬 u 의 제곱합이 되는데, 제곱합은 0 보다 크거나 같으므로 준정부호이다.
     - 또한 분산행렬은 대칭행렬이므로, 대칭행렬이 양의 준정부호이면 고윳값들은 모두 0 보다 크거나 같다.
 
@@ -338,7 +338,7 @@
     - 행렬 X 가 풀랭크이면 열벡터들이 선형독립이면서 벡터공간의 기저벡터이다.
     - 행렬 x 의 열벡터인 v 벡터가 영벡터가 아니라면, Xv=u 가 성립하며 이때 어떤 벡터 u 는 영벡터가 아니다.
     - u 를 영벡터로 만드는 v 벡터가 영벡터가 아닌 벡터라고 한다면 선형독립이 아니게 된다. 따라서 X 가 풀랭크이므로 v 는 선형독립하고, v가 영벡터가 아니면 u 도 영벡터가 아니다. 그러므로 분산행렬의 이차형식은 양의 정부호가 된다.
-    - https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x%5ET%28X%5ETX%29x%3D%28Xx%29%5ET%28Xx%29%3Du%5ETu%20%3E%200
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x%5ET%28X%5ETX%29x%3D%28Xx%29%5ET%28Xx%29%3Du%5ETu%20%3E%200"/>
     - ```분산행렬이 양의 정부호이면 항상 역행렬이 존재한다.```
         - 분산행렬은 대칭행렬이므로 대칭행렬이 양의 정부호이면 고윳값은 모두 0보다 크다.
         - 고윳값이 모두 양수이면 모든 고윳값의 곱이 양수이며 0보다 크다.
@@ -356,7 +356,7 @@
     - 행렬의 대각합은 모든 고윳값의 합과 같다.
     - 행렬의 행렬식은 모든 고윳값의 곱과 같다.
     - 행렬 A가 대칭행렬이면 실수 고윳값 N 개를 가지며 고유벡터들이 서로 직교한다.
-        - 정규직교하는 벡터의 성질은 증명에서 잘 사용된다. https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5ETV%3DI%2C%5C%3B%5C%3BV%5ET%3DV%5E%7B-1%7D%2C%20%5C%3B%5C%3Bv_i%5ETv_j%3D0%28i%20%5Cneq%20j%29%2C%5C%3B%5C%3Bv_i%5ETv_j%3D1%28i%3Dj%29
+        - 정규직교하는 벡터의 성질은 증명에서 잘 사용된다. <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20V%5ETV%3DI%2C%5C%3B%5C%3BV%5ET%3DV%5E%7B-1%7D%2C%20%5C%3B%5C%3Bv_i%5ETv_j%3D0%28i%20%5Cneq%20j%29%2C%5C%3B%5C%3Bv_i%5ETv_j%3D1%28i%3Dj%29"/>
     - 행렬 A가 대칭행렬이고 고윳값이 모두 양수이면 양의 정부호이고 역행렬이 존재한다. 역도 성립한다.
     - 행렬 A가 어떤 행렬 X의 분산행렬이면 0 또는 양의 고윳값을 가진다.
     - 행렬 X가 풀랭크이면 분산행렬의 역행렬이 존재한다.
