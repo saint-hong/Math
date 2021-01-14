@@ -361,3 +361,1051 @@
     - 행렬 A가 어떤 행렬 X의 분산행렬이면 0 또는 양의 고윳값을 가진다.
     - 행렬 X가 풀랭크이면 분산행렬의 역행렬이 존재한다.
 
+### 4. Numpy for Linear algebra
+
+#### 1) 벡터의 길이
+- 놈 norm
+```
+a = np.array([1,2])
+a
+
+=====print=====
+
+array([1, 2])
+```
+
+```
+np.linalg.norm(a)
+
+=====print=====
+
+2.23606797749979
+```
+
+#### 2) 스칼라와 벡터의 곱
+- 벡터의 길이나 방향이 스칼라의 부호와 크기에 따라서 변화한다.
+- 늘어나거나 줄어든다. 또는 방향이 반대가 된다.
+- 벡터의 방향이 바뀌어도 길이는 변하지 않는다. 
+```
+-2 * a, 2 * a
+
+=====print=====
+
+(array([-2, -4]), array([2, 4]))
+```
+
+- 놈의 계산에서 바로 곱셈식을 사용할 수 있다.
+```
+np.linalg.norm(2 * a)
+
+=====print=====
+
+4.47213595499958
+```
+```
+np.linalg.norm(-2 * a)
+
+=====print=====
+
+4.47213595499958
+```
+
+#### 3) 단위벡터
+- 길이가 일인 벡터
+- 벡터를 벡터의 놈으로 나눈 값
+```
+a = np.array([1,0])
+b = np.array([0,1])
+c = np.array([1/np.sqrt(2), 1/np.sqrt(2)])
+np.linalg.norm(a), np.linalg.norm(b), np.linalg.norm(c)
+
+=====print=====
+
+(1.0, 1.0, 0.9999999999999999)
+```
+
+#### 4) word2Vec
+- 벡터의 차를 이용하여 단어의 의미관계를 나타내는 머신러닝 기법
+- 프랑스 = 파리 + (한국-서울)
+= 한국의 수도는 서울, 프랑스의 수도는 파리 라는 의미관계를 나타냄. 파리라는 벡터에서 한국과 서울 벡터의 차를 더해주면 수도 파리가 속해있는 국가 프랑스를 가리키게 된다.
+```
+import numpy as np
+import matplotlib.pylab as plt
+
+### 색깔 정의
+gray={'facecolor':'gray'}
+black={'facecolor':'black'}
+
+a = np.array([2,2])
+b = np.array([3,4])
+c = np.array([4,1])
+d = a + (c-a)
+e = b + (c-a)
+
+### 화살표 스타일 정의
+plt.annotate('', xy=b, xytext=a, arrowprops=black)
+plt.annotate('', xy=e, xytext=d, arrowprops=black)
+plt.annotate('', xy=c, xytext=[0,0], arrowprops=gray)
+
+### 벡터의 지점 마커 정의
+plt.plot(0,0,'kP', ms=10)
+plt.plot(a[0], a[1], 'ro', ms=10)
+plt.plot(b[0], b[1], 'ro', ms=10)
+plt.plot(c[0], c[1], 'ro', ms=10)
+
+### 벡터를 설명하는 텍스트 정의 : x, y 위치
+plt.text(1.6, 1.5, '서울')
+plt.text(2.5, 4.3, '한국')
+plt.text(3.5, 0.5, '파리')
+plt.text(4.9, 3.2, '프랑스')
+
+### 그래프의 x, y 범위 정의
+plt.xticks(np.arange(-2, 7))
+plt.yticks(np.arange(-1, 6))
+plt.xlim(-1.4, 6.4)
+plt.ylim(-0.6, 5.8)
+plt.show()
+```
+![word2vec.png](./images/word2vec.png)
+
+#### 5) 유클리드 거리와 코사인 유사도
+- 유클리드 거리 = 벡터의 차의 놈의 제곱
+- 코사인 유사도 = 코사인 함수로 벡터의 내적을 표현함으로써 벡터가 같은 방향인지를 알 수 있다. 
+- 벡터 a,b,c 의 유클리드 거리는 b와 c가 가장 가깝고, a와 b가 가장 멀다.
+```
+a = np.array([[4],[5],[2],[2]])
+b = np.array([[4],[0],[2],[0]])
+c = np.array([[2],[2],[0],[1]])
+
+ab_distance = np.linalg.norm(a-b)
+ac_distance = np.linalg.norm(a-c)
+bc_distance = np.linalg.norm(b-c)
+
+print(ab_distance)
+print(ac_distance)
+print(bc_distance)
+
+=====pirnt=====
+
+5.385164807134504
+4.242640687119285
+3.605551275463989
+```
+- 벡터 a,b,c 의 코사인 유사도는 a와 c가 가장 가깝고, b와 c가 가장 멀다.
+```
+ab_cos_sim = 1 - (a.T @ b)[0][0] / (np.linalg.norm(a) * np.linalg.norm(b))
+ac_cos_sim = 1 - (a.T @ c)[0][0] / (np.linalg.norm(a) * np.linalg.norm(c))
+bc_cos_sim = 1 - (b.T @ c)[0][0] / (np.linalg.norm(b) * np.linalg.norm(c))
+
+print(ab_cos_sim)
+print(ac_cos_sim)
+print(bc_cos_sim)
+
+=====print=====
+
+0.36112343500006017
+0.04761904761904767
+0.40371520600005606
+```
+
+#### 6) 벡터의 성분과 분해
+- 벡터 A,B 의 합이 다른벡터 C 가 될때 C가 두 벡터 성분 A,B 로 분해된다고 말한다.
+```
+a = np.array([1,0])
+
+b = np.array([0,1])
+c = np.array([1, -1])
+d = b + c
+
+e = np.array([2, -1])
+f = np.array([-1, 1])
+g = e + f
+
+h = np.array([1, 2])
+i = np.array([0, -2])
+j = h + i
+
+### 그래프에서 사용할 색상에 대한 옵션을 dict 로 만들어 놓는다.
+### annotate 의 설명을 참조하면 화살표 스타일을 다양하게 설정할 수 있다.
+black = dict(arrowstyle = '->', color='black')
+green = dict(arrowstyle = '->', color='green')
+blue = dict(arrowstyle = '->', color='blue')
+
+### 1행 3열로 그래프를 그리고, 각 그래프마다 ax1,ax2,ax3 의 변수에 저장한다.
+fig, [ax1, ax2, ax3] = plt.subplots(1, 3, figsize=(7,3))
+
+### 0,0 지점에 검은색 (k), 십자마크 (P) 를 사이즈 10으로 그린다.
+ax1.plot(0,0,'kP',ms=10)
+
+### 벡터를 표현할 화살표의 옵션을 설정한다.
+### xytext 는 화살표의 시작점
+ax1.annotate('', xy=a, xytext=[0,0], arrowprops=black)
+ax1.annotate('', xy=b, xytext=[0,0], arrowprops=green)
+ax1.annotate('', xy=c, xytext=[0,0], arrowprops=blue)
+
+### 벡터의 지점에 원을 그려넣는다.
+ax1.plot(a[0], a[1], 'ko', ms=10)
+ax1.plot(b[0], b[1], 'go', ms=7)
+ax1.plot(c[0], c[1], 'bo', ms=7)
+
+### 그래프의 x, y 범위를 설정한다. np.arange(-2,3) = [-2, -1, 0, 1, 2]
+ax1.set_xticks(np.arange(-2,3))
+ax1.set_yticks(np.arange(-2,3))
+
+### x, y 범위안에서 그래프로 나타낼 세부 범위를 지정한다.
+ax1.set_xlim(-2,3)
+ax1.set_ylim(-2,3)
+
+ax2.plot(0,0,'yh',ms=10)
+ax2.annotate('', xy=a, xytext=[0,0], arrowprops=black)
+ax2.annotate('', xy=e, xytext=[0,0], arrowprops=green)
+ax2.annotate('', xy=f, xytext=[0,0], arrowprops=blue)
+ax2.plot(a[0], a[1], 'ko', ms=10)
+ax2.plot(e[0], e[1], 'go', ms=7)
+ax2.plot(f[0], f[1], 'bo', ms=7)
+ax2.set_xticks(np.arange(-2,3))
+ax2.set_yticks(np.arange(-2,3))
+ax2.set_xlim(-2,3)
+ax2.set_ylim(-2,3)
+
+ax3.plot(0,0,'kd',ms=10)
+ax3.annotate('', xy=a, xytext=[0,0], arrowprops=black)
+ax3.annotate('', xy=h, xytext=[0,0], arrowprops=green)
+ax3.annotate('', xy=i, xytext=[0,0], arrowprops=blue)
+ax3.plot(a[0], a[1], 'ko', ms=10)
+ax3.plot(h[0], h[1], 'go', ms=7)
+ax3.plot(i[0], i[1], 'bo', ms=7)
+ax3.set_xticks(np.arange(-2,3))
+ax3.set_yticks(np.arange(-2,3))
+ax3.set_xlim(-2,3)
+ax3.set_ylim(-2,3)
+
+plt.show()
+```
+![vector_component_decomposition.png](./images/vecotr_component_decomposition.png)
+
+
+#### 7) 벡터의 투영성분과 직교성분
+- 벡터 a를 다른벡터 b에 직교하는 성분과 벡터 b에 평행한 성분으로 분해할 수 있는데, 평행한 성분을 벡터 a에 대한 투영성분, 벡터 b에 직교인 성분을 벡터 b에 대한 직교성분이라고 한다. 
+```
+### 칼라 옵션 정의
+black = dict(arrowstyle='->', color='black')
+green = dict(arrowstyle='->', color='green')
+blue = dict(arrowstyle='->', color='blue')
+red = dict(arrowstyle='->', color='red')
+
+a = np.array([1,2])
+b = np.array([2,0])
+a2 = (a @ b) / np.linalg.norm(b) * np.array([1,0])       ### 투영성분
+a1 = a - a2                                              ### 직교성분
+
+### 벡터의 화살표 설정
+plt.figure(figsize=(4,2))
+plt.annotate('', xy=b, xytext=[0,0], arrowprops=green)
+plt.annotate('', xy=a2, xytext=[0,0], arrowprops=blue)
+plt.annotate('', xy=a1, xytext=[0,0], arrowprops=blue)
+plt.annotate('', xy=a, xytext=[0,0], arrowprops=red)
+
+### 원점 마크 kP = 검은색 십자가, a, b 벡터의 포인터 마크 ro = 빨간색 원
+plt.plot(0,0, 'kP', ms=10)
+plt.plot(a[0], a[1], 'ro', ms=5)
+plt.plot(b[0], b[1], 'ro', ms=5)
+
+### 벡터를 설명하는 text.  x,y 좌표 설정
+plt.text(-0.5, 0.7, '$a^{\perp b}$')
+plt.text(0.35, -0.5, '$a^{\Vert b}$')
+plt.text(0.35, 1.2, '$a$')
+plt.text(1.35, -0.5, '$b$')
+
+### 그래프의 x, y 축 범위 설정
+plt.xticks(np.arange(-10,10))
+plt.yticks(np.arange(-10,10))
+plt.xlim(-1, 3)
+plt.ylim(-1, 3)
+
+plt.show()
+```
+![vector_projection_rejection.png](./images/vector_projection_rejection.png)
+
+#### 8) 직선과 점 사이의 거리
+- 원점을 지나는 벡터 w와 w가 가리키는 점을 직교하는 직선 A와 직선 A 위에 있지 않은 임의의 점 x와의 거리
+- 직선 A 의 방정식과 벡터 x 의 벡터 w에 대한 투영성분, 직교성분을 피타고라스 정리로 구할 수 있다.
+- 서포트 벡터 머신 분류 방법에 사용된다.
+```
+# 색상 정의
+gray = dict(arrowstyle='->', color='gray')
+red = dict(arrowstyle='->', color='red')
+
+# 벡터 정의
+w = np.array([1,2])
+x1 = np.array([4,3])
+x2 = np.array([1,2]) * 2
+
+# 벡터에 대한 화살표 정의
+plt.annotate('', xy=x1, xytext=[0,0], arrowprops=gray)
+plt.annotate('', xy=x2, xytext=[0,0], arrowprops=gray)
+plt.annotate('', xy=w, xytext=[0,0], arrowprops=red)
+
+# 원점과 벡터가 가리키는 점 표시
+plt.plot(0,0,'kP',ms=10)
+plt.plot(w[0], w[1], 'ro', ms=7)
+plt.plot(x1[0], x1[1], 'ro', ms=7)
+
+### [-3,7], [4,-1] = 가로는 -3 에서 7, 세로는 4 에서 -1 로 직선을 그려라.
+### [-3,7], [2,2] = 가로는 -3 에서 7, 세로는 2 에서 2 로 직선을 그려라. 세로의 높이가 없으므로 가로줄.
+plt.plot([-3,7],[4,-1], 'r-', lw=5)
+plt.plot([2,4],[4,3], 'k:', lw=2)
+plt.plot([3,4],[1,3], 'k:', lw=2)
+plt.plot([-3,7],[2,2], 'y-', lw=3)
+
+# 벡터를 설명하는 텍스트 정의
+plt.text(0.1, 0.9, '$w$')
+plt.text(4.2,3.1, '$x$')
+plt.text(1.5,2.4, '$x^{\Vert w}$')
+
+# 그래프의 범위 정의
+plt.xticks(np.arange(-3, 15))
+plt.yticks(np.arange(-1, 5))
+plt.xlim(-3, 7)
+plt.ylim(-1, 5)
+
+plt.show()
+```
+![vector_point_distance.png](./images/vector_point_distance.png)
+
+#### 9) 넘파이로 랭크의 갯수 확인
+- 열랭크와 행랭크는 각각 모든 열과 행에서 선형독립인 벡터의 최대 갯수를 의미한다.
+```
+X1 = np.array([[1,3],[2,4]])
+np.linalg.matrix_rank(X1)
+
+=====print=====
+
+2
+```
+```
+X2 = np.array([[1,3,5],[2,3,7]])
+np.linalg.matrix_rank(X2)
+
+=====print=====
+
+2
+```
+```
+A = np.arange(9).reshape(3,3) * 1.5 - 4
+A
+
+=====print=====
+
+array([[-4. , -2.5, -1. ],
+       [ 0.5,  2. ,  3.5],
+       [ 5. ,  6.5,  8. ]])
+```
+```
+np.linalg.matrix_rank(A)
+
+=====print=====
+
+2
+```
+
+#### 10) 로우 랭크행렬을 만들고 랭크 갯수 확인하기
+- 랭크-1 행렬의 랭크는 (선형독립하는 벡터의 최대갯수) 1이다.
+- 랭크-2 행렬의 랭크는 2이다.
+```
+X1 = np.array([[1],[1]])
+rank_1 = X1 @ X1.T
+rank_1
+
+=====print=====
+
+array([[1, 1],
+       [1, 1]])
+```
+```
+np.linalg.matrix_rank(rank_1)
+
+=====print=====
+
+1
+```
+```
+X1 = np.array([[1],[1]])
+X2 = np.array([[1],[-1]])
+
+rank_2 = X1 @ X1.T + X2 @ X2.T
+rank_2
+
+=====print=====
+
+array([[2, 0],
+       [0, 2]])
+```
+```
+np.linalg.matrix_rank(rank_2)
+
+=====print=====
+
+2
+```
+
+#### 11) 좌표변환
+- 새로운 기저벡터에 대해 좌표를 계산하는 것을 말한다.
+```
+black = dict(arrowstyle='->', color='black')
+green = dict(arrowstyle='->', color='green')
+blue = dict(arrowstyle='->', color='blue')
+red = dict(arrowstyle='->', color='red')
+gray = dict(arrowstyle='->', color='gray')
+
+e1 = np.array([1,0])
+e2 = np.array([0,1])
+x = np.array([2,2])
+g1 = np.array([1,1]) / np.sqrt(2)
+g2 = np.array([-1,1]) / np.sqrt(2)
+
+plt.annotate('', xy=e1, xytext=(0,0), arrowprops=green)
+plt.annotate('', xy=e2, xytext=(0,0), arrowprops=green)
+plt.annotate('', xy=x, xytext=(0,0), arrowprops=gray)
+plt.annotate('', xy=g1, xytext=(0,0), arrowprops=red)
+plt.annotate('', xy=g2, xytext=(0,0), arrowprops=red)
+
+plt.plot(0,0, 'ro', ms=10)
+plt.plot(x[0], x[1], 'ro', ms=10)
+
+plt.text(1.05, 1.35, '$x$', fontdict={'size':18})
+plt.text(-0.3, 0.5, '$e_2$', fontdict={'size':18})
+plt.text(0.5, -0.2, '$e_1$', fontdict={'size':18})
+plt.text(0.2, 0.5, '$g_1$', fontdict={'size':18})
+plt.text(-0.6, 0.2, '$g_2$', fontdict={'size':18})
+
+plt.xticks(np.arange(-2,4))
+plt.yticks(np.arange(-1,4))
+plt.xlim(-1.5, 3.5)
+plt.ylim(-0.5, 3)
+
+plt.show()
+```
+![coordinate_transform.png](./images/coordinate_transform.png)
+
+#### 12) 변환행렬
+- 벡터 x 의 기저벡터 xe 와 새로운 기저벡터 xg 사이의 연관 관계를 나타내는 행렬 A 의 역행렬
+- xe = A * xg
+- xg = Ainv * xe
+- 변환행렬은 vstack 매서드를 사용해서 구할 수 있다.
+```
+g1 = np.array([1,1]) / np.sqrt(2)
+g2 = np.array([-1,1]) / np.sqrt(2)
+x = np.array([2,2])
+
+# 기저벡터 xg 의 행렬 A 
+A = np.vstack([g1,g2]).T
+A
+
+=====print=====
+
+array([[ 0.70710678, -0.70710678],
+       [ 0.70710678,  0.70710678]])
+```
+```
+# 변환행렬
+
+Ainv = np.linalg.inv(A)
+Ainv
+
+=====print=====
+
+array([[ 0.70710678,  0.70710678],
+       [-0.70710678,  0.70710678]])
+```
+- 새로운 좌표벡터 xg 는 원래의 좌표벡터 xe 에 변환행렬을 곱하여 구할 수 있다.
+```
+Ainv.dot(x)
+
+=====print=====
+
+array([2.82842712, 0.        ])
+```
+
+#### 13) 이미지 변환
+- 새로운 기저벡터에 대한 좌표 변환을 응용하여 이미지를 변환할 수 있다.
+- scipy.ndimage 패키지의 affine_transform() 명령은 이미지를 이루는 픽셀을 새로운 좌표로 이동시켜 준다.
+
+```
+import scipy as sp
+import scipy.misc
+import scipy.ndimage
+
+f = sp.misc.face(gray=True)
+
+# 기저벡터 e1, e2
+e1 = np.array([0,1])
+e2 = np.array([1,0])
+E = np.vstack([e1, e2]).T
+
+# 새로운 기저벡터 g1, g2
+#g1 = np.array([1,1]) / np.sqrt(2)
+#g2 = np.array([-1,0]) / np.sqrt(2)
+g1 = np.array([1,0.75])
+g2 = np.array([-1,0.75])
+A = np.vstack([g1,g2]).T
+gc1 = E @ g1
+gc2 = E @ g2
+
+plt.subplot(121)
+plt.imshow(f, cmap=mpl.cm.bone, alpha=0.9)
+plt.annotate('', xy=500*e1, xytext=(0,0), arrowprops=green)
+plt.annotate('$e_1$', xy=500*e1, xytext=500*e1 + [-100,0])
+plt.annotate('', xy=500*e2, xytext=(0,0), arrowprops=green)
+plt.annotate('$e_2$', xy=500*e2, xytext=500*e2 + [0,-50])
+plt.annotate('', xy=500*gc1, xytext=(0,0), arrowprops=red)
+plt.annotate('$g_1$', xy=500*gc1, xytext=500*gc1 + [50, -50])
+plt.annotate('', xy=500*gc2, xytext=(0,0), arrowprops=red)
+plt.annotate('$g_2$', xy=500*gc2, xytext=500*gc2 + [50,0])
+
+plt.axis('off')
+plt.xlim(-200, 1000)
+plt.ylim(800, -500)
+plt.title('좌표변환전')
+
+# 이미지의 좌표변환 적용
+# 이미지데이터 f 와 변환행렬의 역행렬 A 를 인수로 받는다.
+f1 = sp.ndimage.affine_transform(f, A)
+
+plt.subplot(122)
+plt.imshow(f1, cmap=mpl.cm.bone, alpha=0.8)
+plt.annotate('', xy=500*e1, xytext=(0,0), arrowprops=red)
+plt.annotate('$g_1$', xy=500*e1, xytext=500*e1 + [-100,0])
+plt.annotate('', xy=500*e2, xytext=(0,0), arrowprops=red)
+plt.annotate('$g_2$', xy=500*e2, xytext=500*e2 + [0,-50])
+plt.axis('off')
+plt.xlim(-200, 1000)
+plt.ylim(800, -500)
+plt.title('좌표변환후')
+
+plt.show()
+```
+![image_transform.png](./images/image_transform.png)
+
+#### 14) 고유분해
+- 넘파이의 linalg 서브패키지에는 고윳값과 고유분해를 구하는 eig() 명령이 있음.
+- 고윳값은 벡터, 고유벡터는 고유벡터 행렬로 묶어서 나온다. 
+    - 고유벡터는 행렬로 출력되는데, 이 때 고유벡터는 행이아니라 열이다.
+- 고유벡터는 크기가 1인 단위벡터로 정규화 되어 있다. 
+- 실수인 고윳값이 존재하지 않으면, 복소수인 고윳값과 고유벡터를 계산해준다.
+- 수치계산 오류로 미세하게 값이 달라질 수 있다.
+
+```
+A = np.array([[1,-2], [2,-3]])
+w1, V1 = np.linalg.eig(A)
+
+print("고윳값 : \n", w1)   ### 고윳값
+print("고유벡터 : \n", V1)   ### 고유벡터는 단위벡터로 정규화되어 나온다.
+
+=====print=====
+
+고윳값 :
+ [-0.99999998 -1.00000002]
+고유벡터 :
+ [[0.70710678 0.70710678]
+ [0.70710678 0.70710678]]
+```
+```
+B = np.array([[2,3],[2,1]])
+w2, V2 = np.linalg.eig(B)
+
+C = np.array([[0,-1],[1,0]])
+w3, V3 = np.linalg.eig(C)
+
+D = np.array([[2,1],[1,2]])
+w4, V4 = np.linalg.eig(D)
+
+E = np.array([[2,3],[2,1]])
+w5, V5 = np.linalg.eig(E)
+
+F = np.array([[1,1],[0,1]])
+w6, V6 = np.linalg.eig(F)
+
+### 행렬 A,B,C,D,E,F 고윳값과 고유벡터를 데이터프레임으로 정리 
+dfs = []
+matrix = ["A","B","C","D","E","F"]
+
+for i in range(6) :
+
+    for j in range(2) :
+        eigenvalue_num = '고윳값'+'_'+str(j+1)
+        eigenvalue = str(eval('w'+str(i+1))[j])[:5]
+        eigenvector = [str(eval('V'+str(i+1))[j][0])[:8] , str(eval('V'+str(i+1))[j][1])[:8]]
+
+        dfs.append({
+            "matrix" : matrix[i],
+            "eigenvalue_num" : eigenvalue_num,
+            "eigenvalue" : eigenvalue,
+            "eigenvector" : eigenvector,
+        })
+
+eigen_decomposition = pd.DataFrame(dfs)
+eigen_decomposition
+```
+![eigenvalue_eigenvector.png](./images/eigenvalue_eigenvector.png)
+
+#### 15) 행렬의 대각화
+- 고유분해를 통해 고유벡터행렬, 고유벡터행렬의 역행렬, 고유값행렬을 구하고, 세 행렬의 곱으로 원래 행렬 A 를 나타낼 수 있다.
+```
+B = np.array([[2,3],[2,1]])
+w2, V2 = np.linalg.eig(B)
+print(w2)
+print(V2)
+
+=====print=====
+
+[ 4. -1.]
+[[ 0.83205029 -0.70710678]
+ [ 0.5547002   0.70710678]]
+```
+- 고유벡터 행렬의 역행렬
+```
+V2_inv = np.linalg.inv(V2)
+V2_inv
+
+=====print=====
+
+array([[ 0.72111026,  0.72111026],
+       [-0.56568542,  0.84852814]])
+```
+- 대각화 계산
+- 원래 행렬 B 와 B_2 가 같다는 것을 알 수 있다.
+```
+B_2 = V2 @ np.diag(w2) @ V2_inv
+B_2
+
+=====print=====
+
+array([[2., 3.],
+       [2., 1.]])
+```
+
+#### 16) 대칭행렬을 랭크-1 행렬로 분해
+- 대칭행렬 A 는 고윳값과 랭크-1 행렬이 곱으로  분해할 수 있다.
+```
+A = np.array([[60, 30, 20],
+             [30,20,15],
+             [20,15,12]])
+
+# 고유값과 고유벡터 구하기
+w, V = np.linalg.eig(A)
+print(w)
+print(V)
+
+=====print=====
+
+[84.49913563  7.33962395  0.16124042]
+[[ 0.82704493  0.54744843  0.12765933]
+ [ 0.4598639  -0.52829024 -0.71374689]
+ [ 0.32329844 -0.64900666  0.68867153]]
+
+# 고윳값을 각각 변수에 저장
+w1, w2, w3 = w
+
+# 고유벡터행렬을 각각 변수에 저장
+v1 = V[:, 0:1]
+v2 = V[:, 1:2]
+v3 = V[:, 2:3]
+
+# 랭크-1 행렬
+A1 = v1 @ v1.T
+A2 = v2 @ v2.T
+A3 = v3 @ v3.T
+
+print(A1)
+print(A2)
+print(A3)
+
+=====print=====
+
+[[0.68400331 0.38032811 0.26738233]
+ [0.38032811 0.21147481 0.14867328]
+ [0.26738233 0.14867328 0.10452188]]
+[[ 0.29969978 -0.28921166 -0.35529768]
+ [-0.28921166  0.27909057  0.34286388]
+ [-0.35529768  0.34286388  0.42120964]]
+[[ 0.0162969  -0.09111645  0.08791535]
+ [-0.09111645  0.50943462 -0.49153716]
+ [ 0.08791535 -0.49153716  0.47426848]]
+```
+
+- 랭크-1 행렬과 고윳값의 곱의 합은 원래 행렬 A 가 된다.
+```
+w1 * A1 + w2 * A2 + w3 * A3
+
+array([[60., 30., 20.],
+       [30., 20., 15.],
+       [20., 15., 12.]])
+```
+
+- 대칭행렬의 역행렬을 랭크-1 행렬의 합으로 구할 수 있다.
+- 고윳값의 역수와 고유벡터의 내적 행렬 A' 즉 랭크-1 행렬을 곱한 후 더해주면, 대칭행렬의 역행렬이 된다.
+
+```
+```
+B = np.array([[15,25,40],
+             [25,40,5],
+             [40,5,11]])
+
+w, V = np.linalg.eig(B)
+w1, w2, w3 = w
+v1 = V[:, 0:1]
+v2 = V[:, 1:2]
+v3 = V[:, 2:3]
+A1 = v1 @ v1.T
+A2 = v2 @ v2.T
+A3 = v3 @ v3.T
+
+(w1*A1) + (w2*A2) + (w3*A3)
+
+=====print=====
+
+array([[15., 25., 40.],
+       [25., 40.,  5.],
+       [40.,  5., 11.]])
+
+B_inv = np.linalg.inv(B)
+
+=====print=====
+
+array([[-0.00759378,  0.00137237,  0.02698994],
+       [ 0.00137237,  0.02625801, -0.01692589],
+       [ 0.02698994, -0.01692589,  0.00045746]])
+
+```
+```
+1/w1*A1 + 1/w2*A2 + 1/w3*A3
+
+=====print=====
+
+array([[-0.00759378,  0.00137237,  0.02698994],
+       [ 0.00137237,  0.02625801, -0.01692589],
+       [ 0.02698994, -0.01692589,  0.00045746]])
+```
+
+#### 17) 붓꽃 데이터와 보스턴 집값 데이터의  행렬 x 의 분산행렬과 분산행렬의 고윳값
+- 분산행렬은 양의 준정부호 이고 고윳값은 0보다 크거나 같다는 정리를 확인 할 수 있다.
+```
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+A = iris.data
+
+# 분산행렬
+A_scatter = A.T @ A
+
+w1, V1 = np.linalg.eig(A_scatter)
+print("===고윳값 : {} 개===".format(len(w1)))
+print(w1)
+print("===고윳벡터행렬 : {} 개===".format(len(V1)))
+print(V1)
+
+=====print=====
+
+===고윳값 : 4 개===
+[9.20830507e+03 3.15454317e+02 1.19780429e+01 3.55257020e+00]
+===고윳벡터행렬 : 4 개===
+[[ 0.75110816  0.2841749   0.50215472  0.32081425]
+ [ 0.38008617  0.5467445  -0.67524332 -0.31725607]
+ [ 0.51300886 -0.70866455 -0.05916621 -0.48074507]
+ [ 0.16790754 -0.34367081 -0.53701625  0.75187165]]
+```
+
+- 보스턴 집값 데이터 
+```
+from sklearn.datasets import load_boston
+
+boston = load_boston()
+
+B = boston.data
+
+# 분산행렬
+B_scatter = B.T @ B
+
+w2, V2 = np.linalg.eig(B_scatter)
+print("===고윳값 : {} 개===".format(len(w2)))
+print(w2)
+
+=====print=====
+
+===고윳값 : 13 개===
+[1.58386796e+08 1.18747372e+07 4.17002244e+05 1.61644573e+05
+ 2.52697480e+04 1.47629635e+04 8.18396001e+03 6.07326738e+03
+ 4.23577535e+03 6.06399504e+02 3.27412564e+02 3.04157837e+01
+ 2.19326965e+00]
+```
+
+#### 18) 특잇값 분해
+- numpy.linalg 와 scipy.linalg 의 서브패키지에는 svd() 명령을 제공한다. 
+- 오른쪽 특이행렬은 전치연산된 행렬이 출력된다. 즉 실제 행렬은 출력결과의 전치연산 행렬이다. 그런데 특잇값분해 계산 때 어차피 오른쪽 특이행렬은 행벡터 즉 전치연산된 벡터를 사용하기 때문에 출력된 결과 그대로 계산에 사용한다.
+```
+from numpy.linalg import svd
+
+A = np.array([[3,-1],[1,3],[1,1]])
+U, S, VT = svd(A)
+
+print("왼쪽특이행렬 U",U.shape,"\n",U,"\n")
+print("특잇값행렬 S",S.shape,"\n",S,"\n")
+print("오른쪽특이행렬 VT",VT.shape,"\n",VT)
+
+=====print=====
+
+왼쪽특이행렬 U (3, 3)
+ [[-4.08248290e-01  8.94427191e-01 -1.82574186e-01]
+ [-8.16496581e-01 -4.47213595e-01 -3.65148372e-01]
+ [-4.08248290e-01 -1.94289029e-16  9.12870929e-01]]
+
+특잇값행렬 S (2,)
+ [3.46410162 3.16227766]
+
+오른쪽특이행렬 VT (2, 2)
+ [[-0.70710678 -0.70710678]
+ [ 0.70710678 -0.70710678]]
+```
+
+- 특잇값 분해의 계산
+- 넘파이에서 출력되는 특잇값을 대각행렬의 형태로 바꿔 특잇값행렬의 형태로 만든 후 계산해야 한다.
+- 대각행렬로 바꿀 때 원래 행렬의 행렬의 갯수에 따라 특잇값행렬의 크기가 바뀌므로 이것을 고려해야한다.
+```
+U @ np.diag(S,1)[:, 1:] @ VT
+
+=====print=====
+
+array([[ 3., -1.],
+       [ 1.,  3.],
+       [ 1.,  1.]])
+```
+
+#### 19) 특잇값분해 축소형
+- 특잇값분해 축소형은 svd() 명령의 인수 full_matrices=False 로 지정해주면 된다.
+- 특잇값 행렬인 시그마 행렬에서 영행렬 부분을 제거하고, 이에 연결된 좌우의 특이행렬에서 해당부분을 함께 제거해준다.
+```
+U2, S2, VT2 = svd(A, full_matrices=False)
+
+print("왼쪽특이행렬 U, 오른쪽 부분이 제거됨",U2.shape,"\n",U2,"\n") ### 행렬 A 와 크기가 같아진다.
+print("특잇값행렬 S",S2.shape,"\n",S2,"\n")
+print("특잇값행렬 S 형변환, 아랫쪽 부분이 제거됨",np.diag(S2).shape,"\n",np.diag(S2),"\n")
+print("오른쪽특이행렬 VT",VT2.shape,"\n",VT2)
+
+=====print=====
+
+왼쪽특이행렬 U, 오른쪽 부분이 제거됨 (3, 2)
+ [[-4.08248290e-01  8.94427191e-01]
+ [-8.16496581e-01 -4.47213595e-01]
+ [-4.08248290e-01 -1.94289029e-16]]
+
+특잇값행렬 S (2,)
+ [3.46410162 3.16227766]
+
+특잇값행렬 S 형변환, 아랫쪽 부분이 제거됨 (2, 2)
+ [[3.46410162 0.        ]
+ [0.         3.16227766]]
+
+오른쪽특이행렬 VT (2, 2)
+ [[-0.70710678 -0.70710678]
+ [ 0.70710678 -0.70710678]]
+```
+
+#### 20) 특잇값과 특이벡터의 관계
+- 특잇값분해식의 양변에 V 를 곱해서 정리
+- 원래행렬과 오른쪽 특이벡터행렬의 곱과 왼쪽특이벡터행렬과 특잇값행렬의 곱의 값이 같다.
+- 행렬 A 의 크기에서 작은 갯수를 따라서 왼쪽특이행렬과 특잇값행렬의 크기가 결정된다.
+```
+B
+
+=====print=====
+
+array([[3, 2, 2],
+       [2, 3, 2]])
+```
+
+- 축소형 특잇값 분해로 특잇값, 특잇값행렬을 구한다.
+```
+U_b, S_b, VT_b = svd(B, full_matrices=False)
+```
+
+- 원래행렬과 오른쪽특이벡터 행렬의 곱은 왼쪽특이벡터 행렬과 특잇값 행렬의 곱의 값이 같다. 
+```
+B @ VT_b.T
+
+=====print=====
+
+array([[-4.0620192 , -0.70710678],
+       [-4.0620192 ,  0.70710678]])
+
+U_b @ np.diag(S_b,-1)[1:,:2]
+
+=====print=====
+
+array([[-4.0620192 , -0.70710678],
+       [-4.0620192 ,  0.70710678]])
+```
+
+#### 21) 특이값분해와 고유분해의 관계
+- 행렬 A 의 분산행렬 A^TA 의 정리식에 의하여 다음과 같은 관계가 성립된다.
+- 행렬 A 의 특잇값의 제곱과 분산행렬의 고윳값이 같다.
+- 행렬 A 의 오른쪽 특이벡터가 분산행렬의 고유벡터가 된다.
+- 같은 방법으로 행렬 A의 특잇값, 특이벡터가 행렬 AA^T 의 고유값, 고유벡터의 관계가 성립한다.
+```
+A
+
+=====print=====
+
+array([[ 3, -1],
+       [ 1,  3],
+       [ 1,  1]])
+```
+
+- 행렬 A의 분산행렬의 고윳값 분해
+```
+w, V = np.linalg.eig(A.T@A)
+```
+
+- 행렬 A의 특잇값분해 
+```
+U, S, VT = svd(A)
+```
+
+- 행렬 A 의 특잇값 제곱과 분산행렬의 고윳값이 같다
+```
+S ** 2
+
+=====print=====
+
+array([12., 10.])
+
+w
+
+=====print=====
+
+array([12., 10.])
+```
+
+- 행렬 A 의 오른쪽특이벡터와 분산행렬의 고유벡터가 같다.
+```
+VT.T
+
+=====print=====
+
+array([[-0.70710678,  0.70710678],
+       [-0.70710678, -0.70710678]])
+
+V
+
+=====print=====
+
+array([[ 0.70710678, -0.70710678],
+       [ 0.70710678,  0.70710678]])
+```
+
+#### 22) 1차원 근사 문제
+- 2 차원 평면위에 3개의 2차원 벡터와 원점을 지나는 한 직선이 있다.
+- 이 때 3 개의 2차원 벡터들에 가장 가까운 직선의 방향을 찾는 문제
+```
+w = np.array([2,1]) / np.sqrt(5)   ### 임의의 방향으로 설정
+a1 = np.array([3,-1])
+a2 = np.array([1,3])
+a3 = np.array([1,1])
+
+black = {'facecolor':'black'}
+
+plt.figure(figsize=(9,6))
+plt.plot(0,0,'kP',ms=10)
+plt.annotate('', xy=w, xytext=(0,0), arrowprops=black)
+plt.plot([-2,8],[-1,4],'b--',lw=2)
+plt.plot([a1[0], 2], [a1[1], 1], 'g:', lw=2)
+plt.plot([a2[0], 2], [a2[1], 1], 'g:', lw=2)
+plt.plot([a3[0], 1.2], [a3[1], 0.6], 'g:', lw=2)
+plt.plot(a1[0], a1[1], 'ro', ms=10)
+plt.plot(a2[0], a2[1], 'ro', ms=10)
+plt.plot(a3[0], a3[1], 'ro', ms=10)
+plt.text(0.1, 0.5, '$w$')
+plt.text(a1[0] + 0.2, a1[1] + 0.2, '$a_1$')
+plt.text(a2[0] + 0.2, a2[1] + 0.2, '$a_2$')
+plt.text(a3[0] + 0.2, a3[1] + 0.2, '$a_3$')
+plt.xticks(np.arange(-3, 15))
+plt.yticks(np.arange(-1, 5))
+plt.xlim(-3, 6)
+plt.ylim(-2, 4)
+plt.show()
+```
+![1dimentiion_approximation_problem.png](./images/1dimentiion_approximation_problem.png)
+
+
+- 1차원 근사문제는 점 3개와 직선과의 피타고라스 정리를 통해서 투영벡터의 합이 커질 수록 점과 직선사이의 거리인 직교벡터가 작아진다는 원리를 이용하여 풀이할 수 있다.
+- 이 원리를 이용하여 직선이 어떤 방향일 때 점 3개와 가장 가까운지 알 수 있다.
+- 1차원 근사문제를 통해서 알 수 있는 것
+     - 벡터 w 의 방향은 첫번째 특잇값에 해당하는 오른쪽 특이벡터 첫번째이다. w = np.array([1,1]) / np.sqrt(2)
+     - 투영벡터의 길이의 제곱은 첫번째 특잇값이다.
+
+```
+A = np.array([[3,-1],[1,3],[1,1]])
+
+from numpy.linalg import svd
+
+U, S, VT = svd(A, full_matrices=False)
+
+print(U)
+print(S)
+print(VT)
+
+=====print=====
+
+[[-4.08248290e-01  8.94427191e-01]
+ [-8.16496581e-01 -4.47213595e-01]
+ [-4.08248290e-01 -1.94289029e-16]]
+[3.46410162 3.16227766]
+[[-0.70710678 -0.70710678]
+ [ 0.70710678 -0.70710678]]
+```
+
+- 점들과 직선의 거리가 가장 가까울때의 거리의 제곱
+- 행렬 A 의 놈의 제곱 - 첫번째 특잇값의 제곱
+```
+np.linalg.norm(A)**2 - S[0]**2
+
+=====print=====
+
+9.999999999999998
+```
+
+- 3개의 2차원 벡터와 가장 가까운 직선을 그래프로 확인
+```
+w = np.array([1,1]) / np.sqrt(2)  ### 첫번째 특잇값에 해당하는 오른쪽 특이벡터 중 첫번째
+a1 = np.array([3,-1])
+a2 = np.array([1,3])
+a3 = np.array([1,1])
+
+black = {'facecolor':'black'}
+
+plt.figure(figsize=(9,6))
+plt.plot(0,0, 'kP', ms=10)
+plt.annotate('', xy=w, xytext=(0,0), arrowprops=black)  ### 벡터 w 의 화살표
+plt.plot([-2,4], [-2,4], 'b--', lw=2)
+plt.plot([a1[0], 1], [a1[1], 1], 'g:', lw=2)
+plt.plot([a2[0], 2], [a2[1], 2], 'g:', lw=2)
+plt.plot([-3,w[0]], [w[1], w[1]], 'b--', lw=0.8)
+plt.plot([w[0],w[0]], [w[1], -3], 'b--', lw=0.8)
+plt.plot(a1[0], a1[1], 'ro', ms=10)
+plt.plot(a2[0], a2[1], 'ro', ms=10)
+plt.plot(a3[0], a3[1], 'ro', ms=10)
+plt.plot(w[0], w[1], 'bo', ms=10)
+plt.text(0.1, 0.5, '$w$')
+plt.text(a1[0] + 0.2, a1[1] + 0.2, '$a_1$')
+plt.text(a2[0] + 0.2, a2[1] + 0.2, '$a_2$')
+plt.text(a3[0] + 0.2, a3[1] + 0.2, '$a_3$')
+plt.text(w[0] + 0.2, w[1] - 0.7, '오른쪽 \n첫번째 \n특이벡터 \n벡터w의 방향', fontsize=7)
+plt.xticks(np.arange(-3, 15))
+plt.yticks(np.arange(-1, 5))
+plt.xlim(-3,6)
+plt.ylim(-2,4)
+plt.show()
+```
+![1dimentiion_approximation_problem_2.png](./images/1dimentiion_approximation_problem_2.png)
+
