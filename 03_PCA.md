@@ -474,7 +474,7 @@ data.plot(style=styles)
 plt.title('세계 주요국의 20년간의 주가')
 plt.show()
 ```
-![stock_1.png](./images/pca/stock_1.png)
+![stcok_1.png](./images/pca/stcok_1.png)
 
 #### 연간 주식 수익률 구하기
 - 4 X 20 의 특징행렬이 된다.
