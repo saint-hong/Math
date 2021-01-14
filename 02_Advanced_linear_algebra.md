@@ -582,7 +582,7 @@ ax3.set_ylim(-2,3)
 
 plt.show()
 ```
-![vector_component_decomposition.png](./images/vecotr_component_decomposition.png)
+![vector_component_decomposition.png](./images/vector_component_decomposition.png)
 
 
 #### 7) 벡터의 투영성분과 직교성분
@@ -947,7 +947,7 @@ for i in range(6) :
 eigen_decomposition = pd.DataFrame(dfs)
 eigen_decomposition
 ```
-![eigenvalue_eigenvector.png](./images/eigenvalue_eigenvector.png)
+![eigenvalue_eigenvector.PNG](./images/eigenvalue_eigenvector.PNG)
 
 #### 15) 행렬의 대각화
 - 고유분해를 통해 고유벡터행렬, 고유벡터행렬의 역행렬, 고유값행렬을 구하고, 세 행렬의 곱으로 원래 행렬 A 를 나타낼 수 있다.
