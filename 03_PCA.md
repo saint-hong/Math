@@ -21,60 +21,55 @@
 - PCA 에서는 잠재변수와 측정 데이터가 선형적인 관계로 연결되어 있다고 가정한다. 즉 i 번째 표본의 측정 데이터 벡터 xi의 각 원소를 선형조합하면 그 뒤에 숨은 i번째 표본의 잠재변수 ui의 값을 계산할 수 있다고 가정한다.
     - <img src="https://latex.codecogs.com/gif.latex?u_i%20%3D%20w%5ETx_i"/>
     - 붓꽃 데이터에서 꽃받침의 길이와 꽃받침 폭을 선형조합하여 꽃의 크기를 나타내는 어떤 값을 찾은 것이라고 생각할 수 있다.
-    - $u_i = w_1x_i,1 + w_2x_i,2$
+    - <img src="https://latex.codecogs.com/gif.latex?u_i%20%3D%20w_1x_%7Bi%2C1%7D%20&plus;%20w_2x_%7Bi%2C2%7D"/>
     - 하나의 꽃의 측정데이터, 꽃잎의 길이와 폭, 꽃받침의 길이와 폭으로 이루어진 4차원의 데이터를 1차원으로 축소한 것과 같은 의미이다.
 
 #### 차원축소와 벡터공간 투영
 - 차원축소문제는 다차원의 벡터를 더 낮은 차원의 벡터공간에 투영하는 문제로 생각할 수 있다. 즉 특잇값분해에서 다룬 `로우-랭크 근사 low-rank approximation 문제`가 된다. 이 문제는 다음과 같이 서술 할 수 있다.
-    - **n 개의 M 차원 벡터 x1, x2, ... , xN** 을 정규직교인 기저벡터 **w1, w2, ... , wK 로 이루어진 K 차원 벡터공간으로 투영하여** 가장 비슷한 N 개의 K 차원 벡터 $x_1^{\Vert w}, x_2^{\Vert w}, ..., x_N^{\Vert w}$ 를 만드는 **정규직교 기저벡터 w1, w2, ..., wK 를 찾는다.**
+    - **n 개의 M 차원 벡터 x1, x2, ... , xN** 을 정규직교인 기저벡터 **w1, w2, ... , wK 로 이루어진 K 차원 벡터공간으로 투영하여** 가장 비슷한 N 개의 K 차원 벡터 <img src="https://latex.codecogs.com/gif.latex?x_1%5E%7B%5CVert%20w%7D%2C%20x_2%5E%7B%5CVert%20w%7D%2C%20...%2C%20x_N%5E%7B%5CVert%20w%7D"/> 를 만드는 **정규직교 기저벡터 w1, w2, ..., wK 를 찾는다.**
     - 즉, M 차원 벡터 집합을 K 차원의 벡터공간에 투영하여 가장 비슷한 벡터 집합을 만들 수 있는 이 벡터공간을 구성하는 기저벡터(기저벡터는 정규직교함) w 벡터 집합을 찾는 것
     - **M 차원 벡터 -> K 차원 벡터공간 투영 -> 가장 비슷한 투영벡터 집합을 찾는다. -> 가장 비슷하도록 하는 기저벡터 w**
 - 로우-랭크 근사문제와 달리 근사 성능을 높이기 위해 직선이 원점을 지나야 한다는 제한조건을 없앤다. 따라서 문제는 다음과 같이 바뀐다.
-    - N 개의 M 차원 데이터 벡터 x1, x2, ..., xN 에 대해 **어떤 상수 벡터 x0 를 뺀 데이터 벡터 x1-x0, x2-x0,...,xN-x0** 을 정규직교인 기저벡터 w1, w2,...,wK 로 이루어진 K 차원 벡터공간으로 투영하여 가장 비슷한 n 개의 K 차원 벡터 $x_1^{\Vert w}, x_2^{\Vert w}, ..., x_N^{\Vert w}$ 를 만드는 **정규직교 기저벡터 w1,w2,...,wk 와 상수 벡터 x0 를 찾는다.**
+    - N 개의 M 차원 데이터 벡터 x1, x2, ..., xN 에 대해 **어떤 상수 벡터 x0 를 뺀 데이터 벡터 x1-x0, x2-x0,...,xN-x0** 을 정규직교인 기저벡터 w1, w2,...,wK 로 이루어진 K 차원 벡터공간으로 투영하여 가장 비슷한 n 개의 K 차원 벡터 <img src="https://latex.codecogs.com/gif.latex?x_1%5E%7B%5CVert%20w%7D%2C%20x_2%5E%7B%5CVert%20w%7D%2C%20...%2C%20x_N%5E%7B%5CVert%20w%7D"/> 를 만드는 **정규직교 기저벡터 w1,w2,...,wk 와 상수 벡터 x0 를 찾는다.**
 - N 개의 데이터를 1차원 직선에 투영하는 문제라고 하면 원점을 지난는 직선을 찾는게 아니라 원점이 아닌 어떤 임의의 점 x0를 지나는 직선을 찾는 문제로 바뀐 것이다. 이 문제의 답은 다음과 같다.
     - x0 은 데이터 벡터 x1,x2,...,xN 의 **평균벡터**이고, w1,w2,...,wk는 **가장 큰 K개의 특잇값에 대응하는 오른쪽 특이벡터 v1,v2,...,vK 이다.**
     - `x0 = 평균벡터, w1,...,wk = 오른쪽특이벡터 중 K 번째 까지(가장 큰 K 개의 특잇값에 대응)`
 - 3차원의 데이터 집합을 2차원 평면에 투영하여 새로운 데이터 집합을 만들때 어떤 평면을 선택해야 원래의 데이터와 투영된 데이터가 가장 차이가 적을 것인지, 이 평면을 찾는 것, 즉 PCA 는 근사 문제를 푸는 것과 같다.
 
 #### 수학적 설명
-- M 차원의 데이터 x 가 N 개 있을 때 이 데이터를 가능한 쓸모 있는 정보를 유지하면서 더 작은 차원인 K (K < M) 차원의 차원축소 벡터 $\hat{x}$ 로 선형변환하고자 한다.
+- M 차원의 데이터 x 가 N 개 있을 때 이 데이터를 가능한 쓸모 있는 정보를 유지하면서 더 작은 차원인 K (K < M) 차원의 차원축소 벡터 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D"/> 로 선형변환하고자 한다.
 - 데이터가 원점을 중심으로 존재한다고 가정한다. 이러한 경우에 벡터에 좌표변환에서 다룬 **변환행렬**을 곱하면 투영벡터를 계산할 수 있다.
-    - $\hat{x}_i = Wx_i$  ($W \in \mathbf{R}^{M \times K}$)
-    - $x \in \mathbf{R}^M, W \in \mathbf {R}^{K \times M}, \hat{x} \in \mathbf {R}^K$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D_i%20%3D%20Wx_i"/>  (<img src="https://latex.codecogs.com/gif.latex?W%20%5Cin%20%5Cmathbf%7BR%7D%5E%7BM%20%5Ctimes%20K%7D"/>)
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Cin%20%5Cmathbf%7BR%7D%5EM%2C%20W%20%5Cin%20%5Cmathbf%20%7BR%7D%5E%7BK%20%5Ctimes%20M%7D%2C%20%5Chat%7Bx%7D%20%5Cin%20%5Cmathbf%20%7BR%7D%5EK"/>
 - 모든 데이터 xi(i=1,2,...,N) 에 대해 변환을 하면 벡터가 아닌 행렬로 표시할 수 있다.
-    - $\hat{X} = XW^T$
-    - $X \in \mathbf {R}^{N \times M}, \hat{X} \in \mathbf {R}^{N \times K}, W^T \in \mathbf {R}^{M \times K}$
-- 행렬 X 는 벡터 xi 를 행으로 갖는 행렬이고, 행렬 $\hat{X}$ 는 벡터 $\hat{x}_i$ 를 행으로 갖는 행렬이다. PCA의 목표는 변환 결과인 차원축소 벡터 $\hat{x}_i$ 의 정보가 원래의 벡터 xi 의 정보와 가장 유사하게 되는 변환행렬 W 값을 찾는 것이다. 
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7BX%7D%20%3D%20XW%5ET"/>
+    - <img src="https://latex.codecogs.com/gif.latex?X%20%5Cin%20%5Cmathbf%20%7BR%7D%5E%7BN%20%5Ctimes%20M%7D%2C%20%5Chat%7BX%7D%20%5Cin%20%5Cmathbf%20%7BR%7D%5E%7BN%20%5Ctimes%20K%7D%2C%20W%5ET%20%5Cin%20%5Cmathbf%20%7BR%7D%5E%7BM%20%5Ctimes%20K%7D"/>
+- 행렬 X 는 벡터 xi 를 행으로 갖는 행렬이고, 행렬 $\hat{X}$ 는 벡터 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D_i"/> 를 행으로 갖는 행렬이다. PCA의 목표는 변환 결과인 차원축소 벡터 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D_i"/> 의 정보가 원래의 벡터 xi 의 정보와 가장 유사하게 되는 변환행렬 W 값을 찾는 것이다. 
 
 #### 역변환행렬의 도입
-- 차원축소된 벡터는 K 차원이고 원래의 벡터 xi 는 M 차원이기 때문에 **두 벡터의 유사도를 직접 비교할 수 없다.** 따라서 차원축소 벡터 $\hat{x}_i$ 를 다시 M 차원 벡터로 변환하여 $\hat{\hat x}_i$ 와 원래의 행렬을 비교하여 유사도를 구한다.
+- 차원축소된 벡터는 K 차원이고 원래의 벡터 xi 는 M 차원이기 때문에 **두 벡터의 유사도를 직접 비교할 수 없다.** 따라서 차원축소 벡터 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D_i"/> 를 다시 M 차원 벡터로 변환하여 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7B%5Chat%20x%7D_i"/> 와 원래의 행렬을 비교하여 유사도를 구한다.
 - 이때 차원축소 된 벡터를 다시 M 차원으로 선형 변형하는데 필요한 행렬을 **역변환행렬**이라고 한다. 변환행렬과 함께 역변환행렬도 찾는다.
-    - $U \in \mathbf {R}^{M \times K}$
-    - $\hat{\hat x} = U \hat{x}$
-    - $\hat{x} \in \mathbf{R}^k, U \in \mathbf {R}^{M \times K}, \hat{\hat x} \in \mathbf {R}^M$
+    - <img src="https://latex.codecogs.com/gif.latex?U%20%5Cin%20%5Cmathbf%20%7BR%7D%5E%7BM%20%5Ctimes%20K%7D"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7B%5Chat%20x%7D%20%3D%20U%20%5Chat%7Bx%7D"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D%20%5Cin%20%5Cmathbf%7BR%7D%5Ek%2C%20U%20%5Cin%20%5Cmathbf%20%7BR%7D%5E%7BM%20%5Ctimes%20K%7D%2C%20%5Chat%7B%5Chat%20x%7D%20%5Cin%20%5Cmathbf%20%7BR%7D%5EM"/>
     - 역변환행렬을 곱해서 만든 M 차원 벡터는 원래의 행렬 x 와 비슷하지만 완전히 같지는 않다.
-- 이 역변환된 행렬을 차원축소하면 다시 차원축소 벡터 $\hat {x}$ 가 된다.
-    - $W \hat{\hat x} = WU \hat{x} = \hat{x}$
+- 이 역변환된 행렬을 차원축소하면 다시 차원축소 벡터 <img src="https://latex.codecogs.com/gif.latex?%5Chat%20%7Bx%7D"/> 가 된다.
+    - <img src="https://latex.codecogs.com/gif.latex?W%20%5Chat%7B%5Chat%20x%7D%20%3D%20WU%20%5Chat%7Bx%7D%20%3D%20%5Chat%7Bx%7D"/>
     - 따라서 변환행렬 W 와 역변환행렬 U 는 다음과 같은 관계를 따른다.
-    - $WU = I$
+    - <img src="https://latex.codecogs.com/gif.latex?WU%20%3D%20I"/>
 
 #### 최적화식 적용
 - 역변환 행렬 U 를 알고 있다고 가정하면, 역변환 했을 때 원래 벡터 x와 가장 비슷해지는 차원 축소 벡터를 최적화를 이용하여 찾는다.
-    - $arg\;min_\hat{x} \|x-U\hat{x}\|^2$
+    - <img src="https://latex.codecogs.com/gif.latex?arg%5C%3Bmin_%7B%5Chat%20%7Bx%7D%7D%20%5C%7Cx-U%5Chat%7Bx%7D%5C%7C%5E2"/>
 - 목적함수를 정리하면
-    - $\begin{aligned}
-    ||x-U\hat{x}||^2
-    &= (x-U\hat{x})^T(x-U\hat{x}) \\
-    &= x^Tx-\hat{x}^TU^Tx-x^TU\hat{x}+\hat{x}^TU^TU\hat{x} \\
-    &= x^Tx-2x^TU\hat{x}+\hat{x}^T\hat{x}
-    \end{aligned}$
-- 목적함수를 최소화하는 문제이기 때문에, 이 식을 최소하기위해서 $\hat{x}$ 로 미분한 식이 영벡터가 되는 값을 찾는다.
-    - $-2U^Tx + 2\hat{x} = 0$
-    - $\hat{x} = U^Tx$
-    - 원래의 변환식 $\hat{x} = Wx$ 과 비교하면 $U = W^T$ 가 된다는 것을 알 수 있다.
-    - $WU=WW^T=I$
-- 앞선 정리에서 $U=W^T$ 이고, $\hat{x} = Wx$ 임을 확인하였으므로, 최적화 문제를 변형하면 변환행렬 W 를 찾는 문제가 된다.
-    - $arg\;min_w \sum_{i=1}^{N}||x_i - W^TWx_i||^2$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%7C%7Cx-U%5Chat%7Bx%7D%7C%7C%5E2%20%26%3D%20%28x-U%5Chat%7Bx%7D%29%5ET%28x-U%5Chat%7Bx%7D%29%20%5C%5C%20%26%3D%20x%5ETx-%5Chat%7Bx%7D%5ETU%5ETx-x%5ETU%5Chat%7Bx%7D&plus;%5Chat%7Bx%7D%5ETU%5ETU%5Chat%7Bx%7D%20%5C%5C%20%26%3D%20x%5ETx-2x%5ETU%5Chat%7Bx%7D&plus;%5Chat%7Bx%7D%5ET%5Chat%7Bx%7D%20%5Cend%7Baligned%7D"/>
+- 목적함수를 최소화하는 문제이기 때문에, 이 식을 최소하기위해서 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D"/> 로 미분한 식이 영벡터가 되는 값을 찾는다.
+    - <img src="https://latex.codecogs.com/gif.latex?-2U%5ETx%20&plus;%202%5Chat%7Bx%7D%20%3D%200"/>
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D%20%3D%20U%5ETx"/>
+    - 원래의 변환식 <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D%20%3D%20Wx"/> 과 비교하면 <img src="https://latex.codecogs.com/gif.latex?U%20%3D%20W%5ET"/> 가 된다는 것을 알 수 있다.
+    - <img src="https://latex.codecogs.com/gif.latex?WU%3DWW%5ET%3DI"/>
+- 앞선 정리에서 <img src="https://latex.codecogs.com/gif.latex?U%3DW%5ET"/> 이고, <img src="https://latex.codecogs.com/gif.latex?%5Chat%7Bx%7D%20%3D%20Wx"/> 임을 확인하였으므로, 최적화 문제를 변형하면 변환행렬 W 를 찾는 문제가 된다.
+    - <img src="https://latex.codecogs.com/gif.latex?arg%5C%3Bmin_W%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%7C%7Cx_i%20-%20W%5ETWx_i%7C%7C%5E2"/>
     - 모든 데이터에 적용하면,
-    - $arg\;min_W \sum_{i=1}^{N}||X - XW^TW||^2$
+    - <img src="https://latex.codecogs.com/gif.latex?arg%5C%3Bmin_W%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%7C%7CX%20-%20XW%5ETW%7C%7C%5E2"/>
 - 따라서 변환행렬 W 를 찾는 문제는 랭크-K 차원 근사문제가 되어, `W 는 가장 큰 K 개의 특잇값에 대응하는 오론쪽 특이벡터로 만들어진 행렬이 된다는 것을 알 수 있다.`
