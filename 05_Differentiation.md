@@ -85,11 +85,11 @@
     - <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3Dh%28g%28x%29%29%5C%3B%5Crightarrow%5C%3B%20%5Cdfrac%7Bdf%7D%7Bdx%7D%3D%5Cdfrac%7Bdh%7D%7Bdg%7D%20%5Ccdot%20%5Cdfrac%7Bdg%7D%7Bdx%7D"/>
 - 함수가 복잡할 경우에는 f, h, g, y 등의 중간변수를 만들고 함수의 관계에 따라서 구분지은 후 연쇄법칙을 적용한다.
 
-        > - <img src="https://latex.codecogs.com/gif.latex?f%3D%5Cexp%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Csigma%5E2%7D"/>
-        >> <img src="https://latex.codecogs.com/gif.latex?f%3D%5Cexp%28z%29%2C%5C%3Bz%3D%5Cdfrac%7By%5E2%7D%7B%5Csigma%5E2%7D%2C%5C%3By%3Dx-%5Cmu"/> \
-        >> <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bdf%7D%7Bdx%7D%3D%5Cdfrac%7Bdf%7D%7Bdz%7D%5Ccdot%5Cdfrac%7Bdz%7D%7Bdy%7D%5Ccdot%5Cdfrac%7Bdy%7D%7Bdx%7D"/> \
-        >> <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bdf%7D%7Bdz%7D%3D%5Cexp%28z%29%3D%5Cexp%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Csigma%5E2%7D%24%2C%20%24%5Cdfrac%7Bdz%7D%7Bdy%7D%3D%5Cdfrac%7B2y%7D%7B%5Csigma%5E2%7D%3D%5Cdfrac%7B2%28x-%5Cmu%29%7D%7B%5Csigma%5E2%7D%24%2C%20%24%5Cdfrac%7Bdy%7D%7Bdx%7D%3D1"/>
-        > - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bdf%7D%7Bdx%7D%20%3D%20%5Cdfrac%7B2%28x-%5Cmu%29%7D%7B%5Csigma%5E2%7D%5Ccdot%5Cexp%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Csigma%5E2%7D"/>
+> - <img src="https://latex.codecogs.com/gif.latex?f%3D%5Cexp%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Csigma%5E2%7D"/>
+>> <img src="https://latex.codecogs.com/gif.latex?f%3D%5Cexp%28z%29%2C%5C%3Bz%3D%5Cdfrac%7By%5E2%7D%7B%5Csigma%5E2%7D%2C%5C%3By%3Dx-%5Cmu"/> \
+>> <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bdf%7D%7Bdx%7D%3D%5Cdfrac%7Bdf%7D%7Bdz%7D%5Ccdot%5Cdfrac%7Bdz%7D%7Bdy%7D%5Ccdot%5Cdfrac%7Bdy%7D%7Bdx%7D"/> \
+>> <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bdf%7D%7Bdz%7D%3D%5Cexp%28z%29%3D%5Cexp%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Csigma%5E2%7D%24%2C%20%24%5Cdfrac%7Bdz%7D%7Bdy%7D%3D%5Cdfrac%7B2y%7D%7B%5Csigma%5E2%7D%3D%5Cdfrac%7B2%28x-%5Cmu%29%7D%7B%5Csigma%5E2%7D%24%2C%20%24%5Cdfrac%7Bdy%7D%7Bdx%7D%3D1"/>
+> - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bdf%7D%7Bdx%7D%20%3D%20%5Cdfrac%7B2%28x-%5Cmu%29%7D%7B%5Csigma%5E2%7D%5Ccdot%5Cexp%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Csigma%5E2%7D"/>
 
 #### `2차 도함수 second derivative`
 - `도함수의 기울기`
