@@ -398,9 +398,9 @@ $xe^x + e^x$
 sympy.simplify(sympy.diff(f))
 
 =====print=====
-
-$(x+1)e^x$
 ```
+<img src="https://latex.codecogs.com/gif.latex?%28x&plus;1%29e%5Ex"/>
+
 ### 7) 편미분
 - diff() 명령어의 인수로 미분할 변수를 넣어준다.
 ```
@@ -415,17 +415,17 @@ f_partial_diff_x = sympy.diff(f, x)
 f_partial_diff_x 
 
 =====print=====
+```
+<img src="https://latex.codecogs.com/gif.latex?2x&plus;4y"/>
 
-$2x+4y$
-
+```
 # 변수 y 로 편미분
 f_partial_diff_y = sympy.diff(f, y)
 f_partial_diff_y
 
 =====print=====
-
-$4x+8y$ 
 ```
+<img src="https://latex.codecogs.com/gif.latex?4x&plus;8y"/>
 
 #### 상수 역할을 하는 심볼을 포함하는 함수의 미분
 - 심파이가 상수 심볼과 변수 심볼을 구분하지 못하기 때문에 편미분의 방식처럼 diff() 명령어의 인수로 미분할 변수를 지정해 주어야 한다.
@@ -440,9 +440,9 @@ f = sympy.exp((x-mu) ** 2/ sigma ** 2)
 sympy.diff(f, x)
 
 =====print=====
-
-$\dfrac{(-2\mu+2x)e(\dfrac{(-\mu+x)^2}{\sigma^2})}{\sigma^2}$
 ```
+<img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%28-2%5Cmu&plus;2x%29e%28%5Cdfrac%7B%28-%5Cmu&plus;x%29%5E2%7D%7B%5Csigma%5E2%7D%29%7D%7B%5Csigma%5E2%7D"/>
+
 ### 8) SymPy 로 미분 문제 풀어보기
 ```
 x = sympy.symbols('x')
