@@ -376,24 +376,27 @@ x = sympy.symbols('x')
 x
 
 =====print=====
+```
+<img src="https://latex.codecogs.com/gif.latex?x"/>
 
-$x$
-
+```
 # 심볼 x 로 함수를 정의
 f = x * sympy.exp(x)
 f
 
 =====print=====
+```
+<img src="https://latex.codecogs.com/gif.latex?xe%5Ex"/>
 
-$xe^x$
-
+```
 # diff() 명령어로 미분
 sympy.diff(f)
 
 =====print=====
+```
+<img src="https://latex.codecogs.com/gif.latex?xe%5Ex%20&plus;%20e%5Ex"/>
 
-$xe^x + e^x$
-
+```
 # simplify() 명령어는 함수를 소인수 분해하여 정리해준다.
 sympy.simplify(sympy.diff(f))
 
