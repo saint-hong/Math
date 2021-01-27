@@ -142,3 +142,360 @@
 - 단변수 함수 f(x)위의 한 점을 지나는 접선의 방정식
     - <img src="https://latex.codecogs.com/gif.latex?y-f%28a%29%3Df%5E%7B%5Cprime%7D%28a%29%28x-a%29"/>
 
+# Python
+
+### 1) 그래프로 나타낸 함수의 기울기
+```
+def f(x) :
+    return x ** 3 - 3 * x ** 2 + x
+
+x = np.linspace(-1, 3, 400)
+y = f(x)
+
+plt.plot(x, y)
+plt.plot(0, 0, 'ro')
+plt.plot(x, x, 'r:')
+plt.plot(1, -1, 'go')
+plt.plot(x, (3*1**2-6*1+1)*(x-1)-1, 'g--')
+
+plt.xlim(-3.5, 5.5)
+plt.ylim(-4, 2)
+plt.xticks(np.arange(-3, 6))
+plt.yticks(np.arange(-4, 2))
+
+# 주석 설정 : xy 는 주석의, xytext 는 주석의 끝점, arrowprops 는 화살표의 속성
+plt.annotate('', xy=(1, 0), xytext=(0, 0), arrowprops=dict(facecolor='gray'))
+plt.annotate('', xy=(1, 1), xytext=(1, 0), arrowprops=dict(facecolor='gray'))
+
+plt.annotate('', xy=(2, -1), xytext=(1, -1), arrowprops=dict(facecolor='gray'))
+plt.annotate('', xy=(2, -3), xytext=(2, -1), arrowprops=dict(facecolor='gray'))
+
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('함수의 기울기')
+plt.show()
+```
+![slope.png](./images/diff/slope.png)
+
+### 2) 수치미분
+- 함수의 기울기를 구해준다.
+```
+from scipy.misc import derivative
+
+def f(x) :
+    return x ** 3 - 3 * x ** 2 + x
+
+x = [-.5, 0, 0.5, 1, 1.5, 2, 2.5]
+f_derivative = []
+
+for i in range(7) :
+    print("x={} 의 기울기 slope={}".format(x[i], derivative(f, x[i], dx=1e-5)))
+    f_derivative.append(derivative(f, x[i], dx=1e-5))
+
+plt.plot(x, f_derivative)
+plt.axhline(0, c='k', ls='--', linewidth=0.7)
+plt.axvline(0, c='k', ls='--', linewidth=0.7)
+
+for j in range(7) :
+    plt.plot(x[j], f_derivative[j], 'ro', ms=3, label='x={} → {:.0f}'.format(x[j], f_derivative[j]))
+
+plt.title('함수 $x^3 - 3x^2 + x$의 도함수 그래프', y=1.04)
+plt.legend(fontsize=8)
+plt.show()
+
+=====print=====
+
+x=-0.5 의 기울기 slope=4.750000000097732
+x=0 의 기울기 slope=1.0000000000999998
+x=0.5 의 기울기 slope=-1.2499999998943911
+x=1 의 기울기 slope=-1.9999999998965288
+x=1.5 의 기울기 slope=-1.24999999986386
+x=2 의 기울기 slope=1.000000000139778
+x=2.5 의 기울기 slope=4.7500000000422204
+```
+![derivative.png](./images/diff/derivative.png)
+
+### 3) 미분가능
+- 미분 할 수 없는 경우는 미분 불가능
+- 미불 할 수 있는 경우는 미분 가능
+```
+def relu(x) :
+    return np.where(x > 0, x, 0)
+
+xx = np.linspace(-2, 2, 100)
+
+plt.plot(xx, relu(xx))
+plt.plot(0, 0, 'go', ms=10)
+plt.text(0.2, 0.1, '렐루 함수는 x=0 에서 미분 불가능', fontsize=8)
+plt.title('ReLU')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+```
+![relu_non_diff.png](./images/diff/relu_non_diff.png)
+
+### 4) 함수와 도함수
+- 도함수는 함수의 기울기를 출력해주는 함수이다.
+- 미분이라는 작업, 행위를 통해서 만들어진다.
+```
+def f(x) :
+    return x ** 3 - 3 * x ** 2 + x
+
+def fprime(x) :
+    return 3 * x ** 2 - 6 * x + 1
+
+# 2차 방정식의 근 : 도함수의 근
+# np.roots([n, n-1, n-2, ..., 0]) : 명령어의 인수는 제곱수의 순서대로 상수항의 값을 입력한다. 없는 제곱수는 0으로 입력해야한다.
+x1, x2 = np.roots([3, -6, 1])
+x_1, x_2, x_3 = np.roots([1, -3, 1, 0])
+
+x = np.linspace(-1, 3, 400)
+
+plt.figure(figsize=(10, 7))
+plt.subplot(211)
+plt.plot(x, f(x))
+# 3차 함수의 근의 표시
+plt.plot(x_1, 0, 'ro', ms=4)
+plt.plot(x_2, 0, 'ro', ms=4)
+plt.plot(x_3, 0, 'ro', ms=4)
+plt.xlim(-2, 4)
+plt.xticks(np.arange(-1, 4))
+plt.yticks(np.arange(-5, 4))
+plt.xlabel('x')
+plt.title('함수 f(x)', y=1.06)
+# 3차 함수의 최고점과 최저점은 도함수의 근과 같다.
+plt.axvline(x1, c='b', ls='--')
+plt.axvline(x2, c='b', ls='--')
+
+plt.subplot(212)
+plt.plot(x, fprime(x))
+plt.xlim(-2, 4)
+# 2차 함수의 근의 표시
+plt.plot(x1, 0, 'go', ms=4)
+plt.plot(x2, 0, 'go', ms=4)
+plt.xticks(np.arange(-1, 4))
+plt.yticks(np.arange(-3, 11))
+plt.xlabel('x')
+plt.ylabel('도함수 $f^{\prime}(x)$')
+plt.axhline(0, c='r', ls='--')
+plt.axvline(x1, c='b', ls='--')
+plt.axvline(x2, c='b', ls='--')
+
+plt.tight_layout()
+plt.show()
+```
+![derivative_second_derivative.png](./images/diff/derivative_second_derivative.png)
+
+#### 제곱근 명령어
+- 상수항을 순서대로 인수로 입력 : np.roots([a, b, c, d, e])
+- 0이어도 입력해줘야 함수가 몇 차인지 인식한다.
+```
+x1, x2 = np.roots([2, 4, 1])
+x1, x2
+
+=====print=====
+
+(-1.7071067811865475, -0.2928932188134525)
+```
+```
+x_1, x_2, x_3 = np.roots([1, -3, 1, 0])
+x_1, x_2, x_3
+
+=====print======
+
+(2.618033988749895, 0.38196601125010515, 0.0)
+```
+### 5) 함수와 도함수, 2차 도함수
+```
+def f(x) :
+    return x ** 3 - 3 * x ** 2 + x
+
+def fprime(x) :
+    return 3 * x ** 2 - 6 * x + 1
+
+def fprime2(x) :
+    return 6 * x - 6
+
+# fprime(x) 의 근
+x1, x2 = np.roots([3, -6, 1])
+
+x = np.linspace(-1, 3, 400)
+
+plt.figure(figsize=(10, 10))
+
+plt.subplot(311)
+plt.plot(x, f(x))
+plt.plot()
+plt.xlim(-2, 4)
+plt.xticks(np.arange(-1, 4))
+plt.yticks(np.arange(-5, 4))
+plt.title('함수 f(x)')
+plt.xlabel('x')
+plt.axvline(x1, c='b', ls='--')
+plt.axvline(x2, c='b', ls='--')
+plt.axvline(1, c='g', ls=':')
+
+plt.subplot(312)
+plt.plot(x, fprime(x))
+plt.xlim(-2, 4)
+plt.xticks(np.arange(-1, 4))
+plt.yticks(np.arange(-3, 11))
+plt.title('함수 $f^{\prime}(x)$')
+plt.xlabel('x')
+plt.axhline(0, c='r', ls='--')
+plt.axvline(x1, c='r', ls='--')
+plt.axvline(x2, c='r', ls='--')
+plt.axvline(1, c='g', ls=':')
+
+
+plt.subplot(313)
+plt.plot(x, fprime2(x))
+plt.xlim(-2, 4)
+plt.xticks(np.arange(-1, 4))
+plt.title('2차 도함수 $f^{\prime\prime}(x)$')
+plt.axhline(0, c='r', ls='--')
+plt.axvline(1, c='g', ls=':')
+
+plt.tight_layout()
+plt.show()
+```
+![derivative_second_derivative_2.png](./images/diff/derivative_second_derivative_2.png)
+
+### 6) SymPy 와 미분
+- SymPy 는 심볼릭 연산 symbolic operation 을 지원하는 파이썬 패키지이다.
+- 심볼릭 연산이란 연필로 계산을 하는 것과 같은 방식의 미분/적분을 말한다.
+- 딥러닝 등에 많이 사용되는 파이썬의 텐서플로 패키지나 파이토치 패키지도 심볼릭 연산 기능을 갖추고 있다.
+```
+import sympy
+
+# 쥬피터 노트북에서 수학식의 LaTeX 의 표션을 위해 필요한 설정
+sympy.init_printing(use_latex='mathjax')
+
+# x 를 심볼로 정의
+x = sympy.symbols('x')
+x
+
+=====print=====
+
+$x$
+
+# 심볼 x 로 함수를 정의
+f = x * sympy.exp(x)
+f
+
+=====print=====
+
+$xe^x$
+
+# diff() 명령어로 미분
+sympy.diff(f)
+
+=====print=====
+
+$xe^x + e^x$
+
+# simplify() 명령어는 함수를 소인수 분해하여 정리해준다.
+sympy.simplify(sympy.diff(f))
+
+=====print=====
+
+$(x+1)e^x$
+```
+### 7) 편미분
+- diff() 명령어의 인수로 미분할 변수를 넣어준다.
+```
+# 심볼 설정
+x, y = sympy.symbols('x y')
+
+# 함수 설정
+f = x ** 2 + 4 * x * y + 4 * y ** 2
+
+# 변수 x 로 편미분
+f_partial_diff_x = sympy.diff(f, x)
+f_partial_diff_x 
+
+=====print=====
+
+$2x+4y$
+
+# 변수 y 로 편미분
+f_partial_diff_y = sympy.diff(f, y)
+f_partial_diff_y
+
+=====print=====
+
+$4x+8y$ 
+```
+
+#### 상수 역할을 하는 심볼을 포함하는 함수의 미분
+- 심파이가 상수 심볼과 변수 심볼을 구분하지 못하기 때문에 편미분의 방식처럼 diff() 명령어의 인수로 미분할 변수를 지정해 주어야 한다.
+```
+# 심볼 설정
+x, mu, sigma = sympy.symbols('x, mu, sigma')
+
+# 함수 설정
+f = sympy.exp((x-mu) ** 2/ sigma ** 2)
+
+# x 변수로 미분
+sympy.diff(f, x)
+
+=====print=====
+
+$\dfrac{(-2\mu+2x)e(\dfrac{(-\mu+x)^2}{\sigma^2})}{\sigma^2}$
+```
+### 8) SymPy 로 미분 문제 풀어보기
+```
+x = sympy.symbols('x')
+f = x ** 3 - 1
+f_diff = sympy.diff(f, x)
+f_diff_diff = sympy.diff(f, x, x)
+
+f, f_diff, f_diff_diff
+
+=====print=====
+```
+![problem_1.PNG](./images/diff/problem_1.PNG)
+
+
+```
+x, k = sympy.symbols('x k')
+f = sympy.log(x ** 2 - 3 * k)
+
+f_diff = sympy.diff(f, x)
+f_diff_diff = sympy.diff(f, x, x)
+
+f, f_diff, f_diff_diff
+
+=====print=====
+```
+![problem_2.PNG](./images/diff/problem_2.PNG)
+
+```
+x, a, b = sympy.symbols('x, a, b')
+f = sympy.exp(a * (x ** b))
+
+f_diff = sympy.simplify(sympy.diff(f, x))
+f_diff_diff = sympy.simplify(sympy.diff(f, x, x))
+
+f, f_diff, f_diff_diff
+
+=====print=====
+```
+![problem_3.PNG](./images/diff/problem_3.PNG)
+
+```
+x, y = sympy.symbols('x, y')
+f = sympy.exp(x ** 2 + 2 * y ** 2)
+
+f_diff_x = sympy.diff(f, x)
+f_diff_y = sympy.diff(x, y)
+f_diff_x_x = sympy.diff(f, x, x)
+f_diff_x_y = sympy.diff(f, x, y)
+f_diff_y_y = sympy.diff(f, y, y)
+f_diff_y_x = sympy.diff(f, y, x)
+
+f_diff_x, f_diff_y, f_diff_x_x, f_diff_x_y, f_diff_y_y, f_diff_y_x
+
+=====print=====
+```
+![problem_4.PNG](./images/diff/problem_4.PNG)
