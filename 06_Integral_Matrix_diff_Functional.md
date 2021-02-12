@@ -9,22 +9,22 @@
 
 #### `부정적분 indefinite integral`
 - 부정적분은 **미분의 반대 anti-derivative** 개념이다. 도함수를 f(x)라고 할 때 도함수를 만들어 낸 원래 함수 F(x) 를 찾는 과정 또는 그 결과를 의미한다.
-    - $\dfrac{dF(x)}{dx}=f(x)\;\;\leftrightarrow\;\;F(x)=\int f(x)dx + C$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7BdF%28x%29%7D%7Bdx%7D%3Df%28x%29%5C%3B%5C%3B%5Cleftrightarrow%5C%3B%5C%3BF%28x%29%3D%5Cint%20f%28x%29dx%20&plus;%20C"/>
     - dx 는 x로 F를 x로 미분했다는 의미로 편미분에 대응하는 적분이라는 표기
     - C 는 상수항으로 미분을 하면 0이 되어 사라진 것을 의미한다. C에 대한 부정적분의 해는 무한개이다. 표기를 생략하기도 한다.
 
 #### `편미분의 부정적분`
 - 다변수 함수를 도함수라고 할 때 원래의 다변수 함수를 찾는 작업. 도함수의 결과가 다변수 함수라는 것은 원래의 함수 F도 다변수 함수이며 이것을 편미분한 결과라는 의미이다.
 - 따라서 편미분 과정에서 변수 x 또는 y를 사용하기 때문에, 주어진 도함수 f를 적분할 때에도 x, y로 각각 적분해야 원래의 함수 F를 찾을 수 있다.
->- x로 부정적분 : $\dfrac{\partial F_1(x,y)}{\partial x}=f(x,y)\;\;\leftrightarrow\;\;F_1(x,y)=\int f(x,y)dx + C(y)$
->- y로 부정적분 : $\dfrac{\partial F_2x,y)}{\partial y}=f(x,y)\;\;\leftrightarrow\;\;F_2(x,y)=\int f(x,y)dy + C(x)$
+>- x로 부정적분 : <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20F_1%28x%2Cy%29%7D%7B%5Cpartial%20x%7D%3Df%28x%2Cy%29%5C%3B%5C%3B%5Cleftrightarrow%5C%3B%5C%3BF_1%28x%2Cy%29%3D%5Cint%20f%28x%2Cy%29dx%20&plus;%20C%28y%29"/>
+>- y로 부정적분 : <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20F_2x%2Cy%29%7D%7B%5Cpartial%20y%7D%3Df%28x%2Cy%29%5C%3B%5C%3B%5Cleftrightarrow%5C%3B%5C%3BF_2%28x%2Cy%29%3D%5Cint%20f%28x%2Cy%29dy%20&plus;%20C%28x%29"/>
 - C(x), C(y)는 상수항 또는 x, y의 함수일 수 있다. 원래의 함수 F를 한변수로 미분하면 다른변수는 상수항 처럼 취급되어 0이 되기 때문이다.
 
 #### `다차도함수와 다중적분`
 - 2차 도함수와 같이 어떤 함수를 미분을 여러번 하여 구한 다차도함수의 경우 원래의 함수를 구하기 위해선 다중적분 multiple integration 을 해야한다. 여러번 적분을 한다는 의미이다.
 - 함수 f(x,y)가 F(x,y)를 x로 한번, y로 한번 편미분하여 나온 이차 도함수라고 할때, 원래의 함수 F를 구하기 위해서는 y로 적분을 하고 다시 x로 적분을 해야한다.
->- $\dfrac{\partial^2 F_3(x,y)}{\partial y \partial x}=f(x,y)\;\;\leftrightarrow\;\;F_3(x,y)=\int_{x}\int_{y}f(x,y)dydx$
->- 적분기호의 아래 변수명을 생략하여 쓰기도 한다 : $\int\int f(x,y)dydx$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%5E2%20F_3%28x%2Cy%29%7D%7B%5Cpartial%20y%20%5Cpartial%20x%7D%3Df%28x%2Cy%29%5C%3B%5C%3B%5Cleftrightarrow%5C%3B%5C%3BF_3%28x%2Cy%29%3D%5Cint_%7Bx%7D%5Cint_%7By%7Df%28x%2Cy%29dydx"/>
+>- 적분기호의 아래 변수명을 생략하여 쓰기도 한다 : <img src="https://latex.codecogs.com/gif.latex?%5Cint%5Cint%20f%28x%2Cy%29dydx"/>
 
 #### `심파이를 이용한 부정적분`
 - 단변수 함수 f를 적분 : sympy.integrate(f)
@@ -35,12 +35,12 @@
 
 #### `정적분 definite integral`
 - 독립변수 x가 어떤 구간 [a,b]의 사이에 있을 때 **이 구간에서 f(x)의 값과 수평선 x축이 이루는 면적**을 구하는 행위 혹은 그 값을 의미한다.
->- $\int_{a}^{b} f(x)dx$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7Ba%7D%5E%7Bb%7D%20f%28x%29dx"/>
 - 정적분의 값은 숫자값이다.
 
 #### `미적분학의 기본 정리 Fundamental Theorem Calculus`
 - 함수 f의 특정 구간에서의 면적을 의미하는 정적분은 부정적분으로 구한 함수 F와 다음과 같은 관계가 성립하므로 미분과 관련이 있다.
->- $\int_{a}^{b} f(x)dx =F(b)-F(a)$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7Ba%7D%5E%7Bb%7D%20f%28x%29dx%20%3DF%28b%29-F%28a%29"/>
 - 즉 함수 F로부터 미분을 하면 도함수 f를 구할 수 있고, 도함수 f를 부정적분하면 원래의 함수 F를 구할 수있다. 함수 F의 b와 a의 값의 차는 도함수 f의 a와 b 사이의 면적과 같다.
 
 #### `심파이를 이용한 정적분`
@@ -51,7 +51,7 @@
 - 입력변수가 2개인 2차원 함수 f(x,y)의 정적분
 - 2차원 함수 f(x,y)는 다변수 함수로 지형도와 같다. 위도 x, 경도 y 를 입력받아 고도 z 값을 출력하는 함수.
 - 이러한 2차원 함수를 정적분하면 2차원 평면에서 사각형의 **부피**와 같다.
-> $\int_{y=c}^{y=d} \int_{x=a}^{x=b} f(x,y)dxdy$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7By%3Dc%7D%5E%7By%3Dd%7D%20%5Cint_%7Bx%3Da%7D%5E%7Bx%3Db%7D%20f%28x%2Cy%29dxdy"/>
 
 #### `수치이중적분`
 - 단변수 함수의 정적분에서 수치적분 처럼 다변수함수의 정적분도 수치이중적분이 가능하다.
@@ -62,8 +62,8 @@
 
 #### `다차원 함수의 단일정적분`
 - 다차원 함수이지만 변수를 하나만 선택하여 정적분을 할 수도 있다. 이때에는 하나의 변수만 진짜로 보고 다른 변수는 상수항 처럼 취급하여 계산한다.
-> $\int_{a}^{b}f(x,y)dx$
-- y가 변수가 아니라는 것을 강조한 표기 : $f(x;y) = 4x^2 + (4y)x + (y^2)$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7Ba%7D%5E%7Bb%7Df%28x%2Cy%29dx"/>
+- y가 변수가 아니라는 것을 강조한 표기 : <img src="https://latex.codecogs.com/gif.latex?f%28x%3By%29%20%3D%204x%5E2%20&plus;%20%284y%29x%20&plus;%20%28y%5E2%29"/>
 
 # 2. 행렬의 미분
 
@@ -74,24 +74,24 @@
 - 여러가지 입력변수와 출력변수의 종류
     - 다변수 함수는 함수의 독립변수가 벡터인 경우이다.
     - 벡터 x -> 스칼라 f
-    > $f\left(\begin{bmatrix}x_1\\x_2\end{bmatrix}\right) = f(x) = f(x_1, x_2)$
+    > <img src="https://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7Dx_1%5C%5Cx_2%5Cend%7Bbmatrix%7D%5Cright%29%20%3D%20f%28x%29%20%3D%20f%28x_1%2C%20x_2%29"/>
 
     - 행렬 x -> 스칼라 f
-    > $f\left(\begin{bmatrix}x_{11} & x_{12}\\x_{21} & x_{22}\end{bmatrix}\right ) = f(x) = f(x_{11}, x_{12}, x_{21}, x_{22})$
+    > <img src="https://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7Dx_%7B11%7D%20%26%20x_%7B12%7D%5C%5Cx_%7B21%7D%20%26%20x_%7B22%7D%5Cend%7Bbmatrix%7D%5Cright%20%29%20%3D%20f%28x%29%20%3D%20f%28x_%7B11%7D%2C%20x_%7B12%7D%2C%20x_%7B21%7D%2C%20x_%7B22%7D%29"/>
 
     - 벡터나 행렬을 출력하는 함수는 여러 함수를 합쳐놓은 것으로 볼 수 있다.
     - 스칼라 x -> 벡터 f
-    > $f(x)=\begin{bmatrix}f_1(x)\\f_2(x)\end{bmatrix}$
+    > <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cbegin%7Bbmatrix%7Df_1%28x%29%5C%5Cf_2%28x%29%5Cend%7Bbmatrix%7D"/>
 
     - 스칼라 x -> 행렬 f
-    > $f(x)=\begin{bmatrix}f_{11}(x)&f_{12}(x)\\f_{21}(x)&f_{22}(x)\end{bmatrix}$
+    > <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cbegin%7Bbmatrix%7Df_%7B11%7D%28x%29%26f_%7B12%7D%28x%29%5C%5Cf_%7B21%7D%28x%29%26f_%7B22%7D%28x%29%5Cend%7Bbmatrix%7D"/>
 
     - 벡터나 행렬을 입력받아 벡터나 행렬을 출력할 수 있다.
     - 벡터 x -> 벡터 f
-    > $f(x)=\begin{bmatrix}f_{1}(x_1, x_2)\\f_{2}(x_1, x_2)\end{bmatrix}$
+    > <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cbegin%7Bbmatrix%7Df_%7B1%7D%28x_1%2C%20x_2%29%5C%5Cf_%7B2%7D%28x_1%2C%20x_2%29%5Cend%7Bbmatrix%7D"/>
 
     - 벡터 x -> 행렬 f
-    > $f(x)=\begin{bmatrix}f_{11}(x_1, x_2)&f_{12}(x_1, x_2)\\f_{21}(x_1, x_2)&f_{22}(x_1, x_2)\end{bmatrix}$
+    > <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cbegin%7Bbmatrix%7Df_%7B11%7D%28x_1%2C%20x_2%29%26f_%7B12%7D%28x_1%2C%20x_2%29%5C%5Cf_%7B21%7D%28x_1%2C%20x_2%29%26f_%7B22%7D%28x_1%2C%20x_2%29%5Cend%7Bbmatrix%7D"/>
 - 행렬미분은 편미분의 일종이다.
 - 행렬미분의 종류
     - 분자중심 표현법 Numerator-layout notation
@@ -100,10 +100,10 @@
 #### `그레디언트  벡터 gadient vector`
 - 데이터분석에서는 출력변수가 스칼라이고 입력변수가 x 벡터인 다변수함수인 경우가 많다. 즉 x의 요소들로 편미분을 해줘야 하므로 여러개의 편미분이 존재한다.
 - **스칼라를 벡터로 미분하는 경우**에는 열벡터로 표기한다. 이렇게 만들어진 벡터를 **그레디언트 벡터** 라고 한다.
-> 그레디언트 벡터 : $\nabla f = \dfrac{\partial f}{\partial x}=\begin{bmatrix} \dfrac{\partial f}{\partial x_1}\\\dfrac{\partial f}{\partial x_2}\\ \cdots \\ \dfrac{\partial f}{\partial x_N} \end{bmatrix}$
+> 그레디언트 벡터 : <img src="https://latex.codecogs.com/gif.latex?%5Cnabla%20f%20%3D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%3D%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_1%7D%5C%5C%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_2%7D%5C%5C%20%5Ccdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_N%7D%20%5Cend%7Bbmatrix%7D"/>
 - 그레디언트 벡터는 기울기로 이루어진 열벡터 이다.
 - 2차원 함수, 다변수 함수 f(x,y)는 경도 x, 위도 y에 따라 출력되는 고도 z의 지형도와 같다. f(x,y)의 그레디언트 벡터.
-> $\nabla f =\begin{bmatrix} \dfrac{\partial f}{\partial x}\\ \dfrac{\partial f}{\partial y}\end{bmatrix}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cnabla%20f%20%3D%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%5C%5C%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20y%7D%5Cend%7Bbmatrix%7D"/>
 - 즉 다변수 함수를 행렬미분한 값인 그레디언트 벡터는 x로 미분한 도함수와 y료 미분한 도함수로 이루어져 있다.
 - 그레디언트 벡터의 특징
     - **그레디언트 벡터의 크기는 함수 곡면의 기울기의 정도를 나타낸다.** 벡터의 크기가 클 수록 경사가 심하다는 것을 의미한다.
@@ -111,10 +111,10 @@
     - **그레디언트 벡터의 방향은 등고선의 방향과 직교한다.**
 - **테일러전개식**을 사용하여 그레디언트 벡터의 방향과 등고선의 방향이 직교함을 증명할 수 있다.
 >- 어떤 점 x0 에서 x로 이동하면서 함숫값이 얼마나 변하는지 테일러 전개를 사용하여 근사하면 다음과 같다.
->>- $f(x) - f(x_0) = \Delta f \approx \nabla f(x_0)^T(x-x0)$
->- 이 식에서 $\Delta f$ 가 가장 크려면, 변화의 방향인 (x-x0)와 그레디언트 벡터 $\nabla f$의 방향이 같아야 한다. 곱해서 양수.
+>>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%20-%20f%28x_0%29%20%3D%20%5CDelta%20f%20%5Capprox%20%5Cnabla%20f%28x_0%29%5ET%28x-x0%29"/>
+>- 이 식에서 <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20f"/> 가 가장 크려면, 변화의 방향인 (x-x0)와 그레디언트 벡터 <img src="https://latex.codecogs.com/gif.latex?%5Cnabla%20f"/>의 방향이 같아야 한다. 곱해서 양수.
 >- 또한 등고선에서는 x의 위치에 상관없이 같은 높이이므로 함수값이 같다.
->>- $f(x)=f(x_0)$, $f(x)-f(x_0)=0$
+>>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3Df%28x_0%29%24%2C%20%24f%28x%29-f%28x_0%29%3D0"/>
 >- 등고선의 방향과 그레디언트 벡터의 방향을 테일러전개식에서 정리하면,
 >>- $\nabla f(x_0)^T(x-x0)=f(x_1)-f(x_0)=0$
 >>- $a^T \cdot b=0\;\;\leftrightarrow\;\;a \perp b$
