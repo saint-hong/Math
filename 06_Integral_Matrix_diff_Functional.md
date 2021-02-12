@@ -200,7 +200,7 @@
 #### `행렬미분법칙 5 : 행렬식의 로그의 미분`
 - 행렬식 determinant 은 행렬의 크기에 해당한다. det(A), |A| 등으로 표기하며, 재귀적인 방식으로 계산된다. 즉 행렬을 정의하기 위해선 행렬 자신이 필요하다는 의미이다.
 - 행렬식의 공식은 여인수 전개 cofactor expansion 라는 식을 말한다. i_0 또는 j_0 중 하나를 정한 후, 부호결정과 마이너(처음 행렬 소거후 남은 요소들로 만든 행렬의 행렬식)의 곱으로 이루어진 코펙터(=여인수)와 a_i0,j 번째 요소의 곱이다.
->- <img src="det(A) = |A| = \sum_{i=1}^{N} \left\{ (-1)^{i+j_0}M_{i,j_0} \right\} a_{i,j_0}">
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20det%28A%29%20%3D%20%7CA%7C%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Cleft%5C%7B%20%28-1%29%5E%7Bi&plus;j_0%7DM_%7Bi%2Cj_0%7D%20%5Cright%5C%7D%20a_%7Bi%2Cj_0%7D"/>
 >- <img src="https://latex.codecogs.com/gif.latex?C_%7Bi%2Cj%7D%20%3D%20%28-1%29%5E%7Bi&plus;j_0%7DM_%7Bi%2Cj_0%7D"/>
 >- <img src="https://latex.codecogs.com/gif.latex?%5Cdet%28A%29%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20C_%7Bi%2Cj_0%7D%20a_%7Bi%2Cj_0%7D%20%3D%20%5Csum_%7Bj%3D1%7D%5EN%20C_%7Bi_0%2Cj%7D%20a_%7Bi_0%2Cj%7D"/>
 - 행렬식의 계산 결과는 스칼라이고, 이 값의 로그값도 스칼라이다. 이 값을 원래의 행렬로 미분하면 원래 행렬의 역행렬의 전치행렬이 된다.
