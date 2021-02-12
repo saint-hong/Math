@@ -116,106 +116,47 @@
 >- 또한 등고선에서는 x의 위치에 상관없이 같은 높이이므로 함수값이 같다.
 >>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3Df%28x_0%29%24%2C%20%24f%28x%29-f%28x_0%29%3D0"/>
 >- 등고선의 방향과 그레디언트 벡터의 방향을 테일러전개식에서 정리하면,
->>- $\nabla f(x_0)^T(x-x0)=f(x_1)-f(x_0)=0$
->>- $a^T \cdot b=0\;\;\leftrightarrow\;\;a \perp b$
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cnabla%20f%28x_0%29%5ET%28x-x0%29%3Df%28x_1%29-f%28x_0%29%3D0"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?a%5ET%20%5Ccdot%20b%3D0%5C%3B%5C%3B%5Cleftrightarrow%5C%3B%5C%3Ba%20%5Cperp%20b"/>
 
 ### 2) 행렬미분법칙
 
 #### `행렬미분법칙 1 : 선형모형의 미분`
 - 선형조합으로 이루어진 함수를 미분하면 그레디언트 벡터는 **가중치 벡터 w** 이다.
->- $f(x) = w^Tx$, $\nabla f = \dfrac{\partial (w^Tx)}{\partial x}=\dfrac{\partial (x^Tw)}{\partial x}=w$
+>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%20%3D%20w%5ETx%24%2C%20%24%5Cnabla%20f%20%3D%20%5Cdfrac%7B%5Cpartial%20%28w%5ETx%29%7D%7B%5Cpartial%20x%7D%3D%5Cdfrac%7B%5Cpartial%20%28x%5ETw%29%7D%7B%5Cpartial%20x%7D%3Dw"/>
 - x는 벡터이므로 x의 각 요소들 x1,x2,x3,..,xn 로 w^Tx 를 각각 미분한다. 선형조합은 w1x1+w2x2+...+wnxn 이므로 x의 요소에 **해당하지 않는 항은 미분하여 0이되어 없어지고, x의 요소에 해당하는 값들만 미분이되어 w1, w2, w3... 만 남게 된다.** 따라서 가중치 벡터가 된다.
->-$\dfrac{\partial ({w}^T {x})}{\partial {x}}=
-\begin{bmatrix}
-\boxed{\dfrac{\partial ({w}^T {x})}{\partial x_1}} \\
-\boxed{\dfrac{\partial ({w}^T {x})}{\partial x_2}} \\
-\vdots \\
-\boxed{\dfrac{\partial ({w}^T {x})}{\partial x_N}} \\
-\end{bmatrix} =
-\begin{bmatrix}
-\boxed{\dfrac{\partial (w_1 x_1 + \cancel{w_2 x_2} + \cdots + \cancel{w_N x_N})}{\partial x_1} \mathstrut} \\
-\boxed{\dfrac{\partial (\cancel{w_1 x_1} + w_2 x_2 + \cdots + \cancel{w_N x_N})}{\partial x_2} \mathstrut} \\
-\vdots \\
-\boxed{\dfrac{\partial (\cancel{w_1 x_1} + \cancel{w_2 x_2} + \cdots + w_N x_N)}{\partial x_N} \mathstrut} \\
-\end{bmatrix} =
-\begin{bmatrix}
-w_1 \\
-w_2 \\
-\vdots \\
-w_N \\
-\end{bmatrix}
-= {w} $
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20%28%7Bw%7D%5ET%20%7Bx%7D%29%7D%7B%5Cpartial%20%7Bx%7D%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cboxed%7B%5Cdfrac%7B%5Cpartial%20%28%7Bw%7D%5ET%20%7Bx%7D%29%7D%7B%5Cpartial%20x_1%7D%7D%20%5C%5C%20%5Cboxed%7B%5Cdfrac%7B%5Cpartial%20%28%7Bw%7D%5ET%20%7Bx%7D%29%7D%7B%5Cpartial%20x_2%7D%7D%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cboxed%7B%5Cdfrac%7B%5Cpartial%20%28%7Bw%7D%5ET%20%7Bx%7D%29%7D%7B%5Cpartial%20x_N%7D%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cboxed%7B%5Cdfrac%7B%5Cpartial%20%28w_1%20x_1%20&plus;%20%5Ccancel%7Bw_2%20x_2%7D%20&plus;%20%5Ccdots%20&plus;%20%5Ccancel%7Bw_N%20x_N%7D%29%7D%7B%5Cpartial%20x_1%7D%20%5Cmathstrut%7D%20%5C%5C%20%5Cboxed%7B%5Cdfrac%7B%5Cpartial%20%28%5Ccancel%7Bw_1%20x_1%7D%20&plus;%20w_2%20x_2%20&plus;%20%5Ccdots%20&plus;%20%5Ccancel%7Bw_N%20x_N%7D%29%7D%7B%5Cpartial%20x_2%7D%20%5Cmathstrut%7D%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cboxed%7B%5Cdfrac%7B%5Cpartial%20%28%5Ccancel%7Bw_1%20x_1%7D%20&plus;%20%5Ccancel%7Bw_2%20x_2%7D%20&plus;%20%5Ccdots%20&plus;%20w_N%20x_N%29%7D%7B%5Cpartial%20x_N%7D%20%5Cmathstrut%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20w_1%20%5C%5C%20w_2%20%5C%5C%20%5Cvdots%20%5C%5C%20w_N%20%5C%5C%20%5Cend%7Bbmatrix%7D%20%3D%20%7Bw%7D"/>
 
 #### `행렬미분법칙 2 : 이차형식의 미분`
 - 이차형식 Quadratic : 벡터의 이차형식이란 어떤 벡터와 정방행렬이 **행벡터X정방행렬X열벡터** 형식으로 되어 있는 것을 의미한다.
 >- 여러개의 벡터에 대하여 가중합을 동시에 계산
->> $\hat y=Xw$
+>> <img src="https://latex.codecogs.com/gif.latex?%5Chat%20y%3DXw"/>
 >- 잔차 = 목표값 - 예측값
->> $e=y-\hat y=y-Xw$
+>> <img src="https://latex.codecogs.com/gif.latex?e%3Dy-%5Chat%20y%3Dy-Xw"/>
 >- 잔차 제곱합 RSS(Residual Sum of Squares) : 선형회귀모델의 성능을 평가할 수 있는 잔차의 크기는 잔차 제곱합으로 구할 수 있다. 잔차 제곱합은 잔차의 내적으로 간단하게 표현할 수 있다.
->> $\sum_{i=1}^{N}e_i^2 = \sum_{i=1}^{N}(y_i-w^Tx_i)^2=e^Te=(y-Xw)^T(y-Xw)=y^y-w^TX^Ty-y^Xw+w^TX^TXw$
+>> <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3D1%7D%5E%7BN%7De_i%5E2%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28y_i-w%5ETx_i%29%5E2%3De%5ETe%3D%28y-Xw%29%5ET%28y-Xw%29%3Dy%5Ey-w%5ETX%5ETy-y%5EXw&plus;w%5ETX%5ETXw"/>
 >- 잔차제곱합의 식에서 마지막항을 벡터의 이차형식이라고 한다. 이차형식은 i, j 의 모든 쌍의 조합에 가중치를 곱한 값들의 총합이 된다.(스칼라)
->> $w^TX^TXw=x^TAx=\sum_{i=1}^{N}\sum_{j=1}^{N}a_{i,j}x_ix_j=scala$
+>> <img src="https://latex.codecogs.com/gif.latex?w%5ETX%5ETXw%3Dx%5ETAx%3D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%5Csum_%7Bj%3D1%7D%5E%7BN%7Da_%7Bi%2Cj%7Dx_ix_j%3Dscala"/>
 - 이차형식을 미분하면 행렬과 벡터의 곱이 된다
-> $f(x)=x^TAx,\;\nabla f(x)=\dfrac{\partial x^TAx}{\partial x}=Ax+A^Tx=(A+A^T)x$
+> <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3Dx%5ETAx%2C%5C%3B%5Cnabla%20f%28x%29%3D%5Cdfrac%7B%5Cpartial%20x%5ETAx%7D%7B%5Cpartial%20x%7D%3DAx&plus;A%5ETx%3D%28A&plus;A%5ET%29x"/>
 - 선형조합을 벡터 x의 각 요소들로 미분을 하는 과정에서 선형조합을 aijxixj의 이중합으로 변환하면 현재 미분하려는 x의 요소에 대응하는 항만 남고 해당하지 않는 항은 0이되어 사라진다. 이 과정은 마치 행렬식의 여인수 전개에서 코펙터를 구하기 위해 i,j 번째를 제외하고 나머지 요소들을 제거하는 방식과 반대의 방식과 같다. (행렬식은 역행렬을 구할 때 사용된다. 역행렬은 행렬식이 0이 아닌 경우에만 존재한다)
 
 #### `벡터를 스칼라로 미분`
 - 함수 f1, f2,...,fn 을 벡터로 갖는 f(x)를 스칼라 x로 미분하는 경우에는 행벡터로 결과를 나타낼 수 있다.
->- $f(x)=\begin{bmatrix} f_1\\f_2\\ \vdots \\ f_M \end{bmatrix}$
->- $\dfrac{\partial f}{\partial x}=\begin{bmatrix} \dfrac{\partial f_1}{\partial x}\;\;\dfrac{\partial f_2}{\partial x} \cdots \dfrac{\partial f_M}{\partial x}\end{bmatrix} $
+>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cbegin%7Bbmatrix%7D%20f_1%5C%5Cf_2%5C%5C%20%5Cvdots%20%5C%5C%20f_M%20%5Cend%7Bbmatrix%7D"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%3D%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x%7D%5C%3B%5C%3B%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x%7D%20%5Ccdots%20%5Cdfrac%7B%5Cpartial%20f_M%7D%7B%5Cpartial%20x%7D%5Cend%7Bbmatrix%7D"/>
 
 #### `벡터를 벡터로 미분`
 - 벡터를 입력으로 받아 벡터를 출력하는 함수 f(x)의 미분은 **도함수의 2차원 행렬**이 된다.
 - 벡터를 벡터로 미분하면, 미분을 당하는 원소 N개와 미분을 하는 벡터의 원소 M개 이다.
-> $\dfrac{\partial {f}}{\partial {x}}
-=
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial {x}} &
-\dfrac{\partial f_2}{\partial {x}} &
-\cdots                             &
-\dfrac{\partial f_N}{\partial {x}}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\dfrac{\partial {f}}{\partial x_1} \\
-\dfrac{\partial {f}}{\partial x_2} \\
-\vdots                             \\
-\dfrac{\partial {f}}{\partial x_M}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_2}{\partial x_1} & \cdots & \dfrac{\partial f_N}{\partial x_1} \\
-\dfrac{\partial f_1}{\partial x_2} & \dfrac{\partial f_2}{\partial x_2} & \cdots & \dfrac{\partial f_N}{\partial x_2} \\
-\vdots & \vdots & \ddots & \vdots \\
-\dfrac{\partial f_1}{\partial x_M} & \dfrac{\partial f_2}{\partial x_M} & \cdots & \dfrac{\partial f_N}{\partial x_M} \\
-\end{bmatrix}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20%7Bf%7D%7D%7B%5Cpartial%20%7Bx%7D%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20%7Bx%7D%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20%7Bx%7D%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f_N%7D%7B%5Cpartial%20%7Bx%7D%7D%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20%7Bf%7D%7D%7B%5Cpartial%20x_1%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20%7Bf%7D%7D%7B%5Cpartial%20x_2%7D%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20%7Bf%7D%7D%7B%5Cpartial%20x_M%7D%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f_N%7D%7B%5Cpartial%20x_1%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_2%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x_2%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f_N%7D%7B%5Cpartial%20x_2%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_M%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x_M%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f_N%7D%7B%5Cpartial%20x_M%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D"/>
 
 #### `행렬미분법칙 3 : 행렬과 벡터의 곱의 미분`
-- 행렬 A와 벡터 x의 곱 Ax를 벡터 x로 미분하면 행렬 $A^T$ 가 된다.
->- $f(x)=Ax,\;\nabla f(x)=\dfrac{\partial Ax}{\partial x}=A^T$
+- 행렬 A와 벡터 x의 곱 Ax를 벡터 x로 미분하면 행렬 <img src="https://latex.codecogs.com/gif.latex?A%5ET"/> 가 된다.
+>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3DAx%2C%5C%3B%5Cnabla%20f%28x%29%3D%5Cdfrac%7B%5Cpartial%20Ax%7D%7B%5Cpartial%20x%7D%3DA%5ET"/>
 >- 행렬과 벡터의 곱 정리에서 A를 열벡터들 c1, c2,...,cM 의 조합이라고 보면 Ax는 선형조합의 형태가 된다.
->>- $Ax = c_1x_1+c_2x_2+c_3x_3+\cdots+c_Mx_M$
->>- $\dfrac{\partial(Ax)}{\partial x}=
-\begin{bmatrix}
-\dfrac{\partial(Ax)}{\partial x_1} \\
-\dfrac{\partial(Ax)}{\partial x_2} \\
-\cdots \\
-\dfrac{\partial(Ax)}{\partial x_M} \\
-\end{bmatrix}=
-\begin{bmatrix}
-\dfrac{\partial(c_1x_1+c_2x_2+c_3x_3+\cdots+c_Mx_M)^T}{\partial x_1} \\
-\dfrac{\partial(c_1x_1+c_2x_2+c_3x_3+\cdots+c_Mx_M)^T}{\partial x_2} \\
-\cdots \\
-\dfrac{\partial(c_1x_1+c_2x_2+c_3x_3+\cdots+c_Mx_M)^T}{\partial x_M} \\
-\end{bmatrix}=
-\begin{bmatrix}
-c_1^T \\
-c_2^T \\
-\cdots \\
-c_M^T
-\end{bmatrix}=
-A^T$
+>>- <img src="https://latex.codecogs.com/gif.latex?Ax%20%3D%20c_1x_1&plus;c_2x_2&plus;c_3x_3&plus;%5Ccdots&plus;c_Mx_M"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%28Ax%29%7D%7B%5Cpartial%20x%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%28Ax%29%7D%7B%5Cpartial%20x_1%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%28Ax%29%7D%7B%5Cpartial%20x_2%7D%20%5C%5C%20%5Ccdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%28Ax%29%7D%7B%5Cpartial%20x_M%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%28c_1x_1&plus;c_2x_2&plus;c_3x_3&plus;%5Ccdots&plus;c_Mx_M%29%5ET%7D%7B%5Cpartial%20x_1%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%28c_1x_1&plus;c_2x_2&plus;c_3x_3&plus;%5Ccdots&plus;c_Mx_M%29%5ET%7D%7B%5Cpartial%20x_2%7D%20%5C%5C%20%5Ccdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%28c_1x_1&plus;c_2x_2&plus;c_3x_3&plus;%5Ccdots&plus;c_Mx_M%29%5ET%7D%7B%5Cpartial%20x_M%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%3D%20%5Cbegin%7Bbmatrix%7D%20c_1%5ET%20%5C%5C%20c_2%5ET%20%5C%5C%20%5Ccdots%20%5C%5C%20c_M%5ET%20%5Cend%7Bbmatrix%7D%3D%20A%5ET"/>
 >>- 미분하는 변수인 x1, x2,...,xm에 대응하는 선형조합의 항만 남고 나머지 항은 상수항 처리되어 0으로 없어진다.
 
 #### `자코비안 행렬 Jacobian matrix`
@@ -223,60 +164,19 @@ A^T$
     - 다차원 데이터의 미분, 벡터를 입력 받아서 벡터를 출력하는 함수를 미분하면 도함수의 행렬 형태가 된다.
 - 이러한 **도함수의 행렬 형태를 자코비안 행렬 Jacobian matrix** 이라고 한다.
 - 또한 벡터함수를 벡터 변수로 미분했을 때 생기는 행렬의 **전치행렬**이다. NXM -> MXN 의 형태가 된다..
-> $Jf(x)=J=
-\left(\dfrac{\partial f}{\partial x}\right)^T=
-\begin{bmatrix}
-\left(\dfrac{\partial f_1}{\partial x}\right)^T \\
-\left(\dfrac{\partial f_2}{\partial x}\right)^T \\
-\cdots \\
-\left(\dfrac{\partial f_M}{\partial x}\right)^T \\
-\end{bmatrix}=
-\begin{bmatrix}
-\nabla {f_1}^T \\
-\cdots \\
-\nabla {f_M}^T
-\end{bmatrix}=
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_N}\\
-\vdots & \ddots & \vdots \\
-\dfrac{\partial f_M}{\partial x_1} & \cdots & \dfrac{\partial f_M}{\partial x_N}
-\end{bmatrix}$
+> <img src="https://latex.codecogs.com/gif.latex?Jf%28x%29%3DJ%3D%20%5Cleft%28%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%5Cright%29%5ET%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cleft%28%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x%7D%5Cright%29%5ET%20%5C%5C%20%5Cleft%28%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x%7D%5Cright%29%5ET%20%5C%5C%20%5Ccdots%20%5C%5C%20%5Cleft%28%5Cdfrac%7B%5Cpartial%20f_M%7D%7B%5Cpartial%20x%7D%5Cright%29%5ET%20%5C%5C%20%5Cend%7Bbmatrix%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cnabla%20%7Bf_1%7D%5ET%20%5C%5C%20%5Ccdots%20%5C%5C%20%5Cnabla%20%7Bf_M%7D%5ET%20%5Cend%7Bbmatrix%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_N%7D%5C%5C%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20f_M%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f_M%7D%7B%5Cpartial%20x_N%7D%20%5Cend%7Bbmatrix%7D"/>
 - 다음 함수의 자코비안 행렬을 구하시오.
->- $f(x)=
-\begin{bmatrix}
-\sum_{i=1}^{3}x_i \\
-\prod_{i=1}^{3}x_i \\
-\end{bmatrix}$
->- $Jf(x)=J=\left(\dfrac{\partial f}{\partial x}\right)^T=
-\begin{bmatrix}
-(\nabla f_1)^T \\
-(\nabla f_2)^T \\
-\end{bmatrix}=
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} & \dfrac{\partial f_1}{\partial x_3} \\
-\dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2} & \dfrac{\partial f_2}{\partial x_3} \\
-\end{bmatrix}$
->- $=\begin{bmatrix}
-\dfrac{\partial(x_1+x_2+x_3)}{\partial x_1} & \dfrac{\partial(x_1+x_2+x_3)}{\partial x_2} & \dfrac{\partial(x_1+x_2+x_3)}{\partial x_3} \\
-\dfrac{\partial(x_1x_2x_3)}{\partial x_1} & \dfrac{\partial(x_1x_2x_3)}{\partial x_2} & \dfrac{\partial(x_1x_2x_3)}{\partial x_3} \\
-\end{bmatrix}=
-\begin{bmatrix}
-1 & 1 & 1 \\
-x_2x_3 & x_1x_3 & x_1x_2 \\
-\end{bmatrix}$
+>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3D%20%5Cbegin%7Bbmatrix%7D%20%5Csum_%7Bi%3D1%7D%5E%7B3%7Dx_i%20%5C%5C%20%5Cprod_%7Bi%3D1%7D%5E%7B3%7Dx_i%20%5C%5C%20%5Cend%7Bbmatrix%7D"/>
+>- <img src="https://latex.codecogs.com/gif.latex?Jf%28x%29%3DJ%3D%5Cleft%28%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%5Cright%29%5ET%3D%20%5Cbegin%7Bbmatrix%7D%20%28%5Cnabla%20f_1%29%5ET%20%5C%5C%20%28%5Cnabla%20f_2%29%5ET%20%5C%5C%20%5Cend%7Bbmatrix%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_2%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_1%7D%7B%5Cpartial%20x_3%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x_2%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f_2%7D%7B%5Cpartial%20x_3%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%3D%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%28x_1&plus;x_2&plus;x_3%29%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%28x_1&plus;x_2&plus;x_3%29%7D%7B%5Cpartial%20x_2%7D%20%26%20%5Cdfrac%7B%5Cpartial%28x_1&plus;x_2&plus;x_3%29%7D%7B%5Cpartial%20x_3%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%28x_1x_2x_3%29%7D%7B%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%28x_1x_2x_3%29%7D%7B%5Cpartial%20x_2%7D%20%26%20%5Cdfrac%7B%5Cpartial%28x_1x_2x_3%29%7D%7B%5Cpartial%20x_3%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%3D%20%5Cbegin%7Bbmatrix%7D%201%20%26%201%20%26%201%20%5C%5C%20x_2x_3%20%26%20x_1x_3%20%26%20x_1x_2%20%5C%5C%20%5Cend%7Bbmatrix%7D"/>
 
 #### `헤시안 행렬 Hessian matrix`
 - 다변수함수의 2차 도함수는 그레디언트 벡터를 입력변수 벡터로 미분한 것으로 **헤시안 행렬** 이라고 한다.
 - 헤시안 행렬은 그레디언트 벡터의 자코비안 행렬의 전치행렬로 정의한다.
->- $Hf(x)=H=J(\nabla f(x))^T=H_{i,j}=\dfrac{\partial^2 f}{\partial x_i \partial x_j}$
->- $H = \begin{bmatrix}
-  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_N} \\
-  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_N} \\
-  \vdots & \vdots & \ddots & \vdots \\
-  \dfrac{\partial^2 f}{\partial x_N\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_N\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_N^2}
-\end{bmatrix}$
+>- <img src="https://latex.codecogs.com/gif.latex?Hf%28x%29%3DH%3DJ%28%5Cnabla%20f%28x%29%29%5ET%3DH_%7Bi%2Cj%7D%3D%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_i%20%5Cpartial%20x_j%7D"/>
+>- <img src="https://latex.codecogs.com/gif.latex?H%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_1%5E2%7D%20%26%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_1%5C%2C%5Cpartial%20x_2%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_1%5C%2C%5Cpartial%20x_N%7D%20%5C%5C%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_2%5C%2C%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_2%5E2%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_2%5C%2C%5Cpartial%20x_N%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_N%5C%2C%5Cpartial%20x_1%7D%20%26%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_N%5C%2C%5Cpartial%20x_2%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_N%5E2%7D%20%5Cend%7Bbmatrix%7D"/>
 - 함수가 연속이고 미분가능하면 헤시안 행렬은 **대칭행렬**이 된다.
-    - 대칭행렬 : $A=A^T$
+    - 대칭행렬 : <img src="https://latex.codecogs.com/gif.latex?A%3DA%5ET"/>
 - 어떤 함수의 헤시안 행렬을 구하려면 그레디언트 벡터를 구하고, 자코비안 행렬을 구한 뒤, 전치연산한 행렬을 찾는다.
     - 그레디언트 벡터는 미분의 대상인 함수는 동일하고 미분할 변수가 여러개로, 함수안에 해당하는 변수가 있는 경우만 남게되어 간단하게 형태로 정리된다.
     - 자코비안 행렬은 미분의 대상인 함수가 여러개이고 미분할 변수도 여러개이므로, 함수 1 과 미분 변수 여러개, 함수 2와 미분변수 여러개 의 형태이다. 즉 모든 입출력변수의 조합에 대한 도함수가 행렬의 형태로 만들어 진다. 마찬가지로 각 함수에 해당하는 변수가 있는 경우만 남게 되고 없는 경우는 상수항 처리되어 없어진다. 자코비안 행렬에서 상수항만 남게 된다.
@@ -284,41 +184,35 @@ x_2x_3 & x_1x_3 & x_1x_2 \\
 
 #### `스칼라를 행렬로 미분`
 - 출력변수 f가 스칼라이값이고 입력변수 X가 행렬인 경우, 행렬로 스칼라를 미분하면 도함수의 행렬의 모양이 입력변수 X의 모양과 같다.
-> $\dfrac{\partial f}{\partial X}=
-\begin{bmatrix}
-\dfrac{\partial f}{\partial x_{1,1}} & \dfrac{\partial f}{\partial x_{1,2}} & \cdots & \dfrac{\partial f}{\partial x_{1,N}}\\
-\dfrac{\partial f}{\partial x_{2,1}} & \dfrac{\partial f}{\partial x_{2,2}} & \cdots & \dfrac{\partial f}{\partial x_{2,N}}\\
-\vdots & \vdots & \ddots & \vdots\\
-\dfrac{\partial f}{\partial x_{M,1}} & \dfrac{\partial f}{\partial x_{M,2}} & \cdots & \dfrac{\partial f}{\partial x_{M,N}}\\
-\end{bmatrix}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20X%7D%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7B1%2C1%7D%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7B1%2C2%7D%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7B1%2CN%7D%7D%5C%5C%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7B2%2C1%7D%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7B2%2C2%7D%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7B2%2CN%7D%7D%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%5C%5C%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7BM%2C1%7D%7D%20%26%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7BM%2C2%7D%7D%20%26%20%5Ccdots%20%26%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_%7BM%2CN%7D%7D%5C%5C%20%5Cend%7Bbmatrix%7D"/>
 - 행렬 X의 모든 원소들로 F를 미분하는 방식으로 X의 행렬 구조와 모양이 같다.
 
 #### `행렬미분법칙 4 : 행렬 곱의 대각성분의 미분`
 - 두 정방행렬의 곱으로 만들어진 행렬의 대각성분의 합을 곱한 순서상 뒤의 행렬로 미분하면, 앞의 행렬의 전치행렬이 된다.
 - 대각합 trace : 행렬의 대각성분의 합. 행렬식, 놈과 함께 행렬의 크기를 계산하는 방법 중 하나.
->- $f(x)=tr(WX),\;\; W \in R^{N \times N},\;\; X \in R^{N \times N}$
->- $\dfrac{\partial f}{\partial X} = \dfrac{\partial tr(WX)}{\partial X}=W^T$
->>- $tr(WX)=\sum_{i=1}^{N}\sum_{j=1}^{N}w_{j,i}x_{i,j}$
->>- $\dfrac{\partial tr(WX)}{\partial x_{i,j}}=w_{j,i}$
+>- <img src="https://latex.codecogs.com/gif.latex?f%28x%29%3Dtr%28WX%29%2C%5C%3B%5C%3B%20W%20%5Cin%20R%5E%7BN%20%5Ctimes%20N%7D%2C%5C%3B%5C%3B%20X%20%5Cin%20R%5E%7BN%20%5Ctimes%20N%7D"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20X%7D%20%3D%20%5Cdfrac%7B%5Cpartial%20tr%28WX%29%7D%7B%5Cpartial%20X%7D%3DW%5ET"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?tr%28WX%29%3D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%5Csum_%7Bj%3D1%7D%5E%7BN%7Dw_%7Bj%2Ci%7Dx_%7Bi%2Cj%7D"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20tr%28WX%29%7D%7B%5Cpartial%20x_%7Bi%2Cj%7D%7D%3Dw_%7Bj%2Ci%7D"/>
 - 행렬의 대각합의 요소들을 행렬 X의 요소들로 미분하면, X의 요소에 해당하는 대각합의 요소들은 미분이되어 w_i,j 만 남고, 해당하지 않는 요소들은 상수항 처리되어 0이 된다.
 - 그러므로 남는 값은 w_i,j 즉 처음 행렬의 전치행렬이 된다.
 
 #### `행렬미분법칙 5 : 행렬식의 로그의 미분`
 - 행렬식 determinant 은 행렬의 크기에 해당한다. det(A), |A| 등으로 표기하며, 재귀적인 방식으로 계산된다. 즉 행렬을 정의하기 위해선 행렬 자신이 필요하다는 의미이다.
 - 행렬식의 공식은 여인수 전개 cofactor expansion 라는 식을 말한다. i_0 또는 j_0 중 하나를 정한 후, 부호결정과 마이너(처음 행렬 소거후 남은 요소들로 만든 행렬의 행렬식)의 곱으로 이루어진 코펙터(=여인수)와 a_i0,j 번째 요소의 곱이다.
->- $det(A) = |A| = \sum_{i=1}^{N} \left\{ (-1)^{i+j_0}M_{i,j_0} \right\} a_{i,j_0}$
->- $C_{i,j} = (-1)^{i+j_0}M_{i,j_0}$
->- $\det(A) = \sum_{i=1}^N C_{i,j_0} a_{i,j_0}  =  \sum_{j=1}^N C_{i_0,j} a_{i_0,j}$
+>- <img src="det(A) = |A| = \sum_{i=1}^{N} \left\{ (-1)^{i+j_0}M_{i,j_0} \right\} a_{i,j_0}">
+>- <img src="https://latex.codecogs.com/gif.latex?C_%7Bi%2Cj%7D%20%3D%20%28-1%29%5E%7Bi&plus;j_0%7DM_%7Bi%2Cj_0%7D"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdet%28A%29%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20C_%7Bi%2Cj_0%7D%20a_%7Bi%2Cj_0%7D%20%3D%20%5Csum_%7Bj%3D1%7D%5EN%20C_%7Bi_0%2Cj%7D%20a_%7Bi_0%2Cj%7D"/>
 - 행렬식의 계산 결과는 스칼라이고, 이 값의 로그값도 스칼라이다. 이 값을 원래의 행렬로 미분하면 원래 행렬의 역행렬의 전치행렬이 된다.
->- $f(X) = \log | {X} |,\;\; \dfrac{\partial f}{\partial X} = \dfrac{\partial \log | {X} | }{\partial {X}} = ({X}^{-1})^T$
+>- <img src="https://latex.codecogs.com/gif.latex?f%28X%29%20%3D%20%5Clog%20%7C%20%7BX%7D%20%7C%2C%5C%3B%5C%3B%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20X%7D%20%3D%20%5Cdfrac%7B%5Cpartial%20%5Clog%20%7C%20%7BX%7D%20%7C%20%7D%7B%5Cpartial%20%7BX%7D%7D%20%3D%20%28%7BX%7D%5E%7B-1%7D%29%5ET"/>
 >- 행렬식을 X 행렬의 요소 x_i,j로 미분하면, 행렬식의 정의에서 a_i,j 가 지워지고 C_i,j만 남는다.
->>- $\dfrac{\partial}{\partial x_{i,j}} \vert X \vert = C_{i,j}$
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20x_%7Bi%2Cj%7D%7D%20%5Cvert%20X%20%5Cvert%20%3D%20C_%7Bi%2Cj%7D"/>
 >- 따라서 행렬 X로 행렬식을 미분하면 C 가 된다. 역행렬의 정의에서 C는 다음과 같이 도출된다.
->>- $A^{-1}=\dfrac{1}{det(A)}C^T$
->>- $C=|A|(A^{-1})^T,\;\;(|A|^T=scala)$
->>- $\dfrac{\partial}{\partial X} \vert X \vert = C = | X | (X^{-1})^T$
+>>- <img src="https://latex.codecogs.com/gif.latex?A%5E%7B-1%7D%3D%5Cdfrac%7B1%7D%7Bdet%28A%29%7DC%5ET"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?C%3D%7CA%7C%28A%5E%7B-1%7D%29%5ET%2C%5C%3B%5C%3B%28%7CA%7C%5ET%3Dscala%29"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20X%7D%20%5Cvert%20X%20%5Cvert%20%3D%20C%20%3D%20%7C%20X%20%7C%20%28X%5E%7B-1%7D%29%5ET"/>
 >- 이것을 로그 함수의 미분 공식에 대입하면 원래행렬 X의 역행렬의 전치행렬이 된다.
->>- $\dfrac{d}{dx} \log f(x) = \dfrac{f'(x)}{f(x)} = \dfrac{\vert X \vert (X^{-1})^T}{\vert X \vert} = (X^{-1})^T$
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bd%7D%7Bdx%7D%20%5Clog%20f%28x%29%20%3D%20%5Cdfrac%7Bf%27%28x%29%7D%7Bf%28x%29%7D%20%3D%20%5Cdfrac%7B%5Cvert%20X%20%5Cvert%20%28X%5E%7B-1%7D%29%5ET%7D%7B%5Cvert%20X%20%5Cvert%7D%20%3D%20%28X%5E%7B-1%7D%29%5ET"/>
 >>- 로그 함수의 미분은 연쇄법칙을 사용하여 풀이된다.
 
 # 3. 범함수
@@ -330,13 +224,13 @@ x_2x_3 & x_1x_3 & x_1x_2 \\
 
 #### ```범함수의 표기```
 - 보통 알파벳 대문자로 표기하고, 입력변수인 함수를 대괄호로 감싼다.
->- $F\left[y(x)\right]$ : 함수 y(x) 를 입력받는 다는 의미
+>- <img src="https://latex.codecogs.com/gif.latex?F%5Cleft%5By%28x%29%5Cright%5D"/> : 함수 y(x) 를 입력받는 다는 의미
 
 #### ```범함수의 계산```
 - 일반적으로 범함수는 **정적분 definite integral 로 계산한다.**
 - 확률밀도함수 p(x) 를 정적분한 값으로 갖는 기댓값과 엔트로피도 범함수에 속한다.
->- $\text E[p(x)] = \int_{-\infty}^{\infty} xp(x)dx$
->- $\text H[p(x)] = - \int_{-\infty}^{\infty} p(x) \log p(x)dx $
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20E%5Bp%28x%29%5D%20%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20xp%28x%29dx"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20H%5Bp%28x%29%5D%20%3D%20-%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p%28x%29%20%5Clog%20p%28x%29dx"/>
 
 #### ```변분법 functional calculus```
 - 입력변수인 함수가 변하는 것에 따라 범함수의 출력이 어떻게 달라지는를 계산하는 학문을 의미한다.
@@ -348,77 +242,77 @@ x_2x_3 & x_1x_3 & x_1x_2 \\
 - 테일러 전개 : 함수 f(x) 의 도함수를 사용하여 함수 f(x) 의 근삿값을 구하는 방법
 - 함수 -> 단변수 함수 -> 다변수 함수 -> 변수를 수열로 변환 -> 수열을 함수로 변환 -> 범함수 의 순서대로 테일러 전개식을 확장 해본다.
 - **일반 함수** f(x) 에 대한 테일러 전개식
->- $f(x+\epsilon) \approx f(x) + \dfrac{df}{dx}\epsilon$  ($\epsilon$ 은 아주 작은 실수)
+>- <img src="https://latex.codecogs.com/gif.latex?f%28x&plus;%5Cepsilon%29%20%5Capprox%20f%28x%29%20&plus;%20%5Cdfrac%7Bdf%7D%7Bdx%7D%5Cepsilon"/>  (<img src="https://latex.codecogs.com/gif.latex?%5Cepsilon"/> 은 아주 작은 실수)
 - **단변수 함수** F(y)의 테일러 전개식, 일반함수의 테일러 전개식에서 표기문자만 바꿈. 입력변수는 y 라는 실수값.
->- $F(y+\epsilon) \approx F(y) + \dfrac{dF}{dy}\epsilon$
+>- <img src="https://latex.codecogs.com/gif.latex?F%28y&plus;%5Cepsilon%29%20%5Capprox%20F%28y%29%20&plus;%20%5Cdfrac%7BdF%7D%7Bdy%7D%5Cepsilon"/>
 - **다변수 함수** F(y1,y2,...,yN)일 경우의 테일러 전개식. 입력변수는 y1,y2,...,yN N개의 실수
->- $F(y_1+\epsilon_1, y_2+\epsilon_2, \cdots, y_N+\epsilon_N) \approx F(y_1, y_2, \cdots, y_N) + \dfrac{\partial F}{\partial y_1}\epsilon_1 + \dfrac{\partial F}{\partial y_2}\epsilon_2+ \cdots\ +\dfrac{\partial F}{\partial y_N}\epsilon_N$
->- $=F(y_1, y_2, \cdots, y_N) + \sum_{i=1}^{N}\dfrac{\partial F}{\partial y_i}\epsilon_i$
+>- <img src="https://latex.codecogs.com/gif.latex?F%28y_1&plus;%5Cepsilon_1%2C%20y_2&plus;%5Cepsilon_2%2C%20%5Ccdots%2C%20y_N&plus;%5Cepsilon_N%29%20%5Capprox%20F%28y_1%2C%20y_2%2C%20%5Ccdots%2C%20y_N%29%20&plus;%20%5Cdfrac%7B%5Cpartial%20F%7D%7B%5Cpartial%20y_1%7D%5Cepsilon_1%20&plus;%20%5Cdfrac%7B%5Cpartial%20F%7D%7B%5Cpartial%20y_2%7D%5Cepsilon_2&plus;%20%5Ccdots%5C%20&plus;%5Cdfrac%7B%5Cpartial%20F%7D%7B%5Cpartial%20y_N%7D%5Cepsilon_N"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%3DF%28y_1%2C%20y_2%2C%20%5Ccdots%2C%20y_N%29%20&plus;%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%5Cdfrac%7B%5Cpartial%20F%7D%7B%5Cpartial%20y_i%7D%5Cepsilon_i"/>
 - **조건 추가**
-    - yi 는 xi 를 입력받아 출력된 어떤 값 : $y_i=y(x_i)$
-    - 엡실론i 는 xi 를 입력받는 임의의 함수에 아주 작은 공통상수를 곱한 값 : $\epsilon_i=\epsilon \eta (x_i)$
->- $F(y(x_1)+\epsilon \eta (x_1),y(x_1)+\epsilon \eta (x_1),\cdots,y(x_N)+\epsilon \eta (x_N)) \approx F(y(x_1), y(x_2), \cdots, y(x_N)) + \epsilon \sum_{i=1}^{N} \dfrac{\partial F}{\partial y_i} \eta (x_i) $
+    - yi 는 xi 를 입력받아 출력된 어떤 값 : <img src="https://latex.codecogs.com/gif.latex?y_i%3Dy%28x_i%29"/>
+    - 엡실론i 는 xi 를 입력받는 임의의 함수에 아주 작은 공통상수를 곱한 값 : <img src="https://latex.codecogs.com/gif.latex?%5Cepsilon_i%3D%5Cepsilon%20%5Ceta%20%28x_i%29"/>
+>- <img src="https://latex.codecogs.com/gif.latex?F%28y%28x_1%29&plus;%5Cepsilon%20%5Ceta%20%28x_1%29%2Cy%28x_1%29&plus;%5Cepsilon%20%5Ceta%20%28x_1%29%2C%5Ccdots%2Cy%28x_N%29&plus;%5Cepsilon%20%5Ceta%20%28x_N%29%29%20%5Capprox%20F%28y%28x_1%29%2C%20y%28x_2%29%2C%20%5Ccdots%2C%20y%28x_N%29%29%20&plus;%20%5Cepsilon%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Cdfrac%7B%5Cpartial%20F%7D%7B%5Cpartial%20y_i%7D%20%5Ceta%20%28x_i%29"/>
 - 위의 식은 벡터나 수열을 입력받아 실수를 출력하는 함수의 테일러 전개와 같다고 볼 수 있다.
     - 수열 {y(x1), y(x2), ..., y(xN)} -> 함수 F({y(x1), y(x2), ..., y(xN)})
 - 수열의 크기 N 을 무한대로 확장한다면 수열은 함수 f(x) 를 의미하게 된다. 따라서 위의 다변수 함수의 테일러 전개식에서 조건 2가지를 추가하여 정리한 식은 이제 **범함수 F[y(x)] 에대한 테일러 전개식이 된다.**
     - 함수 y(x) -> 함수 F[y(x)]
->- $F[y(x)+\epsilon \eta (x)] \approx F[y(x)] + \epsilon \int \dfrac{\delta F}{\delta y(x)} \eta(x)dx$
+>- <img src="https://latex.codecogs.com/gif.latex?F%5By%28x%29&plus;%5Cepsilon%20%5Ceta%20%28x%29%5D%20%5Capprox%20F%5By%28x%29%5D%20&plus;%20%5Cepsilon%20%5Cint%20%5Cdfrac%7B%5Cdelta%20F%7D%7B%5Cdelta%20y%28x%29%7D%20%5Ceta%28x%29dx"/>
 
 ### 3) 범함수의 도함수
 
 #### ```범함수의 도함수```
 - 범함수의 테일러 전개식에서 상수의 변화에 따른 범함수 값의 변화. 위의 식을 정리한 것.
->- $\dfrac{F[y(x)+\epsilon \eta(x)]-F[y(x)]}{\epsilon} = \int \dfrac{\delta F}{\delta y(x)} \eta(x)dx$
->>- $\dfrac{\delta F}{\delta y(x)}=0$ (어떤 함수 에타에 대해서도 이 값이 0 이 되려면)
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7BF%5By%28x%29&plus;%5Cepsilon%20%5Ceta%28x%29%5D-F%5By%28x%29%5D%7D%7B%5Cepsilon%7D%20%3D%20%5Cint%20%5Cdfrac%7B%5Cdelta%20F%7D%7B%5Cdelta%20y%28x%29%7D%20%5Ceta%28x%29dx"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20F%7D%7B%5Cdelta%20y%28x%29%7D%3D0"/> (어떤 함수 에타에 대해서도 이 값이 0 이 되려면)
 - 따라서 이것을 **범함수의 도함수 functional derivative** 라고 한다. 일반함수의 도함수와 같은 역할을 한다. 범함수 F 를 미분했다는 의미로 델다 표기를 사용함.
 
 #### ```적분형 범함수의 도함수```
 - 대부분의 범함수는 x 에 대한 적분으로 정의된다. G 는 함수 y(x), 실수 x 를 입력변수로 받는 함수이다.
->- $\text F[y(x)] = \int G(y, x)dx$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20F%5By%28x%29%5D%20%3D%20%5Cint%20G%28y%2C%20x%29dx"/>
 - 범함수 F 의 도함수는 다음과 같다. y 는 함수이지만 실수형 입력변수 처럼 생각하고 G 를 편미분했다는 의미로 partial 기호를 사용한다.
->- $\dfrac{\delta F}{\delta y} = \dfrac{\partial G}{\partial y}$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20F%7D%7B%5Cdelta%20y%7D%20%3D%20%5Cdfrac%7B%5Cpartial%20G%7D%7B%5Cpartial%20y%7D"/>
 
 #### ```기댓값 범함수의 도함수```
 - 확률밀도함수 p(x) 를 입력변수로 받는 기댓값 E 는 다음과 같이 정의되는 범함수 이다.
->- $\text E[p(x)] = \int xp(x)dx$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20E%5Bp%28x%29%5D%20%3D%20%5Cint%20xp%28x%29dx"/>
 - 범함수의 정의에서 G(y, x) 에 기댓값 정의를 대입하면,
->- $\text G(y, x) = xy$ 이다.
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20G%28y%2C%20x%29%20%3D%20xy"/> 이다.
 - 따라서 y(x)=p(x) 에 대한 E 의 도함수는
->- $\dfrac{\delta F}{\delta y} = \dfrac{\partial G}{\partial y} = x$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20F%7D%7B%5Cdelta%20y%7D%20%3D%20%5Cdfrac%7B%5Cpartial%20G%7D%7B%5Cpartial%20y%7D%20%3D%20x"/>
 
 #### ```그래디언트 부스팅의 도함수```
-- 그래디언트 부스팅 gradient boosting 방법은 주어진 목표함수 y(x) 와 가장 비슷한 모형함수 $\hat y(x)$ 를 구하기 위해 범함수의 손실함수를 사용하는 것을 말한다.
+- 그래디언트 부스팅 gradient boosting 방법은 주어진 목표함수 y(x) 와 가장 비슷한 모형함수 <img src="https://latex.codecogs.com/gif.latex?%5Chat%20y%28x%29"/> 를 구하기 위해 범함수의 손실함수를 사용하는 것을 말한다.
     - 최적화 optimization : 목적함수가 주어졌을 때 목적함수의 값을 최대, 최소로 만드는 모수를 찾는 것
     - 목적함수 : 최적화의 대상이 되는 함수. 성능의 크기를 측정하는 성능함수 performance function, 모형의 오차나 오류를 측정하는 손실함수 loss function, 오류함수 error function, 비용함수 cost function 등이 있다.
-    - PCA 의 의미는 원래 차원의 행렬 x 와 유사한 행렬 $\hat {\hat x}$ 를 찾는 문제이다. 이를 위해 차원축소한 행렬에 역변환행렬을 곱하여 원래 차원으로 만든 행렬과 원래 차원 행렬 x 와의 차를 최소화하는 가장 차이가 적은 유사한, 차원축소행렬을 찾는 과정을 거친다.
-    >- $arg\;min_{\hat x} \| x-U\hat x \|^2,\;\;U\hat x = \hat{\hat x}$
+    - PCA 의 의미는 원래 차원의 행렬 x 와 유사한 행렬 <img src="https://latex.codecogs.com/gif.latex?%5Chat%20%7B%5Chat%20x%7D"/> 를 찾는 문제이다. 이를 위해 차원축소한 행렬에 역변환행렬을 곱하여 원래 차원으로 만든 행렬과 원래 차원 행렬 x 와의 차를 최소화하는 가장 차이가 적은 유사한, 차원축소행렬을 찾는 과정을 거친다.
+    >- <img src="https://latex.codecogs.com/gif.latex?arg%5C%3Bmin_%7B%5Chat%20x%7D%20%5C%7C%20x-U%5Chat%20x%20%5C%7C%5E2%2C%5C%3B%5C%3BU%5Chat%20x%20%3D%20%5Chat%7B%5Chat%20x%7D"/>
     - 이 최적화 과정에서 최적화의 대상이 된 함수를 손실함수라고 할 수 있다.
 - 범함수의 손실함수
->- $\text L = \int \dfrac{1}{2}(\hat y(x) - y(x))^2 dx$
->>- $G(\hat y)=\dfrac{1}{2}(\hat y(x) - y(x))^2$ (풀어서 정리한 후 미분)
->>- $\dfrac{\delta L}{\delta \hat y} = \dfrac{\partial G}{\partial \hat y} = \hat y(x) - y(x)$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20L%20%3D%20%5Cint%20%5Cdfrac%7B1%7D%7B2%7D%28%5Chat%20y%28x%29%20-%20y%28x%29%29%5E2%20dx"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?G%28%5Chat%20y%29%3D%5Cdfrac%7B1%7D%7B2%7D%28%5Chat%20y%28x%29%20-%20y%28x%29%29%5E2"/> (풀어서 정리한 후 미분)
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20L%7D%7B%5Cdelta%20%5Chat%20y%7D%20%3D%20%5Cdfrac%7B%5Cpartial%20G%7D%7B%5Cpartial%20%5Chat%20y%7D%20%3D%20%5Chat%20y%28x%29%20-%20y%28x%29"/>
 
 #### ```오일러-라그랑주 공식```
-- x, y(x) 입력변수 이외에  추가로 y(x) 의 x 에 대한 도함수인 $y^{\prime}(x)=\dfrac{dy}{dx}$ 를 입력 변수로 받는 함수 G 의 도함수도 있을 수 있다.
+- x, y(x) 입력변수 이외에  추가로 y(x) 의 x 에 대한 도함수인 <img src="https://latex.codecogs.com/gif.latex?y%5E%7B%5Cprime%7D%28x%29%3D%5Cdfrac%7Bdy%7D%7Bdx%7D"/> 를 입력 변수로 받는 함수 G 의 도함수도 있을 수 있다.
     - G(y(x), y'(x), x)
->- $\text F[y(x)] = \int G(y, y^{\prime}, x)dx$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%20F%5By%28x%29%5D%20%3D%20%5Cint%20G%28y%2C%20y%5E%7B%5Cprime%7D%2C%20x%29dx"/>
 - 이러한 범함수 F 의 함수 y 에 대한 도함수
->- $\dfrac {\partial F}{\partial y} - \dfrac{d}{dx} \left( \dfrac{\partial G}{\partial  y'}\right)$
-- $\dfrac {\partial F}{\partial y}$ 와 $\dfrac{\partial G}{\partial  y'}$ 는 함수 y와 y'을 별개의 변수처럼 생각하고 편미분 한 것을 의미한다. $\dfrac{d}{dx} \left( \dfrac{\partial G}{\partial  y'}\right)$ 는 편미분하여 구해진 함수를 다시 변수 x 로 미분한 결과를 의미한다.
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%20%7B%5Cpartial%20F%7D%7B%5Cpartial%20y%7D%20-%20%5Cdfrac%7Bd%7D%7Bdx%7D%20%5Cleft%28%20%5Cdfrac%7B%5Cpartial%20G%7D%7B%5Cpartial%20y%27%7D%5Cright%29"/>
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%20%7B%5Cpartial%20F%7D%7B%5Cpartial%20y%7D"/> 와 <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cpartial%20G%7D%7B%5Cpartial%20y%27%7D"/> 는 함수 y와 y'을 별개의 변수처럼 생각하고 편미분 한 것을 의미한다. <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bd%7D%7Bdx%7D%20%5Cleft%28%20%5Cdfrac%7B%5Cpartial%20G%7D%7B%5Cpartial%20y%27%7D%5Cright%29"/> 는 편미분하여 구해진 함수를 다시 변수 x 로 미분한 결과를 의미한다.
 - 즉 G 를 y 와 y 의 도함수로 각각 편미분하고, y' 으로 편미분한 것을 다시 x 로 미분한다.
 
 #### ```최적제어 optional control```
 - 최적화는 어떤 함수 f(x) 의 값을 최대 또는 최소로 만드는 독립변수 x 의 값을 찾는 것이다.
 - 최적제어는 범함수 F[f(x)] 의 값을 최대 또는 최소로 만드는 독립함수 y(x) 를 찾는 것이다.
 - 최적화의 필요조건은 도함수 값이 0 이 되는 x 값이 어야 한다.
->- $\dfrac{d}{dx}(x^*)=0$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bd%7D%7Bdx%7D%28x%5E*%29%3D0"/>
 - 최적제어도 마찬가지로 범함수의 도함수 값이 0 이 되는 최적의 함수 y(x) 이어야 한다.
->- $\dfrac{\delta f}{\delta y}[y^*(x)]=0$
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20f%7D%7B%5Cdelta%20y%7D%5By%5E*%28x%29%5D%3D0"/>
 - ```GAN general adversarial network``` : 딥러닝에서 현실 데이터와 가장 유사한 데이터를 재현하는 방법
     - 두 확률분포함수 p_data 와 p_model 이 있을 때 범함수의 값을 최대화하는 확률분포함수 p(x) 를 구한다.
->- $L[p] = \dfrac{1}{2} \int (\log (p(x)p_{data}(x) + \log (1-p(x))p_{model}(x)) dx$
->- $\dfrac{\delta L}{\delta p} = \dfrac{1}{2} \dfrac{\partial}{\partial p} \log p(x)p_{data}(x) + \dfrac{1}{2} \dfrac{\partial}{\partial p} \log (1-p(x))p_{model}(x) $
+>- <img src="https://latex.codecogs.com/gif.latex?L%5Bp%5D%20%3D%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cint%20%28%5Clog%20%28p%28x%29p_%7Bdata%7D%28x%29%20&plus;%20%5Clog%20%281-p%28x%29%29p_%7Bmodel%7D%28x%29%29%20dx"/>
+>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20L%7D%7B%5Cdelta%20p%7D%20%3D%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20p%7D%20%5Clog%20p%28x%29p_%7Bdata%7D%28x%29%20&plus;%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20p%7D%20%5Clog%20%281-p%28x%29%29p_%7Bmodel%7D%28x%29"/>
 >- 최적제어에 의한 최적의 확률분포 함수 p*(x) 는 이 값이 0 이 되도록 하는 값이다.
->>- $\dfrac{p_{data}(x)(1-p(x)) - p(x)p_{model}(x)}{2p(x)(1-p(x))}$
->>- $p^*(x) = \dfrac{p_{data}(x)}{p_{data}(x) + p_{model}(x)}$
+>>- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bp_%7Bdata%7D%28x%29%281-p%28x%29%29%20-%20p%28x%29p_%7Bmodel%7D%28x%29%7D%7B2p%28x%29%281-p%28x%29%29%7D"/>
+>>- <img src="https://latex.codecogs.com/gif.latex?p%5E*%28x%29%20%3D%20%5Cdfrac%7Bp_%7Bdata%7D%28x%29%7D%7Bp_%7Bdata%7D%28x%29%20&plus;%20p_%7Bmodel%7D%28x%29%7D"/>
 
