@@ -316,3 +316,75 @@
 >>- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bdata%7D%28x%29%281-p%28x%29%29%20-%20p%28x%29p_%7Bmodel%7D%28x%29%3D0"/>
 >>- <img src="https://latex.codecogs.com/gif.latex?p%5E*%28x%29%20%3D%20%5Cdfrac%7Bp_%7Bdata%7D%28x%29%7D%7Bp_%7Bdata%7D%28x%29%20&plus;%20p_%7Bmodel%7D%28x%29%7D"/>
 
+# 4. Python
+
+### 1) 적분
+- sympy.integrate()
+- 심파이의 출력언어를 mathjax 로 설정
+```
+import sympy
+
+sympy.init_printing(use_latex='mathjax')
+```
+```
+x = sympy.symbols('x')
+f = x * sympy.exp(x) + sympy.exp(x)
+f
+
+=====print=====
+
+𝑥𝑒𝑥+𝑒𝑥
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
