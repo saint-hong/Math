@@ -326,6 +326,7 @@ import sympy
 
 sympy.init_printing(use_latex='mathjax')
 ```
+- 심볼릭 연산 설정
 ```
 x = sympy.symbols('x')
 f = x * sympy.exp(x) + sympy.exp(x)
@@ -335,6 +336,7 @@ f
 ```
 ![integral_1](./images/integral/integral_1.png)
 
+- 부정적분 연산
 ```
 sympy.integrate(f)
 
@@ -343,50 +345,347 @@ sympy.integrate(f)
 ![integral_2](./images/integral/integral_2.png)
 
 
+### 2) 다변수 함수의 부정적분
+- 변수 각각에 대한 부정적분을 구해준다.
+```
+x, y = sympy.symbols('x, y')
+f = 2 * x + y
+f
+
+=====print=====
+```
+![integral_3](./images/integral/integral_3.png)
+
+- 심볼 x 로 부정적분
+```
+sympy.integrate(f, x)
+
+=====print=====
+```
+![integral_4](./images/integral/integral_4.png)
+
+- 심볼 y 로 부정적분
+```
+sympy.integrate(f, y)
+
+=====print=====
+```
+![integral_5](./images/integral/integral_5.png)
+
+#### 부정적분 계산
+```
+x = sympy.symbols('x')
+f = 2 + 6 * x  + 4 * sympy.exp(x) + 5/x
+F = sympy.integrate(f)
+F
+
+=====print=====
+```
+![integral_6](./images/integral/integral_6.png)
+
+```
+x, y = sympy.symbols('x, y')
+f = x * y * sympy.exp(x ** 2 + y ** 2)
+F_x = sympy.integrate(f, x)
+F_y = sympy.integrate(f, y)
+F_x, F_y
+
+=====print=====
+```
+![integral_7](./images/integral/integral_7.png)
+
+### 3) 정적분
+- 정적분은 함수의 특정 구간의 면적을 구하는 것과 같다.
+```
+from matplotlib.patches import Polygon
+
+def f(x):
+    return x ** 3 - 3 * x ** 2 + x + 6
+
+a, b = 0, 2
+x = np.linspace(a - 0.6, b + 0.6, 50)
+y = f(x)
+
+# Axes 객체를 만들어 준다.
+ax = plt.subplot(111)
+plt.title('정적분의 예', y=1.04)
+plt.plot(x, y, 'r', linewidth=2)
+plt.plot(0,0,'go')
+# 그래프가 x 축과 만나는 지점, 방정식의 해가 도면의 바닥에 오게 한다. top=0 이면 방정식의 해의 위치가 도면의 위로 오게된다.
+plt.ylim(bottom=0)
+
+# 그래프 아래쪽의 면적에 해당하는 부분
+ix = np.linspace(a, b)
+iy = f(ix)
+# 면적을 그려줄 범위를 list 안에 튜플타입 (x,y) 으로 저장, 함수에 따라서 면적의 범위를 잘 설정해줘야 한다. 시작하는 부분 끝나는 부분, x,y 값을 넣을 부분.
+verts = [(a, 0)] + list(zip(ix, iy)) + [(b, 0)]
+# Polygon 명령어에 verts를 인수로 넣어준다.
+poly = Polygon(verts, facecolor='0.9', edgecolor='0.5')
+# 실제로 객체를 만들어주는 patch 패키지에 Polygon을 넣는다.
+ax.add_patch(poly)
+
+# 도면에 텍스트 넣기, polygon 안에 위치하도록 인수 값을 조정, horizontalalignment 는 현재 지정한 위치를 기준으로 가운데로 오게끔 해준다.
+plt.text(0.5 * (a+b), 0.2 * (f(a) + f(b)), r'$\int_a^b f(x)dx$', horizontalalignment='center', fontsize=20)
+# figure에 text를 입력. figure 자체의 좌표를 기준으로 텍스트가 들어갈 위치를 설정해준다.
+plt.figtext(0.9, 0.05, '$x$')
+plt.figtext(0.1, 0.9, '$y$')
+
+# 도면의 오른쪽과 윗부분의 axis 수직선 제거
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+# x축의 눈금의 위치를 bottom 으로 정의, 진한 눈금생긴다. top 이면 도면의 위로 올라간다.
+ax.xaxis.set_ticks_position('bottom')
+# x축의 눈금을 0, 2의 위치로 설정
+ax.set_xticks((a, b))
+# x축의 눈금 라벨을 바꾼다.
+ax.set_xticklabels(('$a$', '$b$'))
+ax.set_yticks([])
+ax.set_xlim(-2, 4)
+ax.set_ylim(0, 8)
+plt.show()
+```
+![integral_8](./images/integral/integral_8.png)
+
+### 4) 심파이로 정적분 계산
+- 심파이로 정적분을 계산하는 방법은 2가지
+    - 함수를 부정적분 하여 원래 함수를 구하고, 미적분학의 기본정리를 적용하여, 정적분 구간의 값을 원래함수에 넣어 계산하는 방법
+    - 실제 함수의 면적을 구하는 수치적분 방법
+- 수치적분으로 구한 값과 정적분으로 구한 값은 거의 같다.
+
+#### 함수의 부정적분을 계산한 뒤 subs() 함수를 사용하는 방법
+- 심볼릭 연산으로 부정적분을 구한다.
+```
+import sympy
+
+sympy.init_printing(use_latex='mathjax')
+
+x, y = sympy.symbols('x, y')
+f = x**3 - 3*x**2 + x + 6
+F = sympy.integrate(f)
+F
+
+=====print=====
+```
+![integral_9](./images/integral/integral_9.png)
+
+- 부정적분으로 구한 원래함수에 정적분 할 구간값을 넣어준다.
+- 심볼릭함수의 변수에 실제 값을 넣고 계산하려면, subs(), evalf() 매서드를 사용해야한다.
+```
+# a=0, b=2 구간
+
+(F.subs(x,2) - F.subs(x,0)).evalf()
+
+=====print=====
+```
+![integral_10](./images/integral/integral_10.png)
+
+#### 수치적분으로 구하는 방법 numerical integration
+```
+def f(x) :
+    return x**3 - 3*x**2 + x + 6
+
+sp.integrate.quad(f, 0, 2)
+
+=====print=====
+```
+![integral_11](./images/integral/integral_11.png)
+
+### 5) 다변수 정적분
+- 평면에서 x축으로 a~b 구가, y축으로 c~d 구간에 해당하는 사각형 영역의 부피
+```
+fig = plt.figure()
+# ax를 설정하는 다른 방법
+ax = fig.add_subplot(111, projection='3d')
+
+# 0~11 까지 생성 후 2나누고 2를 더해준 값들
+_x = np.arange(12) / 2 + 2
+_y = np.arange(12) / 2
+# X는 _x를 행기준으로 반복하여 아래쪽으로 만든 행렬, Y는 _y를 열기준으로 반복하여 오른쪽으로 만든 행렬, 크기는 인수로 받은 두 벡터를 곱한 크기가 된다. _y -> 2X1, _x > 3X1 이면, X -> 2X3, Y -> 2X3 이 된다.
+X, Y = np.meshgrid(_x, _y)
+# X, Y 행렬을 각각 열벡터 형태로 변환 .ravel() 12X12 -> 144X1
+x, y = X.ravel(), Y.ravel()
+# 열벡터끼리의 곱셈은 요소별 연산으로 같은 위치의 데이터끼리 단순곱해준다. 내적아님.
+z = x * x - 10 * x + y + 50
+# 0행렬을 z의 형태로 만들기. _like(z) : 144x1 열벡터
+z0 = np.zeros_like(z)
+
+ax.bar3d(x, y, z0, 0.48, 0.48, z)
+ax.set_xlim(0, 10)
+ax.set_ylim(-2, 10)
+ax.set_zlim(0, 50)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+plt.title('f(x,y)')
+plt.show()
+```
+![integral_12](./images/integral/integral_12.png)
+
+#### meshgrid() 는 기존의 행렬을 새로운 행렬로 변형해 준다.
+- X, Y = np.meshgrid(_x, _y)
+- X 는 벡터 _x를 전치해서 행단위로 확장. 아래로.
+- Y 는 벡터 _y를 전치없이 벡터자체를 열단위로 확장. 오른쪽으로.
+```
+_x
+
+=====print=====
+
+array([2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5])
+
+_y
+
+=====print=====
+
+array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5])
+```
+```
+X, Y = np.meshgrid(_x, _y)
+
+X
+
+=====print=====
+
+array([[2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5],
+       [2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. , 6.5, 7. , 7.5]])
 
 
+Y 
 
+=====print=====
 
+array([[0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. ],
+       [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+       [1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. ],
+       [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5],
+       [2. , 2. , 2. , 2. , 2. , 2. , 2. , 2. , 2. , 2. , 2. , 2. ],
+       [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5],
+       [3. , 3. , 3. , 3. , 3. , 3. , 3. , 3. , 3. , 3. , 3. , 3. ],
+       [3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5],
+       [4. , 4. , 4. , 4. , 4. , 4. , 4. , 4. , 4. , 4. , 4. , 4. ],
+       [4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5],
+       [5. , 5. , 5. , 5. , 5. , 5. , 5. , 5. , 5. , 5. , 5. , 5. ],
+       [5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5]])
+```
 
+### 6) 그래디언트 백터
+- 컨투어 플롯과 퀴버 플롯을 사용하여 그래디언트 벡터를 화살표로 나타내어 준다.
+```
+def f(x, y) :
+    return 2 * x**2 + 6 * x * y + 7 * y**2 -26 * x - 54 * y + 107
 
+xx = np.linspace(1, 16, 100)
+yy = np.linspace(-3, 6, 90)
+X, Y = np.meshgrid(xx, yy)
+Z = f(X, Y)
 
+def gx(x, y) :
+    return 4 * x + 6 * y - 26
 
+def gy(x, y) :
+    return 6 * x + 14 * y - 54
 
+xx2 = np.linspace(1, 16, 15)
+yy2 = np.linspace(-3, 6, 9)
+# 9X15 의 행렬로 만든다.
+X2, Y2 = np.meshgrid(xx2, yy2)
+GX = gx(X2, Y2)
+GY = gy(X2, Y2)
 
+plt.figure(figsize=(10, 5))
+# 컨투어 플롯 생성 : 지형도
+plt.contour(X, Y, Z, levels=np.logspace(0, 3, 10))
+# 퀴버 생성 : 기울기를 화살표로 나타내줌
+plt.quiver(X2, Y2, GX, GY, color='blue', scale=400, minshaft=2)
 
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('퀴버플롯 quiver plot')
+plt.show()
+```
+![integral_13](./images/integral/integral_13.png)
 
+### 7) 퀴버플롯에서 특정 지점의 화살표 모양
+- 특정 좌표에서의 그래디언트 벡터가 나타내는 화살표의 모양을 시각화
+![integral_14](./images/integral/integral_14.png)
 
+```
+black = {'facecolor':'black'}
 
+# 그래디언트 벡터를 함수화
+def g(x, y) :
+    return ((4*x+6*y-26), (6*x+14*y-54))
 
+g1 = g(7, 1)
+g2 = g(2, 1)
 
+plt.plot(0, 0, 'kP', ms=10)
+plt.plot(g1[0], g1[1], 'ro', ms=10)
+plt.annotate('', xy=g1, xytext=(0,0), arrowprops=black)
+plt.plot(g2[0], g2[1], 'ro', ms=10)
+plt.annotate('', xy=g2, xytext=(0,0), arrowprops=black)
 
+plt.text(g1[0]+1.5, g1[1], '({},{})'.format(g1[0], g1[1]))
+plt.text(g2[0]+1.5, g2[1], '({},{})'.format(g2[0], g2[1]))
+plt.text(0+1.5, 0-2, '(0,0)', horizontalalignment='center')
 
+plt.axis('equal')
+plt.show()
+```
+![integral_15](./images/integral/integral_15.png)
 
+### 8) 그래디언트 벡터의 의미
+- 그래디언트 벡터를 화살표로 나타내었을 때 화살표의 길이, 방향의 의미
+- 컨투어 플롯을 사용하여 특정 좌표에서의 공의 이동경로를 나타내기
+- (14, 4) 의 위치에서 공을 놓았을 때 컨투어 플롯의 지형도에서 어떻게 움직일까.
+```
+black = {'facecolor':'black'}
 
+def f(x, y) :
+    return 2*x**2 + 6*x*y + 7*y**2 - 26*x - 54*y + 107
 
+xx = np.linspace(1, 16, 100)
+yy = np.linspace(-3, 6, 90)
+X, Y = np.meshgrid(xx, yy)
+Z = f(X, Y)
 
+def gx(x, y) :
+    return 4*x + 6*y - 26
 
+def gy(x, y) :
+    return 6*x + 14*y - 54
 
+xx2 = np.linspace(1, 16, 15)
+yy2 = np.linspace(-3, 6, 9)
+X2, Y2 = np.meshgrid(xx2, yy2)
+GX = gx(X2, Y2)
+GY = gy(X2, Y2)
+plt.contour(X, Y, Z, levels=np.logspace(0,3,10))
 
+# 여기서부터 추가 된 코드
+x0 = (14, 4)
+plt.plot(x0[0], x0[1], 'ko', ms=10)
 
+for i in range(20) :
+    # 그래디언트 벡터를 만들기위해 배열에 x로 미분한 함수, y로 미분한 함수를 넣는다. 각각 x0의 좌표에 해당하는 x,y 값을 넣는다.
+    g = np.array((gx(x0[0], x0[1]), gy(x0[0], x0[1])))
+    # x0에서 다음으로 이동할 위치를 정한다. 최초 그래디언트 벡터인 g에 0.02를 곱하고 최초 좌표 x0 에서 이 값을 뺴준다.
+    x_next = x0 - 0.02 * g
+    plt.annotate('', xy=x_next, xytext=x0, arrowprops=black)
+    # x0를 x_next로 저장하여 for문이 실행되는 동안 순차적으로 이동하게 된다.
+    x0 = x_next
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+```
+![integral_16](./images/integral/integral_16.png)
