@@ -9,3 +9,4 @@
 ### 3. PCA
 ### 4. Function
 ### 5. Differentiation
+### 6. Integral, Matrix differentiation, Functional
