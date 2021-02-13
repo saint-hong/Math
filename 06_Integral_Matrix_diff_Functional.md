@@ -332,13 +332,15 @@ f = x * sympy.exp(x) + sympy.exp(x)
 f
 
 =====print=====
-
-𝑥𝑒𝑥+𝑒𝑥
 ```
+![integral_1](./images/integral/integral_1.png)
 
+```
+sympy.integrate(f)
 
-
-
+=====print=====
+```
+![integral_2](./images/integral/integral_2.png)
 
 
 
