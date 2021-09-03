@@ -193,6 +193,7 @@
 - 기저벡터 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_1%2Cv_1%2C...%2Cv_M"/> 이 정규직교이면, 투영벡터는 각 기저벡터에 대한 내적값으로 표현할 수 있다.
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x%5E%7B%5CVert%20V%7D%3D%28x%5ETv_1%29v_1&plus;%28x%5ETv_2%29v_2&plus;%5Ccdots&plus;%28x%5ETv_M%29v_M"/>
     - ```!!! 투영벡터가 내적의 결과라는 것은 알겠는데, 내적에서 v_1 이 왜 두번 곱해지는지 확인 할것, 이해 안됨.```
+    - ```!!! 투영벡터의 정의에서 분모가 v의 놈의 제곱인데, v는 정규직교하는 기저벡터이므로 단위벡터이다. 길이가 1이다. 따라서 분모가 1로 없어지고 분자만 남음```
 - 이러한 투영벡터의 길이의 제곱은 각 기저벡터와의 내적의 제곱합이다.
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7Cx%5E%7B%5CVert%20V%7D%5C%7C%5E2%3D%5Csum_%7Bi%3D1%7D%5EM%28x%5ETv_i%29%5E2"/>, (위의 식 정리)
     - 벡터 x 에서 투영벡터를 뺴면 직교벡터가 된다. (증명 가능)
