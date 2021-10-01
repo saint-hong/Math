@@ -1,6 +1,6 @@
 # 새로 알게 된 것들 정리
 
-## 고유분해 eigenvalue-decomposition 중에서
+## 고유분해 eigen-decomposition 중에서
 ### 분산행렬 X@X.T의 특징
 - 어떠한 형태의 행렬이라도 분산행렬로 만들면 정방-대칭행렬이 된다.
   - (3x2) @ (2x3) = (3x3)
