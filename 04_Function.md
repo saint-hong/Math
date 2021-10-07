@@ -292,6 +292,57 @@ np.where(a < 5, a, 10*a)
 
 array([ 0,  1,  2,  3,  4, 50, 60, 70, 80, 90])
 ```
+### 지시함수 Indicator function
+- 지시함수는 데이터중에서 특정한 데이터만 선택하여 개수를 세는데 사용된다.
+- 0 또는 1과 숫자 리스트를 파라미터로 입력받아서 0과 1의 개수를 반환하는 함수
+
+```
+def indicator_func(x, num_list) :
+    if x == 1 :
+        return counter_one(num_list)
+    if x == 0 :
+        return counter_zero(num_list)
+    else :
+        return print("wrong : only input 0 or 1")
+
+def counter_one(lst) :
+    i = 0
+    counter = 0
+    while i <= len(lst)-1 :
+        if lst[i] == 1 :
+            counter += 1
+        i += 1
+    return counter
+
+def counter_zero(lst) :
+    i = 0
+    counter = 0
+    while i <= len(lst)-1 :
+        if lst[i] == 0 :
+            counter += 1
+        i += 1
+    return counter
+```
+```
+indicator_func(1, [1,0,0,1,1])
+
+=====<print>=====
+
+3
+
+indicator_func(0, [1,0,0,1,1])
+
+=====<print>=====
+
+2
+
+indicator_func(5, [1,0,0,1,1])
+
+=====<print>=====
+
+wrong : only input 0 or 1
+```
+
 ### 4) 함수의 그래프 표현
 - 맷플로립의 라인플롯을 사용하여 함수를 그래프로 표현 할 수 있다.
 - 함수의 특징에 따라서 파이플롯의 여러가지 명령어들을 사용하여 표현 가능하다.
