@@ -58,7 +58,6 @@
 
 ## ◎ 추천시스템에 사용되는 특이분해의 원리
 - 추천시스템에서 두개의 행렬로 나눌때 특이분해의 축소형 모델이 사용됨
-```
 <src img="https://latex.codecogs.com/png.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20U%5CSigma%5E%5Cfrac%7B1%7D%7B2%7D%5CSigma%5E%5Cfrac%7B1%7D%7B2%7DV";>
-```
+
 
