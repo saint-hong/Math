@@ -443,20 +443,26 @@
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%20%3D%20w_1v_1%20&plus;%20w_2v_2">
     - w 는 단위벡터 이므로 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w_1%5E2%20&plus;%20w_2%5E2%20%3D%201"> 이어야 한다. 
 - 위의 조건들을 사용하여 Aw 를 구한다.
+
 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%5CVert%20Aw%5CVert%5E2%20%26%3D%20%5CVert%20A%28w_%7B1%7D%20v_1%20&plus;%20w_%7B2%7D%20v_2%29%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20w_%7B1%7DAv_1%20&plus;%20w_%7B2%7DAv_2%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20w_%7B1%7D%20%5Csigma_1%20u_1%20&plus;%20w_%7B2%7D%20%5Csigma_2%20u_2%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20w_%7B1%7D%20%5Csigma_1%20u_1%20%5CVert%5E2%20&plus;%20%5CVert%20w_%7B2%7D%20%5Csigma_2%20u_2%20%5CVert%5E2%20%5C%3B%5C%3B%20%5Ctext%7B%28orthogonal%29%7D%20%5C%5C%20%26%3D%20w_%7B1%7D%5E2%20%5Csigma_1%5E2%20%5CVert%20u_1%20%5CVert%5E2%20&plus;%20w_%7B2%7D%5E2%20%5Csigma_2%5E2%20%5CVert%20u_2%20%5CVert%5E2%20%5C%5C%20%26%3D%20w_%7B1%7D%5E2%20%5Csigma_1%5E2%20&plus;%20w_%7B2%7D%5E2%20%5Csigma_2%5E2%20%5C%3B%5C%3B%20%5Ctext%7B%28unit%20vector%29%7D%5C%5C%20%5Cend%7Baligned%7D">
+    
     - orthogonal : u1 과 u2 는 단위벡터이면서 서로 직교하므로 이차방적식의 2u1^Tu2 부분은 내적값이 0 이 되어 제거된다.
     - 마찬가지로 u1, u2 의 놈의 제곱값도 1 이므로 상쇄된다.
 - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Csigma_1%20%3E%20%5Csigma_2%20%3E%200%2C%5C%3B%5C%3B%20w_1%5E2%20&plus;%20w_2%5E2%20%3D%201"> 을 만족하면서 위의 식을 가장 크게하는 w : w1=1, w2=0
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%20%3D%20w_1v_1%20&plus;%20w_2v_2%2C%5C%3B%5C%3Bw%3Dv_1">
     - 즉 Aw 의 놈을 가장 크게 만드는 벡터 w 의 방향은 첫 번째 오른쪽 특이벡터 방향이라는 것을 알 수 있다. 
 - 그러므로 Aw 의 놈 값은 첫번째 특잇값이 된다.,
-    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CVert%20Aw%5CVert%20%3D%20%5CVert%20Av_1%5CVert%20%3D%20%5CVert%20%5Csigma_1%20u_1%5CVert%20%3D%20%5Csigma_1%20%5CVert%20u_1%5CVert%20%3D%20%5Csigma_1">
+   
+    <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CVert%20Aw%5CVert%20%3D%20%5CVert%20Av_1%5CVert%20%3D%20%5CVert%20%5Csigma_1%20u_1%5CVert%20%3D%20%5Csigma_1%20%5CVert%20u_1%5CVert%20%3D%20%5Csigma_1">
 
 #### 여러개의 벡터에 대한 1차원 근사문제
 - 여러개의 벡터와 벡터가 가리키는 여러개의 점들에 적용한 1차원 근사문제는 다음과 같다.
+
 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5CVert%20Aw%20%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28a_i%5ETw%29%5E2%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28a_i%5ETw%29%5ET%28a_i%5ETw%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20w%5ETa_ia_i%5ETw%20%5C%5C%20%26%3D%20w%5ET%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20a_ia_i%5ET%20%5Cright%29%20w%20%5C%5C%20%26%3D%20w%5ET%20A%5ETA%20w%20%5C%5C%20%5Cend%7Baligned%7D">
+    
     - **ai^T 와 w 의 곱을 전치연산을 사용하여 정리하면 aiai^T 의 형태가 된다.** 이러한 형태는 분산행렬과 같다.
 - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%5ETA%5ETAw"> 를 분산행렬의 고윳값분해를 사용하여 풀이한다.
+
 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20w%5ETA%5ETAw%20%26%3D%20w%5ET%20V%20%5CLambda%20V%5ET%20w%20%5C%5C%20%26%3D%20w%5ET%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%20%5Csigma%5E2_iv_iv_i%5ET%20%5Cright%29%20w%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%28w%5ETv_i%29%28v_i%5ETw%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%5CVert%20v_i%5ETw%5CVert%5E2%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - 따라서 여러개의 벡터에 대한 1차원 근사문제는 다음과 같다.
