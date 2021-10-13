@@ -129,3 +129,81 @@
     - 특잇값행렬의 원소가 0인 부분을 제외하고 앞뒤행렬에서 이와 대응하는 원소를 제외시켜준다.
     - U, S, VT = np.linalg.svd(A, full_matrices=False)
 
+# PCA : 주성분 분석, 차원축소
+
+### pca 모듈 임포트, 분석
+```
+from sklearn.decomposition import PCA
+```
+
+- 1차원으로 축소 : pca = PCA(n_components=1) 
+- 1차원 근사데이터 집합 : X_low = pca.fit_transform(X) 
+- 원래차원으로 복귀한 데이터 집합 : X2 = pca.inverse_transform(X_low) 
+
+### 주성분 분석의 결과
+- 데이터의 평균값 : pca.mean_
+```
+array([4.86, 3.31])
+```
+
+### 주성분 벡터, 단위기저 벡터
+- pca.components_
+```
+array([[0.68305029, 0.73037134]])
+```
+
+### 주성분벡터는 원래행렬 - 평균값의 오른쪽특이벡터와 같다.
+- X0 = X - X.mean(axis=0)
+- U, S, VT = np.linalg.svd(X0)
+- VT[:, 0]
+```
+array([-0.68305029, -0.73037134])
+```
+
+### 주성분벡터는 분산행렬의 고육벡터와 같다.
+- Xcov = X0.T @ X0
+- W, V = np.linalg.eig(Xcov)
+- V[:, np.argmax(W)] : W 고윳값의 크기 순서대로 재배열 해줘야 순서가 맞다.
+```
+array([-0.68305029, -0.73037134])
+```
+
+### 차원축소한 값은 주성분 벡터와 원래 행렬(-평균)의 내적과 같다.
+- x^_i = Wx_i
+- X_low[7] == pca.components_ @ (X[7, :] - pca.mean_)
+
+### 붓꽃데이터로 PCA
+- pca 적용
+```
+X = iris.data
+pca3 = PCA(n_components=1)
+X_low = pca3.fit_transform(X)
+X2 = pca3.inverse_transform(X_low)
+```
+- 결과 확인
+- 평균값 확인 : pca3.mean_
+```
+array([5.84333333, 3.05733333, 3.758     , 1.19933333])
+```
+- 주성분 확인 : pca3.components_
+```
+array([[ 0.36138659, -0.08452251,  0.85667061,  0.3582892 ]])
+```
+- 특잇값행렬과 주성분 비교
+```
+X_minus_mean = X - X.mean(axis=0)
+U, S, VT = np.linalg.svd(X_minus_mean)
+
+VT[0, :]
+
+array([ 0.36138659, -0.08452251,  0.85667061,  0.3582892 ])
+```
+
+
+
+
+
+
+
+
+
