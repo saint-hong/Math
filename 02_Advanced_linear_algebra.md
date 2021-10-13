@@ -362,7 +362,153 @@
     - 행렬 A가 어떤 행렬 X의 분산행렬이면 0 또는 양의 고윳값을 가진다.
     - 행렬 X가 풀랭크이면 분산행렬의 역행렬이 존재한다.
 
-### 4. Numpy for Linear algebra
+### 4. 특잇값 분해
+- 정방행렬이 아닌 행렬을 분해하는 방법
+
+#### 특잇값과 특이벡터
+- ```특잇값 singular value, 특잇값분해 singular value decomposition, 특이분해 singular-decomposition```
+- NxM 행렬 A는 다음과 같이 3개의 행렬의 곱으로 특잇값분해를 나타낼 수 있다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%3DU%5CSigma%20V%5ET">
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> 행렬 : **양수인 대각행렬이다.** 대각성분이 위에서부터 아래로 큰 수에서 작은 수로 되어 있다.
+    - U 행렬 : 정방행렬이다. **열벡터들이 단위벡터이고 서로 직교**해야한다.
+    - V 행렬 : 정방행렬이다. **열벡터들이 단위벡터이고 서로 직교**해야한다.
+- 이러한 조건을 만족하는 행렬들에 대해서 다음과 같이 나타낼 수 있다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> 의 대각성분을 ```특잇값 singrular value``` 라고 한다.
+    - U 의 열벡터들을 ```왼쪽 특이벡터 left singular vector``` 라고 한다.
+    - V 의 행벡터들을 ```오른쪽 특이벡터 right singular vector``` 라고 한다.
+- ```특잇값분해는 모든 행렬에 대해서 가능하다. 어떤 행렬이 주어지더라도 위와 같이 특잇값분해를 할 수 있다.``` (증명생략)
+
+#### 특잇값분해 행렬의 크기
+- 특잇값분해는 정방행렬이 아닌 행렬들을 분해하는 방법이기때문에 분해된 요소들의 크기가 달라진다.
+- **N > M 인 NXM 행렬의 특잇값분해 (세로로 긴 행렬)**
+    - U = NXN 정방행렬, <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> = NXM (mXm 은 대각행렬, (m+1)Xn 즉 대각행렬 아랫쪽이 영행렬), V = MXM 정방행렬 (작은 크기)
+- **N < M 인 NXM 행렬의 특잇값분해 (가로로 긴 행렬)**
+    - U = NXN 정방행렬 (작은 크기), <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> = NXM (nXn 은 대각행렬, nX(n+1) 즉 대각행렬 오른쪽이 영행렬), V = MXM 정방행렬 (큰 크기)
+
+#### 특잇값분해의 축소형
+- 특잇값분해를 하면 특잇값이 있는 시그마 행렬에 대각행렬인 부분을 제외한 부분에 영행렬이 포함된다. 이부분을 제거하여 실제로 사용할 수 있는 데이터로 만들 수 있다. 
+    - 시그마 행렬의 영행렬을 제거하면 좌우의 특이벡터 행렬들에서도 연결되는 위치의 데이터가 제거된다.
+- **N > M 인 NXM 행렬의 특잇값분해 축소형**
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> 행렬의 아랫쪽 영행렬과 이와 연결되는 위치의 U 행렬의 오른쪽 열벡터들을 제거한다.
+    - U = NXM 행렬 (열의 m+1 부터 n 까지 삭제), <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> = MXM 정방행렬 (행의 m+1 부터 n 까지 삭제), V = MXM 정방행렬 (그대로)
+- **N < M 인 NXM 행렬의 특잇값분해 축소형**
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> 행렬의 오른쪽 영행렬과 이와 연결되는 위치의 V 행렬의 아래쪽 열벡터들을 제거한다.
+    - U = NXN 정방행렬, <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma"> = NXN 정방행렬 (열의 m+1 부터 n 까지 삭제), V = NXM (행의 m+1 부터 n 까지 삭제)
+- 이렇게 불필요한 부분을 삭제해도 행렬의 결과는 달라지지 않는다.
+
+#### 특잇값과 특이벡터의 관계
+- 행렬 V 는 정규직교 행렬이므로 정규직교 행렬의 성질에 따라서 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20V%5ET%3DV%5E%7B-1%7D"> 이 성립한다. (전치행렬이 역행렬이다.)
+- 특잇값분해 된 등식의 양변에 적용.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20AV%3DU%5CSigma%20V%5ETV%3DU%5CSigma">
+- 행렬 A 의 크기에 따라서 위의 식을 적용하면, 행과 열 중 작은 크기에 따라서 모양이 바뀐다.
+    - NXM 에서 N<M 행렬 A 일때 : <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5BAv_1%2C%20Av_2%2C%20%5Ccdots%2C%20Av_N%5D%20%3D%20%5B%5Csigma_1%20u_1%2C%20%5Csigma_2%20u2%2C%20%5Ccdots%2C%20%5Csigma_N%20u_N%5D">
+    - NXM 에서 N>M 행렬 A 일때 : <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5BAv_1%2C%20Av_2%2C%20%5Ccdots%2C%20Av_M%5D%20%3D%20%5B%5Csigma_1%20u_1%2C%20%5Csigma_2%20u2%2C%20%5Ccdots%2C%20%5Csigma_M%20u_M%5D">
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20Av_i%3D%5Csigma_i%20u_i%20%5C%3B%5C%3B%20%28i%3D1%2C%5Ccdots%2Cmin%28M%2CN%29%29">
+- 고윳값식에서는 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20Av%3D%5Clambda%20v"> 로 양변의 v 벡터가 같다. 특잇값식에서는 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20Av%3D%5Csigma%20u"> 로 양변의 v, u 다른 벡터이다.
+
+#### 특잇값분해와 고윳값분해의 관계
+- 특잇값분해를 통해서 얻은 요소와 고윳값분해를 통해서 얻은 요소의 관계
+- 어떤 행렬 A 의 분산행렬 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%5ETA"> 를 특잇값분해하면 다음과 같다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%5ETA%3D%28U%5CSigma%20V%5ET%29%5ET%28U%5CSigma%20V%5ET%29%3D%28V%5CSigma%5ET%20U%5ET%29%28U%5CSigma%20V%5ET%29%3DV%20%28%5CSigma%5ET%20%5CSigma%29%20V%5ET%3DV%5CLambda%20V%5ET">
+    - **행렬 A 의 특잇값의 제곱 행렬 = 분산행렬의 고윳값 행렬** <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CSigma%5ET%20%5CSigma%3D%5CLambda">
+    - 행렬 A 의 오른쪽특이벡터 행렬 = 분산행렬의 고유벡터 행렬
+- <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20AA%5ET"> 행렬에서는 행렬 A 의 왼쪽특이벡터 행렬이 고유벡터 행렬이 된다. <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20U%3DV">
+
+### 5. 근사문제
+- 근사문제는 여러개의 벡터와 벡터가 가리키는 여러개의 점에 가장 가까운 직선 혹은 직선의 집합인 행렬을 찾는 것이다.
+- 직선의 방정식, 고윳값분해, 특잇값분해의 여러가지 성질과 정리들이 복합적으로 사용된다.
+- 핵심은 여러개의 점들과 직선 혹은 벡터공간의 기저벡터들 사이의 투영벡터와 직교벡터의 관계를 사용하여 직교성분의 거리가 가장 작은 경우 또는 투영벡터와 여러개의 점들의 집합인 최초 행렬이 가장 유사한 경우를 찾는 과정이다. 
+- 1차원 근사문제, 랭크-1 근사문제, k차원 근사문제가 있다.
+
+#### 1차원 근사문제
+- 2차원 평면위에 있는 N 개의 2차원 벡터 a1, a2, ..., an 와 원점을 지나면서 이 점들과 가능한 가까운 직선을 만들기 위해 직선의 방향을 찾는다.
+- 직선의 방향을 나타내는 단위벡터를 w 라고 할때, 벡터 w 와 점 ai 의 거리의 제곱을 구한다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CVert%20a_i%5E%7B%5Cperp%20w%7D%5CVert%5E2%20%3D%20%5CVert%20a_i%5CVert%5E2%20-%20%5CVert%20a_i%5E%7B%5CVert%20w%7D%5CVert%5E2%20%3D%20%5CVert%20a_i%5CVert%5E2%20-%20%28a_i%5ETw%29%5E2">
+    - **피타고라스의 정리를 사용하여 직교성분의 길이를 나타낸 것.** 
+    - **투영벡터는 투영되는 벡터가 단위벡터일 경우 내적값이 된다.** (<img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5C%7Cx%5E%7B%5CVert%20w%7D%5C%7C%20%3D%20%5Cdfrac%7Bw%5ETx%7D%7B%5C%7Cw%5C%7C%7D%2C%5C%3B%5C%3B%20%5C%7Cw%5C%7C%3D1">)
+- 벡터 a1, a2, a3 를 행벡터로 가지는 3X2 행렬 A 를 가정하고 위의 식에 대입한다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%5Csum_%7Bi%3D1%7D%5E3%20%5CVert%20a_i%5E%7B%5Cperp%20w%7D%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E3%20%5CVert%20a_i%5CVert%5E2%20-%20%5Csum_%7Bi%3D1%7D%5E3%20%28a_i%5ETw%29%5E2%20%5C%5C%20%26%3D%20%5CVert%20A%20%5CVert%5E2%20-%20%5CVert%20Aw%5CVert%5E2%20%5C%5C%5Cend%7Baligned%7D">
+    - 행벡터 놈의 제곱합은 행렬의 놈이 되므로, 모든 점들과 직선사이의 거리의 제곱의 합은 행렬의 놈으로 계산된다.
+- 여기에서 점 ai 는 이미 주어진 값으로 고정되어 있으므로 행렬 A 도 고정된다. 따라서 직교벡터가 가장 작은 경우는 투영벡터 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CVert%20Aw%20%5CVert"> 가 가장 커야한다. 
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20arg%5Cmax_w%20%5CVert%20Aw%20%5CVert%5E2"> 
+    - 투영벡터의 정리 식이 값을 가장 크게 만드는 벡터 w 를 찾는 것을 의미한다.
+    
+#### 1차원 근사문제 풀이
+- ```3X2 A 행렬의 특잇값분해로 파악할 수 있는 것들.```
+    - **첫번째 특잇값에 대응하는 것 : 첫 번째 왼쪽 특이벡터 (u1), 첫 번째 오른쪽 특이벡터 (v1^T)**
+    - **두번째 특잇값에 대응하는 것 : 두 번째 왼쪽 특이벡터 (u2), 두 번째 오른쪽 특이벡터 (v2^T)**
+    - **3X2 특잇값행렬의 특잇값 1 은 특잇값 2 보다 크거나 같다.** <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Csigma_1%20%5Cge%20%5Csigma_2">
+    - **A 에 오른쪽 특이벡터 v 를 곱하면 왼쪽 특이벡터 방향이 된다.** <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20Av_1%3D%5Csigma_1%20u_1%2C%5C%3B%5C%3BAv_2%3D%5Csigma_2%20u_2">
+- Aw 값을 가장 크게 만드는 벡터 w는 2차원 벡터이므로, 서로 직교하고 선형독립인 오른쪽 특이벡터 v1, v2 를 기저벡터로 만든 2차원 벡터공간에서 이 두 벡터의 선형조합으로 만들 수 있다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%20%3D%20w_1v_1%20&plus;%20w_2v_2">
+    - w 는 단위벡터 이므로 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w_1%5E2%20&plus;%20w_2%5E2%20%3D%201"> 이어야 한다. 
+- 위의 조건들을 사용하여 Aw 를 구한다.
+<img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%5CVert%20Aw%5CVert%5E2%20%26%3D%20%5CVert%20A%28w_%7B1%7D%20v_1%20&plus;%20w_%7B2%7D%20v_2%29%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20w_%7B1%7DAv_1%20&plus;%20w_%7B2%7DAv_2%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20w_%7B1%7D%20%5Csigma_1%20u_1%20&plus;%20w_%7B2%7D%20%5Csigma_2%20u_2%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20w_%7B1%7D%20%5Csigma_1%20u_1%20%5CVert%5E2%20&plus;%20%5CVert%20w_%7B2%7D%20%5Csigma_2%20u_2%20%5CVert%5E2%20%5C%3B%5C%3B%20%5Ctext%7B%28orthogonal%29%7D%20%5C%5C%20%26%3D%20w_%7B1%7D%5E2%20%5Csigma_1%5E2%20%5CVert%20u_1%20%5CVert%5E2%20&plus;%20w_%7B2%7D%5E2%20%5Csigma_2%5E2%20%5CVert%20u_2%20%5CVert%5E2%20%5C%5C%20%26%3D%20w_%7B1%7D%5E2%20%5Csigma_1%5E2%20&plus;%20w_%7B2%7D%5E2%20%5Csigma_2%5E2%20%5C%3B%5C%3B%20%5Ctext%7B%28unit%20vector%29%7D%5C%5C%20%5Cend%7Baligned%7D">
+    - orthogonal : u1 과 u2 는 단위벡터이면서 서로 직교하므로 이차방적식의 2u1^Tu2 부분은 내적값이 0 이 되어 제거된다.
+    - 마찬가지로 u1, u2 의 놈의 제곱값도 1 이므로 상쇄된다.
+- <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Csigma_1%20%3E%20%5Csigma_2%20%3E%200%2C%5C%3B%5C%3B%20w_1%5E2%20&plus;%20w_2%5E2%20%3D%201"> 을 만족하면서 위의 식을 가장 크게하는 w : w1=1, w2=0
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%20%3D%20w_1v_1%20&plus;%20w_2v_2%2C%5C%3B%5C%3Bw%3Dv_1">
+    - 즉 Aw 의 놈을 가장 크게 만드는 벡터 w 의 방향은 첫 번째 오른쪽 특이벡터 방향이라는 것을 알 수 있다. 
+- 그러므로 Aw 의 놈 값은 첫번째 특잇값이 된다.,
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5CVert%20Aw%5CVert%20%3D%20%5CVert%20Av_1%5CVert%20%3D%20%5CVert%20%5Csigma_1%20u_1%5CVert%20%3D%20%5Csigma_1%20%5CVert%20u_1%5CVert%20%3D%20%5Csigma_1">
+
+#### 여러개의 벡터에 대한 1차원 근사문제
+- 여러개의 벡터와 벡터가 가리키는 여러개의 점들에 적용한 1차원 근사문제는 다음과 같다.
+<img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5CVert%20Aw%20%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28a_i%5ETw%29%5E2%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28a_i%5ETw%29%5ET%28a_i%5ETw%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20w%5ETa_ia_i%5ETw%20%5C%5C%20%26%3D%20w%5ET%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20a_ia_i%5ET%20%5Cright%29%20w%20%5C%5C%20%26%3D%20w%5ET%20A%5ETA%20w%20%5C%5C%20%5Cend%7Baligned%7D">
+    - **ai^T 와 w 의 곱을 전치연산을 사용하여 정리하면 aiai^T 의 형태가 된다.** 이러한 형태는 분산행렬과 같다.
+- <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%5ETA%5ETAw"> 를 분산행렬의 고윳값분해를 사용하여 풀이한다.
+<img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20w%5ETA%5ETAw%20%26%3D%20w%5ET%20V%20%5CLambda%20V%5ET%20w%20%5C%5C%20%26%3D%20w%5ET%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%20%5Csigma%5E2_iv_iv_i%5ET%20%5Cright%29%20w%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%28w%5ETv_i%29%28v_i%5ETw%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%5CVert%20v_i%5ETw%5CVert%5E2%20%5C%5C%20%5Cend%7Baligned%7D">
+
+- 따라서 여러개의 벡터에 대한 1차원 근사문제는 다음과 같다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20arg%5Cmax_w%20%5C%7CAw%5C%7C%5E2%20%3D%20arg%5Cmax_w%20%5Csum_%7Bi%3D1%7D%5EM%5Csigma_i%5E2%5C%7Cv_i%5ETw%5C%7C%5E2">
+    - **이 값을 가장 크게 하려면 w 를 가장 큰 특잇값이 첫번째 특잇값에 대응하는 첫번째 오른쪽 특이벡터 v1 으로 해야한다.**
+    
+#### 랭크-1 근사문제
+- 1차원 근사문제가 투영벡터를 크게 하여 점과 직선과의 거리를 작게하는 방식으로 접근했다면, **랭크-1 근사문제는 원래의 행렬과 투영벡터가 가장 유사해지도록 접근하는 방식이다.**
+    - ai를 w에 투영한 벡터 : <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20a_i%5E%7B%5CVert%20w%7D%20%3D%20%28a_i%5ETw%29w">
+- N 개의 M 차원 벡터를 w 에 1차원으로 투영하여 가장 비슷한 N 개의 1차원 벡터를 만들 수 있다. 
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20a_1%5E%7B%5CVert%20w%7D%2C%5C%3Ba_2%5E%7B%5CVert%20w%7D%2C%5Ccdots%2Ca_N%5E%7B%5CVert%20w%7D">
+- 이 투영벡터들로 구성된 행렬 A' 를 정의한다.
+
+<img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%27%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cleft%28a%5E%7B%5CVert%20w%7D_1%5Cright%29%5ET%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_2%5Cright%29%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_N%5Cright%29%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ETw%5E%7B%7Dw%5ET%20%5C%5C%20a_2%5ETw%5E%7B%7Dw%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ETw%5E%7B%7Dw%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ET%20%5C%5C%20a_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ET%20%5Cend%7Bbmatrix%7D%20w%5E%7B%7Dw%5ET%20%3D%20Aw%5E%7B%7Dw%5ET">
+
+- **따라서 랭크-1 근사문제는 원래 행렬 A에 랭크-1 행렬 ww^T 를 곱해서 원래 행렬 A 와 가장 비슷한 행렬 A' 를 만드는 문제와 같다.**
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20arg%20min_w%20%5C%7CA-A%27%5C%7C%20%3D%20arg%20min_w%20%5C%7CA-AWW%5ET%5C%7C">
+    
+#### K 차원 근사
+- **K 차원 근사는 여러개의 벡터들이 가리키는 점에 가까운 다차원의 벡터공간을 찾는 것과 같다. 직선에 투영하는 것이 아니라 벡터공간에 투영하는 방식이다.**
+    - N 개의 M 차원 벡터 a1,a2,aN 을 1차원이 아니라 정규직교인 기저벡터 w1,w2,...,wk 로 이루어진 **K 차원 벡터공간에 투영하여** 가장 비슷한 n개의 K 차원 벡터를 만드는 정규직교 기저벡터 w1,w2,...,wk 를 찾는 문제와 같다. **어떤 각도로 벡터공간을 놓아야 점들과 가까워지는지 찾는 문제.**
+    - 즉 정규직교, 선형독립하는 기저벡터 wi 들로 벡터공간을 만들고, 여기에 벡터 ai 들을 투영하여 구한 직교벡터의 길이를 가장 작게 만들기 위한 기저벡터 wi 를 찾는 것이다.
+- ```기저벡터들의 집합인 행렬 W```
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20W%20%3D%20%5Bw_1%2Cw_2%2C%5Ccdots%2Cw_k%5D">
+- ```정규직교 하는 기저벡터 wk에 대한 벡터 ai 의 투영벡터```
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20a%5E%7B%5CVert%20w%7D_i%20%26%3D%20%28a_i%5ETw_1%29w_1%20&plus;%28a_i%5ETw_2%29w_2%20&plus;%5Ccdots&plus;%20%28a_i%5ETw_K%29w_K%20%5C%5C%5Cend%7Baligned%7D%3D%5Csum_%7Bk%3D1%7D%5EK%20%28a_i%5ETw_k%29w_k">
+- ```벡터 a1,a2,aN 을 행벡터로 가지는 행렬 A 를 가정```
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ET%20%5C%5C%20a_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ET%20%5Cend%7Bbmatrix%7D">
+- ```모든 점들과의 거리의 제곱합은 행렬의 놈으로 계산할 수 있다.```
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a_i%5E%7B%5Cperp%20w%7D%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a_i%5CVert%5E2%20-%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a%5E%7B%5CVert%20w%7D_i%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20A%20%5CVert%5E2%20-%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a%5E%7B%5CVert%20w%7D_i%5CVert%5E2%20%5C%5C%20%5Cend%7Baligned%7D">
+
+- ```행렬 A 는 이미 주어져 있으므로 이 식을 가장 작게하려면 투영벡터 길이의 제곱합을 크게 하면 된다.```
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a%5E%7B%5CVert%20w%7D_i%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Csum_%7Bk%3D1%7D%5EK%20%5CVert%20%28a_i%5ETw_k%29w_k%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Csum_%7Bk%3D1%7D%5EK%20%5CVert%20a_i%5ETw_k%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20w_k%5ET%20A%5ETA%20w_k%20%5C%5C%20%5Cend%7Baligned%7D">
+    - 전치연산을 통해서 수식 정리를 2번 하면 분산행렬의 형태로 바꿀 수 있다.
+- ```분산행렬의 고유분해를 사용해서 정리.```
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5Csum_%7Bk%3D1%7D%5EK%20w_k%5ET%20A%5ETA%20w_k%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20w_k%5ET%20V%20%5CLambda%20V%5ET%20w_k%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20w_k%5ET%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%20%5Csigma%5E2_iv_iv_i%5ET%20%5Cright%29%20w_k%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%5CVert%20v_i%5ETw_k%5CVert%5E2%20%5C%5C%20%5Cend%7Baligned%7D">
+- 따라서 가장 큰 K 개의 특잇값에 대응하는 오른쪽 특이벡터가 기저벡터일 때 가장 값이 커진다는 것을 알 수 있다.
+
+#### 랭크-K 근사문제
+- 여러개의 벡터가 가리키는 점들에 가장 가까운 어떤 벡터공간을 구하기 위해서 이 점들과 벡터공간의 기저벡터들에 대한 투영벡터와 직교벡터의 관계를 적용하였다. 직교벡터 즉 거리들의 합을 가장 작게 하기 위해서 가장 큰 투영벡터를 만드는 **벡터공간의 기저벡터 wk 를 찾는 것이 목표이다.**
+- 투영벡터들의 제곱합을 풀이하는 과정에서 고윳값분해 성질들을 적용하였고, **이 성질로부터 오른쪽 기저벡터 중 가장 큰 K 개의 특잇값에 대응하는 오른쪽 특이벡터가 기저벡터가 되는 것을 알 수 있었다.**
+- 이러한 문제는 랭크-K 근사문제로 바꿀 수도 있다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20a%5E%7B%5CVert%20w%7D_i%20%26%3D%20%28a_i%5ETw_1%29w_1%20&plus;%20%28a_i%5ETw_2%29w_2%20&plus;%20%5Ccdots%20&plus;%20%28a_i%5ETw_K%29w_K%20%5C%5C%20%26%3D%20%5Cbegin%7Bbmatrix%7D%20w_1%20%26%20w_2%20%26%20%5Ccdots%20%26%20w_K%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20a_i%5ETw_1%20%5C%5C%20a_i%5ETw_2%20%5C%5C%20%5Cvdots%20%5C%5C%20a_i%5ETw_K%20%5Cend%7Bbmatrix%7D%20%5C%5C%20%26%3D%20%5Cbegin%7Bbmatrix%7D%20w_1%20%26%20w_2%20%26%20%5Ccdots%20%26%20w_K%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20w_1%5ET%20%5C%5C%20w_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20w_K%5ET%20%5Cend%7Bbmatrix%7D%20a_i%20%5C%5C%20%26%3D%20WW%5ETa_i%20%5Cend%7Baligned%7D">
+- 이러한 투영벡터를 모아놓은 행렬 A' 는 다음과 같다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%27%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cleft%28a%5E%7B%5CVert%20w%7D_1%5Cright%29%5ET%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_2%5Cright%29%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_N%5Cright%29%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ETW%5E%7B%7DW%5ET%20%5C%5C%20a_2%5ETW%5E%7B%7DW%5ET%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ETW%5E%7B%7DW%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ET%20%5C%5C%20a_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ET%20%5Cend%7Bbmatrix%7D%20W%5E%7B%7DW%5ET%20%3D%20AW%5E%7B%7DW%5ET">
+
+- 따라서 이 문제는 원래 행렬 A에 랭크-K 행렬을 WW^T 를 곱해서 원래의 행렬 A와 가장 비슷한 행렬 A' 를 만드는 문제와 같게 된다.
+    - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Carg%5Cmin_%7Bw_1%2C%5Ccdots%2Cw_K%7D%20%5CVert%20A%20-%20AW%5E%7B%7DW%5ET%20%5CVert">
+    
+- 랭크-1 근사문제의 특징은 점 들을 1차원 형태인 벡터 w 에 투영한 결과를 찾는 방식이고, 랭크-K 근사문제의 특징은 기저벡터 여러개 w1,w2,...,wk 에 투영한 결과를 찾는 방식이다.
+
+### 5. Numpy for Linear algebra
 
 #### 1) 벡터의 길이
 - 놈 norm
