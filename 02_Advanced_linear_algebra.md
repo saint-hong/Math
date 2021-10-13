@@ -462,6 +462,9 @@
     
     - **ai^T 와 w 의 곱을 전치연산을 사용하여 정리하면 aiai^T 의 형태가 된다.** 이러한 형태는 분산행렬과 같다.
 - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20w%5ETA%5ETAw"> 를 분산행렬의 고윳값분해를 사용하여 풀이한다.
+- 분산행렬의 고유벡터는 원래행렬의 오른쪽 특잇값 행렬과 같고, 분산행렬의 고유값행렬은 원래행렬의 특이값행렬의 제곱과 같다.
+- 특이분해를 적용했을 때 특잇값제곱은 스칼라이므로 앞으로 나올 수 있다.
+- v_i^Tw 의 형태로 정리하면 제곱합형태가 된다.
 
 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20w%5ETA%5ETAw%20%26%3D%20w%5ET%20V%20%5CLambda%20V%5ET%20w%20%5C%5C%20%26%3D%20w%5ET%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%20%5Csigma%5E2_iv_iv_i%5ET%20%5Cright%29%20w%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%28w%5ETv_i%29%28v_i%5ETw%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BM%7D%5Csigma%5E2_i%5CVert%20v_i%5ETw%5CVert%5E2%20%5C%5C%20%5Cend%7Baligned%7D">
 
@@ -475,6 +478,7 @@
 - N 개의 M 차원 벡터를 w 에 1차원으로 투영하여 가장 비슷한 N 개의 1차원 벡터를 만들 수 있다. 
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20a_1%5E%7B%5CVert%20w%7D%2C%5C%3Ba_2%5E%7B%5CVert%20w%7D%2C%5Ccdots%2Ca_N%5E%7B%5CVert%20w%7D">
 - 이 투영벡터들로 구성된 행렬 A' 를 정의한다.
+- a_i^Tw 가 스칼라이므로 전치연산의 식을 정리할때 전치가 사라지고 앞으로 나올 수 있다.
 
 <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%27%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cleft%28a%5E%7B%5CVert%20w%7D_1%5Cright%29%5ET%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_2%5Cright%29%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_N%5Cright%29%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ETw%5E%7B%7Dw%5ET%20%5C%5C%20a_2%5ETw%5E%7B%7Dw%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ETw%5E%7B%7Dw%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ET%20%5C%5C%20a_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ET%20%5Cend%7Bbmatrix%7D%20w%5E%7B%7Dw%5ET%20%3D%20Aw%5E%7B%7Dw%5ET">
 
@@ -488,6 +492,7 @@
 - ```기저벡터들의 집합인 행렬 W```
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20W%20%3D%20%5Bw_1%2Cw_2%2C%5Ccdots%2Cw_k%5D">
 - ```정규직교 하는 기저벡터 wk에 대한 벡터 ai 의 투영벡터```
+- 투영벡터 공식의 분모의 w의 놈값은 1이므로 사라진다.
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20a%5E%7B%5CVert%20w%7D_i%20%26%3D%20%28a_i%5ETw_1%29w_1%20&plus;%28a_i%5ETw_2%29w_2%20&plus;%5Ccdots&plus;%20%28a_i%5ETw_K%29w_K%20%5C%5C%5Cend%7Baligned%7D%3D%5Csum_%7Bk%3D1%7D%5EK%20%28a_i%5ETw_k%29w_k">
 - ```벡터 a1,a2,aN 을 행벡터로 가지는 행렬 A 를 가정```
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ET%20%5C%5C%20a_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ET%20%5Cend%7Bbmatrix%7D">
@@ -495,6 +500,7 @@
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a_i%5E%7B%5Cperp%20w%7D%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a_i%5CVert%5E2%20-%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a%5E%7B%5CVert%20w%7D_i%5CVert%5E2%20%5C%5C%20%26%3D%20%5CVert%20A%20%5CVert%5E2%20-%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a%5E%7B%5CVert%20w%7D_i%5CVert%5E2%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - ```행렬 A 는 이미 주어져 있으므로 이 식을 가장 작게하려면 투영벡터 길이의 제곱합을 크게 하면 된다.```
+- 이 식의 풀이에서 놈의 제곱을 제곱합의 형태로 바꾸면, w_k^T 와 w_k 가 나오는데 두 벡터는 방향이 같으므로 내적하면 값이 1이므로 사라진다.
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20%5Csum_%7Bi%3D1%7D%5EN%20%5CVert%20a%5E%7B%5CVert%20w%7D_i%5CVert%5E2%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Csum_%7Bk%3D1%7D%5EK%20%5CVert%20%28a_i%5ETw_k%29w_k%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Csum_%7Bk%3D1%7D%5EK%20%5CVert%20a_i%5ETw_k%20%5CVert%5E2%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20w_k%5ET%20A%5ETA%20w_k%20%5C%5C%20%5Cend%7Baligned%7D">
     - 전치연산을 통해서 수식 정리를 2번 하면 분산행렬의 형태로 바꿀 수 있다.
 - ```분산행렬의 고유분해를 사용해서 정리.```
@@ -505,6 +511,7 @@
 - 여러개의 벡터가 가리키는 점들에 가장 가까운 어떤 벡터공간을 구하기 위해서 이 점들과 벡터공간의 기저벡터들에 대한 투영벡터와 직교벡터의 관계를 적용하였다. 직교벡터 즉 거리들의 합을 가장 작게 하기 위해서 가장 큰 투영벡터를 만드는 **벡터공간의 기저벡터 wk 를 찾는 것이 목표이다.**
 - 투영벡터들의 제곱합을 풀이하는 과정에서 고윳값분해 성질들을 적용하였고, **이 성질로부터 오른쪽 기저벡터 중 가장 큰 K 개의 특잇값에 대응하는 오른쪽 특이벡터가 기저벡터가 되는 것을 알 수 있었다.**
 - 이러한 문제는 랭크-K 근사문제로 바꿀 수도 있다.
+- a_i^Tw_1 에 전치연산을 사용하여 형태를 바꾸면, 스칼라값이 되어 전치가 사라진다.
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Cbegin%7Baligned%7D%20a%5E%7B%5CVert%20w%7D_i%20%26%3D%20%28a_i%5ETw_1%29w_1%20&plus;%20%28a_i%5ETw_2%29w_2%20&plus;%20%5Ccdots%20&plus;%20%28a_i%5ETw_K%29w_K%20%5C%5C%20%26%3D%20%5Cbegin%7Bbmatrix%7D%20w_1%20%26%20w_2%20%26%20%5Ccdots%20%26%20w_K%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20a_i%5ETw_1%20%5C%5C%20a_i%5ETw_2%20%5C%5C%20%5Cvdots%20%5C%5C%20a_i%5ETw_K%20%5Cend%7Bbmatrix%7D%20%5C%5C%20%26%3D%20%5Cbegin%7Bbmatrix%7D%20w_1%20%26%20w_2%20%26%20%5Ccdots%20%26%20w_K%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20w_1%5ET%20%5C%5C%20w_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20w_K%5ET%20%5Cend%7Bbmatrix%7D%20a_i%20%5C%5C%20%26%3D%20WW%5ETa_i%20%5Cend%7Baligned%7D">
 - 이러한 투영벡터를 모아놓은 행렬 A' 는 다음과 같다.
     - <img src="https://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20A%27%3D%20%5Cbegin%7Bbmatrix%7D%20%5Cleft%28a%5E%7B%5CVert%20w%7D_1%5Cright%29%5ET%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_2%5Cright%29%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cleft%28a%5E%7B%5CVert%20w%7D_N%5Cright%29%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ETW%5E%7B%7DW%5ET%20%5C%5C%20a_2%5ETW%5E%7B%7DW%5ET%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ETW%5E%7B%7DW%5ET%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20a_1%5ET%20%5C%5C%20a_2%5ET%20%5C%5C%20%5Cvdots%20%5C%5C%20a_N%5ET%20%5Cend%7Bbmatrix%7D%20W%5E%7B%7DW%5ET%20%3D%20AW%5E%7B%7DW%5ET">
