@@ -199,11 +199,79 @@ VT[0, :]
 array([ 0.36138659, -0.08452251,  0.85667061,  0.3582892 ])
 ```
 
+# 미분, 적분
+- 슈와르츠 정리에 의해서 다변수함수의 편미분시 순서에 상관없이 결과가 같다.
+- f_xy = f_yx
 
+### 수치미분
+- derivative의 인수로 미분할 함수와 해당지점 x 좌표, 이동거리 (dx) 를 입력한다.
+- dx 는 작은 거리를 설정해주는데, 숫자가 너무 작아지면 오버플로우가 생겨 결과가 부정확해진다.
+- 1e-6 : 백만분의 1
+```
+from scipy.misc import derivative
 
+print(derivative(f, 0, dx=1e-6)
 
+=====<print>=====
 
+1.000000000001
+```
 
+### 심볼릭 연산 symbolic operator
+- 미분을 손을 계산하듯이 변수들을 사용하여 나타내 준다.
+- 계산 순서
+	- 사용할 변수를 심볼로 정의한다.
+	- 함수를 만든다.
+	- 미분을 한다.
+```
+import sympy
 
+# 라텍스 언어를 사용하기 위함
+sympy.init_printing(use_latex='mathjax)
+```
+- 심볼을 정의할 때 'x y z' 식을 입력할 것
+```
+x, y = sympy.symbols('x y')
+```
+- 특수한 수학 지표들은 sympy.을 사용한다
+```
+f = sympy.exp(x**2 + 2 * y**2)
+```
+- 단변수, 다변수 함수의 미분, 편미분
+```
+sympy.diff(f, x)
+sympy.diff(f, y)
+sympy.diff(f, x, x)
+sympy.diff(f, y, y)
+sympy.diff(f, x, y)
+sympy.diff(f, y, x)
+```
+- 미분결과 식을 정리하는 명령어
+```
+sympy.simplify(sympy.diff(f, x, y))
+```
 
+### 부정적분
+- 미분의 반대 작업, 도함수를 통해서 원래 함수를 찾는 작업
+```
+import sympy
 
+sympy.init_printing(use_latex='mathjax')
+```
+- 심볼 설정
+```
+x, y = sympy.symbols('x y')
+```
+- 함수 설정
+```
+f = (x*y)*sympy.exp(x**2 + y**2)
+```
+- 부정적분
+```
+sympy.integrate(f, x)
+sympy.integrate(f, y)
+sympy.simplify(sympy.integrate(f, x, x))
+sympy.simplify(sympy.integrate(f, y, y))
+sympy.simplify(sympy.integrate(f, x, y))
+sympy.simplify(sympy.integrate(f, y, x))
+```
