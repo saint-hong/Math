@@ -217,61 +217,119 @@ print(derivative(f, 0, dx=1e-6)
 1.000000000001
 ```
 
-### 심볼릭 연산 symbolic operator
-- 미분을 손을 계산하듯이 변수들을 사용하여 나타내 준다.
-- 계산 순서
-	- 사용할 변수를 심볼로 정의한다.
-	- 함수를 만든다.
-	- 미분을 한다.
+# 미분과 적분
+
+### 심볼릭 연산
+- 함수의 미분과 적분을 심볼로 지정 된 변수를 사용하여 실제 계산하듯이 계산해주는 기능
+- 일반적으로 사용하는 변수는 이미 메모리에 씌여 있는 어떤 숫자를 기호로 쓴 것
+- 심볼릭 변수는 아무런 숫자도 대입 안 되어 있음
+- 따라서 어떤 함수 x^2 의 미분 연산을 하려면 x 라는 기호가 숫자나 벡터가 아닌 심볼임을 정의해 주어야 한다.
+- 심볼릭 연산은 딥러닝 패키지인 텐서플로, 파이토치에서 기울기 함수 계산에 사용됨
+
+### 심파이로 심볼릭 연산 사용
+- 심볼릭 연산 순서 
+    - 심볼 정의
+    - 함수 정의
+    - 미분, 적분 계산
+- 심파이 임포트
+
 ```
 import sympy
+sympy.init_printing(use_latex='mathjax')  # 라텍스 언어 사용 설정
+```
+#### 미분
+- sympy.diff(f)
+- 변수에 심볼 정의
 
-# 라텍스 언어를 사용하기 위함
-sympy.init_printing(use_latex='mathjax)
 ```
-- 심볼을 정의할 때 'x y z' 식을 입력할 것
+x = sympy.symbols('x')
+type(x)
+
+=====<print>=====
+
+sympy.core.symbol.Symbol
 ```
-x, y = sympy.symbols('x y')
+- 함수정의
+
 ```
-- 특수한 수학 지표들은 sympy.을 사용한다
+f = x * sympy.exp(x)
+ff = x ** 2
+fff = 3 * x ** 2 + 4 * x + 5
+ffff = sympy.log(x)
 ```
-f = sympy.exp(x**2 + 2 * y**2)
+- 미분적용
+
 ```
-- 단변수, 다변수 함수의 미분, 편미분
+sympy.diff(f)
+sympy.diff(ff)
+sympy.diff(fff)
+sympy.diff(ffff)
 ```
+- 복잡한 수식을 소인수분해하여 정리
+
+```
+sympy.simplify(sympy.diff(f))
+sympy.simplify(sympy.diff(ff))
+sympy.simplify(sympy.diff(fff))
+sympy.simplify(sympy.diff(ffff))
+```
+- 편미분 : 다변수 함수의 미분
+
+```
+x, y, z = sympy.symbols('x y z')
+f = x ** 2 + 4 * x * y + 4 * y ** 2
+
+## 변수 x로 편미분
+sympy.diff(f, x)
+## 변수 y로 편미분
+sympy.diff(f, y)
+```
+- 상수항이 포함된 함수의 심볼릭 연산
+
+```
+x, mu, sigma = sympy.symbols('x mu sigma')  ## 괄호안에 띄어쓰기 주의
+
+## 정규분포의 확률밀도함수
+f = sympy.exp((x-mu) ** 2 / sigma ** 2)
 sympy.diff(f, x)
 sympy.diff(f, y)
+sympy.simplify(sympy.diff(f, x))
+```
+- 2차 도함수의 편미분 : 원래 함수를 미분한 후 다시 미분
+
+```
 sympy.diff(f, x, x)
-sympy.diff(f, y, y)
-sympy.diff(f, x, y)
-sympy.diff(f, y, x)
-```
-- 미분결과 식을 정리하는 명령어
-```
-sympy.simplify(sympy.diff(f, x, y))
 ```
 
-### 부정적분
-- 미분의 반대 작업, 도함수를 통해서 원래 함수를 찾는 작업
+#### 부정적분
+- sympy.integrate(f)
+
 ```
 import sympy
-
 sympy.init_printing(use_latex='mathjax')
+
+f = x * sympy.exp(x) + sympy.exp(x)
+
+## 부정적분
+sympy.integrate(f)
 ```
-- 심볼 설정
+- 편미분의 부정적분
+
 ```
 x, y = sympy.symbols('x y')
+f = 2 * x + y
+sympy.simplify(sympy.integrate(f, x))
+sympy.simplify(sympy.integrate(f, y))
 ```
-- 함수 설정
+- 다차도함수의 부정적분 : 이차 도함수에서 원래의 함수를 찾을려면 적분을 2번 해야함
+
 ```
+x, y = sympy.symbols('x y')
 f = (x*y)*sympy.exp(x**2 + y**2)
-```
-- 부정적분
-```
-sympy.integrate(f, x)
-sympy.integrate(f, y)
-sympy.simplify(sympy.integrate(f, x, x))
-sympy.simplify(sympy.integrate(f, y, y))
-sympy.simplify(sympy.integrate(f, x, y))
-sympy.simplify(sympy.integrate(f, y, x))
+
+## x로 적분 후 y로 적분
+sympy.integrate(f, x, y)
+
+## y로 적분 후 x로 적분
+sympy.integrate(f, y, x)
 ```
