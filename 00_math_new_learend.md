@@ -1,4 +1,4 @@
-# 새로 알게 된 것들 정리
+# 뒤늦게 다시 이해하게 된 것들
 
 ## ◎ 고유분해 eigen-decomposition 중에서
 ### 분산행렬 X@X.T의 특징
@@ -89,3 +89,44 @@
   - 그레디언트벡터의 자코비안행렬을 구한다. (벡터를 벡터로 미분한다. 전치 한번한다)
   - 구한 행렬을 전치연산한다.
 - 함수가 연속이고, 미분가능하다면 헤시안행렬은 대칭행렬이 된다. (정방행렬이다, 고유분해를 할 수 있다, 고유분해의 특징을 따른다)
+
+## ◎ 최적화와 최적제어
+
+### 최적화 optimization
+- 최적화 : 목적함수 f 의 값을 최대 또는 최소가 되도록 하는 독립변수 x 를 찾는 방법
+  - 최적화의 대상은 목적함수
+  - 목적함수 :
+    - 성능함수 performance function (모수의 변화에 함수의 성능을 측정함, 클 수록 좋음)
+    - 손실함수 loss function (모수의 변화에 따라 달라지는 출력값의 오차를 측정, 작을 수록 좋음), 비용함수, 오차함수라고도 함
+- 최적화를 위한 필요조건 : 최적의 독립변수 x* 을 입력했을 때 함수의 도함수 값이 0이 되어야한다. 
+  - 1차 도함수의 값이 0 인 지점이 최대 또는 최소값 지점이다.
+  - 2차 도함수의 값이 - 이면 최대값, + 이면 최소값이다. (간단한 그래프로 확인가능 3차함수-2차함수-1차함수)
+  
+### 최적제어 optimal control
+- 최적제어 : 범함수 F 의 값을 최대 또는 최소가 되도록 하는 독립함수 y(x) 를 찾는 방법
+- 최적제어의 필요조건 : 최적의 함수 y*(x) 을 입력했을 때 범함수의 도함수 값이 0이 되어야 한다. 
+- 딥러닝의 GAN 모형 : 현실 데이터와 닮은 데이터를 재현하는데 사용하는 방법으로 다음 범함수의 값을 최대화하는 확률분포함수 p(x) 를 구해준다.
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20L%5Bp%5D%20%3D%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cint%20%28%5Clog%20%28p%28x%29p_%7Bdata%7D%28x%29%20&plus;%20%5Clog%20%281-p%28x%29%29p_%7Bmodel%7D%28x%29%29%20dx"/>
+- 이 범함수의 도함수
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20L%7D%7B%5Cdelta%20p%7D%20%3D%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20p%7D%20%5Clog%20p%28x%29p_%7Bdata%7D%28x%29%20&plus;%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20p%7D%20%5Clog%20%281-p%28x%29%29p_%7Bmodel%7D%28x%29"/>
+- 이 도함수의 갑을 0으로 만드는 최적 확률분포함수 p*(x) 는
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bdata%7D%28x%29%281-p%28x%29%29%20-%20p%28x%29p_%7Bmodel%7D%28x%29%3D0"/>
+- 수식을 정리하면,
+- <img src="https://latex.codecogs.com/gif.latex?p%5E*%28x%29%20%3D%20%5Cdfrac%7Bp_%7Bdata%7D%28x%29%7D%7Bp_%7Bdata%7D%28x%29%20&plus;%20p_%7Bmodel%7D%28x%29%7D"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
