@@ -146,28 +146,15 @@
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20h%28x%2C%20%5Clambda%29%3D%20h%28x_1%2C%20x_2%2C%20%5Cldots%2C%20x_N%2C%20%5Clambda_1%2C%20%5Clambda_2%2C%20%5Cldots%2C%20%5Clambda_M%29%20%7B%5Ccolor%7BGreen%7D%20%7B%5Ccolor%7BBlue%7D%20%7D%7D%3D%20f%28x%29%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Clambda_j%20g_j%28x%29">
 - 새로운 함수 h는 라그랑주 승수 M개를 추가했기때문에 입력변수는 x N개, 람다 M개 이다.
 - 입력변수가 늘어난 만큼 그레디언트 벡터를 영벡터로 만드는 최적화 조건이 된다.
-- 모든 입력변수로 편미분한 값이 0이어야 한다. 
+- 모든 입력변수로 편미분한 값이 0이어야 한다. (x_1 ~ x_N, 람다_1 ~ 람다_M, N+M 개의 입력변수) 
 
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20x_1%7D%3D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_1%7D%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Cdfrac%7B%5Cpartial%20g_j%7D%7B%5Cpartial%20x_1%7D%20%3D%200%2C">\
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20x_2%7D%3D%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_2%7D%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Cdfrac%7B%5Cpartial%20g_j%7D%7B%5Cpartial%20x_2%7D%20%3D%200%2C">\
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cvdots">\
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_N%7D%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Cdfrac%7B%5Cpartial%20g_j%7D%7B%5Cpartial%20x_N%7D%20%3D%200%2C">\
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20%5Clambda_1%7D%20%3D%20g_1%20%3D%200%2C">\
-
-> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cvdots">\  
-
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cvdots">\
 > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20%5Clambda_M%7D%20%3D%20g_M%20%3D%200">
-
-> $\begin{aligned}
-    \dfrac{\partial h}{\partial x_1}
-    &= \dfrac{\partial f}{\partial x_1} + \sum_{j=1}^{M} \dfrac{\partial g_j}{\partial x_1} = 0 \\
-    &= \dfrac{\partial f}{\partial x_2} + \sum_{j=1}^{M} \dfrac{\partial g_j}{\partial x_2} = 0 \\
-    &\vdots \\
-    &= \dfrac{\partial f}{\partial x_N} + \sum_{j=1}^{M} \dfrac{\partial g_j}{\partial x_N} = 0 \\
-    &= \dfrac{\partial h}{\partial \lambda_1} = g_1 = 0 \\
-    &\vdots \\
-    &= \dfrac{\partial h}{\partial \lambda_M} = g_M = 0 \\
-    \end{aligned}$
     
 - 이 연립방정식을 풀면 나오는 해에서 라그랑주 승수를 제외한 x_1~x_N 을 구할 수 있다.
 
