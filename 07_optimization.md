@@ -21,7 +21,7 @@
 
 ### 최적화 문제 
 - 최적화 문제의 수식 : 함수 f(x)의 값을 max 또는 min 으로 만드는 x 의 값 x*
-    - $x^{\ast} = \arg \max_x f(x)$ or $x^{\ast} = \arg \min_x f(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x%5E%7B%5Cast%7D%20%3D%20%5Carg%20%5Cmax_x%20f%28x%29%24%20or%20%24x%5E%7B%5Cast%7D%20%3D%20%5Carg%20%5Cmin_x%20f%28x%29">
 - 일반적으로 f(x) 를 -f(x) 로 바꾸어서 최소값을 찾는다. 
 - 최소화하려는 함수 :
     - 목적함수 objective function, 비용함수, cost function, 손실함수 loss function, 비용함수 cost funtion, 오차함수 erorr function 등이 있다. 
@@ -41,18 +41,15 @@
 - ``현재 위치가 최적점(최대 또는 최소)이라면 기울기와 도함수 값이 0이다.`` 
 - 단변수 함수 : 미분값이 0 이어야 한다.
 
-> $\dfrac{df(x)}{dx} = 0$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Cdfrac%7Bdf%28x%29%7D%7Bdx%7D%20%3D%200">
 
 - 다변수 함수 : 모든 입력변수에 대한 편미분값이 0 이어야 한다. 즉 그레디어트 벡터의 값이 0 이어야 한다.
 
-> $\begin{align} 
-\dfrac{\partial f(x_1, \cdots , x_N)}{\partial x_1}=0 \end{align}$, $\begin{align}
-\dfrac{\partial f(x_1, \cdots , x_N)}{\partial x_2}=0 \end{align}$, $\begin{align}
-\dfrac{\partial f(x_1, \cdots , x_N)}{\partial x_3}=0 \end{align}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20f%28x_1%2C%20%5Ccdots%20%2C%20x_N%29%7D%7B%5Cpartial%20x_1%7D%3D0%20%2C%5C%3B%5C%3B%20%5Cdfrac%7B%5Cpartial%20f%28x_1%2C%20%5Ccdots%20%2C%20x_N%29%7D%7B%5Cpartial%20x_2%7D%3D0%2C%20%5C%3B%5C%3B%20%5Cdfrac%7B%5Cpartial%20f%28x_1%2C%20%5Ccdots%20%2C%20x_N%29%7D%7B%5Cpartial%20x_3%7D%3D0">
 
-> $\begin{align} \cdots \end{align}$, $\begin{align} \dfrac{\partial f(x_1, x_2, \cdots , x_N)}{\partial x_N}=0 \end{align}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Ccdots%2C%5C%3B%5C%3B%20%5Cdfrac%7B%5Cpartial%20f%28x_1%2C%20x_2%2C%20%5Ccdots%20%2C%20x_N%29%7D%7B%5Cpartial%20x_N%7D%3D0">
 
-> $\begin{align} \nabla f = 0, g = 0 \end{align}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Cnabla%20f%20%3D%200%2C%20g%20%3D%200">
 
 - 기울기가 0이면 최대 또는 최소 지점이다. (반드시 최소지점은 아니다.)
     - 따라서 2차 도함수의 값을 구했을때 양수이면 최소값, 음수이면 최대값이다.
@@ -64,7 +61,7 @@
 
 ### 최대경사법
 - ``최대경사법 steepest gradient decendent`` :  현재 위치에서의 기울기값을 이용하여 다음 위치를 찾는 방법
-    - $x_{k+1} = x_k - \mu \nabla f(x_k) = x_k - \mu g(x_k)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x_%7Bk&plus;1%7D%20%3D%20x_k%20-%20%5Cmu%20%5Cnabla%20f%28x_k%29%20%3D%20x_k%20-%20%5Cmu%20g%28x_k%29">
     - 현재 지점 x_k에서 기울기값에 어떤 상수값을 곱한 것을 뺀다.
     - 현재 지점의 기울기가 음수이면 x_k보다 앞으로 이동하고, 기울기가 음수이면 x_k보다 뒤로 이동한다. 현재 지점의 기울기는 다음 위치의 방향을 나타낸다.
     - 비례상수 mu :  ``스텝 사이즈 step size``, 이동 거리의 비율을 정한다.
@@ -74,7 +71,7 @@
     - 다변수 함수의 컨투어 플롯에서는 곡면이 계곡과 같은 지점에서 시작할 경우 진동 현상 oscillation 이 발생한다. 좌우를 왔다갔다하면서 최적점을 찾는데 오래 걸린다. 
 - 진동 현상을 없애는 방법
     - 헤시안 행렬 (2차 도함수) 를 이용하는 방법
-        - $Hf(x) = J(\nabla f(x))^T$, $H_{i,j} = \dfrac {\partial^2 f}{\partial x_i \partial x_j}$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20Hf%28x%29%20%3D%20J%28%5Cnabla%20f%28x%29%29%5ET%24%2C%20%24H_%7Bi%2Cj%7D%20%3D%20%5Cdfrac%20%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x_i%20%5Cpartial%20x_j%7D">
         - 그레디언트 벡터를 자코비안 행렬로 만든 뒤 전치연산을 한 것
         - 정방행렬, 대칭행렬, 
     - 모멘텀 momentom 방법 : x_k+1 의 위치를 일정한 방향을 유지하도록 모멘텀 성분을 추가하는 방법, 인공신경망 등에서 쓰임
@@ -86,17 +83,17 @@
     - 테일러 전개식을 사용하여 현재 지점과 주변의 어떤 지점 t를 나타낸다.
     - 다음식에 의해서 어떠한 점에서 시작하더라도 한번에 최적점을 찾는다.
 
-> $f(x_k + t) \approx f(x_k) + f^{'}(x_k)t + \dfrac {1}{2} f^{''}(x_k)t^2$ \
-> $\dfrac {d}{dt}(f(x_k) + f^{'}(x_k)t + \dfrac{1}{2}f^{''}(x_k)t^2) = 0$ \
-> $f^{'}(x_k) + f^{''}(x_k)t = 0$ \
-> $t=-\dfrac {f^{'}(x_k)}{f^{''}(x_k)}$ \
-> $x_{k+1} = x_k + t = x_k - \dfrac {f^{'}(x_k)}{f^{''}(x_k)}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20f%28x_k%20&plus;%20t%29%20%5Capprox%20f%28x_k%29%20&plus;%20f%5E%7B%27%7D%28x_k%29t%20&plus;%20%5Cdfrac%20%7B1%7D%7B2%7D%20f%5E%7B%27%27%7D%28x_k%29t%5E2"> \
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Cdfrac%20%7Bd%7D%7Bdt%7D%28f%28x_k%29%20&plus;%20f%5E%7B%27%7D%28x_k%29t%20&plus;%20%5Cdfrac%7B1%7D%7B2%7Df%5E%7B%27%27%7D%28x_k%29t%5E2%29%20%3D%200"> \
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20f%5E%7B%27%7D%28x_k%29%20&plus;%20f%5E%7B%27%27%7D%28x_k%29t%20%3D%200"> \
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20t%3D-%5Cdfrac%20%7Bf%5E%7B%27%7D%28x_k%29%7D%7Bf%5E%7B%27%27%7D%28x_k%29%7D"> \
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x_%7Bk&plus;1%7D%20%3D%20x_k%20&plus;%20t%20%3D%20x_k%20-%20%5Cdfrac%20%7Bf%5E%7B%27%7D%28x_k%29%7D%7Bf%5E%7B%27%27%7D%28x_k%29%7D">
     
 - 다변수 함수일 경우 : 최대경사법에서 mu 대신에 2차 도함수인 헤시안 행렬의 역행렬을 곱한다.
     - ``다음 식에 의해서 어떤 점 x_n 에서 시작하더라도 바로 최저점으로 이동한다.``
 
-> ${x}_{n+1} = {x}_n - [{H}f({x}_n)]^{-1} \nabla f({x}_n)$ \
-> ${x}_{n+1} = x_n - \dfrac {f^{'}(x_n)}{f^{''}(x_n)}$ 
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%7Bx%7D_%7Bn&plus;1%7D%20%3D%20%7Bx%7D_n%20-%20%5B%7BH%7Df%28%7Bx%7D_n%29%5D%5E%7B-1%7D%20%5Cnabla%20f%28%7Bx%7D_n%29"> \
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%7Bx%7D_%7Bn&plus;1%7D%20%3D%20x_n%20-%20%5Cdfrac%20%7Bf%5E%7B%27%7D%28x_n%29%7D%7Bf%5E%7B%27%27%7D%28x_n%29%7D"> 
     
 - 뉴턴방법은 도함수 (그레디언트 벡터)와 2차 도함수 (헤시안 행렬)를 둘다 구해야하고 2차 함수의 형태가 아닌 경우 최적화가 안되는 경우가 있다.
 
@@ -129,9 +126,9 @@
 ### 컨벡스 문제
 - 컨벡스 문제 convex problem : 목적함수의 2차 도함수 값이 항상 0 이사이 되는 영역에서만 정의된 최적화 문제
 - 2차 도함수 값이 0 이상이면 원래 목적함수의 형태는 볼록한 형태 (볼록도 convex) 이므로 최소점을 갖는 함수이다.
-    - $\begin{align} \dfrac{\partial^2 f}{\partial x^2}=0 \end{align}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x%5E2%7D%3D0">
 - 다변수 목적함수에서는 주어진 영역ㅇ서 헤시안 행렬은 항상 양의 준정부호 positive semidefinite 이다.
-    - $x^THx >= 0 \;\; for \; all \; x$ 
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x%5ETHx%20%3E%3D%200%20%5C%3B%5C%3B%20for%20%5C%3B%20all%20%5C%3B%20x">
     
 # 제한조건이 있는 최적화 문제
 - 제한조건이 있는 최적화 constrained optimization
@@ -139,21 +136,20 @@
 ### 등식제한 조건이 있는 최적화 문제
 - 등식제한 조건 equality constraint
 - 최적화의 조건과 등식제한 조건을 함께 충족해야한다. : M개의 연립방정식이 0이어야 한다.
-    - 목적함수 : $x^{\ast} = \arg \min_{x} f(x)$
-    - 입력변수의 크기 : $x \in \mathbf {R}^N$
-    - 등식제한 조건 : $g_j(x)=0 \;\; (j=1,\ldots,M)$
+    - 목적함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x%5E%7B%5Cast%7D%20%3D%20%5Carg%20%5Cmin_%7Bx%7D%20f%28x%29">
+    - 입력변수의 크기 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x%20%5Cin%20%5Cmathbf%20%7BR%7D%5EN">
+    - 등식제한 조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20g_j%28x%29%3D0%20%5C%3B%5C%3B%20%28j%3D1%2C%5Cldots%2CM%29">
     
 ### 라그랑주 승수법
-- 라그랑주 승수법 lagrange multiplier : 등식제한 조건이 있는 최적화 문제를 푸는 방법, 라그랑주 승수 $\lambda$ 를 사용한다.
+- 라그랑주 승수법 lagrange multiplier : 등식제한 조건이 있는 최적화 문제를 푸는 방법, 라그랑주 승수 <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Clambda"> 를 사용한다.
 - 새로운 목적함수 h(x, 람다)를 만든다. 원래 목적함수 f(x) 와 라그랑주 승수인 새로운 변수를 등식제한 조건 g_j 와 곱한 후 더한다. 
-> $\begin{aligned}
-    h(x, \lambda) 
-    &= h(x_1, x_2, \ldots, x_N, \lambda_1, \lambda_2, \ldots, \lambda_M)\\
-    &= f(x) + \sum_{j=1}^{M} \lambda_j g_j(x)
-    \end{aligned}$
+> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20h%28x%2C%20%5Clambda%29%3D%20h%28x_1%2C%20x_2%2C%20%5Cldots%2C%20x_N%2C%20%5Clambda_1%2C%20%5Clambda_2%2C%20%5Cldots%2C%20%5Clambda_M%29%20%7B%5Ccolor%7BGreen%7D%20%7B%5Ccolor%7BBlue%7D%20%7D%7D%3D%20f%28x%29%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Clambda_j%20g_j%28x%29">
 - 새로운 함수 h는 라그랑주 승수 M개를 추가했기때문에 입력변수는 x N개, 람다 M개 이다.
 - 입력변수가 늘어난 만큼 그레디언트 벡터를 영벡터로 만드는 최적화 조건이 된다.
 - 모든 입력변수로 편미분한 값이 0이어야 한다. 
+
+><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20x_1%7D%3D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_1%7D%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Cdfrac%7B%5Cpartial%20g_j%7D%7B%5Cpartial%20x_1%7D%20%3D%200%2C">
+
 > $\begin{aligned}
     \dfrac{\partial h}{\partial x_1}
     &= \dfrac{\partial f}{\partial x_1} + \sum_{j=1}^{M} \dfrac{\partial g_j}{\partial x_1} = 0 \\
