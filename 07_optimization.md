@@ -149,6 +149,7 @@
 - 모든 입력변수로 편미분한 값이 0이어야 한다. 
 
 ><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20x_1%7D%3D%20%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_1%7D%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Cdfrac%7B%5Cpartial%20g_j%7D%7B%5Cpartial%20x_1%7D%20%3D%200%2C">
+><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%7D%7B%5Cpartial%20x_2%7D%3D%5Cdfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_2%7D%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7BM%7D%20%5Cdfrac%7B%5Cpartial%20g_j%7D%7B%5Cpartial%20x_2%7D%20%3D%200%2C">
 
 > $\begin{aligned}
     \dfrac{\partial h}{\partial x_1}
