@@ -107,28 +107,66 @@ print("진부분집합 {} > {} = {}".format(A1, A1, A1 > A1))
 ```
 
 ### 차집합과 여집합
-- 차집합 difference : A에 속하면서 B에는 속하지 않는 원소로 이루어진 A의 부분집합
+- ``차집합 difference`` : A에 속하면서 B에는 속하지 않는 원소로 이루어진 A의 부분집합
   - A - B (A에서 B를 뺸 집합)
-- 여집합 complement : 전체집합 Ω 중에서 부분집합 A에 속하지 않는 원소로만 이루어진 집합
-  - A^C
-  - 
+- ``여집합 complement`` : 전체집합 Ω 중에서 부분집합 A에 속하지 않는 원소로만 이루어진 집합
+  - A^c
+- 여집합 A^c는 전체집합에서 집합 A를 뺀 차집합과 같다.
 
+#### python
+- 차집합 : A.difference(B), A - B
+```
+A1 = set([1, 2, 3, 4])
+A2 = set([2, 4, 6])
+A3 = set([1, 2, 3])
+A4 = set([2, 3, 4, 5, 6])
 
+print("차집합 {} difference {} = {}".format(A1, A2, A1.difference(A2)))
+print("차집합 {}-{} = {}".format(A3, A4, A3 - A4))
 
+=====<print>=====
 
+차집합 {1, 2, 3, 4} difference {2, 4, 6} = {1, 3}
+차집합 {1, 2, 3}-{2, 3, 4, 5, 6} = {1}
+```
 
+### 공집합
+- 공집합 null set : 아무런 원소도 포함하지 않는 집합
+  - 기호 : ∅
+- 공집합은 모든 집합의 부분집합이다.
+  -  ∅ ⊂ A, for all A
+- 공집합과 임의의 집합의 교집합은 공집합이다.
+  -  ∅ ∩ A = ∅
+- 공집합과 임의의 집합의 합집합은 그 집합 자신이다.
+  -  ∅ ∪ A = A
+- 여집합과 원래의 집합의 교집합은 공집합이다.
+  - A ∩ A^c = ∅ 
 
+### python
+- 공집합 정의
+```
+empty_set = set([])
+print(empty_set)
 
+=====<print>=====
 
+set()
+```
+- 집합 A와 공집합의 관계
+- 공집합은 임의의 집합의 부분집합이면서 진부분집합이다.
+```
+A1 = set([1, 2, 3, 4])
+empty_set = set([])
 
+print("empty_set < {} = {}".format(A1, empty_set < A1))
+print("empty_set <= {} = {}".format(A1, empty_set <= A1))
+print("empty_set intersection {} = {}".format(A1, empty_set.intersection(A1)))
+print("empty_set union {} = {}".format(A1, empty_set.union(A1)))
 
+=====<print>=====
 
-
-
-
-
-
-
-
-
-
+empty_set < {1, 2, 3, 4} = True
+empty_set <= {1, 2, 3, 4} = True
+empty_set intersection {1, 2, 3, 4} = set()
+empty_set union {1, 2, 3, 4} = {1, 2, 3, 4}
+```
