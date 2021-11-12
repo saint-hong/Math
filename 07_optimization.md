@@ -129,7 +129,14 @@
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20%5Cdfrac%7B%5Cpartial%5E2%20f%7D%7B%5Cpartial%20x%5E2%7D%3D0">
 - 다변수 목적함수에서는 주어진 영역ㅇ서 헤시안 행렬은 항상 양의 준정부호 positive semidefinite 이다.
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B120%7D%20%5Cfn_cm%20%5Clarge%20x%5ETHx%20%3E%3D%200%20%5C%3B%5C%3B%20for%20%5C%3B%20all%20%5C%3B%20x">
-    
+- 볼록도 convexity, 오목도 concave : 그래프 아래에서 위로 올려다 봤을 때의 형태를 떠올리면 쉽다.
+    - 아래로 볼록한 그래프가 최소점, 위로 오목한 그래프가 최대점
+- 볼록한 함수와 오목한 함수를 정의하는 식 : 볼록함수는 x에 t배 만큼 x2에 1-t배 만큼 곱한 값을 더한 위치의 함수값은 x, x2의 함수값에 각각 t, 1-t배 만큼 곱한 값의 합보다 항상 작다. 오목함수는 반대로 적용
+    - 볼록함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20f%20%5Cleft%28%20t%7Bx%7D%20&plus;%20%281-t%29%7By%7D%20%5Cright%29%20%3C%3D%20tf%28%7Bx%7D%29%20&plus;%20%281-t%29%20f%28%7By%7D%29">
+    - 오목함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20f%20%5Cleft%28%281-t%29%7Bx%7D%20&plus;%20t%7By%7D%20%5Cright%29%20%3E%3D%20%281-t%29f%28%7Bx%7D%29%20&plus;%20tf%7By%7D">
+- 일반적으로 최적화는 컨벡스 문제를 다루며, 딥러닝도 복잡한 다변수 함수의 최적점을 찾는 문제와 같다. 
+- 따라서 목적함수의 볼록도, 오목도에따라 최적화 방식도 다르다.
+
 # 제한조건이 있는 최적화 문제
 - 제한조건이 있는 최적화 constrained optimization
 
