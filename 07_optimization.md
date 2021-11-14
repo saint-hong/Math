@@ -190,6 +190,9 @@
         - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clambda_j%20%5Ccdot%20%5Cdfrac%7B%5Cpartial%20h%28x%2C%20%5Clambda%29%7D%7B%5Cpartial%20%5Clambda_j%7D%20%3D%200">
     - 라그랑주 승수는 음수가 아니어야 한다.
         - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clambda_j%20%5Cgeq%200">
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20g_j%20%3D%200%2C%20%5C%3B%5C%3B%20%5Clambda%20%5Cneq%200">
+- ``부등식 제한조건이 있는 최적화 문제는 각 제한조건의 영역,범위에 대해서 KKT 조건을 따져보면서 최적해를 구해야 한다.``
+>>>>>>> c4b0d0d46fce6c79af6bf0873dfc5fb3f635c54c
 
 #### KKT 2번째 조건의 의미
 - 2번째 조건을 만족하는 경우는 라그랑주 승수 값 자체가 0이거나 미분한 값이 0이면 된다.
@@ -242,28 +245,14 @@
     > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x_1&plus;2%20x_2%20%5Cleq%20300"> \
     > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%204%20x_1&plus;6%20x_2%20%5Cleq%208000"> 
        
-    > 입력변수의 조건 : $x_1 \geq 0, \;\; x_2 \geq 0$
+    > 입력변수의 조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x_1%20%5Cgeq%200%2C%20%5C%3B%5C%3B%20x_2%20%5Cgeq%200">
        
 - 정규형 선형계획법 문제로 표기
-    > $\begin{align}
-       \min
-       \begin{bmatrix} 3 & 5 \end{bmatrix}
-       \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
-       \end{align}$  
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Cmin%20%5Cbegin%7Bbmatrix%7D%203%20%26%205%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%5C%5C%20x_2%20%5Cend%7Bbmatrix%7D">
     
-    >  $\begin{align}
-       \min
-       \begin{bmatrix} -1 & 0 \\ 0 & -1 \\ 1 & 2 \\ 4 & 6 \end{bmatrix}
-       \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
-       \leq
-       \begin{bmatrix} -150 \\ -150 \\ 300 \\ 8000 \end{bmatrix}
-       \end{align}$
+    >  <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Cmin%20%5Cbegin%7Bbmatrix%7D%20-1%20%26%200%20%5C%5C%200%20%26%20-1%20%5C%5C%201%20%26%202%20%5C%5C%204%20%26%206%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%5C%5C%20x_2%20%5Cend%7Bbmatrix%7D%20%5Cleq%20%5Cbegin%7Bbmatrix%7D%20-150%20%5C%5C%20-150%20%5C%5C%20300%20%5C%5C%208000%20%5Cend%7Bbmatrix%7D">
     
-    > $\begin{align}
-       \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
-       \geq
-       \begin{bmatrix} 0 \\ 0 \end{bmatrix}
-       \end{align}$
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Cbegin%7Bbmatrix%7D%20x_1%20%5C%5C%20x_2%20%5Cend%7Bbmatrix%7D%20%5Cgeq%20%5Cbegin%7Bbmatrix%7D%200%20%5C%5C%200%20%5Cend%7Bbmatrix%7D">
 
 ### 이차계획법 문제
 - ``이차계획법 문제 quadratic programming`` : 방정식(등식 제한조건)이나 부등식 제한조건을 가지는 일반화 된 이차형식 quadratic form의 값을 최소화하는 문제, QP 문제
@@ -271,21 +260,19 @@
 - ``이차형식 quadratic form`` : 어떤 벡터와 정방행렬이 '행벡터x정방행렬x행벡터' 형식으로 되어 있는 것 
     > 선형회귀 분석의 결과로 얻은 예측값들과 이에 상응하는 실제값들 간의 차이를 잔차 residual라고 한다. (혹은 오차 erorr) \
     > 모든 입력변수에 대한 잔차를 구하고 이를 잔차벡터로 만들 수 있다.\
-    > $e=y-Xw$  
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20e%3Dy-Xw">  
         
     > 잔차의 크기 RSS Residual sum of square 는 잔차의 제곱합과 같다. \
-    > $\sum_{i=1}^N {e_i}^2=\sum_{i=1}^N (y_i - w^Tx_i)=e^Te=(y-Xw)^T(y-Xw)=y^Ty - y^TXw - w^TX^Ty + w^TX^TXw$  
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Csmall%20%5Csum_%7Bi%3D1%7D%5EN%20%7Be_i%7D%5E2%3D%5Csum_%7Bi%3D1%7D%5EN%20%28y_i%20-%20w%5ETx_i%29%3De%5ETe%3D%28y-Xw%29%5ET%28y-Xw%29%3Dy%5ETy%20-%20y%5ETXw%20-%20w%5ETX%5ETy%20&plus;%20w%5ETX%5ETXw">  
     
     > 잔차의 크기인 잔차제곱합에서 도출 된 마지막 항, 벡터와 행렬의 곱의 형식 \
-    > $w^TAw$
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Csmall%20w%5ETAw">
         
-- QP의 목적함수 : $\dfrac{1}{2}x^TQx + c^Tx$ 
-- 등식 제한조건 : $Ax = b$
-- 입력변수 조건 : $x \geq 0$
+- QP의 목적함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Cdfrac%7B1%7D%7B2%7Dx%5ETQx%20&plus;%20c%5ETx"> 
+- 등식 제한조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20Ax%20%3D%20b">
+- 입력변수 조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x%20%5Cgeq%200">
 - 잔차 제곱합을 최소화하는 예측 모형에 추가적인 제한조건이 있으면 이차계획법 문제가 된다.
     - 이차계획법에 대해서 좀 더 알아 볼것!!!
 
 =======
-        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20g_j%20%3D%200%2C%20%5C%3B%5C%3B%20%5Clambda%20%5Cneq%200">
-- ``부등식 제한조건이 있는 최적화 문제는 각 제한조건의 영역,범위에 대해서 KKT 조건을 따져보면서 최적해를 구해야 한다.``
->>>>>>> c4b0d0d46fce6c79af6bf0873dfc5fb3f635c54c
+        
