@@ -212,17 +212,17 @@
 - ``선형계획법 linear programming`` : 방정식(등식제한조건)이나 부등식 제한조건을 가지는 선형 모형 linear model의 값을 최소화 하는 문제, LP문제
     > 선형 모형 : 선형 조합 linear combination 으로 만든 예측 모형
     > 선형 조합 : 벡터나 행렬에 스칼라를 곱한 후 더하거나 뺀 것
-         >> $c_1x_1+c_2x_2+\cdots+c_Nx_N$ \
-         >> $c_1A_1+c_2A_2+\cdots+c_NA_N$ 
+         >> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20c_1x_1&plus;c_2x_2&plus;%5Ccdots&plus;c_Nx_N"> \
+         >> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20c_1A_1&plus;c_2A_2&plus;%5Ccdots&plus;c_NA_N"> 
          
     > 선형 회귀 모형 linear regression model : 독립변수 x에서 종속변수 y를 예측하는 방법, 단순하면서 널리쓰이는 예측모형
-        >> $\hat y=w_1x_1 + w_2x_2 + \cdots + w_Nx_N=w^Tx$
-- LP 문제의 목적함수 : $\arg \min_x c^Tx$
-- 선형 연립방정식으로 된 등식 제한조건 eq_cons : $Ax=b$
-- 입력 변수 조건 : $x \geq 0$
+        >> <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Chat%20y%3Dw_1x_1%20&plus;%20w_2x_2%20&plus;%20%5Ccdots%20&plus;%20w_Nx_N%3Dw%5ETx">
+- LP 문제의 목적함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Carg%20%5Cmin_x%20c%5ETx">
+- 선형 연립방정식으로 된 등식 제한조건 eq_cons : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20Ax%3Db">
+- 입력 변수 조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x%20%5Cgeq%200">
 - LP 문제는 여러가지 형태가 있으며 이와 같은 형태를 선형계획법 문제의 기본형 standard from 이라고 한다.
     > 기본형을 확장한 정규형 canonical form : 등식 제한조건이 아닌 부등식 제한조건으로 바뀜\
-    > $\arg \min_x c^Tx, \;\; Ax \leq b, \;\; x \geq 0$
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Carg%20%5Cmin_x%20c%5ETx%2C%20%5C%3B%5C%3B%20Ax%20%5Cleq%20b%2C%20%5C%3B%5C%3B%20x%20%5Cgeq%200">
 
 ### LP문제의 예시
 - 어떤 공장에서 두 가지 상품을 생산하는 조건
@@ -234,9 +234,14 @@
     - A의 생산이익은 3만원, B의 생산이익은 5만원이다.
     
 - 제품 A와 B의 생산량을 x1, x2 라고 하면 A와 B를 각각 몇개씩 생산할 때 이익이 최대가 될까?
-    > 목적함수 : $-3x_1 -5x_1$ 
+    > 목적함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-3x_1%20-5x_1"> 
     
     > 부등식 제한조건 : \
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-x_1%20%5Cleq%20-150">
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-x_2%20%5Cleq%20-150">
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x_1&plus;2%20x_2%20%5Cleq%20300">
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%204%20x_1&plus;6%20x_2%20%5Cleq%208000">
+    
     > $\begin{align}
        -x_1 & & &\leq& -150 \\
        & & -x_2 &\leq& -150 \\
