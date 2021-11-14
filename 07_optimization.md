@@ -203,4 +203,86 @@
         - $g_j \neq 0, \;\; \lambda = 0$
     - ``최적화 결과에 영향을 주는 등식인 제한조건`` : 제한조건에 의해 원래 목적함수 f의 최적화 값과 달라지는 경우
         - $g_j = 0, \;\; \lambda \neq 0$
-- ``부등식 제한조건이 있는 최적화 문제는 각 제한조건의 영역,범위에 대해서 KKT 조건을 따져보면서 최적해를 구해야 한다.``
+- ``부등식 제한조건이 있는 최적화 문제는 각 제한조건의 영역,범위에 대해서 KKT 조건을 따져보면서 최적해를 구해야 한다.`
+
+# 선형계획법 문제와 이차계획법 문제
+
+### 선형계획법 문제
+- ``선형계획법 linear programming`` : 방정식(등식제한조건)이나 부등식 제한조건을 가지는 선형 모형 linear model의 값을 최소화 하는 문제, LP문제
+    > 선형 모형 : 선형 조합 linear combination 으로 만든 예측 모형
+    > 선형 조합 : 벡터나 행렬에 스칼라를 곱한 후 더하거나 뺀 것
+         >> $c_1x_1+c_2x_2+\cdots+c_Nx_N$ \
+         >> $c_1A_1+c_2A_2+\cdots+c_NA_N$ 
+         
+    > 선형 회귀 모형 linear regression model : 독립변수 x에서 종속변수 y를 예측하는 방법, 단순하면서 널리쓰이는 예측모형
+        >> $\hat y=w_1x_1 + w_2x_2 + \cdots + w_Nx_N=w^Tx$
+- LP 문제의 목적함수 : $\arg \min_x c^Tx$
+- 선형 연립방정식으로 된 등식 제한조건 eq_cons : $Ax=b$
+- 입력 변수 조건 : $x \geq 0$
+- LP 문제는 여러가지 형태가 있으며 이와 같은 형태를 선형계획법 문제의 기본형 standard from 이라고 한다.
+    > 기본형을 확장한 정규형 canonical form : 등식 제한조건이 아닌 부등식 제한조건으로 바뀜\
+    > $\arg \min_x c^Tx, \;\; Ax \leq b, \;\; x \geq 0$
+
+### LP문제의 예시
+- 어떤 공장에서 두 가지 상품을 생산하는 조건
+    - 제품 A와 제품 B 각각 150개씩 생산해야 한다.
+    - 생산 시간은 300시간 이다.
+    - 제품 A는 생산하는데 1시간 걸리고, B는 2시간 걸린다.
+    - 특정 부품이 8000개 밖에 없다.
+    - A는 생산하는데 부품을 4개 필요하고, B는 6개 필요하다.
+    - A의 생산이익은 3만원, B의 생산이익은 5만원이다.
+    
+- 제품 A와 B의 생산량을 x1, x2 라고 하면 A와 B를 각각 몇개씩 생산할 때 이익이 최대가 될까?
+    > 목적함수 : $-3x_1 -5x_1$ 
+    
+    > 부등식 제한조건 : \
+    > $\begin{align}
+       -x_1 & & &\leq& -150 \\
+       & & -x_2 &\leq& -150 \\
+       x_1 &+& 2 x_2 &\leq& 300 \\
+       4 x_1 &+& 6 x_2 &\leq& 8000 \\
+       \end{align}$
+       
+    > 입력변수의 조건 : $x_1 \geq 0, \;\; x_2 \geq 0$
+       
+- 정규형 선형계획법 문제로 표기
+    > $\begin{align}
+       \min
+       \begin{bmatrix} 3 & 5 \end{bmatrix}
+       \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+       \end{align}$  
+    
+    >  $\begin{align}
+       \min
+       \begin{bmatrix} -1 & 0 \\ 0 & -1 \\ 1 & 2 \\ 4 & 6 \end{bmatrix}
+       \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+       \leq
+       \begin{bmatrix} -150 \\ -150 \\ 300 \\ 8000 \end{bmatrix}
+       \end{align}$
+    
+    > $\begin{align}
+       \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+       \geq
+       \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+       \end{align}$
+
+### 이차계획법 문제
+- ``이차계획법 문제 quadratic programming`` : 방정식(등식 제한조건)이나 부등식 제한조건을 가지는 일반화 된 이차형식 quadratic form의 값을 최소화하는 문제, QP 문제
+
+- ``이차형식 quadratic form`` : 어떤 벡터와 정방행렬이 '행벡터x정방행렬x행벡터' 형식으로 되어 있는 것 
+    > 선형회귀 분석의 결과로 얻은 예측값들과 이에 상응하는 실제값들 간의 차이를 잔차 residual라고 한다. (혹은 오차 erorr) \
+    > 모든 입력변수에 대한 잔차를 구하고 이를 잔차벡터로 만들 수 있다.\
+    > $e=y-Xw$  
+        
+    > 잔차의 크기 RSS Residual sum of square 는 잔차의 제곱합과 같다. \
+    > $\sum_{i=1}^N {e_i}^2=\sum_{i=1}^N (y_i - w^Tx_i)=e^Te=(y-Xw)^T(y-Xw)=y^Ty - y^TXw - w^TX^Ty + w^TX^TXw$  
+    
+    > 잔차의 크기인 잔차제곱합에서 도출 된 마지막 항, 벡터와 행렬의 곱의 형식 \
+    > $w^TAw$
+        
+- QP의 목적함수 : $\dfrac{1}{2}x^TQx + c^Tx$ 
+- 등식 제한조건 : $Ax = b$
+- 입력변수 조건 : $x \geq 0$
+- 잔차 제곱합을 최소화하는 예측 모형에 추가적인 제한조건이 있으면 이차계획법 문제가 된다.
+    - 이차계획법에 대해서 좀 더 알아 볼것!!!
+
