@@ -172,24 +172,24 @@
 
 ### 라그랑주 승수의 의미
 - 최적화 문제에서 제한조건이 있는 경우와 제한조건이 없는 경우의 최적화의 값이 다르려면 라그랑주 승수가 0이 아니어야한다.
-    - $\lambda \neq 0$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clambda%20%5Cneq%200">
 - 라그랑주 승수의 값이 0이면 제한조건이 있을때와 없을때의 최적화 값이 같게 된다.
 
 ### 부등식 제한조건이 있는 최적화 문제
 - ``부등식 제한조건 inequality constraints`` : 등식 제한조건과 다르게 제한조건에 부등호가 있다.
-    - 최적화 문제 : $x^{*} = \arg \min_x f(x)$
-    - 입력변수의 범위 : $x \mathbf {R}^N$
-    - 부등식 제한 조건 : ${g}_j \leq 0 \;\; (j=1,\cdots,M)$
+    - 최적화 문제 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x%5E%7B*%7D%20%3D%20%5Carg%20%5Cmin_x%20f%28x%29">
+    - 입력변수의 범위 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x%20%5Cin%20%5Cmathbf%20%7BR%7D%5EN">
+    - 부등식 제한 조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%7Bg%7D_j%20%5Cleq%200%20%5C%3B%5C%3B%20%28j%3D1%2C%5Ccdots%2CM%29">
 - 부등식 제한조건이 있는 최적화 문제도 라그랑주 승수법과 마찬가지로 목적함수를 h로 바꾸어서 풀 수 있다.
-    - ${h}(x_1, x_2, \cdots, x_N, \lambda_1, \lambda_2, \cdots, \lambda_M)$
-    - ${h}(x, \lambda) = f(x) + \sum_{j=1}^M \lambda_j g_j(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%7Bh%7D%28x_1%2C%20x_2%2C%20%5Ccdots%2C%20x_N%2C%20%5Clambda_1%2C%20%5Clambda_2%2C%20%5Ccdots%2C%20%5Clambda_M%29">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%7Bh%7D%28x%2C%20%5Clambda%29%20%3D%20f%28x%29%20&plus;%20%5Csum_%7Bj%3D1%7D%5EM%20%5Clambda_j%20g_j%28x%29">
 - ``KKT Karush-Kuhn-Tucker 조건`` : 부등식 제한조건 최적화문제의 필요조건은 등식 제한조건 최적화문제와 다르다.
     - 모든 독립변수 x_1, x_2, ..., x_N 으로 미분한 값이 0이다. (등식제한조건에서는 모든 입력변수의 편미분값이 0이다.)
-        - $\dfrac{\partial h(x, \lambda)}{\partial x_i}=0$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Cdfrac%7B%5Cpartial%20h%28x%2C%20%5Clambda%29%7D%7B%5Cpartial%20x_i%7D%3D0">
     - 모든 라그랑주 승수와 제한조건 부등식을 라그랑주 승수로 미분한 값의 곱이 0이다.
-        - $\lambda_j \dfrac{\partial h(x, \lambda)}{\partial \lambda_j} = 0$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clambda_j%20%5Ccdot%20%5Cdfrac%7B%5Cpartial%20h%28x%2C%20%5Clambda%29%7D%7B%5Cpartial%20%5Clambda_j%7D%20%3D%200">
     - 라그랑주 승수는 음수가 아니어야 한다.
-        - $\lambda_j \geq 0$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clambda_j%20%5Cgeq%200">
 
 #### KKT 2번째 조건의 의미
 - 2번째 조건을 만족하는 경우는 라그랑주 승수 값 자체가 0이거나 미분한 값이 0이면 된다.
@@ -200,8 +200,9 @@
     - g_j가 0이 아니면 λ는 0이다. : argminf와 argminh 값이 같으므로, 부등식제한 조건이 쓸모없다. 목적함수 h(x, λ)은 λg항이 있든 없든 항상 값이 같다.
 - 그래프로 나타내면 부등식 제한조건이 허용하는 영역에 원래 목적함수 f의 최적해가 포함되어 있는지 아닌지 확인할 수 있다.
     - ``최적화 결과에 영향을 주지 않는 쓸모없는 제한조건`` : 제한조건이 있으나 없으나 원래 목적함수 f의 최적화 값과 같은 경우
-        - $g_j \neq 0, \;\; \lambda = 0$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20g_j%20%5Cneq%200%2C%20%5C%3B%5C%3B%20%5Clambda%20%3D%200">
     - ``최적화 결과에 영향을 주는 등식인 제한조건`` : 제한조건에 의해 원래 목적함수 f의 최적화 값과 달라지는 경우
+<<<<<<< HEAD
         - $g_j = 0, \;\; \lambda \neq 0$
 - ``부등식 제한조건이 있는 최적화 문제는 각 제한조건의 영역,범위에 대해서 KKT 조건을 따져보면서 최적해를 구해야 한다.`
 
@@ -286,3 +287,7 @@
 - 잔차 제곱합을 최소화하는 예측 모형에 추가적인 제한조건이 있으면 이차계획법 문제가 된다.
     - 이차계획법에 대해서 좀 더 알아 볼것!!!
 
+=======
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20g_j%20%3D%200%2C%20%5C%3B%5C%3B%20%5Clambda%20%5Cneq%200">
+- ``부등식 제한조건이 있는 최적화 문제는 각 제한조건의 영역,범위에 대해서 KKT 조건을 따져보면서 최적해를 구해야 한다.``
+>>>>>>> c4b0d0d46fce6c79af6bf0873dfc5fb3f635c54c
