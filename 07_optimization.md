@@ -237,17 +237,10 @@
     > 목적함수 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-3x_1%20-5x_1"> 
     
     > 부등식 제한조건 : \
-    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-x_1%20%5Cleq%20-150">
-    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-x_2%20%5Cleq%20-150">
-    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x_1&plus;2%20x_2%20%5Cleq%20300">
-    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%204%20x_1&plus;6%20x_2%20%5Cleq%208000">
-    
-    > $\begin{align}
-       -x_1 & & &\leq& -150 \\
-       & & -x_2 &\leq& -150 \\
-       x_1 &+& 2 x_2 &\leq& 300 \\
-       4 x_1 &+& 6 x_2 &\leq& 8000 \\
-       \end{align}$
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-x_1%20%5Cleq%20-150"> \
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20-x_2%20%5Cleq%20-150"> \
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x_1&plus;2%20x_2%20%5Cleq%20300"> \
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%204%20x_1&plus;6%20x_2%20%5Cleq%208000"> 
        
     > 입력변수의 조건 : $x_1 \geq 0, \;\; x_2 \geq 0$
        
