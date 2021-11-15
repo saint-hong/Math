@@ -142,7 +142,7 @@ print("차집합 {}-{} = {}".format(A3, A4, A3 - A4))
 - 여집합과 원래의 집합의 교집합은 공집합이다.
   - A ∩ A^c = ∅ 
 
-### python
+#### python
 - 공집합 정의
 ```
 empty_set = set([])
@@ -170,3 +170,38 @@ empty_set <= {1, 2, 3, 4} = True
 empty_set intersection {1, 2, 3, 4} = set()
 empty_set union {1, 2, 3, 4} = {1, 2, 3, 4}
 ```
+
+### 부분집합의 수
+- 원소의 갯수가 N개인 집합은 2^N개의 부분집합을 갖는다.
+- 모든 집합은 공집합과 자기 자신인 집합을 부분집합으로 갖는다.
+```
+A = set(["O", "A", "B"])
+empty_set = set([])
+
+''공집합과 A 자신이 A의 부분집합인지 확인''
+print(empty_set <= A, A <= A)
+
+=====<print>=====
+
+(True, True)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
