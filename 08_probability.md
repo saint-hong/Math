@@ -178,11 +178,14 @@ empty_set union {1, 2, 3, 4} = {1, 2, 3, 4}
 A = set(["O", "A", "B"])
 empty_set = set([])
 
+''A의 부분집합의 갯수''
+print("A의 길이 : {}, A의 부분집합의 갯수 : {}".format(len(A), 2**len(A))) 
+
 ''공집합과 A 자신이 A의 부분집합인지 확인''
 print(empty_set <= A, A <= A)
 
 =====<print>=====
-
+A의 길이 : 3, A의 부분집합의 갯수 : 8
 (True, True)
 ```
 
