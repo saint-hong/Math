@@ -189,6 +189,11 @@ A의 길이 : 3, A의 부분집합의 갯수 : 8
 (True, True)
 ```
 
+### 합집합과 교집합의 분배법칙
+- 합, 곱 분배법칙 처럼 교집합과 합집합도 분배법칙 성립한다.
+  - <img src="https://latex.codecogs.com/gif.latex?%5Cfn_cm%20A%5Ccup%20%28B%5Ccap%20C%29%20%3D%20%28A%20%5Ccup%20B%29%5Ccap%28A%20%5Ccup%20C%29">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Cfn_cm%20A%20%5Ccap%20%28B%20%5Ccup%20C%29%20%3D%20%28A%20%5Ccap%20B%29%20%5Ccup%20%28A%20%5Ccap%20C%29">
+
 
 
 
