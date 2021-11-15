@@ -194,6 +194,156 @@ A의 길이 : 3, A의 부분집합의 갯수 : 8
   - <img src="https://latex.codecogs.com/gif.latex?%5Cfn_cm%20A%5Ccup%20%28B%5Ccap%20C%29%20%3D%20%28A%20%5Ccup%20B%29%5Ccap%28A%20%5Ccup%20C%29">
   - <img src="https://latex.codecogs.com/gif.latex?%5Cfn_cm%20A%20%5Ccap%20%28B%20%5Ccup%20C%29%20%3D%20%28A%20%5Ccap%20B%29%20%5Ccup%20%28A%20%5Ccap%20C%29">
 
+#### python
+- 집합 A, B, C 에 대해서 교집합과 합집합의 분배법칙 성립 확인해보기.
+```
+A = frozenset([1, 3, 5])
+B = frozenset([1, 2, 3])
+C = frozenset([2, 4, 6])
+
+print("A∪(B∩C)")
+print(A.union(B.intersection(C)))
+print((A.union(B)).intersection(A.union(C)))
+print((A | B) & (A | C))
+print("\n")
+print("B∩(A∪C)")
+print(B.intersection(A.union(C)))
+print((B.intersection(A)).union(B.intersection(C)))
+print((B & A) | (B & C))
+
+=====<print>=====
+
+A∪(B∩C)
+frozenset({1, 2, 3, 5})
+frozenset({1, 2, 3, 5})
+frozenset({1, 2, 3, 5})
+
+
+B∩(A∪C)
+frozenset({1, 2, 3})
+frozenset({1, 2, 3})
+frozenset({1, 2, 3})
+```
+
+# 확률의 수학적 정의와 의미
+
+### 표본공간과 확률표본
+- ``확률표본 probabilistic sample, random sample``, ``표본 sample`` : 풀고자 하는 확률적 문제에서 발생(realize)할 수 있는 하나의 현상, 혹은 선택(sampled)될 수 있는 경우
+- ``표본공간 sample space`` : 가능한 모든 표본의 집합 set
+  - 표본공간을 정의한다는 것은 어떤 표본이 가능하고 어떤 표본이 가능하지 않은지를 정의하는 것과 같다.
+- 표본공간은 풀고자 하는 문제에 대한 지식이나 필요성에 따라서 달라지게 된다.
+  - 과일가게에서 과일을 선택하는 문제에서 그 가게에서 어떤 과일을 파느냐에 따라서 표본공간은 달라지게 된다.
+- 표본이 연속적인 숫자이면 표본공간의 원소는 무한개일 수 있다.
+
+#### 확률표본과 표본공간의 예
+- 동전 던지기 : 동전을 한 번 던졌을 때 가능한 확률표본과 표본공간
+  - 확률표본(=표본) : 앞면 H, 뒷면 T
+  - 표본공간 : sample_space = {H, T}
+- 동전 두번 던지기 : 
+  - 확률표본 : HH, HT, TH, TT
+  - 표본공간 : sample_space = {HH, HT, TH, TT}
+- 트럼프 카드 뽑기 : 트럼프 카드에서 한 장의 카드를 뽑을 때의 확률표본과 표본공간
+  - 확률표본 : ♤, ♥, ♧, ◆
+  - 표본공간 : sample_space = {♤, ♥, ♧, ◆}
+- 약속날짜를 잡으려고 할때 31일 인가? 
+  - 확률표본 : 31일이 포함된 달만 가능하다. 1/1~1/31, 3/1~3/31, ..., 12/1~12/31
+  - 표본공간 : sample_space = {1/1, 1/2,...,1/31,3/1,3/2,...,3/31,...,12/1,12/2,....,12/31}
+- 과일가게에서 과일을 선택하는 경우
+  - 확률표본 : A 가게 사과, 바나나, B 가게 복숭아, 사과 
+  - A_store = {"apple", "banana"}, B_store = {"peach", "apple"}
+- 연속적인 숫자로 된 표본의 표본공간
+  - 주식 거래 가격 : sample_space = {x : -30 <= x <= 30}, 표본공간의 원소는 무한개이다.
+  - 9월 요일별 평균 기온 : temp_space = {x : 10 <= x <= 28}, 표본공간의 원소는 무한개이다.
+  - 회전하는 원판에 던진 화살의 각도 : arrow_space = {x : 0 < x <= 360}, 표본공간의 원손느 무한개이다.
+  - 일반성인의 체온 맞추기 : body_temp_space = R, 표본공간은 실수 전체이다.
+
+### 사건 
+- ``사건 event`` :  표본공간의 부분집합. 전체 표본공간 중에서 현재 관심을 가지고 있는 일부 표본의 집합.
+- 동전 던지기 표본공간에서 가능한 부분집합
+  - A = {}, B = {H}, C = {T}, D = {H, T}
+  - 사건은 전체표본 공간에서 나올 수 있는 경우를 의미한다. 즉 B 사건은 동전을 던졌을 때 H가 나올 경우이고, D 사건은 동전을 던졌을 때 H 또는 T 가 나오는 경우이다. 
+
+#### python
+- 동전 던지기 문제의 부분집합을 하나의 집합으로 합할 수 있다.
+  - ``frozenset([]) 자료형은 딕셔너리의 key 로 사용할 수 있다. set([]) 자료형은 key 로 사용할 수 없다.``
+```
+A = frozenset([])
+B = frozenset(['H'])
+C = frozenset(['T'])
+D = frozenset(['H', 'T'])
+
+print(set([A, B, C, D]))
+
+=====<print>=====
+
+{frozenset(), frozenset({'H'}), frozenset({'T'}), frozenset({'T', 'H'})}
+```
+- 카드뽑기 문제의 표본공간의 모든 사건을 구하고 frozenset으로 만들고, set으로 합하기
+```
+play_card = frozenset([1, 2, 3, 4])
+subset_1 = frozenset([1])
+subset_2 = frozenset([2])
+subset_3 = frozenset([3])
+subset_4 = frozenset([4])
+subset_5 = frozenset([1, 2])
+subset_6 = frozenset([1, 3])
+subset_7 = frozenset([1, 4])
+subset_8 = frozenset([2, 3])
+subset_9 = frozenset([2, 4])
+subset_10 = frozenset([3, 4])
+subset_11 = frozenset([1, 2, 3])
+subset_12 = frozenset([1, 2, 4])
+subset_13 = frozenset([2, 3, 4])
+subset_14 = frozenset([1, 3, 4])
+subset_15 = frozenset([])
+subset_16 = frozenset([1, 2, 3, 4])
+
+ttl_set = set([subset_1, subset_2, subset_3, subset_4,\
+subset_5, subset_6, subset_7, subset_8, subset_9,\
+subset_10, subset_11, subset_12,subset_13, subset_14,\
+subset_15, subset_16])
+    
+print(ttl_set)
+
+=====<print>=====
+
+{frozenset({3, 4}), frozenset({2}), frozenset({1, 4}), frozenset({2, 3, 4}), frozenset({2, 3}), frozenset({1, 2, 4}), frozenset({1, 2}), frozenset({3}), frozenset({2, 4}), frozenset({1}), frozenset(), frozenset({1, 2, 3, 4}), frozenset({1, 2, 3}), frozenset({1, 3}), frozenset({1, 3, 4}), frozenset({4})}
+```
+- 동전 2번 던지기의 표본공간과 가능한 모든 사건을 frozenset으로 만들고, set으로 합하기
+```
+coin_problem = {"HH", "HT", "TH", "TT"}
+c1 = frozenset(["HH"])
+c2 = frozenset(["HT"])
+c3 = frozenset(["TH"])
+c4 = frozenset(["TT"])
+c5 = frozenset(["HH", "HT"])
+c6 = frozenset(["HH", "TH"])
+c7 = frozenset(["HH", "TT"])
+c8 = frozenset(["HT", "TH"])
+c9 = frozenset(["HT", "TT"])
+c10 = frozenset(["TH", "TT"])
+c11 = frozenset(["HH", "HT", "TH"])
+c12 = frozenset(["HH", "HT", "TT"])
+c13 = frozenset(["HH", "TH", "TT"])
+c14 = frozenset(["HT", "TH", "TT"])
+c15 = frozenset([])
+c16 = frozenset(["HH", "HT", "TH", "TT"])
+
+ttl_set = set([c1, c2, c3, c4, c5, c6, c7, c8,\
+c9, c10, c11, c12, c13, c14, c15, c16])
+
+print(ttl_set)
+
+=====<print>=====
+
+{frozenset({'HH', 'TT', 'TH'}), frozenset({'HH'}), frozenset({'HH', 'TH', 'HT'}), frozenset({'HH', 'HT'}), frozenset({'HH', 'TT', 'TH', 'HT'}), frozenset({'HH', 'TT'}), frozenset({'HH', 'TT', 'HT'}), frozenset({'TT', 'HT'}), frozenset({'TT'}), frozenset({'TT', 'TH', 'HT'}), frozenset({'TH'}), frozenset(), frozenset({'TH', 'HT'}), frozenset({'HH', 'TH'}), frozenset({'HT'}), frozenset({'TT', 'TH'})}
+```
+
+
+
+
+
+
 
 
 
