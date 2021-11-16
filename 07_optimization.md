@@ -880,7 +880,7 @@ plt.ylabel('$y$')
 plt.title('전역 최적화에서 국소 최적점에 수렴하는 경우')
 plt.show() ;
 ```
-![optm_9.png](./images/optm_9.png)
+![optm_9.png](./images/optimization/optm_9.png)
 
 ### 컨벡스 문제
 - convex : 볼록도, 볼록함수
