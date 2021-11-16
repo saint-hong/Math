@@ -1031,7 +1031,7 @@ plt.title('최적해가 부등식에 의해 결정되는 경우')
 plt.suptitle('부등식 제한조건이 있는 최적화 문제')
 plt.show() ;
 ```
-![optm_11.png](./images/optimizatiion/optm_11.png)
+![optm_11.png](./images/optimization/optm_11.png)
 
 # 부등식 제한조건이 여러개인 최적화 문제
 
