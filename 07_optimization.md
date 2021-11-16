@@ -271,4 +271,65 @@
 - 입력변수 조건 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20x%20%5Cgeq%200">
 - 잔차 제곱합을 최소화하는 예측 모형에 추가적인 제한조건이 있으면 이차계획법 문제가 된다.
     - 이차계획법에 대해서 좀 더 알아 볼것!!!
-        
+
+# Python
+
+### 1차원 목적함수의 최적점 확인
+```python
+def f1(x) :
+    return (x-2)**2 + 2
+
+xx = np.linspace(-1, 4, 100)
+plt.plot(xx, f1(xx), 'g-')
+plt.plot(2, 2, 'ro', ms=10)
+plt.xlabel('$x$')
+plt.ylabel('$f_1(x)$')
+plt.title('1차원 목적함수')
+plt.xlim(-1, 4)
+plt.ylim(0, 10)
+
+plt.show() ;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
