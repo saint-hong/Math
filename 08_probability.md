@@ -468,14 +468,14 @@ card_proba = {
 }
 
 ''콜모고로프의 공리 검증''
-print("=== 콜모고로프의 공리 1 ===")
+print("=== 콜모고로프의 공리 ===")
 for i in range(1, 17) :
     name = eval('card_sub_'+str(i))
     print("P({}) = {}".format(name, round(card_proba[name], 2)), ",", "P({}) >= 0 --> {}".format(name, card_proba[name]>=0))
 
 =====<print>=====
 
-=== 콜모고로프의 공리 1 ===
+=== 콜모고로프의 공리  ===
 P(frozenset()) = 0 , P(frozenset()) >= 0 --> True
 P(frozenset({'S'})) = 0.25 , P(frozenset({'S'})) >= 0 --> True
 P(frozenset({'H'})) = 0.38 , P(frozenset({'H'})) >= 0 --> True
