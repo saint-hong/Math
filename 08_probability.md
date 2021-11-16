@@ -354,14 +354,17 @@ print(ttl_set)
 - 확률이라는 함수를 정의한다는 것은 "A가 선택될 확률이 얼마인가?"라는 질문에 대한 답을 모든 경우(사건, 부분집합)에 대해서 **미리 준비해 놓은 것** 또는 **할당해 놓은 것**과 같다.
 
 ### 콜모고로프의 공리
-- 콜모고로프의 공리 kolmogorov's axioms : 확률이라는 함수를 정의하는 3가지 규칙
+- ``콜모고로프의 공리 kolmogorov's axioms`` : 확률이라는 함수를 정의하는 3가지 규칙
 - 모든 확률은 콜모고로프의 공리를 따라야 한다. 
   1. 모든 사건에 대해 확률은 실수이고 0 또는 양수이다.
-    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%5Cleq%200">
+      - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%5Cleq%200">
   2. 표본공간(전체집합)이라는 사건(부분집합)에 대한 확률은 1이다.
-    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28%5COmega%29%20%3D%201">
+      - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28%5COmega%29%20%3D%201">
   3. 공통 원소가 없는 두 사건의 합집합의 확률은 사건별 확률의 합이다.
-    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A%20%5Ccap%20B%20%3D%20%5Cvarnothing%20%5Crightarrow%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29">
+      - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A%20%5Ccap%20B%20%3D%20%5Cvarnothing%20%5Crightarrow%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29">
+      - 공통원소가 없는 두 사건, 즉 교집합이 공집합인 두 집합을 **서로소 pairwise disjoint set** 라고 한다.
+      - 참고 링크 "서로소와 파티션" https://juggernaut.tistory.com/entry/%EC%84%9C%EB%A1%9C%EC%86%8CPairwise-Disjoint-Set-%EC%99%80-%ED%8C%8C%ED%8B%B0%EC%85%98Partition;
+
 
 ### 확률은 표본이 아닌 사건을 입력으로 가지는 함수
 - 확률은 표본을 입력받는 것이 아닌 사건(부분집합)을 입력받는 함수이다.
@@ -387,27 +390,72 @@ print(P)
 
 {frozenset(): 0, frozenset({'H'}): 0.4, frozenset({'T'}): 0.6, frozenset({'T', 'H'}): 1}
 ```
- 
+
+### 확률이 콜모고로프의 공리를 만족하는지 확인
+- 확률은 사건에 대해 확률값을 할당하는 함수이고 콜모고로프의 공리를 만족해야 한다.
+- 즉 콜모고로프의 공리만 만족한다면 사건에 대해 할당하는 확률값은 정해진 것이 아니다.
+- 동전 던지기 문제에서 앞면이 나올 확률이 반드시 1/2 이 아니어도 된다.
+  - P({∅}) = 0, P({H}) = 0.3, P({T}) = 0.7, P({H, T}) = 1
+  - P({∅}) = 0, P({H}) = 0.82, P({T}) = 0.18, P({H, T}) = 1
+  - **P({∅}) = 0, P({H}) = 0.55, P({T}) = 0.45, P({H, T}) = 1**
+- 이와 같이 확률값을 할당했다면 콜모고로프의 공리를 만족하는지 확인해야 한다. 
+  1. 모든 확률은 0 이상이다.
+      - P({∅}) >= 0 , P({H}) >= 0, P({T}) >= 0, P({H, T}) >= 0
+  2. 전체집합에 대한 확률은 1이다.
+      - P(Ω) = P({H, T}) = 1
+  3. 교집합이 공집합인 사건(부분집합)의 합집합인 사건의 확률은 각 사건(부분집합)의 확률의 합이다. 
+      - P({H}) = 0.55 = P({H}∪∅) = 0.55 + 0
+      - P({T}) = 0.45 = P({T}∪∅) = 0.45 + 0
+      - P({H, T}) = 1 = P({H, T}∪∅) = 1 + 0
+      - P({H, T}) = 1 = P({H}∪{T}) = 0.55 + 0.45
+
+### 확률은 골동품 가게의 포장된 상품과 같다.
+- 표본이 아닌 사건에 대해 확률값을 할당하는 확률의 의미는 다음과 같다.
+  - 가게에서 파는 하나 하나의 골동품은 표본이다. 모든 골동품은 서로 다르기때문에 똑같은 물건(표본)은 없다.
+  - 가게에서 파는 모든 골동품의 집합은 표본공간(전체집합)이다.
+  - 사건(부분집합)은 골동품을 넣은 상자를 말한다. 상자안의 골동품 개수에는 제한이 없다.
+  - 상자안의 골동품이 하나가 될 수도 있고, 골동품이 없는 빈 포장(공집합)도 가능하다.
+  - 확률은 상자에 붙인 가격표의 숫자이다. 가격은 마음데로 붙여도 되지만, 다음 규칙을 지켜야한다.
+    1. 음수인 가격은 없다. 공짜(0)나 양수이어야 한다.
+    2. 가게안의 모든 골동품을 하나의 상자에 포장하면 그 상자의 가격은 1이다.
+    3. 공통적으로 포함된 골동품이 없는 두개의 상자의 가격은 그 두개의 포장에 들어간 골동품을 합쳐서하나의 상자로 만들었을 때의 가격과 같아야 한다. 즉 상자를 나누거나 합쳤다고 가격이 달라져셔는 안된다.
+
+#### python
+- 플레잉카드 한 장을 뽑아서 무늬를 결정하는 문제에 대해서 확률값을 할당하고 파이썬으로 구현해보기
+```python
+
+card_empty = frozenset([])
+card_space = frozenset(["♤"])
+card_heart = frozenset(["♥"])
+card_clover = frozenset(["♧"])
+card_diamond = frozenset(["◆"])
+card_all = frozenset(["♤", "♥", "♧", "◆"])  
+
+card_proba = {card_empty:0, card_space:0.25, card_heart:0.38, \
+card_clover:0.17, card_diamond:0.20, card_all:1}
+
+print("=== 콜모고로프의 공리 1 ===")
+print("P({card_empty}) =", card_proba[card_empty],",", "P({card_empty}) >= 0 ---> ",card_proba[card_empty]>=0)
+print("P({card_space}) =", card_proba[card_space],",", "P({card_space}) >= 0 ---> ",card_proba[card_space]>=0)
+print("P({card_heart}) =", card_proba[card_heart],",", "P({card_heart}) >= 0 ---> ",card_proba[card_heart]>=0)
+print("P({card_clover}) =", card_proba[card_clover],",", "P({card_clover}) >= 0 ---> ",card_proba[card_clover]>=0)
+print("P({card_diamond}) =", card_proba[card_diamond],",", "P({card_diamond}) >= 0 ---> ",card_proba[card_diamond]>=0)
+print("P({card_all}) =", card_proba[card_all],",", "P({card_all}) >= 0 ---> ",card_proba[card_all]>=0)
+print("\n")
+print("=== 콜모고로프의 공리 2 ===")
+print("P({card_all}) =", card_proba[card_all])
+
+=====<print>=====
+
+=== 콜모고로프의 공리 1 ===
+P({card_empty}) = 0 , P({card_empty}) >= 0 --->  True
+P({card_space}) = 0.25 , P({card_space}) >= 0 --->  True
+P({card_heart}) = 0.38 , P({card_heart}) >= 0 --->  True
+P({card_clover}) = 0.17 , P({card_clover}) >= 0 --->  True
+P({card_diamond}) = 0.2 , P({card_diamond}) >= 0 --->  True
+P({card_all}) = 1 , P({card_all}) >= 0 --->  True
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+=== 콜모고로프의 공리 2 ===
+P({card_all}) = 1
+```
