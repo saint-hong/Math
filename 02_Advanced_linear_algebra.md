@@ -626,7 +626,7 @@ plt.xlim(-1.4, 6.4)
 plt.ylim(-0.6, 5.8)
 plt.show()
 ```
-![word2vec.png](./images/word2vec.png)
+![word2vec.png](./images/linear_algebra/word2vec.png)
 
 #### 5) 유클리드 거리와 코사인 유사도
 - 유클리드 거리 = 벡터의 차의 놈의 제곱
@@ -742,7 +742,7 @@ ax3.set_ylim(-2,3)
 
 plt.show()
 ```
-![vector_component_decomposition.png](./images/vector_component_decomposition.png)
+![vector_component_decomposition.png](./images/linear_algebra/vector_component_decomposition.png)
 
 
 #### 7) 벡터의 투영성분과 직교성분
@@ -785,7 +785,7 @@ plt.ylim(-1, 3)
 
 plt.show()
 ```
-![vector_projection_rejection.png](./images/vector_projection_rejection.png)
+![vector_projection_rejection.png](./images/linear_algebra/vector_projection_rejection.png)
 
 #### 8) 직선과 점 사이의 거리
 - 원점을 지나는 벡터 w와 w가 가리키는 점을 직교하는 직선 A와 직선 A 위에 있지 않은 임의의 점 x와의 거리
@@ -831,7 +831,7 @@ plt.ylim(-1, 5)
 
 plt.show()
 ```
-![vector_point_distance.png](./images/vector_point_distance.png)
+![vector_point_distance.png](./images/linear_algebra/vector_point_distance.png)
 
 #### 9) 넘파이로 랭크의 갯수 확인
 - 열랭크와 행랭크는 각각 모든 열과 행에서 선형독립인 벡터의 최대 갯수를 의미한다.
@@ -946,7 +946,7 @@ plt.ylim(-0.5, 3)
 
 plt.show()
 ```
-![coordinate_transform.png](./images/coordinate_transform.png)
+![coordinate_transform.png](./images/linear_algebra/coordinate_transform.png)
 
 #### 12) 변환행렬
 - 벡터 x 의 기저벡터 xe 와 새로운 기저벡터 xg 사이의 연관 관계를 나타내는 행렬 A 의 역행렬
@@ -1045,7 +1045,7 @@ plt.title('좌표변환후')
 
 plt.show()
 ```
-![image_transform.png](./images/image_transform.png)
+![image_transform.png](./images/linear_algebra/image_transform.png)
 
 #### 14) 고유분해
 - 넘파이의 linalg 서브패키지에는 고윳값과 고유분해를 구하는 eig() 명령이 있음.
@@ -1107,7 +1107,7 @@ for i in range(6) :
 eigen_decomposition = pd.DataFrame(dfs)
 eigen_decomposition
 ```
-![eigenvalue_eigenvector.PNG](./images/eigenvalue_eigenvector.PNG)
+![eigenvalue_eigenvector.PNG](./images/linear_algebra/eigenvalue_eigenvector.PNG)
 
 #### 15) 행렬의 대각화
 - 고유분해를 통해 고유벡터행렬, 고유벡터행렬의 역행렬, 고유값행렬을 구하고, 세 행렬의 곱으로 원래 행렬 A 를 나타낼 수 있다.
@@ -1494,7 +1494,7 @@ plt.xlim(-3, 6)
 plt.ylim(-2, 4)
 plt.show()
 ```
-![1dimentiion_approximation_problem.png](./images/1dimentiion_approximation_problem.png)
+![1dimentiion_approximation_problem.png](./images/linear_algebra/1dimentiion_approximation_problem.png)
 
 
 - 1차원 근사문제는 점 3개와 직선과의 피타고라스 정리를 통해서 투영벡터의 합이 커질 수록 점과 직선사이의 거리인 직교벡터가 작아진다는 원리를 이용하여 풀이할 수 있다.
@@ -1566,5 +1566,5 @@ plt.xlim(-3,6)
 plt.ylim(-2,4)
 plt.show()
 ```
-![1dimentiion_approximation_problem_2.png](./images/1dimentiion_approximation_problem_2.png)
+![1dimentiion_approximation_problem_2.png](./images/linear_algebra/1dimentiion_approximation_problem_2.png)
 
