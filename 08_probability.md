@@ -424,41 +424,73 @@ print(P)
 - 플레잉카드 한 장을 뽑아서 무늬를 결정하는 문제에 대해서 확률값을 할당하고 파이썬으로 구현해보기
 ```python
 
-''부분집합 정의''
-card_empty = frozenset([])
-card_space = frozenset(["♤"])
-card_heart = frozenset(["♥"])
-card_clover = frozenset(["♧"])
-card_diamond = frozenset(["◆"])
-card_all = frozenset(["♤", "♥", "♧", "◆"])  
+''부분집합 정의 (16 개)''
+card_sub_1 = frozenset([])
+card_sub_2 = frozenset(["S"])
+card_sub_3 = frozenset(["H"])
+card_sub_4 = frozenset(["C"])
+card_sub_5 = frozenset(["D"])
+card_sub_6 = frozenset(["S", "H"])
+card_sub_7 = frozenset(["S", "C"])
+card_sub_8 = frozenset(["S", "D"])
+card_sub_9 = frozenset(["H", "C"])
+card_sub_10 = frozenset(["H", "D"])
+card_sub_11 = frozenset(["C", "D"])
+card_sub_12 = frozenset(["S", "H", "C"])
+card_sub_13 = frozenset(["S", "H", "D"])
+card_sub_14 = frozenset(["H", "C", "D"])
+card_sub_15 = frozenset(["S", "C", "D"])
+card_sub_16 = frozenset(["H", "S", "C", "D"])
 
-''부분집합에 대한 확률 정의''
-card_proba = {card_empty:0, card_space:0.25, card_heart:0.38, \
-card_clover:0.17, card_diamond:0.20, card_all:1}
+''확률값 정의''
+S = 0.25
+H = 0.38
+C = 0.17
+D = 0.20
 
-''콜모고로프의 공리를 만족하는지 확인''
+card_proba = {
+    card_sub_1 : 0,
+    card_sub_2 : 0.25,
+    card_sub_3 : 0.38,
+    card_sub_4 : 0.17, 
+    card_sub_5 : 0.20,
+    card_sub_6 : S + H,
+    card_sub_7 : S + C,
+    card_sub_8 : S + D,
+    card_sub_9 : H + C,
+    card_sub_10 : H + D,
+    card_sub_11 : C + D,
+    card_sub_12 : S + H + C,
+    card_sub_13 : S + H + D,
+    card_sub_14 : H + C + D,
+    card_sub_15 : S + C + D,
+    card_sub_16 : H + S + C + D,
+}
+
+''콜모고로프의 공리 검증''
 print("=== 콜모고로프의 공리 1 ===")
-print("P({card_empty}) =", card_proba[card_empty],",", "P({card_empty}) >= 0 ---> ",card_proba[card_empty]>=0)
-print("P({card_space}) =", card_proba[card_space],",", "P({card_space}) >= 0 ---> ",card_proba[card_space]>=0)
-print("P({card_heart}) =", card_proba[card_heart],",", "P({card_heart}) >= 0 ---> ",card_proba[card_heart]>=0)
-print("P({card_clover}) =", card_proba[card_clover],",", "P({card_clover}) >= 0 ---> ",card_proba[card_clover]>=0)
-print("P({card_diamond}) =", card_proba[card_diamond],",", "P({card_diamond}) >= 0 ---> ",card_proba[card_diamond]>=0)
-print("P({card_all}) =", card_proba[card_all],",", "P({card_all}) >= 0 ---> ",card_proba[card_all]>=0)
-print("\n")
-print("=== 콜모고로프의 공리 2 ===")
-print("P({card_all}) =", card_proba[card_all])
+for i in range(1, 17) :
+    name = eval('card_sub_'+str(i))
+    print("P({}) = {}".format(name, round(card_proba[name], 2)), ",", "P({}) >= 0 --> {}".format(name, card_proba[name]>=0))
 
 =====<print>=====
 
 === 콜모고로프의 공리 1 ===
-P({card_empty}) = 0 , P({card_empty}) >= 0 --->  True
-P({card_space}) = 0.25 , P({card_space}) >= 0 --->  True
-P({card_heart}) = 0.38 , P({card_heart}) >= 0 --->  True
-P({card_clover}) = 0.17 , P({card_clover}) >= 0 --->  True
-P({card_diamond}) = 0.2 , P({card_diamond}) >= 0 --->  True
-P({card_all}) = 1 , P({card_all}) >= 0 --->  True
+P(frozenset()) = 0 , P(frozenset()) >= 0 --> True
+P(frozenset({'S'})) = 0.25 , P(frozenset({'S'})) >= 0 --> True
+P(frozenset({'H'})) = 0.38 , P(frozenset({'H'})) >= 0 --> True
+P(frozenset({'C'})) = 0.17 , P(frozenset({'C'})) >= 0 --> True
+P(frozenset({'D'})) = 0.2 , P(frozenset({'D'})) >= 0 --> True
+P(frozenset({'H', 'S'})) = 0.63 , P(frozenset({'H', 'S'})) >= 0 --> True
+P(frozenset({'C', 'S'})) = 0.42 , P(frozenset({'C', 'S'})) >= 0 --> True
+P(frozenset({'D', 'S'})) = 0.45 , P(frozenset({'D', 'S'})) >= 0 --> True
+P(frozenset({'C', 'H'})) = 0.55 , P(frozenset({'C', 'H'})) >= 0 --> True
+P(frozenset({'D', 'H'})) = 0.58 , P(frozenset({'D', 'H'})) >= 0 --> True
+P(frozenset({'D', 'C'})) = 0.37 , P(frozenset({'D', 'C'})) >= 0 --> True
+P(frozenset({'C', 'H', 'S'})) = 0.8 , P(frozenset({'C', 'H', 'S'})) >= 0 --> True
+P(frozenset({'D', 'H', 'S'})) = 0.83 , P(frozenset({'D', 'H', 'S'})) >= 0 --> True
+P(frozenset({'D', 'C', 'H'})) = 0.75 , P(frozenset({'D', 'C', 'H'})) >= 0 --> True
+P(frozenset({'D', 'C', 'S'})) = 0.62 , P(frozenset({'D', 'C', 'S'})) >= 0 --> True
+P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >= 0 --> True
 
-
-=== 콜모고로프의 공리 2 ===
-P({card_all}) = 1
 ```
