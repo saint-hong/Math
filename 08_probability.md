@@ -11,7 +11,7 @@
 - ``set([])`` : 내용을 변경할 수 있다, 뮤터블 mutable 자료형
   - 뮤터블 자료형은 딕셔너리 자료형의 key 값이 될 수 없음 주의
 - ``frozenset([])`` : 내용을 변경할 수 없다, 임뮤터블 immutable 자료형
-```
+```python
 A = set([1, 2, 3, 4])
 B = frozenset(['X', 'Y', 'Z'])
 C = {"\u2700", "\u2701"}
@@ -31,7 +31,7 @@ frozenset({'Y', 'X', 'Z'})
   - D = {x: 0 < x <= 1} 
 
 #### python
-```
+```python
 len_A = len(A)
 len_B = len(B)
 len_C = len(C)
@@ -50,7 +50,7 @@ len_C = len(C)
 #### python
 - 합집합 : A.union(B), A | B
 - 교집합 : A.intersection(B), A & B
-```
+```python
 A1 = set([1, 2, 3, 4])
 A2 = set([2, 4, 6])
 A3 = set([1, 2, 3])
@@ -81,7 +81,7 @@ print("교집합 {} & {} = {}".format(A3, A4, A3 & A4)
 #### python
 - 부분집합 : A.issubset(B), A <= B, B >= A (True, False 반환)
 - 진부분집합 : A < B, B > A (True, False 반환)
-```
+```python
 A1 = set([1, 2, 3, 4])
 A2 = set([2, 4, 6])
 A3 = set([1, 2, 3])
@@ -115,7 +115,7 @@ print("진부분집합 {} > {} = {}".format(A1, A1, A1 > A1))
 
 #### python
 - 차집합 : A.difference(B), A - B
-```
+```python
 A1 = set([1, 2, 3, 4])
 A2 = set([2, 4, 6])
 A3 = set([1, 2, 3])
@@ -144,7 +144,7 @@ print("차집합 {}-{} = {}".format(A3, A4, A3 - A4))
 
 #### python
 - 공집합 정의
-```
+```python
 empty_set = set([])
 print(empty_set)
 
@@ -154,7 +154,7 @@ set()
 ```
 - 집합 A와 공집합의 관계
 - 공집합은 임의의 집합의 부분집합이면서 진부분집합이다.
-```
+```python
 A1 = set([1, 2, 3, 4])
 empty_set = set([])
 
@@ -174,7 +174,7 @@ empty_set union {1, 2, 3, 4} = {1, 2, 3, 4}
 ### 부분집합의 수
 - 원소의 갯수가 N개인 집합은 2^N개의 부분집합을 갖는다.
 - 모든 집합은 공집합과 자기 자신인 집합을 부분집합으로 갖는다.
-```
+```python
 A = set(["O", "A", "B"])
 empty_set = set([])
 
@@ -196,7 +196,7 @@ A의 길이 : 3, A의 부분집합의 갯수 : 8
 
 #### python
 - 집합 A, B, C 에 대해서 교집합과 합집합의 분배법칙 성립 확인해보기.
-```
+```python
 A = frozenset([1, 3, 5])
 B = frozenset([1, 2, 3])
 C = frozenset([2, 4, 6])
@@ -266,7 +266,7 @@ frozenset({1, 2, 3})
 #### python
 - 동전 던지기 문제의 부분집합을 하나의 집합으로 합할 수 있다.
   - ``frozenset([]) 자료형은 딕셔너리의 key 로 사용할 수 있다. set([]) 자료형은 key 로 사용할 수 없다.``
-```
+```python
 A = frozenset([])
 B = frozenset(['H'])
 C = frozenset(['T'])
@@ -279,7 +279,7 @@ print(set([A, B, C, D]))
 {frozenset(), frozenset({'H'}), frozenset({'T'}), frozenset({'T', 'H'})}
 ```
 - 카드뽑기 문제의 표본공간의 모든 사건을 구하고 frozenset으로 만들고, set으로 합하기
-```
+```python
 play_card = frozenset([1, 2, 3, 4])
 subset_1 = frozenset([1])
 subset_2 = frozenset([2])
@@ -310,7 +310,7 @@ print(ttl_set)
 {frozenset({3, 4}), frozenset({2}), frozenset({1, 4}), frozenset({2, 3, 4}), frozenset({2, 3}), frozenset({1, 2, 4}), frozenset({1, 2}), frozenset({3}), frozenset({2, 4}), frozenset({1}), frozenset(), frozenset({1, 2, 3, 4}), frozenset({1, 2, 3}), frozenset({1, 3}), frozenset({1, 3, 4}), frozenset({4})}
 ```
 - 동전 2번 던지기의 표본공간과 가능한 모든 사건을 frozenset으로 만들고, set으로 합하기
-```
+```python
 coin_problem = {"HH", "HT", "TH", "TT"}
 c1 = frozenset(["HH"])
 c2 = frozenset(["HT"])
@@ -339,7 +339,8 @@ print(ttl_set)
 {frozenset({'HH', 'TT', 'TH'}), frozenset({'HH'}), frozenset({'HH', 'TH', 'HT'}), frozenset({'HH', 'HT'}), frozenset({'HH', 'TT', 'TH', 'HT'}), frozenset({'HH', 'TT'}), frozenset({'HH', 'TT', 'HT'}), frozenset({'TT', 'HT'}), frozenset({'TT'}), frozenset({'TT', 'TH', 'HT'}), frozenset({'TH'}), frozenset(), frozenset({'TH', 'HT'}), frozenset({'HH', 'TH'}), frozenset({'HT'}), frozenset({'TT', 'TH'})}
 ```
 
-
+# 확률
+- ``확률 probability`` : 사건(부분집합)을 입력하면 숫자가 출력되는 **함수**
 
 
 
