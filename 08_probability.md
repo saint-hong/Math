@@ -258,7 +258,8 @@ frozenset({1, 2, 3})
   - 일반성인의 체온 맞추기 : body_temp_space = R, 표본공간은 실수 전체이다.
 
 ### 사건 
-- ``사건 event`` :  표본공간의 부분집합. 전체 표본공간 중에서 현재 관심을 가지고 있는 일부 표본의 집합.
+- ``사건 event`` :  표본공간의 **부분집합**. 전체 표본공간 중에서 현재 관심을 가지고 있는 일부 표본의 집합.
+  - 사건=부분집합
 - 동전 던지기 표본공간에서 가능한 부분집합
   - A = {}, B = {H}, C = {T}, D = {H, T}
   - 사건은 전체표본 공간에서 나올 수 있는 경우를 의미한다. 즉 B 사건은 동전을 던졌을 때 H가 나올 경우이고, D 사건은 동전을 던졌을 때 H 또는 T 가 나오는 경우이다. 
@@ -345,8 +346,48 @@ print(ttl_set)
 - 확률의 정의역 : 표본공간의 모든 사건(부분집합)의 집합
   - 확률의 범위는 엄격하게는 시그마대수(sigma algebra)라는 특별한 사건의 집합에 대해서만 정의된다.
   - 참고 링크 
-    - **확률의 수학적 정의** https://arca.live/b/maths/1137243;
-    - **확률 개념의 발전과정** https://pkjung.tistory.com/167;  
+    - *확률의 수학적 정의* https://arca.live/b/maths/1137243;
+    - *확률 개념의 발전과정* https://pkjung.tistory.com/167;
+- 확률은 모든 각각의 사건(부분집합)에 어떤 **숫자를 할당(assign, allocate)하는 함수**이다.
+  - P(A) : A라는 사건(부분집합)에 할당된 숫자
+  - P({H}) 는 "H라는 표본이 선택될 확률", P({H, T}) 는 "H 또는 T라는 표본이 선택될 확률"이라는 의미
+- 확률이라는 함수를 정의한다는 것은 "A가 선택될 확률이 얼마인가?"라는 질문에 대한 답을 모든 경우(사건, 부분집합)에 대해서 **미리 준비해 놓은 것** 또는 **할당해 놓은 것**과 같다.
+
+### 콜모고로프의 공리
+- 콜모고로프의 공리 kolmogorov's axioms : 확률이라는 함수를 정의하는 3가지 규칙
+- 모든 확률은 콜모고로프의 공리를 따라야 한다. 
+  1. 모든 사건에 대해 확률은 실수이고 0 또는 양수이다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%5Cleq%200">
+  2. 표본공간(전체집합)이라는 사건(부분집합)에 대한 확률은 1이다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28%5COmega%29%20%3D%201">
+  3. 공통 원소가 없는 두 사건의 합집합의 확률은 사건별 확률의 합이다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A%20%5Ccap%20B%20%3D%20%5Cvarnothing%20%5Crightarrow%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29">
+
+### 확률은 표본이 아닌 사건을 입력으로 가지는 함수
+- 확률은 표본을 입력받는 것이 아닌 사건(부분집합)을 입력받는 함수이다.
+- 주사위를 던졌을 때 숫자 1이 나올 확률
+  - 틀린 표기 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%281%29%20%3D%20%5Cdfrac%7B1%7D%7B6%7D">
+  - 맞는 표기 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28%5Cleft%20%5C%7B%201%20%5Cright%20%5C%7D%29%20%3D%20%5Cdfrac%7B1%7D%7B6%7D">
+- 표본 즉 확률표본은 표본공간의 구성 재료이다. 사건은 표본공간에서 우리가 관심을 갖는 부분집합이다.
+
+#### python
+- 확률은 딕셔너리 타입을 사용하여 나타낼 수 있다. 집합을 정의할 때 frozenset 으로 해야 딕셔너리의 key로 사용할 수 있다.
+- 사건 : key, 확률 : value
+- 동전을 한 번 던질때를 확률로 나타내면,
+```python
+A = frozenset([])
+B = frozenset(["H"])
+C = frozenset(["T"])
+D = frozenset(["H", "T"])
+
+P = {A:0, B:0.4, C:0.6, D:1}
+print(P)
+
+=====<print>=====
+
+{frozenset(): 0, frozenset({'H'}): 0.4, frozenset({'T'}): 0.6, frozenset({'T', 'H'}): 1}
+```
+ 
 
 
 
