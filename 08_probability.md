@@ -424,6 +424,7 @@ print(P)
 - 플레잉카드 한 장을 뽑아서 무늬를 결정하는 문제에 대해서 확률값을 할당하고 파이썬으로 구현해보기
 ```python
 
+''부분집합 정의''
 card_empty = frozenset([])
 card_space = frozenset(["♤"])
 card_heart = frozenset(["♥"])
@@ -431,9 +432,11 @@ card_clover = frozenset(["♧"])
 card_diamond = frozenset(["◆"])
 card_all = frozenset(["♤", "♥", "♧", "◆"])  
 
+''부분집합에 대한 확률 정의''
 card_proba = {card_empty:0, card_space:0.25, card_heart:0.38, \
 card_clover:0.17, card_diamond:0.20, card_all:1}
 
+''콜모고로프의 공리를 만족하는지 확인''
 print("=== 콜모고로프의 공리 1 ===")
 print("P({card_empty}) =", card_proba[card_empty],",", "P({card_empty}) >= 0 ---> ",card_proba[card_empty]>=0)
 print("P({card_space}) =", card_proba[card_space],",", "P({card_space}) >= 0 ---> ",card_proba[card_space]>=0)
