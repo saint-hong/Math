@@ -1207,6 +1207,33 @@ def plot_opt_2(k) :
 ![optm_16.png](./images/optimization/optm_16.png)
 ![optm_17.png](./images/optimization/optm_17.png)
 
+### k값의 변화에 따른 최적해의 변화 그래프
+
+```python
+def f2(x) :
+    return np.sqrt((x[0]-4)**2 + (x[1]-2)**2)
+
+def ieq_constraint(k) :
+    return lambda x : np.atleast_1d(k - np.sum(np.abs(x)))
+
+opt = []
+k_range = np.linspace(0.1, 10, 100)
+for k in k_range :
+    opt += [
+        sp.optimize.fmin_slsqp(f2, np.array([0, 0]), ieqcons=[ieq_constraint(k)], iprint=0)
+    ]
+
+plt.plot(k_range, np.array(opt)[:, 0], 'g-', label='x1의 해')
+plt.plot(k_range, np.array(opt)[:, 1], 'r-', label='x2의 해')
+plt.title("k의 변화에 따른 최적해의 변화")
+plt.xlabel('k')
+plt.ylabel('최적해')
+plt.legend()
+plt.show() ;
+```
+![optm_18.png](./images/optimization/optm_18.png)
+
+
 # 사이파이를 사용한 이차계획법 문제 계산
 - linprog(c, A, b)
     - c : 목적함수의 계수 벡터
