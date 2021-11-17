@@ -544,9 +544,8 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 - 어떤 사건의 여집합인 사건의 확률은 (1-원래 사건의 확률)과 같다.
   - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%5Ec%29%20%3D%201%20-%20P%28A%29">
   - A : 남자 부분집합, A^c : A의 여집합, 여자 부분집합
-  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%2C%5C%3B%5C%3B%20if%20B%3DA%5Ec%20%5C%3B%5C%3B%20%5Crightarrow%20%5C%3B%5C%3B%20A%20%5Ccap%20B%20%3D%20%5Cvarnothing"> \
-  > - 여집합의 확률값은 표본공간의 확률값 1에서 원래 집합의 확률값을 뺀것과 같다.\
-  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20A%5Ec%29%20%3D%20P%28%5COmega%29%20%3D%201%20%3D%20P%28A%29%20&plus;%20P%28A%5Ec%29"> \
+  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%2C%5C%3B%5C%3B%20if%20B%3DA%5Ec%20%5C%3B%5C%3B%20%5Crightarrow%20%5C%3B%5C%3B%20A%20%5Ccap%20B%20%3D%20%5Cvarnothing"> 
+  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20A%5Ec%29%20%3D%20P%28%5COmega%29%20%3D%201%20%3D%20P%28A%29%20&plus;%20P%28A%5Ec%29"> 
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Ctherefore%20P%28A%5Ec%29%3D1-P%28A%29%20%5Cgeq%200%2C%20%5C%3B%5C%3B%20%28kolmogrovs%29%20%5C%3B%5C%3B%200%20%5Cleq%20P%28A%29%20%5Cleq%201">
 - 콜모고로프의 공리 1의 조건을 결합하면 모든 확률값은 0과 1사잇값을 가져야 한다.
 
