@@ -535,7 +535,9 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 ### 성질 1. 공집합의 확률
 - 공집합인 사건(부분집합)의 확률은 0이다.
   - <img src="https://latex.codecogs.com/gif.latex?P%28%5Cvarnothing%29%20%3D%200">
-  - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%2C%20%5C%3B%5C%3B%20if%20%5C%3B%5C%3B%20P%28B%29%20%3D%20%5Cvarnothing%2C%5C%3B%20A%20%5Ccup%20%5Cvarnothing%20%3D%20A%20%5Crightarrow">  <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5C%3B%5C%3B%20P%28A%20%5Ccup%20%5Cvarnothing%29%20%3D%20P%28A%29%20%3D%20P%28A%29%20&plus;%20P%28%5Cvarnothing%29">   <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Ctherefore%20P%28%5Cvarnothing%29%20%3D%200">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%2C%20%5C%3B%5C%3B%20if%20%5C%3B%5C%3B%20P%28B%29%20%3D%20%5Cvarnothing%2C%5C%3B%20A%20%5Ccup%20%5Cvarnothing%20%3D%20A%20%5Crightarrow">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5C%3B%5C%3B%20P%28A%20%5Ccup%20%5Cvarnothing%29%20%3D%20P%28A%29%20%3D%20P%28A%29%20&plus;%20P%28%5Cvarnothing%29">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Ctherefore%20P%28%5Cvarnothing%29%20%3D%200">
 
 
 
