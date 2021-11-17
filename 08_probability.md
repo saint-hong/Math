@@ -556,6 +556,14 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 - A : 남자 집합, B : 머리 긴 사람 집합
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%20%5Ccup%20%28B%20%5Ccap%20A%5Ec%29%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28B%20%5Ccap%20A%5Ec%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28B%20%5Ccap%20A%5Ec%29%20&plus;%20P%28A%20%5Ccap%20B%29%20-%20P%28A%20%5Ccap%20B%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28%28A%5Ec%20%5Ccap%20B%29%20%5Ccup%20P%28A%20%5Ccap%20B%29%29%20-%20P%28A%20%5Ccap%20B%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28B%29%20-%20P%28A%20%5Ccap%20B%29">
 
+### 성질4. 전체 확률의 법칙
+- 복수의 사건 C_i가 다음을 만족하는 사건들이라고 가정한다.
+  - 배타적 mutually exclusive : 서로 교집합이 없다. 배타적 관계
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20C_i%20%5Ccap%20C_j%20%3D%20%5Cvarnothing%20%5C%3B%5C%3B%20%28i%5Cneq%20j%29">
+  - 완전한 부분집합 complete subset : 모든 집합의 합집합이 전체집합(표본공간) 이다.  
+    > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20C_1%20%5Ccup%20C_2%20%5Ccup%20%5Ccdots%3D%5COmega">
+
+
 
 
 
