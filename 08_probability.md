@@ -558,11 +558,15 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 
 ### 성질4. 전체 확률의 법칙
 - 복수의 사건 C_i가 다음을 만족하는 사건들이라고 가정한다.
-  - 배타적 mutually exclusive : 서로 교집합이 없다. 배타적 관계
+  - ``배타적 mutually exclusive`` : 서로 교집합이 없다. 배타적 관계
     > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20C_i%20%5Ccap%20C_j%20%3D%20%5Cvarnothing%20%5C%3B%5C%3B%20%28i%5Cneq%20j%29">
-  - 완전한 부분집합 complete subset : 모든 집합의 합집합이 전체집합(표본공간) 이다.  
+  - ``완전한 부분집합 complete subset`` : 모든 집합의 합집합이 전체집합(표본공간) 이다.  
     > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20C_1%20%5Ccup%20C_2%20%5Ccup%20%5Ccdots%3D%5COmega">
-
+- ``전체 확률의 법칙 law of total probability`` : 사건 A의 확률은 사건 A와 사건 C_i가 동시에 발생한 사건들의 확률의 합과 같다.
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%3D%20%5Csum_%7Bi%7D%20P%28A%20%5Ccap%20C_i%29">
+  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A%20%3D%20A%20%5Ccap%20%5COmega%20%5C%5C%20%3D%20A%20%5Ccap%20%28C_1%20%5Ccup%20C_2%20%5Ccup%20%5Ccdots%29%20%5C%5C%20%3D%20%28A%20%5Ccap%20C_1%29%20%5Ccup%20%28A%20%5Ccap%20C_2%29%20%5Ccup%20%28A%20%5Ccap%20C_3%29%20%5Ccdots">
+- C_i 가 서로 공통원소가 없으므로 A∩C_i 도 서로 공통원소가 없다. 따라서,
+  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%3D%20%28A%20%5Ccap%20C_1%29%20&plus;%20%28A%20%5Ccap%20C_2%29%20&plus;%20%5Ccdots%20%3D%20%5Csum_%7Bi%7D%20P%28A%20%5Ccap%20C_i%29%3D%5Csum_%7Bi%7D%20P%28A%2CC_i%29">
 
 
 
