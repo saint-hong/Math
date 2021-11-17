@@ -534,7 +534,7 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 
 ### 성질 1. 공집합의 확률
 - 공집합인 사건(부분집합)의 확률은 0이다.
-  - <img src="https://latex.codecogs.com/gif.latex?P%28%5Cvarnothing%29%20%3D%200"> \
+- <img src="https://latex.codecogs.com/gif.latex?P%28%5Cvarnothing%29%20%3D%200"> 
   
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%2C%20%5C%3B%5C%3B%20if%20%5C%3B%5C%3B%20P%28B%29%20%3D%20%5Cvarnothing%2C%5C%3B%20A%20%5Ccup%20%5Cvarnothing%20%3D%20A%20%5Crightarrow"> \
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5C%3B%5C%3B%20P%28A%20%5Ccup%20%5Cvarnothing%29%20%3D%20P%28A%29%20%3D%20P%28A%29%20&plus;%20P%28%5Cvarnothing%29"> \
@@ -542,12 +542,19 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 
 ### 성질2.. 여집합의 확률
 - 어떤 사건의 여집합인 사건의 확률은 (1-원래 사건의 확률)과 같다.
-  - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%5Ec%29%20%3D%201%20-%20P%28A%29">
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%5Ec%29%20%3D%201%20-%20P%28A%29">
+
   - A : 남자 부분집합, A^c : A의 여집합, 여자 부분집합
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%2C%5C%3B%5C%3B%20if%20B%3DA%5Ec%20%5C%3B%5C%3B%20%5Crightarrow%20%5C%3B%5C%3B%20A%20%5Ccap%20B%20%3D%20%5Cvarnothing"> 
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20A%5Ec%29%20%3D%20P%28%5COmega%29%20%3D%201%20%3D%20P%28A%29%20&plus;%20P%28A%5Ec%29"> 
   > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Ctherefore%20P%28A%5Ec%29%3D1-P%28A%29%20%5Cgeq%200%2C%20%5C%3B%5C%3B%20%28kolmogrovs%29%20%5C%3B%5C%3B%200%20%5Cleq%20P%28A%29%20%5Cleq%201">
 - 콜모고로프의 공리 1의 조건을 결합하면 모든 확률값은 0과 1사잇값을 가져야 한다.
+
+### 성질3. 포함-배제 원리
+- ``포함-배제 원리 inclusion-exclusion principle`` : 두 사건의 합집합의 확률은 각 사건의 확률의 합에서 두 사건의 교집합의 확률을 뺀 것과 같다. (덧셈 규칙 sum rule, addition law)
+- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29%20-%20P%28A%20%5Ccap%20B%29">
+- A : 남자 집합, B : 머리 긴 사람 집합
+  > <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%20%5Ccup%20%28B%20%5Ccap%20A%5Ec%29%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28B%20%5Ccap%20A%5Ec%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28B%20%5Ccap%20A%5Ec%29%20&plus;%20P%28A%20%5Ccap%20B%29%20-%20P%28A%20%5Ccap%20B%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28%28A%5Ec%20%5Ccap%20B%29%20%5Ccup%20P%28A%20%5Ccap%20B%29%29%20-%20P%28A%20%5Ccap%20B%29%20%5C%5C%20%3D%20P%28A%29%20&plus;%20P%28B%29%20-%20P%28A%20%5Ccap%20B%29">
 
 
 
