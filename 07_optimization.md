@@ -290,7 +290,7 @@ plt.ylim(0, 10)
 
 plt.show() ;
 ```
-![optm_1.png](./images/optimization/optm_1)
+![optm_1.png](./images/optimization/optm_1.png)
 
 ### 2차원 목적함수의 최저점 확인
 - 로젠브룩 Rosenbrock 함수
