@@ -340,6 +340,42 @@ print(ttl_set)
 {frozenset({'HH', 'TT', 'TH'}), frozenset({'HH'}), frozenset({'HH', 'TH', 'HT'}), frozenset({'HH', 'HT'}), frozenset({'HH', 'TT', 'TH', 'HT'}), frozenset({'HH', 'TT'}), frozenset({'HH', 'TT', 'HT'}), frozenset({'TT', 'HT'}), frozenset({'TT'}), frozenset({'TT', 'TH', 'HT'}), frozenset({'TH'}), frozenset(), frozenset({'TH', 'HT'}), frozenset({'HH', 'TH'}), frozenset({'HT'}), frozenset({'TT', 'TH'})}
 ```
 
+- **itertools의 chain과 combinations를 사용**
+- 여러개의 부분집합을 하나의 set([])에 넣기위해서 반복문을 사용하여 앞의 것을 넣고 새로 저장한 후 뒤의 것과 합하는 방법을 생각해 보았으나 실패
+- 대신 기본 데이터를 조합해주는 기능인 combinations 를 사용하면 간편해진다.
+
+```python
+from itertools import chain, combinations
+
+omega = {"HH", "HT", "TH", "TT"}
+
+
+def get_make_subset(x) :
+    return set([frozenset(c) for c in chain.from_itertools(combinations(omega, n) for n in rnage(len(x)+1))])
+
+
+get_make_subset(omega)
+
+=====<print>=====
+
+{frozenset(),
+ frozenset({'HT', 'TT'}),
+ frozenset({'TH', 'TT'}),
+ frozenset({'HT', 'TH'}),
+ frozenset({'TT'}),
+ frozenset({'HT', 'TH', 'TT'}),
+ frozenset({'HH'}),
+ frozenset({'HH', 'TT'}),
+ frozenset({'HH', 'HT'}),
+ frozenset({'TH'}),
+ frozenset({'HH', 'TH'}),
+ frozenset({'HT'}),
+ frozenset({'HH', 'HT', 'TH'}),
+ frozenset({'HH', 'TH', 'TT'}),
+ frozenset({'HH', 'HT', 'TT'}),
+ frozenset({'HH', 'HT', 'TH', 'TT'})}
+```
+
 # 확률
 - ``확률 probability`` : 사건(부분집합)을 입력하면 숫자가 출력되는 **함수**
   - 확률은 함수와 같다. 사건과 사건이 발생할 확률을 관계지어 준다.
@@ -351,7 +387,7 @@ print(ttl_set)
 - 확률은 모든 각각의 사건(부분집합)에 어떤 **숫자를 할당(assign, allocate)하는 함수**이다.
   - P(A) : A라는 사건(부분집합)에 할당된 숫자
   - P({H}) 는 "H라는 표본이 선택될 확률", P({H, T}) 는 "H 또는 T라는 표본이 선택될 확률"이라는 의미
-- 확률이라는 함수를 정의한다는 것은 "A가 선택될 확률이 얼마인가?"라는 질문에 대한 답을 모든 경우(사건, 부분집합)에 대해서 **미리 준비해 놓은 것** 또는 **할당해 놓은 것**과 같다.
+- 확c률이라는 함수를 정의한다는 것은 "A가 선택될 확률이 얼마인가?"라는 질문에 대한 답을 모든 경우(사건, 부분집합)에 대해서 **미리 준비해 놓은 것** 또는 **할당해 놓은 것**과 같다.
 
 ### 콜모고로프의 공리
 - ``콜모고로프의 공리 kolmogorov's axioms`` : 확률이라는 함수를 정의하는 3가지 규칙
@@ -492,6 +528,340 @@ P(frozenset({'D', 'H', 'S'})) = 0.83 , P(frozenset({'D', 'H', 'S'})) >= 0 --> Tr
 P(frozenset({'D', 'C', 'H'})) = 0.75 , P(frozenset({'D', 'C', 'H'})) >= 0 --> True
 P(frozenset({'D', 'C', 'S'})) = 0.62 , P(frozenset({'D', 'C', 'S'})) >= 0 --> True
 P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >= 0 --> True
+```
+### 주사위의 확률을 모든 사건(부분집합)에 대해 할당하기.
+- P({1}) = 0.5, P({6}) = 0
+- 표본공간 정의
+```pyhon
+cube_space = {1, 2, 3, 4, 5, 6}
+cube_space
+
+=====<print>=====
+
+{1, 2, 3, 4, 5, 6}
+```
+
+- 모든 사건(부분집합) 정의
+```python
+cube1 = frozenset([1])
+cube2 = frozenset([2])
+cube3 = frozenset([3])
+cube4 = frozenset([4])
+cube5 = frozenset([5])
+cube6 = frozenset([6])
+cube7 = frozenset([1, 2])
+cube8 = frozenset([1, 3])
+cube9 = frozenset([1, 4])
+cube10 = frozenset([1, 5])
+cube11 = frozenset([1, 6])
+cube12 = frozenset([2, 3])
+cube13 = frozenset([2, 4])
+cube14 = frozenset([2, 5])
+cube15 = frozenset([2, 6])
+cube16 = frozenset([3, 4])
+cube17 = frozenset([3, 5])
+cube18 = frozenset([3, 6])
+cube19 = frozenset([4, 5])
+cube20 = frozenset([4, 6])
+cube21 = frozenset([5, 6])
+cube22 = frozenset([1, 2, 3])
+cube23 = frozenset([1, 2, 4])
+cube24 = frozenset([1, 2, 5])
+cube25 = frozenset([1, 2, 6])
+cube26 = frozenset([1, 3, 4])
+cube27 = frozenset([1, 3, 5])
+cube28 = frozenset([1, 3, 6])
+cube29 = frozenset([1, 4, 5])
+cube30 = frozenset([1, 4, 6])
+cube31 = frozenset([1, 5, 6])
+cube32 = frozenset([2, 3, 4])
+cube33 = frozenset([2, 3, 5])
+cube34 = frozenset([2, 3, 6])
+cube35 = frozenset([2, 4, 5])
+cube36 = frozenset([2, 4, 6])
+cube37 = frozenset([2, 5, 6])
+cube38 = frozenset([3, 4, 5])
+cube39 = frozenset([3, 4, 6])
+cube40 = frozenset([3, 5, 6])
+cube41 = frozenset([4, 5, 6])
+cube42 = frozenset([1, 2, 3, 4])
+cube43 = frozenset([1, 2, 3, 5])
+cube44 = frozenset([1, 2, 3, 6])
+cube45 = frozenset([1, 2, 4, 5])
+cube46 = frozenset([1, 2, 4, 6])
+cube47 = frozenset([1, 2, 5, 6])
+cube48 = frozenset([1, 3, 4, 5])
+cube49 = frozenset([1, 3, 4, 6])
+cube50 = frozenset([1, 3, 5, 6])
+cube51 = frozenset([1, 4, 5, 6])
+cube52 = frozenset([2, 3, 4, 5])
+cube53 = frozenset([2, 3, 4, 6])
+cube54 = frozenset([2, 3, 5, 6])
+cube55 = frozenset([2, 4, 5, 6])
+cube56 = frozenset([3, 4, 5, 6])
+cube57 = frozenset([1, 2, 3, 4, 5])
+cube58 = frozenset([1, 2, 3, 4, 6])
+cube59 = frozenset([1, 2, 3, 5, 6])
+cube60 = frozenset([1, 2, 4, 5, 6])
+cube61 = frozenset([1, 3, 4, 5, 6])
+cube62 = frozenset([2, 3, 4, 5, 6])
+cube63 = frozenset([1, 2, 3, 4, 5, 6])
+cube64 = frozenset([])
+```
+
+- 각 부분집합에 확률 할당
+```python
+c1 = 0.5
+c2 = 0.12
+c3 = 0.145
+c4 = 0.13
+c5 = 0.105
+c6 = 0
+
+c1 + c2 + c3 + c4 + c5 + c6
+
+=====<print>=====
+
+1.0
+
+cube_proba = {
+    cube1 : c1,
+    cube2 : c2,
+    cube3 : c3,
+    cube4 : c4,
+    cube5 : c5,
+    cube6 : c6,
+    cube7 : c1 + c2,
+    cube8 : c1 + c3,
+    cube9 : c1 + c4,
+    cube10 : c1 + c5,
+    cube11 : c1 + c6,
+    cube12 : c2 + c3,
+    cube13 : c2 + c4,
+    cube14 : c2 + c5,
+    cube15 : c2 + c6,
+    cube16 : c3 + c4,
+    cube17 : c3 + c5,
+    cube18 : c3 + c6,
+    cube19 : c4 + c5,
+    cube20 : c4 + c6,
+    cube21 : c5 + c6,
+    cube22 : c1 + c2 + c3,
+    cube23 : c1 + c2 + c4,
+    cube24 : c1 + c2 + c5,
+    cube25 : c1 + c2 + c6,
+    cube26 : c1 + c3 + c4,
+    cube27 : c1 + c3 + c5,
+    cube28 : c1 + c3 + c6,
+    cube29 : c1 + c4 + c5,
+    cube30 : c1 + c4 + c6,
+    cube31 : c1 + c5 + c6,
+    cube32 : c2 + c3 + c4,
+    cube32 : c2 + c3 + c4,
+    cube33 : c2 + c3 + c5,
+    cube34 : c2 + c3 + c6,
+    cube35 : c2 + c4 + c5,
+    cube36 : c2 + c4 + c6,
+    cube37 : c2 + c5 + c6,
+    cube38 : c3 + c4 + c5,
+    cube39 : c3 + c4 + c6,
+    cube40 : c3 + c5 + c6,
+    cube41 : c4 + c5 + c6,
+    cube42 : c1 + c2 + c3 + c4,
+    cube43 : c1 + c2 + c3 + c5,
+    cube44 : c1 + c2 + c3 + c6,
+    cube45 : c1 + c2 + c4 + c5,
+    cube46 : c1 + c2 + c4 + c6,
+    cube47 : c1 + c2 + c5 + c6,
+    cube48 : c1 + c3 + c4 + c5,
+    cube49 : c1 + c3 + c4 + c6,
+    cube50 : c1 + c3 + c5 + c6,
+    cube51 : c1 + c4 + c5 + c6,
+    cube52 : c2 + c3 + c4 + c5,
+    cube53 : c2 + c3 + c4 + c6,
+    cube54 : c2 + c3 + c5 + c6,
+    cube55 : c2 + c4 + c5 + c6,
+    cube56 : c3 + c4 + c5 + c6,
+    cube57 : c1 + c2 + c3 + c4 + c5,
+    cube58 : c1 + c2 + c3 + c4 + c6,
+    cube59 : c1 + c2 + c3 + c5 + c6,
+    cube60 : c1 + c2 + c4 + c5 + c6,
+    cube61 : c1 + c3 + c4 + c5 + c6,
+    cube62 : c2 + c3 + c4 + c5 + c6,
+    cube63 : c1 + c2 + c3 + c4 + c5 + c6,
+    cube64 : 0
+}
+
+cube_proba
+
+=====<print>=====
+
+{frozenset({1}): 0.5,
+ frozenset({2}): 0.12,
+ frozenset({3}): 0.145,
+ frozenset({4}): 0.13,
+ frozenset({5}): 0.105,
+ frozenset({6}): 0,
+ frozenset({1, 2}): 0.62,
+ frozenset({1, 3}): 0.645,
+ frozenset({1, 4}): 0.63,
+ frozenset({1, 5}): 0.605,
+ frozenset({1, 6}): 0.5,
+ frozenset({2, 3}): 0.265,
+ frozenset({2, 4}): 0.25,
+ frozenset({2, 5}): 0.22499999999999998,
+ frozenset({2, 6}): 0.12,
+ frozenset({3, 4}): 0.275,
+ frozenset({3, 5}): 0.25,
+ frozenset({3, 6}): 0.145,
+ frozenset({4, 5}): 0.235,
+ frozenset({4, 6}): 0.13,
+ frozenset({5, 6}): 0.105,
+ frozenset({1, 2, 3}): 0.765,
+ frozenset({1, 2, 4}): 0.75,
+ frozenset({1, 2, 5}): 0.725,
+ frozenset({1, 2, 6}): 0.62,
+ frozenset({1, 3, 4}): 0.775,
+ frozenset({1, 3, 5}): 0.75,
+ frozenset({1, 3, 6}): 0.645,
+ frozenset({1, 4, 5}): 0.735,
+ frozenset({1, 4, 6}): 0.63,
+ frozenset({1, 5, 6}): 0.605,
+ frozenset({2, 3, 4}): 0.395,
+ frozenset({2, 3, 5}): 0.37,
+ frozenset({2, 3, 6}): 0.265,
+ frozenset({2, 4, 5}): 0.355,
+ frozenset({2, 4, 6}): 0.25,
+ frozenset({2, 5, 6}): 0.22499999999999998,
+ frozenset({3, 4, 5}): 0.38,
+ frozenset({3, 4, 6}): 0.275,
+ frozenset({3, 5, 6}): 0.25,
+ frozenset({4, 5, 6}): 0.235,
+ frozenset({1, 2, 3, 4}): 0.895,
+ frozenset({1, 2, 3, 5}): 0.87,
+ frozenset({1, 2, 3, 6}): 0.765,
+ frozenset({1, 2, 4, 5}): 0.855,
+ frozenset({1, 2, 4, 6}): 0.75,
+ frozenset({1, 2, 5, 6}): 0.725,
+ frozenset({1, 3, 4, 5}): 0.88,
+ frozenset({1, 3, 4, 6}): 0.775,
+ frozenset({1, 3, 5, 6}): 0.75,
+ frozenset({1, 4, 5, 6}): 0.735,
+ frozenset({2, 3, 4, 5}): 0.5,
+ frozenset({2, 3, 4, 6}): 0.395,
+ frozenset({2, 3, 5, 6}): 0.37,
+ frozenset({2, 4, 5, 6}): 0.355,
+ frozenset({3, 4, 5, 6}): 0.38,
+ frozenset({1, 2, 3, 4, 5}): 1.0,
+ frozenset({1, 2, 3, 4, 6}): 0.895,
+ frozenset({1, 2, 3, 5, 6}): 0.87,
+ frozenset({1, 2, 4, 5, 6}): 0.855,
+ frozenset({1, 3, 4, 5, 6}): 0.88,
+ frozenset({2, 3, 4, 5, 6}): 0.5,
+ frozenset({1, 2, 3, 4, 5, 6}): 1.0,
+ frozenset(): 0}
+```
+
+- set 만들기 함수와 if 문을 사용하여 간편하게 만들 수 있다.
+- set 에서 부분집합을 하나씩 꺼내고 부분집합안에 특정 표본이 있으면 이에 맞는 확률값을 더해주는 방식
+```python
+
+def get_set_of_subset(x) :
+
+    from itertools import chain, combinations
+
+    return set([frozenset(c) for c in chain.from_iterable(combinations(x, n) for n in range(len(x)+1))])
+
+omega = {1, 2, 3, 4, 5, 6}
+SS3 = get_set_of_subset(omega)
+
+P3 = {}
+
+for i in SS3 :
+    probability = 0.0
+    if 1 in i :
+        probability += 0.5
+    if 2 in i :
+        probability += 0.12
+    if 3 in i :
+        probability += 0.145
+    if 4 in i :
+        probability += 0.13
+    if 5 in i :
+        probability += 0.105
+    if 6 in i :
+        probability += 0
+
+    P3[i] = probability
+
+P3
+
+=====<print>=====
+
+{frozenset({1, 3, 5}): 0.75,
+ frozenset({1, 4}): 0.63,
+ frozenset({4, 6}): 0.13,
+ frozenset({2, 3}): 0.265,
+ frozenset({2, 3, 4}): 0.395,
+ frozenset({1, 4, 5, 6}): 0.735,
+ frozenset({2, 6}): 0.12,
+ frozenset({4, 5}): 0.235,
+ frozenset({2, 3, 5, 6}): 0.37,
+ frozenset({1, 2, 3, 6}): 0.765,
+ frozenset({1}): 0.5,
+ frozenset({1, 2, 3, 4, 5, 6}): 1.0,
+ frozenset({2, 4, 5, 6}): 0.355,
+ frozenset({4, 5, 6}): 0.235,
+ frozenset({1, 3, 4, 6}): 0.775,
+ frozenset({2, 3, 4, 6}): 0.395,
+ frozenset({1, 2, 3, 4, 6}): 0.895,
+ frozenset({1, 3, 4, 5, 6}): 0.88,
+ frozenset({1, 4, 6}): 0.63,
+ frozenset({3, 4}): 0.275,
+ frozenset({2, 4, 6}): 0.25,
+ frozenset({3, 4, 5, 6}): 0.38,
+ frozenset({1, 2, 3, 4, 5}): 1.0,
+ frozenset({2, 4}): 0.25,
+ frozenset({5, 6}): 0.105,
+ frozenset({2, 3, 5}): 0.37,
+ frozenset({3, 4, 6}): 0.275,
+ frozenset({3, 5}): 0.25,
+ frozenset({2, 5, 6}): 0.22499999999999998,
+ frozenset({3, 4, 5}): 0.38,
+ frozenset({1, 6}): 0.5,
+ frozenset({1, 2, 3}): 0.765,
+ frozenset({1, 2, 4, 6}): 0.75,
+ frozenset({1, 3}): 0.645,
+ frozenset({1, 2, 6}): 0.62,
+ frozenset({1, 3, 4}): 0.775,
+ frozenset({1, 2, 4, 5}): 0.855,
+ frozenset({1, 3, 5, 6}): 0.75,
+ frozenset({1, 2, 3, 5, 6}): 0.87,
+ frozenset({3, 6}): 0.145,
+ frozenset({2, 3, 6}): 0.265,
+ frozenset({2, 3, 4, 5}): 0.5,
+ frozenset({1, 2, 5}): 0.725,
+ frozenset({1, 5}): 0.605,
+ frozenset({1, 4, 5}): 0.735,
+ frozenset({1, 2, 3, 4}): 0.895,
+ frozenset({2, 3, 4, 5, 6}): 0.5,
+ frozenset({5}): 0.105,
+ frozenset({4}): 0.13,
+ frozenset({2}): 0.12,
+ frozenset({1, 2, 4, 5, 6}): 0.855,
+ frozenset({1, 2, 4}): 0.75,
+ frozenset({1, 2}): 0.62,
+ frozenset({1, 3, 6}): 0.645,
+ frozenset({1, 2, 5, 6}): 0.725,
+ frozenset({1, 2, 3, 5}): 0.87,
+ frozenset({1, 3, 4, 5}): 0.88,
+ frozenset({2, 4, 5}): 0.355,
+ frozenset({2, 5}): 0.22499999999999998,
+ frozenset({3, 5, 6}): 0.25,
+ frozenset({3}): 0.145,
+ frozenset({6}): 0.0,
+ frozenset(): 0.0,
+ frozenset({1, 5, 6}): 0.605}
 ```
 
 ### 확률값의 할당은 고정 된 것이 아니다.
@@ -663,3 +1033,162 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
     - 누적분포함수는 단조증가하므로 도함수인 확률밀도함수의 값은 양수이거나 0과 같다. p(x) >= 0
     - 확률밀도함수의 음의 무한대에서 양의 무한대의 구간의 값은 전체 표본공간의 확률이 되므로 1이다. <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28u%29du%3D1">
 - **확률도함수의 값은 확률값이 아니다. 특정 구간의 확률이 다른 구간과 비교해서 상대적으로 높은지 낮은지를 비교하는 값이다.**
+
+# python
+
+### 0도에서 180도의 확률이 2배 높은 조작된 원반의 확률을 파이썬으로 구현해보기.
+- 시작점과 끝점을 입력받아 확률을 출력하는 함수
+- 구간을 입력받아 확률값을 출력하는 함수 : 이차함수와 같다. P(a, b)
+
+```python
+def proba_interval(a, b) :
+    if  a < 0 : 
+        return "wrong start"
+    
+    if (a < 180) and (b >= 180) :
+        if b > a :
+            return interval_0_360(a, b)
+    
+    elif a < 180 :
+        if b > a :
+            return interval_0_180(a, b)
+    
+    elif a >= 180 :
+        if b > a : 
+            return interval_180_360(a, b)
+    
+def interval_0_360(a, b) :
+    print("0_360")
+    range_2a = interval_0_180(a, 180)
+    range_a = interval_180_360(180, b)
+    print(range_2a, range_a)
+    return range_2a + range_a
+    
+def interval_0_180(a, b) :
+    print("0_180")
+    t = 2/3
+    return t / (180/(b-a))
+    
+def interval_180_360(a, b) :
+    print("180_360")
+    t = 1/3
+    return t / (180/(b-a))
+
+print(proba_interval(30, 90))
+
+=====<print>=====
+
+0_180
+0.2222222222222222
+
+print(proba_interval(27, 86))
+
+=====<print>=====
+
+0_180
+0.21851851851851853
+
+print(proba_interval(193, 254))
+
+=====<print>=====
+
+180_360
+0.11296296296296295
+
+print(proba_interval(90, 270))
+
+=====<print>=====
+
+0_360
+0_180
+180_360
+0.3333333333333333 0.16666666666666666
+0.5
+```
+
+- 좀 더 간단하게 코딩할 수 있다.
+```python
+
+def P(a, b) :
+    if a > b :
+        raise ValueError('a must be less than b or equal to b')
+
+    a = np.maximum(a, 0)
+    b = np.minimum(b, 360)
+
+    if b < 180 :
+        return (2 / 3) * ((b - a) / 180)
+    else :
+        if a < 180 :
+            return (2 / 3) * ((180 - a) / 180) + (1 / 3) * ((b - 180) / 180)
+        return (1 / 3) * (((b - a) / 180))
+
+P(0, 270)
+
+=====<print>=====
+
+0.8333333333333333
+```
+
+- 람다 함수를 사용하면 한 줄로 코딩을 할 수 있다.
+- b < 180 이 True 이면 : (2 * (b - a)) / 540 
+- b < 180 이 False 이면 : 
+    - a < 180 이 True 이면 : (b - 2 * a + 180) / 540
+    - a < 180 이 False 이면 : (b - a) / 540
+```python
+P2 = lambda a, b : (2 * (b - a) if b < 180 else b - 2 * a + 180 if a < 180 else b - a) / 540
+
+P2(0, 270)
+
+=====<print>=====
+
+0.8333333333333334
+```
+
+### 0~180도 사이에서 2배 더 잘 박히도록 조작된 원판의 누적분포함수 F(x)를 구하라
+- P(-∞, 270) = P(-∞, 180) + P(180, 270)
+- F(270) = F(180) + P(180, 270)
+    - (2 / 3) + (1 / 3) * ((a - 180) / 180)
+
+```python
+def F(a) :
+    if a < 0 :
+        return 0
+    if a > 360 :
+        return 1
+    elif a < 180 :
+        return (2 / 3) * (a / 180)
+    elif a >= 180 :
+        return (2 / 3) + (1 / 3) * ((a - 180) / 180)
+
+F(270)
+
+=====<print>=====
+
+0.8333333333333333
+
+F(180)
+
+=====<print>=====
+
+0.6666666666666666
+```
+
+- 람다 함수 사용
+```python
+
+F2 = lambda a : 0 if a < 0 else 1 if a > 360 else (2/3) * (a / 180) if a < 180 else (2 / 3) + (1 / 3) * ((a - 180) / 180)
+F3 = lambda a : 0 if a < 0 else 1 if a > 360 else a / 270 if a < 180 else (2 / 3) + ((a - 180) / 540)
+
+F2(270)
+
+=====<print>=====
+
+0.8333333333333333
+
+F3(270)
+
+=====<print>=====
+
+0.8333333333333333
+```
