@@ -623,9 +623,9 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
     - P({-∞ < X <= x})에서 모든 실수는 음의 무한대보다 큰 값이므로 앞부분을 생략하고 표기한 것.
 - 누적분포함수와 콜모고로프의 세 번째 공리를 사용하면 복잡합 구간사건의 확률값을 구할 수 있다. 
     - 콜모고로프의 세 번째 공리 : 두 사건의 교집합이 공집합일때 두 사건 A, B의 합집합의 확률은 각 사건의 확륩값을 더한 것과 같다.
-    - $A \cap B = \varnothing, \;\; P(A \cup B) = P(A) + P(B)$
-    - $P(-\infty, b) = P(-\infty, a) + P(a, b)$
-    - $F(b) = F(a) + P(a, b), \;\; P(a, b) = F(b) - F(a)$
+    - <img src="https://latex.codecogs.com/gif.latex?A%20%5Ccap%20B%20%3D%20%5Cvarnothing%2C%20%5C%3B%5C%3B%20P%28A%20%5Ccup%20B%29%20%3D%20P%28A%29%20&plus;%20P%28B%29">
+    - <img src="https://latex.codecogs.com/gif.latex?P%28-%5Cinfty%2C%20b%29%20%3D%20P%28-%5Cinfty%2C%20a%29%20&plus;%20P%28a%2C%20b%29">
+    - <img src="https://latex.codecogs.com/gif.latex?F%28b%29%20%3D%20F%28a%29%20&plus;%20P%28a%2C%20b%29%2C%20%5C%3B%5C%3B%20P%28a%2C%20b%29%20%3D%20F%28b%29%20-%20F%28a%29">
 - 누적분포함수의 특징
     - F(-∞) = 0
     - F(+∞) = 1
@@ -639,11 +639,11 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
     - F(360) = P({-∞ < θ <= 360}) = 36/36
     - F(370) = P({-∞ < θ <= 370}) = 36/36
 - 누적분포함수 표현
-    - $F(x) = P(S_x) = P({-\infty < X \leq x}) = P(-\infty, x)$
+    - <img src="https://latex.codecogs.com/gif.latex?F%28x%29%20%3D%20P%28S_x%29%20%3D%20P%28%7B-%5Cinfty%20%3C%20X%20%5Cleq%20x%7D%29%20%3D%20P%28-%5Cinfty%2C%20x%29">
 
 ### 확률밀도함수
 - ``확률밀도함수 probability density function, pdf`` : 누적분포함수의 기울기를 출력하는 도함수로 누적분포함수를 미분하여 구한다.
-    - $p(x) = \dfrac {dF(x)}{dx}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x%29%20%3D%20%5Cdfrac%20%7BdF%28x%29%7D%7Bdx%7D">
     - 확률밀도함수는 소문자 p 사용
 - 누적분포함수의 장점은 복잡한 구간의 시작점을 음의 무한대로 통일해주므로 계산이 간편해진다. 
 - 반면에 구간이 크므로 어떤 사건에 확률이 어떻게 분포되어 있는지 알기 어렵다.
@@ -651,21 +651,15 @@ P(frozenset({'D', 'C', 'S', 'H'})) = 1.0 , P(frozenset({'D', 'C', 'S', 'H'})) >=
 - x_1 근처에서의 단위길에 할당된 확률
     - P({x_1 < x <= x_1 + dx}) = F(x_1 + dx) - F(x_1)
 - 같은 구간길이 dx를 가진 x1과 x2의 확률값을 비교해야 하므로, 단위구간 길이당 할당된 확률값
-    - $\dfrac {P( \left \{ x_1 < x \leq x_1 + dx \right \})}{dx} = \dfrac {F(x_1 + dx) - F(x_1)}{dx}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%20%7BP%28%20%5Cleft%20%5C%7B%20x_1%20%3C%20x%20%5Cleq%20x_1%20&plus;%20dx%20%5Cright%20%5C%7D%29%7D%7Bdx%7D%20%3D%20%5Cdfrac%20%7BF%28x_1%20&plus;%20dx%29%20-%20F%28x_1%29%7D%7Bdx%7D">
 - dx를 0으로 줄이면 즉 미세하게 작아지면 누적분포함수의 기울기가 된다.
-    - $\lim_{dx \rightarrow 0} \dfrac {P( \left \{ x_1 < x \leq x_1 + dx \right \})}{dx} = \lim_{dx \rightarrow 0} \dfrac {F(x_1 + dx) - F(x_1)}{dx}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Clim_%7Bdx%20%5Crightarrow%200%7D%20%5Cdfrac%20%7BP%28%20%5Cleft%20%5C%7B%20x_1%20%3C%20x%20%5Cleq%20x_1%20&plus;%20dx%20%5Cright%20%5C%7D%29%7D%7Bdx%7D%20%3D%20%5Clim_%7Bdx%20%5Crightarrow%200%7D%20%5Cdfrac%20%7BF%28x_1%20&plus;%20dx%29%20-%20F%28x_1%29%7D%7Bdx%7D">
 - 따라서 누적분포함수 그래프의 특정지점의 단위길이당 구간의 확률은 P(x1, x1+dx) = F(x1+dx) - F(x1) 이 되고, 이 값은 미적분학의 기본 원리에 의해서 누적분포함수의 도함수인 확률밀도함수의 해당 구간에서의 정적분의 값 즉 면적과 같다.
-    - $F(x_2) - F(x_1) = \int_{x_1}^{x_2} p(u)du$
-    - $F(x_1) = \int_{- \infty}^{x_1} p(u)du$
+    - <img src="https://latex.codecogs.com/gif.latex?F%28x_2%29%20-%20F%28x_1%29%20%3D%20%5Cint_%7Bx_1%7D%5E%7Bx_2%7D%20p%28u%29du">
+    - <img src="https://latex.codecogs.com/gif.latex?F%28x_1%29%20%3D%20%5Cint_%7B-%20%5Cinfty%7D%5E%7Bx_1%7D%20p%28u%29du">
     - 누적분포함수 = 원래함수 = 적분함수, 확률밀도함수 = 도함수 = 기울기 함수
     - 누적분포함수 -> 미분 -> 확률밀도함수, 확률밀도함수 -> 정적분 -> 누적분포함수
 - 확률밀도함수 pdf의 특징
     - 누적분포함수는 단조증가하므로 도함수인 확률밀도함수의 값은 양수이거나 0과 같다. p(x) >= 0
-    - 확률밀도함수의 음의 무한대에서 양의 무한대의 구간의 값은 전체 표본공간의 확률이 되므로 1이다. $\int_{-\infty}^{\infty}p(u)du=1$
+    - 확률밀도함수의 음의 무한대에서 양의 무한대의 구간의 값은 전체 표본공간의 확률이 되므로 1이다. <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28u%29du%3D1">
 - **확률도함수의 값은 확률값이 아니다. 특정 구간의 확률이 다른 구간과 비교해서 상대적으로 높은지 낮은지를 비교하는 값이다.**
-
-
-
-
-
-
