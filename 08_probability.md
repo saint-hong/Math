@@ -1045,33 +1045,33 @@ P3
 ### 결합확률
 - ```결합확률 joint probability``` : 사건 A와 B가 동시에 발생할 확률
     - 사건(명제,주장,가설) A와 사건(명제,주장,가설) B가 진실일 때 A와 B의 교집합의 확률이다.
-    - $P(A \cap B) or P(A, B)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%20%5Ccap%20B%29%20or%20P%28A%2C%20B%29">
     - **교집합은 쉼표로 표현할 수 있다.**
 
 ### 주변확률
 - ```주변확률 marginal probability``` : 개별 사건의 확률
-    - $P(A) or P(B)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%5C%3Bor%5C%3BP%28B%29">
     - 결합확률과 대비되는 개념이다. 
     
 ### 조건부확률
 - ```조건부확률 conditional probability``` : 사건 B가 사실일 경우 사건 A에 대한 확률
     - **사건 B에 대한 사건 A의 조건부확률** 이라고 한다. 
-    - $P(A|B) \equiv new\;P(A)\;if\;P(B) = 1$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%5Cequiv%20new%5C%3BP%28A%29%5C%3Bif%5C%3BP%28B%29%20%3D%201">
 - ```조건부확률의 근거```
-    - 사건 B가 사실이므로 모든 가능한 표본은 사건 B에 포함되어야 한다. 기존의 표본공간이 아닌 새로운 표본공간이 정의 된다. $\Omega_{new} \rightarrow B$
-    - 사건 A의 원소는 모두 사건 B의 원소이다. 사건 A와 B의 교집합의 원소이다. 새로운 사건 A가 정의 된다. $A_{new} \rightarrow A \cap B$
+    - 사건 B가 사실이므로 모든 가능한 표본은 사건 B에 포함되어야 한다. 기존의 표본공간이 아닌 새로운 표본공간이 정의 된다. <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5COmega_%7Bnew%7D%20%5Crightarrow%20B">
+    - 사건 A의 원소는 모두 사건 B의 원소이다. 사건 A와 B의 교집합의 원소이다. 새로운 사건 A가 정의 된다. <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A_%7Bnew%7D%20%5Crightarrow%20A%20%5Ccap%20B">
     - 따라서 사건 A의 확률(신뢰도)는 원래의 신뢰도(결합확률)를 새로운 표본공간의 신뢰도(확률)로 정규화 nomalize 한 값과 같다.
-    - $P(A|B) = \dfrac{P(A_{new})}{P(\Omega_{new})} = \dfrac{P(A,B)}{P(B)}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28A_%7Bnew%7D%29%7D%7BP%28%5COmega_%7Bnew%7D%29%7D%20%3D%20%5Cdfrac%7BP%28A%2CB%29%7D%7BP%28B%29%7D">
 - ```조건부확률의 정의```
     - 사건 B가 발생한 경우의 사건 A의 확률
     - 표본이 이벤트 B에 속한다는 새로운 **사실**을 알게 되었을 때,
     - 이 표본이 사건 A에 속한다는 사실의 정확성(신뢰도)이 어떻게 변하는지를 알려준다.
 - 기존의 사건 A의 확률
-    - $P(A) = \dfrac{|A|}{|\Omega|}=\dfrac{12}{12+8}=\dfrac{12}{20}$
-    - $P(A^c) = \dfrac{|A^c|}{|\Omega|}=\dfrac{8}{12+8}=\dfrac{8}{20}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%3D%20%5Cdfrac%7B%7CA%7C%7D%7B%7C%5COmega%7C%7D%3D%5Cdfrac%7B12%7D%7B12&plus;8%7D%3D%5Cdfrac%7B12%7D%7B20%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%5Ec%29%20%3D%20%5Cdfrac%7B%7CA%5Ec%7C%7D%7B%7C%5COmega%7C%7D%3D%5Cdfrac%7B8%7D%7B12&plus;8%7D%3D%5Cdfrac%7B8%7D%7B20%7D">
 - 새로운 사건 B의 확률
-    - $P(B) = \dfrac{|B|}{|\Omega|}=\dfrac{10}{10+10}=\dfrac{10}{20}$
-    - $P(B^c) = \dfrac{|B^c|}{|\Omega|}=\dfrac{10}{10+10}=\dfrac{10}{20}$ 
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28B%29%20%3D%20%5Cdfrac%7B%7CB%7C%7D%7B%7C%5COmega%7C%7D%3D%5Cdfrac%7B10%7D%7B10&plus;10%7D%3D%5Cdfrac%7B10%7D%7B20%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28B%5Ec%29%20%3D%20%5Cdfrac%7B%7CB%5Ec%7C%7D%7B%7C%5COmega%7C%7D%3D%5Cdfrac%7B10%7D%7B10&plus;10%7D%3D%5Cdfrac%7B10%7D%7B20%7D"> 
 
 ### 조건부확률 계산
 - ```조건부확률을 구하기 위해선 결합확률을 알아야 한다.```
@@ -1079,17 +1079,17 @@ P3
     - 수학적으로 계산되는 값이 아니다. 조사해서 얻거나, 새로 알게 된 정보이다.
 - 사건A와 사건B의 결합확률이 3/20 일 경우의 조건부확률
     - 예를들면 범인이 남자이면서 머리가 길 확률
-    - $P(A|B) = \dfrac{P(A, B)}{P(B)} = \dfrac{3/20}{10/20}=\dfrac{3}{10}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28A%2C%20B%29%7D%7BP%28B%29%7D%20%3D%20%5Cdfrac%7B3/20%7D%7B10/20%7D%3D%5Cdfrac%7B3%7D%7B10%7D">
 - 사건A와 사건B의 결합확률이 6/20 일 경우의 조건부확률
-    - $P(A|B) = \dfrac{P(A, B)}{P(B)} = \dfrac{6/20}{10/20}=\dfrac{6}{10}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28A%2C%20B%29%7D%7BP%28B%29%7D%20%3D%20%5Cdfrac%7B6/20%7D%7B10/20%7D%3D%5Cdfrac%7B6%7D%7B10%7D">
 - 결합확률을 알고 있다면 다음과 같은 조건부확률을 구할 수 있다.
-    - $P(A|B^c),\;P(A^c|B),\;P(A^c|B^c),\;P(B|A),\;P(B|A^c),\;P(B^c|A),\;P(B^c|A^c)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%5Ec%29%2C%5C%3BP%28A%5Ec%7CB%29%2C%5C%3BP%28A%5Ec%7CB%5Ec%29%2C%5C%3BP%28B%7CA%29%2C%5C%3BP%28B%7CA%5Ec%29%2C%5C%3BP%28B%5Ec%7CA%29%2C%5C%3BP%28B%5Ec%7CA%5Ec%29">
 
 ### 독립
 - ```사건의 독립 independent``` : 수학적으로 사건 A와 사건 B의 결합확률의 값이 각가의 사건의 확률값의 곱과 같은 경우
-    - $P(A,B) = P(A)P(B)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%29%20%3D%20P%28A%29P%28B%29">
 - 두 사건이 독립인 경우 조건부확률값은 기존 사건 A의 확률값과 같다. 즉 새로운 사건 B의 발생에 영향을 받지 않는다.
-    - $P(A|B) = \dfrac{P(A,B)}{P(B)} = \dfrac{P(A)P(B)}{P(B)} = P(A)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28A%2CB%29%7D%7BP%28B%29%7D%20%3D%20%5Cdfrac%7BP%28A%29P%28B%29%7D%7BP%28B%29%7D%20%3D%20P%28A%29">
 
 ### 원인과 결과, 근거와 추론, 가정과 조건부 결론
 - 조건부확률에서 사건(주장,명제,가설) B, A의 의미
@@ -1097,18 +1097,18 @@ P3
     - 원인과 결과
     - 근거와 추론
 - 결합확률의 정의를 변형하면 조건부확률과의 다른 관계를 이해할 수 있다.
-    - $P(A,B) = P(A|B)P(B)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%29%20%3D%20P%28A%7CB%29P%28B%29">
     - **A, B가 모두 발생할 확률은 사건 B가 발생할 확률과 그 사건이 발생한 경우 다시 A가 발생할 경우의 곱**
-    - $P(A,B,C) = P(A|B,C)P(B,C)$ (증명생략 : 교집합으로 바꿔서 생각하면 풀이됨)
-    - $P(A,B,C,D) = P(A,B|C,D)P(C,D)$
-    - $P(A,B|C)P(C) = P(A|B,C)P(B,C)$
-    - $P(A,B,C|D,E) = \dfrac{P(A,B|C,D,E)P(C,D|E)P(E)}{P(D,E)}$
-    - $P(A,B|C) = P(A|B,C)P(B)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%2CC%29%20%3D%20P%28A%7CB%2CC%29P%28B%2CC%29"> (증명생략 : 교집합으로 바꿔서 생각하면 풀이됨)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%2CC%2CD%29%20%3D%20P%28A%2CB%7CC%2CD%29P%28C%2CD%29">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%7CC%29P%28C%29%20%3D%20P%28A%7CB%2CC%29P%28B%2CC%29">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%2CC%7CD%2CE%29%20%3D%20%5Cdfrac%7BP%28A%2CB%7CC%2CD%2CE%29P%28C%2CD%7CE%29P%28E%29%7D%7BP%28D%2CE%29%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%7CC%29%20%3D%20P%28A%7CB%2CC%29P%28B%29">
     
 ### 사슬법칙
 - ```사슬법칙 chain rule``` : 조건부확률과 결합확률의 관계를 확장하여 N개의 사건의 결합확률을 연쇄적인 조건부확률의 곱으로 나타낼 수 있다.
     - P(X1)이 조건이 되게끔 정리하면 연쇄적인 곱이 된다.
-    - $P(X_1,\cdots,X_N) = P(X_1)\prod_{i=2}^{N}P(X_i|X_1,X_2,\cdots,X_{i-1})$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X_1%2C%5Ccdots%2CX_N%29%20%3D%20P%28X_1%29%5Cprod_%7Bi%3D2%7D%5E%7BN%7DP%28X_i%7CX_1%2CX_2%2C%5Ccdots%2CX_%7Bi-1%7D%29">
     
 # 확률변수
 
@@ -1123,16 +1123,16 @@ P3
 - 확률변수는 확률분포(확률질량함수, 누적분포함수, 확률밀도함수 등)를 내포하고 있다.
 - 이러한 확률분포에 따라서 숫자값을 출력한다. 
 - 확률변수의 확률
-    - $P(X=0) = P(A) = \dfrac{12}{20}$
-    - $P(X=1) = P(A^c) = \dfrac{8}{20}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D0%29%20%3D%20P%28A%29%20%3D%20%5Cdfrac%7B12%7D%7B20%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D1%29%20%3D%20P%28A%5Ec%29%20%3D%20%5Cdfrac%7B8%7D%7B20%7D">
 - 이러한 방식으로 결합확률의 확률분포는 각 확률변수가 가질 수 있는 조합으로 나타낼 수 있다. 
-    - $P(X=0, Y=0)=P(A,B)=\dfrac{3}{20}$
-    - $P(X=0, Y=1)=P(A,B^c)=\dfrac{9}{20}$
-    - $P(X=1, Y=0)=P(A^c,B)=\dfrac{7}{20}$
-    - $P(X=1, Y=1)=P(A^c,B^c)=\dfrac{1}{20}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D0%2C%20Y%3D0%29%3DP%28A%2CB%29%3D%5Cdfrac%7B3%7D%7B20%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D0%2C%20Y%3D1%29%3DP%28A%2CB%5Ec%29%3D%5Cdfrac%7B9%7D%7B20%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D1%2C%20Y%3D0%29%3DP%28A%5Ec%2CB%29%3D%5Cdfrac%7B7%7D%7B20%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D1%2C%20Y%3D1%29%3DP%28A%5Ec%2CB%5Ec%29%3D%5Cdfrac%7B1%7D%7B20%7D">
 - **확률변수 X, Y가 가질 수 있는 모든 조합에 대해 독립이 성립합면 X, Y는 독립이다.**
     - 주변확률의 곱과 결합확률의 곱의 값이 같은지 확인한다. 
-    - $P(X=0)P(Y=0) = P(X=0, Y=0)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28X%3D0%29P%28Y%3D0%29%20%3D%20P%28X%3D0%2C%20Y%3D0%29">
     
 # 베이즈정리
 - 베이즈정리를 사용하면 데이터가 주어지기 전의 사전확률값이 데이터가 주어지면서 어떻게 변하는지 계산할 수 있다. 
@@ -1142,12 +1142,12 @@ P3
 
 ### 베이즈 정리
 - ```베이즈 정리 Bayesian rule``` : 조건부 확률을 구하는 다음 공식과 같다.
-    - $P(A|B) = \dfrac{P(B|A)P(A)}{P(B)}$
-    >- $P(A|B) = \dfrac{P(A,B)}{P(B)} \rightarrow P(A,B) = P(A|B)P(B)$
-    >- $P(A|B) = \dfrac{P(A,B)}{P(A)} \rightarrow P(A,B) = P(B|A)P(A)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28B%7CA%29P%28A%29%7D%7BP%28B%29%7D">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28A%2CB%29%7D%7BP%28B%29%7D%20%5Crightarrow%20P%28A%2CB%29%20%3D%20P%28A%7CB%29P%28B%29">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28A%2CB%29%7D%7BP%28A%29%7D%20%5Crightarrow%20P%28A%2CB%29%20%3D%20P%28B%7CA%29P%28A%29">
     >- 위의 두 식을 합하면
-    >- $P(A,B) = P(A|B)P(B) = P(B|A)P(A)$ 이므로
-    >- $P(A|B) = \dfrac{P(B|A)P(A)}{P(B)}$
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%29%20%3D%20P%28A%7CB%29P%28B%29%20%3D%20P%28B%7CA%29P%28A%29"> 이므로
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%29%20%3D%20%5Cdfrac%7BP%28B%7CA%29P%28A%29%7D%7BP%28B%29%7D">
 - ```베이즈 정리의 의미```
     - P(A|B) : 사후확률 posterior, 사건 B가 발생한 수 갱신된 A의 확률
     - P(A) : 사전확률 prior, 사건 B가 발생하기 전에 가지고 있던 사건 A의 확률
@@ -1158,35 +1158,35 @@ P3
 ### 베이즈 정리의 확장 1
 - 베이즈 정리와 확률의 성질 4번 전체확률의 법칙을 결합한 것
 - 전체확률의 법칙 : 사건 B와 배타적이고 완전한 사건들인 A_i 각각의 교집합의 확률의 합은 P(B)와 같다. (한반에 월별 생일인 사람들 사건 C_i와 남자인 사건 A)
-    >- 서로 배타적인 사건들 : $A_i \cap A_j = \varnothing$ 
-    >- 동시에 완전한 사건들 : $A_1 \cup A_2 \cup \cdots = \Omega$
-    >- $P(A_1|B) = \dfrac{P(B|A_1)P(A_1)}{P(B)}$
-    >- $= \dfrac{P(B|A_1)P(A_1)}{\sum_{i}P(A_i,B)}$ 
-    >- $= \dfrac{P(B|A_1)P(A_1)}{\sum_{i}P(B|A_i)P(A_i)}$ 
+    >- 서로 배타적인 사건들 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A_i%20%5Ccap%20A_j%20%3D%20%5Cvarnothing"> 
+    >- 동시에 완전한 사건들 : <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20A_1%20%5Ccup%20A_2%20%5Ccup%20%5Ccdots%20%3D%20%5COmega">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A_1%7CB%29%20%3D%20%5Cdfrac%7BP%28B%7CA_1%29P%28A_1%29%7D%7BP%28B%29%7D">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%3D%20%5Cdfrac%7BP%28B%7CA_1%29P%28A_1%29%7D%7B%5Csum_%7Bi%7DP%28A_i%2CB%29%7D"> 
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%3D%20%5Cdfrac%7BP%28B%7CA_1%29P%28A_1%29%7D%7B%5Csum_%7Bi%7DP%28B%7CA_i%29P%28A_i%29%7D"> 
 - ```멀티-클래스 분류 multi-class classification``` 문제애서 사용되는 베이즈 정리의 원리와 같다. 멀티-클래스 분류문제는 배타적이고 완전한 여러 사건들 중 가장 확률이 높은 하나의 사건을 고르는 것과 같다. (예를들어 4지 선다형 문제 등)
     - A1, A2, A3, A4 중에서 B에 대한 조건부 확률이 가장 높은 사건을 고르는 경우
     - 분자는 P(B)의 전체확률의 법칙으로 동일하고 분모가 P(B|A_i)P(A_i) 이다.
     - 따라서 조건부확률 P(A_i|B) 의 값은 분모의 값에 비례한다.
 - A1=A, A2=A^c 인 이진클래스의 형식은 다음과 같은 식이 성립하게 된다. 
-    >- $P(A_1|B) = \dfrac{P(B|A)P(A)}{P(B)}$
-    >- $= \dfrac{P(B|A_1)P(A_1)}{P(B,A) + P(B,A^c}$
-    >- $= \dfrac{P(B|A_1)P(A_1)}{P(B|A)P(A) + P(B|A^c)P(A^c)}$ (전체확률의 법칙)
-    >- $= \dfrac{P(B|A_1)P(A_1)}{P(B|A)P(A) + P(B|A^c)(1-P(A))}$ (여집합의 확률)
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A_1%7CB%29%20%3D%20%5Cdfrac%7BP%28B%7CA%29P%28A%29%7D%7BP%28B%29%7D">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%3D%20%5Cdfrac%7BP%28B%7CA_1%29P%28A_1%29%7D%7BP%28B%2CA%29%20&plus;%20P%28B%2CA%5Ec%7D">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%3D%20%5Cdfrac%7BP%28B%7CA_1%29P%28A_1%29%7D%7BP%28B%7CA%29P%28A%29%20&plus;%20P%28B%7CA%5Ec%29P%28A%5Ec%29%7D"> (전체확률의 법칙)
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%3D%20%5Cdfrac%7BP%28B%7CA_1%29P%28A_1%29%7D%7BP%28B%7CA%29P%28A%29%20&plus;%20P%28B%7CA%5Ec%29%281-P%28A%29%29%7D"> (여집합의 확률)
 - 검사시약 문제
 
 ### 베이즈 정리의 확장 2
 - 베이즈 정리는 사건 A의 확률이 사건 B에 의해 갱신 update 된 확률을 계산한다.
 - 여기에 추가로 사건 C가 발생한 경우도 베이즈 정리로 쓸 수 있다.
-    - $P(A|B,C) = \dfrac{P(C|A,B)P(A|B)}{P(C|B)}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%2CC%29%20%3D%20%5Cdfrac%7BP%28C%7CA%2CB%29P%28A%7CB%29%7D%7BP%28C%7CB%29%7D">
     - 증명은 P(A,B,C)를 다른 사건관계로 나타내어 결합하면 가능하다.
-    >- $P(A,B,C)=P(A|B,C)P(B,C) = P(A|B,C)P(C|B)P(B)$
-    >- $P(A,B,C)=P(C|A,B)P(A,B) = P(C|A,B)P(A|B)P(B)$
-    >- $P(A|B,C)P(C|B)P(B) = P(C|A,B)P(A|B)P(B)$
-    >- $P(A|B,C) = \dfrac{P(C|A,B)P(A|B)}{P(C|B)}$
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%2CC%29%3DP%28A%7CB%2CC%29P%28B%2CC%29%20%3D%20P%28A%7CB%2CC%29P%28C%7CB%29P%28B%29">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%2CC%29%3DP%28C%7CA%2CB%29P%28A%2CB%29%20%3D%20P%28C%7CA%2CB%29P%28A%7CB%29P%28B%29">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%2CC%29P%28C%7CB%29P%28B%29%20%3D%20P%28C%7CA%2CB%29P%28A%7CB%29P%28B%29">
+    >- <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%2CC%29%20%3D%20%5Cdfrac%7BP%28C%7CA%2CB%29P%28A%7CB%29%7D%7BP%28C%7CB%29%7D">
 - 베이즈 정리의 확장 2를 여러가지 식에 적용할 수 있다.
-    - $P(A|B,C) = \dfrac{P(B|A,C)P(A|C)}{P(B|C)}$
-    - $P(A|B,C,D) = \dfrac{P(D|A,B,C)P(A|B,C)}{P(D|B,C)}$
-    - $P(A,B|C,D) = \dfrac{P(D|A,B,C)P(A,B|C)}{P(D|C)}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%2CC%29%20%3D%20%5Cdfrac%7BP%28B%7CA%2CC%29P%28A%7CC%29%7D%7BP%28B%7CC%29%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%7CB%2CC%2CD%29%20%3D%20%5Cdfrac%7BP%28D%7CA%2CB%2CC%29P%28A%7CB%2CC%29%7D%7BP%28D%7CB%2CC%29%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%2CB%7CC%2CD%29%20%3D%20%5Cdfrac%7BP%28D%7CA%2CB%2CC%29P%28A%2CB%7CC%29%7D%7BP%28D%7CC%29%7D">
 - 몬티홀 문제
 
 # python
