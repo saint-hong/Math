@@ -247,23 +247,13 @@
   - mu는 기댓값 E[X] (이론적 평균)이다.
 - 증명하면
 
-$$\begin{align}
-\begin{aligned}
-\text{Var}[X]
-&= \text{E}[(X - \mu)^2] \\
-&= \text{E}[X^2 - 2 \mu X + \mu^2] \\
-&= \text{E}[X^2] - 2 \mu \text{E}[X] + \mu^2 \;\; (((기댓값의\'성질에\;의해 상수는\;밖으로\;나온다))\\
-&= \text{E}[X^2] - 2 \mu^2 + \mu^2 \;\; ((E[X] = \mu)) \\
-&= \text{E}[X^2] - \mu^2
-\end{aligned}
-\end{align}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5BX%5D%20%26%3D%20%5Ctext%7BE%7D%5B%28X%20-%20%5Cmu%29%5E2%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BX%5E2%20-%202%20%5Cmu%20X%20&plus;%20%5Cmu%5E2%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BX%5E2%5D%20-%202%20%5Cmu%20%5Ctext%7BE%7D%5BX%5D%20&plus;%20%5Cmu%5E2%20%5C%3B%5C%3B%20%28%28sol%20%3A%20%5Ctext%7BE%7D%5BcX%5D%3Dc%5Ctext%7BE%7D%5BX%5D%29%29%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BX%5E2%5D%20-%202%20%5Cmu%5E2%20&plus;%20%5Cmu%5E2%20%5C%3B%5C%3B%20%28%28sol%20%3A%20E%5BX%5D%20%3D%20%5Cmu%29%29%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BX%5E2%5D%20-%20%5Cmu%5E2%20%5Cend%7Baligned%7D">
 
 ### 두 확률변수의 합의 분산
 - 두 확률변수 X, Y의 합의 분산
-  - $\text{Var}[X + Y] = \text{Var}[X] + \text{Var}[Y] + 2 \text{E}[(X-\mu_x)(Y-\mu_y)]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%20&plus;%20Y%5D%20%3D%20%5Ctext%7BVar%7D%5BX%5D%20&plus;%20%5Ctext%7BVar%7D%5BY%5D%20&plus;%202%20%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D">
 - 증명하면
-- 두 확률변수의 합의 기댓값 : $\text{E}[X + Y] = \mu_x + \mu_y$
+- 두 확률변수의 합의 기댓값 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%20&plus;%20Y%5D%20%3D%20%5Cmu_x%20&plus;%20%5Cmu_y">
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5BX%20&plus;%20Y%5D%20%26%3D%20%5Ctext%7BE%7D%5B%28X%20&plus;%20Y%20-%20%28%5Cmu_x%20&plus;%20%5Cmu_y%29%29%5E2%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28%28X-%5Cmu_x%29%20&plus;%20%28Y-%5Cmu_y%29%29%5E2%5D%20%5C%3B%5C%3B%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%5E2%20&plus;%20%28Y-%5Cmu_y%29%5E2%20&plus;%202%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%5C%3B%5C%3B%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%5E2%5D%20&plus;%20%5Ctext%7BE%7D%5B%28Y-%5Cmu_y%29%5E2%5D%20&plus;%202%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%5C%5C%20%26%3D%20%5Ctext%7BVar%7D%5BX%5D%20&plus;%20%5Ctext%7BVar%7D%5BY%5D%20&plus;%202%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%5C%5C%20%5Cend%7Baligned%7D">
 
