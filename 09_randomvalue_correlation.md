@@ -23,7 +23,7 @@
     
 ### ◈ 표본평균
 - ```표본평균 sample mean, sample average``` : 확률적인 데이터값을 대표하는 기술통계중 하나, 데이터 분포의 대략적인 위치를 나타낸다. 
-    - $m = \bar{x} = \dfrac{1}{N} \sum_{i=1}^{N} x_i$
+    - <img src="https://latex.codecogs.com/gif.latex?m%20%3D%20%5Cbar%7Bx%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_i">
     - N은 자료의 갯수, i는 자료의 순서
     
 ### ◈ 표본중앙값
@@ -54,35 +54,35 @@
 
 ### ◈ 분산과 표준편차
 - ```표본분산 sample variance``` : 데이터가 얼마나 변동variation하는지 알려주는 정보의 특징값
-    - $S^2 = \dfrac{1}{N} \sum_{i=1}^{N}(x_i - \bar{x})^2$
+    - <img src="https://latex.codecogs.com/gif.latex?S%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2">
 - ```표본표준편차 sample standard deviation``` : 데이터가 얼마나 변동하는지 알려주는 정보의 특징값
-    - $standard \; deviation = \sqrt{variance}$
+    - <img src="https://latex.codecogs.com/gif.latex?standard%20%5C%3B%20deviation%20%3D%20%5Csqrt%7Bvariance%7D">
 - 표본분산은 자료값과 평균 사이의 거리를 의미한다. 
 - 분포가 하나의 대표값 주위에 모여있다면 대부분의 데이터는 "대푯값+-표준편차" 범위안에 있다고 말할 수 있다.
 - 표본분산은 **편향 표본분산 biased sample variance** 에 해당한다. 
 - ```비편향 표본분산 unbiased smaple variance```
-    - $\small{s}^2_{unbiased} = \dfrac{1}{N-1} \sum_{i=1}^{N}(x_i - \bar{x})^2$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Csmall%7Bs%7D%5E2_%7Bunbiased%7D%20%3D%20%5Cdfrac%7B1%7D%7BN-1%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2">
     - 분모가 N-1로 바뀐다. 
     - 확률변수의 분산에서 증명된다.
 
 ### ◈ 표본비대칭도
 - ```표본비대칭도 smaple skewness``` : 평균과의 거리의 세제곱을 이용하여 구한 특징값
-    - $skewness=\dfrac{\dfrac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^3}{\sqrt{\dfrac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x})^2}^3}$
+    - <img src="https://latex.codecogs.com/gif.latex?skewness%3D%5Cdfrac%7B%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i%20-%20%5Cbar%7Bx%7D%29%5E3%7D%7B%5Csqrt%7B%5Cdfrac%7B1%7D%7BN-1%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2%7D%5E3%7D">
 - **표본비대칭도가 0이면 분포가 대칭형태이다.**
 - 표본비대칭도가 음수면 표본평균값을 기준으로 왼쪽에 있는 값이 나올 가능성이 크다.
 
 ### ◈ 표본첨도
 - ```표본첨도 sample kurtosis``` :  평균과의 거리의 네제곱을 이용하여 구한 특징값.
-    - $kurtosis=\dfrac{\dfrac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{(\dfrac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2)^3}-3$
+    - <img src="https://latex.codecogs.com/gif.latex?kurtosis%3D%5Cdfrac%7B%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i%20-%20%5Cbar%7Bx%7D%29%5E4%7D%7B%28%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2%29%5E3%7D-3">
 - 데이터가 중앙에 몰려있는 정도를 정밀하게 비교할 때 쓰인다. 
 - 표본첨도의 기준은 정규분포 : 정규분포보다 첨도가 높으면 양수, 정규분포보다 첨도가 낮으면 음수
 
 ### ◈ 표본모멘트 sample moment
 - ```표본모멘트 sample moment``` : 분산, 비대칭도, 첨도를 구하기 위해서 제곱, 세제곱 네제곱을 하는 것 처럼 k제곱을 이용하여 구한 모멘트
-    - 표본모멘트 $= \dfrac{1}{N}\sum_{i=1}^{N}x_{i}^k$
+    - 표본모멘트 <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7Dx_%7Bi%7D%5Ek">
     - 통계값의 공식의 기본 형태가 표본모멘트와 같다.
 - 2차 표본모멘트 이상은 평균을 뺀 **표본중앙모멘트 sample centered moment** 값을 사용
-    - 표본중앙모멘트 $=\dfrac{1}{N}\sum_{i=1}^{N}(x_i-\bar{x})^k$
+    - 표본중앙모멘트 <img src="https://latex.codecogs.com/gif.latex?%3D%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28x_i-%5Cbar%7Bx%7D%29%5Ek">
 - 평균 : 1차 모멘트
 - 분산 : 2차 모멘트
 - 비대칭도 : 3차 모멘트
@@ -91,8 +91,8 @@
 ## ◈ 확률변수
 - 확률공간의 표본을 입력받아서 실수인 숫자로 출력해주는 함수와 같다.
 - 확률변수에서 출력되는 실수가 곧 현실의 데이터의 값이다.
-    - $\omega \in \Omega \rightarrow x \in R$ 
-    - $X(\omega) = x$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Comega%20%5Cin%20%5COmega%20%5Crightarrow%20x%20%5Cin%20R"> 
+    - <img src="https://latex.codecogs.com/gif.latex?X%28%5Comega%29%20%3D%20x">
 - 확률변수 기호는 대문자 알파벳 사용 (소문자 알파벳을 사용하는 경우도 있음)
 - 확률변수에 의해 할당된 실수는 소문자 알파벳 사용
 
@@ -151,40 +151,40 @@
 ### ◈ 확률변수의 기댓값
 - ```기댓값 expectation``` : 확률변수의 이론적 평균값. 평균 mean 이라고 말하기도 한다.
 - ```이산확률변수의 기댓값``` : 표본공간의 원소 xi의 가중합, 가중치는 xi가 나올 수 있는 확률질량함수 p(xi) 값이다.
-    - $\mu_{x} = E[X] = \sum_{x_i \in \Omega} x_ip(x_i)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu_%7Bx%7D%20%3D%20E%5BX%5D%20%3D%20%5Csum_%7Bx_i%20%5Cin%20%5COmega%7D%20x_ip%28x_i%29">
     - 공정한 주사위에서 나오는 숫자의 확률변수 X의 기댓값 : 
-    - $\mu_{x} = 1 \cdot p(1) + 2 \cdot p(2) + 3 \cdot p(3) + 4 \cdot p(4) + 5 \cdot p(5) + 6 \cdot p(6)$ 
-- 현실 데이터의 표본평균 : $\bar{x}=\dfrac{1}{N}\sum_{i=1}^{N}x$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu_%7Bx%7D%20%3D%201%20%5Ccdot%20p%281%29%20&plus;%202%20%5Ccdot%20p%282%29%20&plus;%203%20%5Ccdot%20p%283%29%20&plus;%204%20%5Ccdot%20p%284%29%20&plus;%205%20%5Ccdot%20p%285%29%20&plus;%206%20%5Ccdot%20p%286%29"> 
+- 현실 데이터의 표본평균 : <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7Bx%7D%3D%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7Dx">
     - 기댓값 공식과 표본평균 공식에서 x_i의 의미는 다르다. 기댓값의 x_i는 표본공간의 모든 원소를 의미하고, 표본평균 공식에서의 x_i는 선택된(realized, sampled) 표본을 의미한다.
     - 기댓값 공식에서는 확률변수의 표본공간의 모든 표본은 선택되기 이전의 상태이므로 확률이 부여되지 않았기 때문에 확률을 가중치로 곱해준다. 반면에 현실 데이터의 표본평균에서는 표본이 확률에 의해 선택된 것이기 때문에 확률을 가중치로 곱하지 않아도 된다. 
 - ```연속확률변수의 기댓값``` : 확률밀도함수 p(x)를 가중치로 하여 모든 가능한 표본 x를 적분한 값이다.
-    - $\mu_{x} = E[X] = \int_{-\infty}^{\infty}xp(x)dx$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu_%7Bx%7D%20%3D%20E%5BX%5D%20%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dxp%28x%29dx">
 - 기댓값은 여러가능한 x값을 확률값에 따라 가중합을 한 것과 같다. 따라서 가장 확률 또는 확률밀도가 높은 x값 근처의 값이 된다. **즉 확률 또는 확률밀도가 모여있는 곳의 위치이다.**
 
 ### ◈ 확률변수의 변환
 - ```확률변수의 변환 transform``` : 기존의 확률변수를 사용하여 새로운 확률변수를 만드는 것
 - 데이터의 값을 어떤 함수에 넣어서 변화시키면 다음과 같이 나타낼 수 있다.
-    - $\left\{x_1, x_2, \cdots, x_N\right\} \rightarrow \left\{f(x_1), f(x_2), \cdots, f(x_N)\right\}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cleft%5C%7Bx_1%2C%20x_2%2C%20%5Ccdots%2C%20x_N%5Cright%5C%7D%20%5Crightarrow%20%5Cleft%5C%7Bf%28x_1%29%2C%20f%28x_2%29%2C%20%5Ccdots%2C%20f%28x_N%29%5Cright%5C%7D">
 - 이렇게 만들어진 새로운 데이터를 {y_i}라고 한다면 기존의 데이터 {x_i}와 다른 데이터이므로 다른 확률변수라고 볼 수 있다.
-    - $Y=f(X)$
+    - <img src="https://latex.codecogs.com/gif.latex?Y%3Df%28X%29">
     - 확률변수 X를 f 함수에 입력하면 Y라는 새로운 확률변수 값이 출력된다. 즉 기존의 확률변수 X를 변형하여 새로운 확률변수 Y를 만들 수 있다는 것을 의미한다.
 - ```여러개의 확률변수의 변환도 성립한다.```
-    - $Z=X+Y$
+    - <img src="https://latex.codecogs.com/gif.latex?Z%3DX&plus;Y">
     - 확률변수 X와 확률변수 Y에서 나온 값의 합이 되도록 하는 새로운 확률변수 Z를 만든다는 의미와 같다.
 - 확률변수 X에서 표본은 N번 뽑아서 값을 더하는 경우, 원래 확률변수의 **복사본**을 만든 후 이러한 복사본 확률변수에서 나온 표본값을 더한 형태로 변환식을 써야한다.
-    - $Y=X_1 + X_2 + \cdots + X_N$
+    - <img src="https://latex.codecogs.com/gif.latex?Y%3DX_1%20&plus;%20X_2%20&plus;%20%5Ccdots%20&plus;%20X_N">
     - 복사본 확률변수를 사용하지 않고 기존의 확률변수 X를 반복하여 변환식을 쓰면 의미가 전혀 다른 확률변수가 된다.
-    - $Y=X + X + \cdots + X$
-    - $Y=N \cdot X$
+    - <img src="https://latex.codecogs.com/gif.latex?Y%3DX%20&plus;%20X%20&plus;%20%5Ccdots%20&plus;%20X">
+    - <img src="https://latex.codecogs.com/gif.latex?Y%3DN%20%5Ccdot%20X">
 
 ### 기댓값의 성질
 - 변환된 확률변수를 사용하여 기댓값을 구할 때 기댓값의 성질을 이용한다.
     - 확률변수가 아닌 상수 c에 대한 기댓값 :
-        - $E[c]=c$ (**상수의 기댓값은 상수**)
+        - <img src="https://latex.codecogs.com/gif.latex?E%5Bc%5D%3Dc"> (**상수의 기댓값은 상수**)
     - 선형성
-        - $E[cX] = cE[X]$ (상수값은 기댓값의 밖으로 빠질 수 있다.)
-        - $E[X+Y] = E[X] + E[Y]$ (확률변수의 덧셈의 기댓값은 각각의 기댓값의 합)
-        - $E[c_1X + c_2Y] = c_1E[X] + c_2E[Y]$ (위 두 성질을 이용한 선형적 성질)
+        - <img src="https://latex.codecogs.com/gif.latex?E%5BcX%5D%20%3D%20cE%5BX%5D"> (상수값은 기댓값의 밖으로 빠질 수 있다.)
+        - <img src="https://latex.codecogs.com/gif.latex?E%5BX&plus;Y%5D%20%3D%20E%5BX%5D%20&plus;%20E%5BY%5D"> (확률변수의 덧셈의 기댓값은 각각의 기댓값의 합)
+        - <img src="https://latex.codecogs.com/gif.latex?E%5Bc_1X%20&plus;%20c_2Y%5D%20%3D%20c_1E%5BX%5D%20&plus;%20c_2E%5BY%5D"> (위 두 성질을 이용한 선형적 성질)
 
 ### 통계량
 - ```통계량 statistics``` : 확률변수 X로부터 데이터 집합 {x_1, x_2, ..., x_N}을 얻었다고 할 때 이 데이터 집합의 모든 값을 어떤 공식에 넣어서 하나의 숫자를 구한 것을 말한다.
@@ -193,26 +193,19 @@
 
 ### 표본평균 확률변수
 - ```표본평균 확률변수``` : 확률변수로부터 N개의 표본을 만들어 이 표본집합의 평균을 구하면, 표본평균값도 확률변수가 된다.
-    - $\bar{X} = \dfrac{1}{N}\sum_{i=1}^{N}X_i$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7BX%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DX_i">
     - i번째로 실현된 표본값을 생성하는 확률변수들의 합을 N으로 나눈값
     - X_i는 원래 확률변수의 복사본과 같다.
 - 표본평균도 표본평균 확률변수에서 나온 값으로 볼 수 있다.
 - 이와 같이 편향 표본분산 s^2의 값도 확률적인 데이터라고 볼 수 있다. 즉 표본분산 값을 생성하는 확률변수 S^2을 정의할 수 있다.
-    - $S^2 = \dfrac{1}{N} \sum_{i=1}^{N} (X_i - \bar{X})^2$
+    - <img src="https://latex.codecogs.com/gif.latex?S%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28X_i%20-%20%5Cbar%7BX%7D%29%5E2">
     - 표본평균 확률변수 식을 대입하면,
-    - $S^2 = \dfrac{1}{N} \sum_{i=1}^{N} \left(X_i - \dfrac{1}{N} \sum_{i=1}^{N}X_i \right)^2$
+    - <img src="https://latex.codecogs.com/gif.latex?S%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Cleft%28X_i%20-%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7DX_i%20%5Cright%29%5E2">
 
 ### 기댓값과 표본평균의 관계
 - 표본평균도 확률변수도 기댓값이 존재한다.
-    - $\begin{align} \text{E}[\bar{X}] = \text{E}[X] \end{align}$
-    - $\begin{align} \begin{aligned}
-    \text{E}[\bar{X}]
-    &= \text{E} \left[ \dfrac{1}{N} \sum_{i=1}^{N} X_i \right] \\
-    &= \dfrac{1}{N} \sum_{i=1}^{N} E[X_i] \\
-    &= \dfrac{1}{N} \sum_{i=1}^{N} E[X] \\
-    &= \dfrac{1}{N} N \text{E}[X] \\
-    &= \text{E}[X] \\
-    \end{aligned} \end{align}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%5Cbar%7BX%7D%5D%20%3D%20%5Ctext%7BE%7D%5BX%5D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5B%5Cbar%7BX%7D%5D%20%26%3D%20%5Ctext%7BE%7D%20%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20X_i%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20E%5BX_i%5D%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20E%5BX%5D%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%7D%20N%20%5Ctext%7BE%7D%5BX%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BX%5D%20%5C%5C%20%5Cend%7Baligned%7D">
     - X_i 는 X의 복사본이므로 기댓값이 같다. X_i 가 X가 된다.
 - **표본평균은 확률변수의 기댓값 근처의 값이 된다.**
     - 공정한 주사위의 기댓값은 3.5이다. 이 주사위를 던져 나온 값의 표본평균은 3.62346 또는 3.40987 처럼 항상 3.5 근처의 값이 나온다. 주사위가 물리적으로 완전하게 공정하지 않기 때문이다. 기댓값은 완전하게 공정한 주사위라는 확률변수 X에 대한 것이므로 이상적 평균인 3.5 값이 나오게 된다. 그러나 주사위라는 확률변수에서 실현된 주사위 값의 평균인, 현실데이터의 표본평균은 3.5 근처의 값이 나온다.
@@ -220,13 +213,13 @@
 ### 중앙값
 - ```중앙값 median``` : 중앙값보다 큰 값이 나올 확률과 작은 값이 나올 확률이 0.5로 같은 값을 뜻한다.
 - 누적확률분포함수 F(x)에서 중앙값을 계산한다.
-    - $0.5 = F(\text{중앙값}), \;\; \text{중앙값} = \text{F}^{-1}(0.5)$
+    - <img src="https://latex.codecogs.com/gif.latex?0.5%20%3D%20F%28%5Ctext%7Bmedian%7D%29%2C%20%5C%3B%5C%3B%20%5Ctext%7Bmedian%7D%20%3D%20%5Ctext%7BF%7D%5E%7B-1%7D%280.5%29">
     - 역함수 관계
 
 ### 최빈값
 - ```최빈값 most frequent value``` : 이산확률분포에서 가장 확률 값이 큰 수
 - 연속확률분포에서는 어느 값에 대해서나 특정한 값이 나올 확률은 0이다. 따라서 **연속 확률분포의 최빈값 mode은 확률밀도함수 p(x)의 값이 가장 큰 확률변수의 값**으로 정의한다. 즉 확률밀도함수의 최대값의 위치와 같다.
-    - $\text{최빈값} = argmax_{x}p(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7Bfrequent%20value%7D%20%3D%20argmax_%7Bx%7Dp%28x%29">
 
 ## 분산과 표준편차
 - 분산은 확률분포함수의 모양을 설명하는 특성이다. 또한 확률분포함수에서 확률이 모여있는지 퍼져있는지 나타내는 값이다.
@@ -235,22 +228,22 @@
 
 ### 확률분포의 분산
 - ```분산 variance``` : 이론적인 분산은 확률밀도함수 p(x)로 구할 수 있다.
-  - $\sigma^2 = \text{Var}[\text{X}] = \text{E}[(\text{X}-\mu)^2]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Csigma%5E2%20%3D%20%5Ctext%7BVar%7D%5B%5Ctext%7BX%7D%5D%20%3D%20%5Ctext%7BE%7D%5B%28%5Ctext%7BX%7D-%5Cmu%29%5E2%5D">
 - ```이산확률변수의 분산``` : 평균으로부터 표본 데이터까지의 거리의 제곱을 **확률질량함수 p(x)**로 가중하여 더한 값
-  - $\sigma^2 = \sum_{x_1 \in \Omega} (x_i - \mu)^2 p(x_i)$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Csigma%5E2%20%3D%20%5Csum_%7Bx_1%20%5Cin%20%5COmega%7D%20%28x_i%20-%20%5Cmu%29%5E2%20p%28x_i%29">
 - ```연속확률변수의 분산``` : 평균으로부터 표본데이터까지의 거리의 제곱을 **확률밀도함수 p(x)**로 가중하여 적분한 값
-  - $\sigma^2 = \int_{-\infty}^{\infty} (x - \mu)^2 p(x) dx$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Csigma%5E2%20%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20%28x%20-%20%5Cmu%29%5E2%20p%28x%29%20dx">
 - 이산확률분포의 분산은 확률질량함수 p(x_i)를 가중치로 곱해주고, 연속확률분포의 분산은 확률밀도함수 p(x)를 가중치로 곱해준다.
 
 ### 분산의 성질
 - 분산은 항상 0 또는 양수이다.
-  - $\text{Var}[X] \geq 0$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%5D%20%5Cgeq%200">
 - 확률변수가 아닌 상수 값 c에 대해 다음 식 성립
-  - $\text{Var}[c] = 0$ (상수의 기댓값은 상수)
-  - $\text{Var}[cX] = c^2 \text{Var}[X]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5Bc%5D%20%3D%200"> (상수의 기댓값은 상수)
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BcX%5D%20%3D%20c%5E2%20%5Ctext%7BVar%7D%5BX%5D">
 - 분산은 기댓값의 연산으로 나타낼 수 있다.
-  - $\text{Var}[X] = \text{E}[X^2] - (\text{E}[X])^2 = \text{E}[X^2] - \mu^2$
-  - $\text{E}[X^2] = \mu^2 + \text{Var}[X]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%5D%20%3D%20%5Ctext%7BE%7D%5BX%5E2%5D%20-%20%28%5Ctext%7BE%7D%5BX%5D%29%5E2%20%3D%20%5Ctext%7BE%7D%5BX%5E2%5D%20-%20%5Cmu%5E2">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5E2%5D%20%3D%20%5Cmu%5E2%20&plus;%20%5Ctext%7BVar%7D%5BX%5D">
   - mu는 기댓값 E[X] (이론적 평균)이다.
 - 증명하면
 
@@ -272,18 +265,7 @@ $$
 - 증명하면
 - 두 확률변수의 합의 기댓값 : $\text{E}[X + Y] = \mu_x + \mu_y$
 
-$$\begin{align}
-\begin{aligned}
-\text{Var}[X + Y]
-&= \text{E}[(X + Y - (\mu_x + \mu_y))^2] \;\; ((분산의\;정의))\\
-&= \text{E}[((X-\mu_x) + (Y-\mu_y))^2] \;\; ((같은\;확률변수끼리\;항을\;정리))\\
-&= \text{E}[(X-\mu_x)^2 + (Y-\mu_y)^2 + 2(X-\mu_x)(Y-\mu_y)] \;\; ((식\;정리))\\
-&= \text{E}[(X-\mu_x)^2] + \text{E}[(Y-\mu_y)^2] + 2\text{E}[(X-\mu_x)(Y-\mu_y)] \\
-&= \text{Var}[X] + \text{Var}[Y] + 2\text{E}[(X-\mu_x)(Y-\mu_y)] \\
-\end{aligned}
-\end{align}
-$$
-
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5BX%20&plus;%20Y%5D%20%26%3D%20%5Ctext%7BE%7D%5B%28X%20&plus;%20Y%20-%20%28%5Cmu_x%20&plus;%20%5Cmu_y%29%29%5E2%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28%28X-%5Cmu_x%29%20&plus;%20%28Y-%5Cmu_y%29%29%5E2%5D%20%5C%3B%5C%3B%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%5E2%20&plus;%20%28Y-%5Cmu_y%29%5E2%20&plus;%202%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%5C%3B%5C%3B%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%5E2%5D%20&plus;%20%5Ctext%7BE%7D%5B%28Y-%5Cmu_y%29%5E2%5D%20&plus;%202%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%5C%5C%20%26%3D%20%5Ctext%7BVar%7D%5BX%5D%20&plus;%20%5Ctext%7BVar%7D%5BY%5D%20&plus;%202%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%5C%5C%20%5Cend%7Baligned%7D">
 
 ### 확률변수의 독립
 - ```두 확률변수의 독립 independent``` :  두 확률변수가 가질 수 있는 모든 사건의 조합에 대해서 결합사건의 확률이 각 사건의 확률의 곱과 같다.
@@ -293,53 +275,31 @@ $$
   - **두 확률변수가 서로에게 영향을 미친다.**
   - 주사위를 두번 던져서 나온 값의 합은 각각 주사위에서 나온 값에 종속적이다.
 - 서로 독립인 두 확률변수의 성질
-  - $\text{E}[(X-\mu_x))(Y-\mu_y)] = 0$
-  - $\text{Var}[X + Y] = \text{Var}[X] + \text{Var}[Y]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%29%28Y-%5Cmu_y%29%5D%20%3D%200">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%20&plus;%20Y%5D%20%3D%20%5Ctext%7BVar%7D%5BX%5D%20&plus;%20%5Ctext%7BVar%7D%5BY%5D">
   - 공분산의 성질에 의해서 증명된다. 다음 챕터
 
 ### 표본평균의 분산
 - 표본평균 확률변수의 기댓값은 원래 확률변수 X의 기댓값과 같다.
-  - $\text{E}[\bar{X}] = \text{E}[X] \;\; ((앞에서 증명))$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%5Cbar%7BX%7D%5D%20%3D%20%5Ctext%7BE%7D%5BX%5D">((앞에서 증명))
 - 표본평균 확률변수의 분산은 원래 확률변수 X의 분산과 다음과 같은 관계를 갖는다.
-  - $\text{Var}[\bar{X}] = \dfrac{1}{N} \text{Var}[X]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5B%5Cbar%7BX%7D%5D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Ctext%7BVar%7D%5BX%5D">
   - 표본의 갯수가 커지면 표본평균의 값의 변동(분산)은 작아진다. 즉 확률변수에서 어떤 값이 나올지 예측하는 기댓값의 정확도(분산)가 올라가게 된다. 표본의 수가 무한대가 되면 표본평균의 값은 항상 일정한 값이 나온다.
 - 증명
 
-$$\begin{align}
-\begin{aligned}
-\text{Var}[\bar{X}]
-&= \text{E}[(\bar{X} - \text{E}[\bar{X}])^2] \;\; ((\text{E}[\bar{X}]=\mu))\\
-&= \text{E}[((\bar{X}-\mu)^2 ] \;\; ((\bar{X}의\;공식\;대입))\\
-&= \text{E}\left[\left(\dfrac{1}{N} \sum_{i=1}^{N} X_i - \mu \right)^2\right] \\
-&= \text{E}\left[ \left( \dfrac{1}{N} \sum_{i=1}^{N} X_i - \dfrac{1}{N} N \mu \right)^2  \right] \;\; ((1/N * N = 1))\\
-&= \text{E}\left[ \left( \dfrac{1}{N} \left( \sum_{i=1}^{N} X_i - N\mu \right) \right)^2 \right] \;\; ((1/N로\;정리, N=\sum))\\
-&= \text{E}\left[ \left( \dfrac{1}{N} \sum_{i=1}^{N} (X_i-\mu) \right)^2 \right] \\
-&= \text{E}\left[\dfrac{1}{N}^2 \sum_{i=1}^{N} \sum_{j=1}^{N} (X_i-\mu)(X_j-\mu) \right] \;\; (((\sum)^2=\sum\sum()()))\\
-&= \dfrac{1}{N}^2 \sum_{i=1}^{N} \sum_{j=1}^{N} \text{E}[(X_j - \mu)(X_j - \mu)]
-\end{aligned}
-\end{align}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5B%5Cbar%7BX%7D%5D%20%26%3D%20%5Ctext%7BE%7D%5B%28%5Cbar%7BX%7D%20-%20%5Ctext%7BE%7D%5B%5Cbar%7BX%7D%5D%29%5E2%5D%20%5C%3B%5C%3B%20%28%28%5Ctext%7BE%7D%5B%5Cbar%7BX%7D%5D%3D%5Cmu%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%28%28%5Cbar%7BX%7D-%5Cmu%29%5E2%20%5D%20%5C%3B%5C%3B%20%28%28%5Cbar%7BX%7D%20%5C%3B%5C%3B%20insert%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%5Cleft%28%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20X_i%20-%20%5Cmu%20%5Cright%29%5E2%5Cright%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cleft%28%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20X_i%20-%20%5Cdfrac%7B1%7D%7BN%7D%20N%20%5Cmu%20%5Cright%29%5E2%20%5Cright%5D%20%5C%3B%5C%3B%20%28%281/N%20*%20N%20%3D%201%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cleft%28%20%5Cdfrac%7B1%7D%7BN%7D%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20X_i%20-%20N%5Cmu%20%5Cright%29%20%5Cright%29%5E2%20%5Cright%5D%20%5C%3B%5C%3B%20%28%28N%3D%5Csum%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cleft%28%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28X_i-%5Cmu%29%20%5Cright%29%5E2%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%5Cdfrac%7B1%7D%7BN%7D%5E2%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Csum_%7Bj%3D1%7D%5E%7BN%7D%20%28X_i-%5Cmu%29%28X_j-%5Cmu%29%20%5Cright%5D%20%5C%3B%5C%3B%20%28%28%28%5Csum%29%5E2%3D%5Csum%5Csum%28%29%28%29%29%29%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%7D%5E2%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Csum_%7Bj%3D1%7D%5E%7BN%7D%20%5Ctext%7BE%7D%5B%28X_j%20-%20%5Cmu%29%28X_j%20-%20%5Cmu%29%5D%20%5Cend%7Baligned%7D">
 
 - 마지막 식에서 i와 j가 다른 경우, i번째 표본값이 j번째 표본값에 영향을 미치지 않는다. X_i와 X_j는 독립이므로
-  - $\text{E}[(X_i - \mu)(X_j - \mu)]=0\;\; (i \neq j)$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28X_i%20-%20%5Cmu%29%28X_j%20-%20%5Cmu%29%5D%3D0%5C%3B%5C%3B%20%28i%20%5Cneq%20j%29">
 - 독립인 관계를 사용하여 마지막 식을 전개하면 i=j 인 항, 제곱항만 남게 된다.
 
-$$\begin{align}
-\begin{aligned}
-\text{Var}[\bar{X}] 
-&= \dfrac{1}{N^2} \sum_{i=1}^{N} \text{E}[(X_i - \mu)^2] \;\; ((X_i는\;X의\;복사본))\\
-&= \dfrac{1}{N^2} \sum_{i=1}^{N} \text{E}[(X - \mu)^2] \;\; ((\sum=N)) \\
-&= \dfrac{1}{N^2} N \text{E}[(X - \mu)^2] \\
-&= \dfrac{1}{N} \text{E}[(X - \mu)^2] \\
-\end{aligned}
-\end{align}
-$$
-> $= \dfrac{1}{N} \text{Var}[X]$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5B%5Cbar%7BX%7D%5D%20%26%3D%20%5Cdfrac%7B1%7D%7BN%5E2%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Ctext%7BE%7D%5B%28X_i%20-%20%5Cmu%29%5E2%5D%20%5C%3B%5C%3B%20%28%28X_i%20%3D%20X%20copy%29%29%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%5E2%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Ctext%7BE%7D%5B%28X%20-%20%5Cmu%29%5E2%5D%20%5C%3B%5C%3B%20%28%28%5Csum%3DN%29%29%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%5E2%7D%20N%20%5Ctext%7BE%7D%5B%28X%20-%20%5Cmu%29%5E2%5D%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Ctext%7BE%7D%5B%28X%20-%20%5Cmu%29%5E2%5D%20%5C%5C%20%5Cend%7Baligned%7D">
+> <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Ctext%7BVar%7D%5BX%5D">
 
 - 표본평균의 분산 식이 의미하는 것
   - 데이터를 생성하는 확률변수 X의 기댓값을 구하려면 확률밀도함수 p(x)의 수식을 알아야한다.
   - 그런데 데이터를 생성하는 확률변수 X의 확률밀도함수 p(x)의 수식을 정확하게 알지 못한다. (역설계하여 찾아야한다)
-  - 하지만 표본평균이라는 새로운 확률변수 $\bar{X}$의 기댓값은 원래 확률변수 X의 기댓값과 같으므로, 표본평균 $\bar{x}$는 원래 확률변수 X의 기댓값과 비슷한 값이 나오게 된다. 정확하게 같지는 않다.
+  - 하지만 표본평균이라는 새로운 확률변수 <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7BX%7D">의 기댓값은 원래 확률변수 X의 기댓값과 같으므로, 표본평균 <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7Bx%7D">는 원래 확률변수 X의 기댓값과 비슷한 값이 나오게 된다. 정확하게 같지는 않다.
   - 따라서 만약 표본 개수 N이 크면 표본평균의 분산이 아주 작아지므로 표본평균 값은 항상 표본평균의 기댓값 근처의 거의 일정한 값이 나올 것이다.
   - 따라서 **표본 개수 N이 크면 표본평균 $\bar{x}$은 원래 확률변수 X의 기댓값 E[X]의 근사값**이라고 할 수 있다. 
   - 주사위를 N 번 던져서 나오는 값의 평균은 정확하게 3.5가 아니라 근사값이 나오는 이유에 대한 수학적 해석
@@ -347,34 +307,17 @@ $$
 ### 표본분산의 기댓값
 - 표본평균의 기댓값은 이론적 평균 즉 기댓값과 같아진다.
 - **표본분산 S^2의 기댓값은 이론적인 분산보다 작아진다.**
-  - $\text{E}[S^2] = \dfrac{N-1}{N} \sigma^2$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BS%5E2%5D%20%3D%20%5Cdfrac%7BN-1%7D%7BN%7D%20%5Csigma%5E2">
   - 이론적인 분산값의 N-1/N 배가 된다. 즉 표본분산값이 이론적인 분산값보다 작아진다는 의미이다.
 - 다음식의 3개의 항을 각각 정리하면 분산의 기댓값에 관한 식을 얻을 수 있다. 
-$$\begin{align}
-\begin{aligned}
-\text{E}[S^2] 
-&= \text{E}\left[ \dfrac{1}{N} \sum_{i=1}^{N} (X_i-\bar{X})^2 \right] \\
-&= \text{E}\left[ \dfrac{1}{N} \sum_{i=1}^{N} {(X_i-\mu)-(\bar{X}-\mu)}^2 \right] \\
-&= \text{E}\left[ \dfrac{1}{N} \sum_{i=1}^{N} {(X_i-\mu)^2 - 2(X_i-\mu)(\bar{X}-\mu) + (\bar{X}-\mu)}^2 \right] \\
-&= \text{E}\left[ \dfrac{1}{N} \sum_{i=1}^{N} (X_i-\mu)^2 \right] -2\text{E}\left[ \dfrac{1}{N} \sum_{i=1}^{N} (X_i-\mu)(\bar{X}-\mu) \right] + \text{E} \left[ \dfrac{1}{N} \sum_{i=1}^{N} (\bar{X}-\mu)^2 \right] \\
-&= \cdots \\
-\end{aligned}
-\end{align}
-$$
-> $= \sigma^2 - \dfrac{2\sigma^2}{N} + \dfrac{\sigma^2}{N} = \dfrac{N-1}{N}\sigma^2$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5BS%5E2%5D%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28X_i-%5Cbar%7BX%7D%29%5E2%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%7B%28X_i-%5Cmu%29-%28%5Cbar%7BX%7D-%5Cmu%29%7D%5E2%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%7B%28X_i-%5Cmu%29%5E2%20-%202%28X_i-%5Cmu%29%28%5Cbar%7BX%7D-%5Cmu%29%20&plus;%20%28%5Cbar%7BX%7D-%5Cmu%29%7D%5E2%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28X_i-%5Cmu%29%5E2%20%5Cright%5D%20-2%5Ctext%7BE%7D%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28X_i-%5Cmu%29%28%5Cbar%7BX%7D-%5Cmu%29%20%5Cright%5D%20&plus;%20%5Ctext%7BE%7D%20%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28%5Cbar%7BX%7D-%5Cmu%29%5E2%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Ccdots%20%5C%5C%20%5Cend%7Baligned%7D">
+> <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Csigma%5E2%20-%20%5Cdfrac%7B2%5Csigma%5E2%7D%7BN%7D%20&plus;%20%5Cdfrac%7B%5Csigma%5E2%7D%7BN%7D%20%3D%20%5Cdfrac%7BN-1%7D%7BN%7D%5Csigma%5E2">
 - 표본분산의 기댓값이 이론적 분산값보다 작아지는 것을 알 수 있다.
 - 표본분산의 기댓값이 이론적 분산값과 정확하게 같아지려면, 분모에 N아니라 N-1을 넣어야 한다.
-$$\begin{align}
-\begin{aligned}
-\sigma^2 
-&= \dfrac{N}{N-1} \text{E}[S^2] \\
-&= \dfrac{N}{N-1}\text{E}\left[\dfrac{1}{N} \sum (X_i-\bar{X})^2 \right] \\
-&= \text{E}\left[ \dfrac{1}{N-1} \sum (X_i-\bar{X})^2\right]
-\end{aligned}
-\end{align}$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Csigma%5E2%20%26%3D%20%5Cdfrac%7BN%7D%7BN-1%7D%20%5Ctext%7BE%7D%5BS%5E2%5D%20%5C%5C%20%26%3D%20%5Cdfrac%7BN%7D%7BN-1%7D%5Ctext%7BE%7D%5Cleft%5B%5Cdfrac%7B1%7D%7BN%7D%20%5Csum%20%28X_i-%5Cbar%7BX%7D%29%5E2%20%5Cright%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5Cleft%5B%20%5Cdfrac%7B1%7D%7BN-1%7D%20%5Csum%20%28X_i-%5Cbar%7BX%7D%29%5E2%5Cright%5D%20%5Cend%7Baligned%7D">
 
 - **표본분산의 기댓값이 이론적 분산값과 정확하게 일치하는 비편향 표본분산**
-> $S^2_{unbiased} = \dfrac{1}{N-1} \sum (X_i - \bar{X})^2$
+> <img src="https://latex.codecogs.com/gif.latex?S%5E2_%7Bunbiased%7D%20%3D%20%5Cdfrac%7B1%7D%7BN-1%7D%20%5Csum%20%28X_i%20-%20%5Cbar%7BX%7D%29%5E2">
 
 - 표본분산이 실제 분산보다 작아지는 이유는?
     - 표본분산을 계산할때 사용하는 표본평균의 값이 데이터가 많이 몰려있는 쪽으로 편향되게 나온다. (데이터의 편향성에 의한 표본평균의 쏠림)
@@ -382,17 +325,17 @@ $$\begin{align}
     
 ### 비대칭도와 첨도
 - ```비대칭도 skew``` : 3차 모멘트 값에서 계산한다.
-    - $\text{E}\left[ \left( \dfrac{X-\mu}{\sigma} \right)^3\right] = \dfrac{\mu_3}{\sigma^3}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5Cleft%5B%20%5Cleft%28%20%5Cdfrac%7BX-%5Cmu%7D%7B%5Csigma%7D%20%5Cright%29%5E3%5Cright%5D%20%3D%20%5Cdfrac%7B%5Cmu_3%7D%7B%5Csigma%5E3%7D">
     - 확률밀도함수의 비대칭 정도를 가리킨다. 즉 데이터가 편향되어 있는 정도를 의미한다.
     - 비대칭도가 0이면 확률분포가 대칭이다. 
     - 표본비대칭도 sample skewness 도 비대칭도 확률변수에서 실현된 데이터이다. 
 - ```첨도 kurtosis``` : 4차 모멘트 값에서 계산한다.
-    - $\text{E}\left[ \left( \dfrac{X-\mu}{\sigma} \right)^4\right]=\dfrac{\mu_4}{\sigma^4}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5Cleft%5B%20%5Cleft%28%20%5Cdfrac%7BX-%5Cmu%7D%7B%5Csigma%7D%20%5Cright%29%5E4%5Cright%5D%3D%5Cdfrac%7B%5Cmu_4%7D%7B%5Csigma%5E4%7D">
     - 확률이 정규분포와 대비하여 중심에 모여있는지 바깥에 퍼져있는지를 나타낸다. 
     
 ### 모멘트
 - ```모멘트 moment``` : 확률분포에서 계산한 특징값. 기댓값, 분산도 확률분포의 모멘트의 하나이다.
-    - $\mu_{n} = \text{E}[(X-\mu)^n] = \int (x-\mu)^n p(x)dx$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu_%7Bn%7D%20%3D%20%5Ctext%7BE%7D%5B%28X-%5Cmu%29%5En%5D%20%3D%20%5Cint%20%28x-%5Cmu%29%5En%20p%28x%29dx">
 - 두 확률분포 X, Y가 있을 때 1차부터 무한대 차수에 이르기까지 두 확률분포의 모든 모멘트값이 같다면 두 확률분포는 같은 확률분포이다.
 - 모멘트의 차수를 기본으로 기댓값, 분산, 비대칭도, 첨도 등 확률분포의 모양을 설명할 수 있는 특징값들(기술통계)을 구할 수 있다.
 
@@ -402,29 +345,29 @@ $$\begin{align}
 
 ### 결합확률질량함수
 - ```결합확률질량함수 joint probability mass function``` : 각각의 숫자쌍의 확률을 알려주는 확률질량함수
-  - $p_{XY}(x, y)$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BXY%7D%28x%2C%20y%29">
 - 주사위와 같이 1-6의 값을 갖는 카테고리 분포 확률변수 X, Y가 있을 때 각각의 확률적 특성은 확률질량함수로 나타낼 수 있다.
-  - $p_{X}(x),\;\;p_{Y}(y)$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7D%28x%29%2C%5C%3B%5C%3Bp_%7BY%7D%28y%29">
 - 공정한 주사위 처럼 모든 값이 나올 확률이 같은 경우 확률질량함수
-  - $p_{X}(1)=\dfrac{1}{6}, \cdots, p_{X}(6)=\dfrac{1}{6}$
-  - $p_{Y}(1)=\dfrac{1}{6}, \cdots, p_{Y}(6)=\dfrac{1}{6}$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7D%281%29%3D%5Cdfrac%7B1%7D%7B6%7D%2C%20%5Ccdots%2C%20p_%7BX%7D%286%29%3D%5Cdfrac%7B1%7D%7B6%7D">
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BY%7D%281%29%3D%5Cdfrac%7B1%7D%7B6%7D%2C%20%5Ccdots%2C%20p_%7BY%7D%286%29%3D%5Cdfrac%7B1%7D%7B6%7D">
 - 결합확률질량함수는 다변수 확률변수를 갖으므로 독립변수가 x,y 두 개가 된다. 종속변수는 x,y 숫자쌍이 나올 확률이다.
-  - $p_{XY}(1,1)=\dfrac{1}{36}, \cdots, p_{XY}(6,6)=\dfrac{1}{36}$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BXY%7D%281%2C1%29%3D%5Cdfrac%7B1%7D%7B36%7D%2C%20%5Ccdots%2C%20p_%7BXY%7D%286%2C6%29%3D%5Cdfrac%7B1%7D%7B36%7D">
   - 특정한 숫자쌍이 나올 확률을 나타낸 것이다. 각각의 확률질량함수의 값을 곱한 것과 같다.
 
 ### 주변확률질량함수
 - ```주변확률질량함수 marginal probability mass function``` : 두 확률변수 중 하나의 확률변수 값에 대해서만 확률분포를 표시한 함수
-  - $p_{X}(x) = \sum_{y_i} p_{XY}(x, y_i)$
-  - $p_{Y}(y) = \sum_{x_i} p_{XY}(y, x_i)$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7D%28x%29%20%3D%20%5Csum_%7By_i%7D%20p_%7BXY%7D%28x%2C%20y_i%29">
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BY%7D%28y%29%20%3D%20%5Csum_%7Bx_i%7D%20p_%7BXY%7D%28y%2C%20x_i%29">
   - 다변수가 되기 전 단변수 확률질량함수와 같다.
 - joint pmf에서 주변확률질량함수는 **전체확률의 법치게 의해 다른 변수가 가질 수 있는 모든 값의 결합확률질량함수를 합한 확률**과 같다.
   - 즉 x=1 인 경우의 모든 y_i의 결합확률질량함수 값을 더하면 된다.
-  - $p_{X}(A) = p_{XY}(A, A) + p_{XY}(A, B) + p_{XY}(A, C) + p_{XY}(A, y_i)$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7D%28A%29%20%3D%20p_%7BXY%7D%28A%2C%20A%29%20&plus;%20p_%7BXY%7D%28A%2C%20B%29%20&plus;%20p_%7BXY%7D%28A%2C%20C%29%20&plus;%20p_%7BXY%7D%28A%2C%20y_i%29">
 
 ### 조건부확률질량함수
 - ```조건부확률질량함수 conditional probability mass function``` : 다변수 확률변수 중에서 하나의 값이 특정값으로 고정되어 상수가 된 경우, 나머지 변수에 대한 확률질량함수와 같다.
-  - $p_{XY}(x|y) = \dfrac{p_{XY}(x,y)}{p_{Y}(y)}$
-  - $p_{YX}(y|x) = \dfrac{p_{XY}(x,y)}{p_{X}(x)}$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BXY%7D%28x%7Cy%29%20%3D%20%5Cdfrac%7Bp_%7BXY%7D%28x%2Cy%29%7D%7Bp_%7BY%7D%28y%29%7D">
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BYX%7D%28y%7Cx%29%20%3D%20%5Cdfrac%7Bp_%7BXY%7D%28x%2Cy%29%7D%7Bp_%7BX%7D%28x%29%7D">
   - **결합확률질량함수 / 주변확률질량함수**
   - joint pmf / marginal pmf
 - cond pmf의 모양은 joint pmf에서 y값이 고정된 함수의 단면과 같다. 모양만 같고 값은 다르다.
@@ -437,36 +380,36 @@ $$\begin{align}
 
 ### 결합누적확률분포함수
 - ```결합누적확률분포함수 joint cumulative probability distributiion function``` : 두 연속확률변수 X,Y에 구간의 사건의 확률을 결합한 형태
-  - $F_{XY}(x,y) = P(\left\{X < x \right\} \cap \left\{Y < y \right\}) = P({X<x, Y<y})$ 
+  - <img src="https://latex.codecogs.com/gif.latex?F_%7BXY%7D%28x%2Cy%29%20%3D%20P%28%5Cleft%5C%7BX%20%3C%20x%20%5Cright%5C%7D%20%5Ccap%20%5Cleft%5C%7BY%20%3C%20y%20%5Cright%5C%7D%29%20%3D%20P%28%7BX%3Cx%2C%20Y%3Cy%7D%29"> 
 - 결합누적확률분포함수의 특성
-  - $F_{XY}(\infty,\infty)=1$    (X,Y의 표본의 모든 범위의 확률)
-  - $F_{XY}(-\infty, y)=F_{XY}(x,-\infty)=0$    (X,Y의 표본의 범위가 음의 무한대보다 작은 경우는 없다)
+  - <img src="https://latex.codecogs.com/gif.latex?F_%7BXY%7D%28%5Cinfty%2C%5Cinfty%29%3D1">    (X,Y의 표본의 모든 범위의 확률)
+  - <img src="https://latex.codecogs.com/gif.latex?F_%7BXY%7D%28-%5Cinfty%2C%20y%29%3DF_%7BXY%7D%28x%2C-%5Cinfty%29%3D0">    (X,Y의 표본의 범위가 음의 무한대보다 작은 경우는 없다)
 
 ### 결합확률밀도함수
 - ```결합확률밀도함수 joint probability density function``` : 단변수 확률변수의 경우처럼 결합누적확률분포함수를 미분하여 구한 함수
-  - $p_{XY} = \dfrac{\partial^2 F_{XY}(x,y)}{\partial_x \partial_y}$
+  - <img src="https://latex.codecogs.com/gif.latex?p_%7BXY%7D%20%3D%20%5Cdfrac%7B%5Cpartial%5E2%20F_%7BXY%7D%28x%2Cy%29%7D%7B%5Cpartial_x%20%5Cpartial_y%7D">
   - 각각의 독립변수에 대해 편미분 partial differentication 한 것과 같다.
 - **joint pdf를 특정구간에 대해 적분하면 해당 구간에 대한 확률이 된다.**
   - **미적분학의 기본정리**
-  - $\int_{x_1}^{x_2} \int_{y_1}^{y_2} p_{XY}(x,y)dxdy = P(\left\{ x_1 \leq X \leq x_2, y_1 \leq Y \leq y_2 \right\})$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7Bx_1%7D%5E%7Bx_2%7D%20%5Cint_%7By_1%7D%5E%7By_2%7D%20p_%7BXY%7D%28x%2Cy%29dxdy%20%3D%20P%28%5Cleft%5C%7B%20x_1%20%5Cleq%20X%20%5Cleq%20x_2%2C%20y_1%20%5Cleq%20Y%20%5Cleq%20y_2%20%5Cright%5C%7D%29">
 - 따라서 결합확률밀도함수를 모든 변수에 대해 -무한대에서 무한대까지 적분하면 값이 1이 된다.
-    - $\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} p_{XY}(x, y)dxdy = 1$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p_%7BXY%7D%28x%2C%20y%29dxdy%20%3D%201">
 - 결합확률밀도함수는 2차원 함수이다. 그래프의 형태는 등고선의 모양과 같다. 
     - 경도와 위도라는 확률변수에 의해서 변환된 고도라는 확률변수의 그래프
     - 키와 몸부게라는 확률변수에 의해서 변환된 신체비율이라는 확률변수의 그래프
 
 ### 주변확률밀도함수
 - ```주변확률밀도함수 marginal probability density function``` : 결합확률밀도함수를 특정한 하나의 변수에 대해서 가중평균한 값
-    - $p_{X}(x) = \int_{-\infty}^{\infty} p_{XY}(x, y)dy$
-    - $p_{Y}(y) = \int_{-\infty}^{\infty} p_{XY}(x, y)dx$
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7D%28x%29%20%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p_%7BXY%7D%28x%2C%20y%29dy">
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BY%7D%28y%29%20%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p_%7BXY%7D%28x%2C%20y%29dx">
 - 결합확률밀도함수 joint pdf를 하나의 확률변수에 대해서만 적분하는 것과 같다. 
     - 확률변수 X의 확률은 확률변수 Y로 적분한 값
 - joint pdf의 그래프에서 x, y 각각의 축에 대해서 적분하여 나타낸 1차원 그래프의 형태가 된다.
 
 ### 조건부확률밀도함수
 - ```조건부확률밀도함수 conditional probability density function``` : 다변수 확률변수 중 하나의 값이 특정 값이라는 사실이 알려진 경우, 이러한 조건(혹은 가정)에 의해 변화한 나머지 확률변수에 대한 확률밀도함수
-    - $p_{X|Y}(x|y) = \dfrac{p_{XY}(x, y)}{p_{Y}(y)}$
-    - $p_{Y|X}(y|x) = \dfrac{p_{XY}(x, y)}{p_{X}(x)}$
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7CY%7D%28x%7Cy%29%20%3D%20%5Cdfrac%7Bp_%7BXY%7D%28x%2C%20y%29%7D%7Bp_%7BY%7D%28y%29%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BY%7CX%7D%28y%7Cx%29%20%3D%20%5Cdfrac%7Bp_%7BXY%7D%28x%2C%20y%29%7D%7Bp_%7BX%7D%28x%29%7D">
     - **joint pdf / marginal pdf**
     - joint pdf : 결합누적확률분포함수를 각각의 확률변수로 편미분한 것
     - marginal pdf : 결합확률밀도함수에서 하나의 변수에 대해서만 적분한 것
@@ -476,77 +419,52 @@ $$\begin{align}
 ### 독립과 상관
 - ```상관관계``` : 두 확률변수 중 한 확률변수의 표본값이 달라지면 다른 확률변수의 조건부 분포가 달라질 때 
 - ```독립관계 independent``` : 두 확률변수가 상관관계가 아닌 경우, 즉 한 확률변수의 표본값이 달라져도 다른 확률변수의 조건부 분포가 달라지지 않을 때
-    - $p_{XY}(x,y) = p_{X}(x)p_{Y}(y)$
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BXY%7D%28x%2Cy%29%20%3D%20p_%7BX%7D%28x%29p_%7BY%7D%28y%29">
     - **joint pdf의 값이 각각의 확률변수의 marginal pdf의 곱과 같으면 독립관계이다.**
 - 확률변수가 3개가 있을 때도 독립관계가 적용된다.
-    - $p_{XYZ}(x,y,z) = p_{X}(x) p_{Y}(y) p_{Z}(z)$
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BXYZ%7D%28x%2Cy%2Cz%29%20%3D%20p_%7BX%7D%28x%29%20p_%7BY%7D%28y%29%20p_%7BZ%7D%28z%29">
     - joint pdf가 각각의 확률변수의 marginal pdf의 곱과 같으면 독립관계이다.
 
 ### 반복시행
 - 같은 확률변수에서 복수의 표본 데이터를 취하는 경우에는 이 표본들은 서로 독립인 확률변수들에서 나온 표본으로 볼 수 있다.
-    - $p(x_1,x_2,\cdots,x_N) = \prod_{i=1}^{N} p(x_i)$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x_1%2Cx_2%2C%5Ccdots%2Cx_N%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5E%7BN%7D%20p%28x_i%29">
     - **각각의 표본의 확률질량함수의 값의 곱과 같다.**
     - 주사위를 연속해서 던져서 나온 표본의 확률은 각 표본의 확률의 곱과 같음
 
 ### 조건부 확률분포
 - 독립인 두 확률변수 X,Y의 조건부확률밀도함수 cond pdf는 주변확률밀도함수 marginal pdf와 같다.
-    - $p_{X|Y}(x|y) = \dfrac{p_{XY}(x,y)}{p_{X}(x)} = \dfrac{p_{X}(x)p_{Y}(y)}{p_{X}(x)}=p_{X}(x)$
-    - $p_{Y|X}(y|x) = \dfrac{p_{XY}(x,y)}{p_{Y}(y)} = \dfrac{p_{X}(x)p_{Y}(y)}{p_{Y}(y)}=p_{X}(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BX%7CY%7D%28x%7Cy%29%20%3D%20%5Cdfrac%7Bp_%7BXY%7D%28x%2Cy%29%7D%7Bp_%7BX%7D%28x%29%7D%20%3D%20%5Cdfrac%7Bp_%7BX%7D%28x%29p_%7BY%7D%28y%29%7D%7Bp_%7BX%7D%28x%29%7D%3Dp_%7BX%7D%28x%29">
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BY%7CX%7D%28y%7Cx%29%20%3D%20%5Cdfrac%7Bp_%7BXY%7D%28x%2Cy%29%7D%7Bp_%7BY%7D%28y%29%7D%20%3D%20%5Cdfrac%7Bp_%7BX%7D%28x%29p_%7BY%7D%28y%29%7D%7Bp_%7BY%7D%28y%29%7D%3Dp_%7BX%7D%28x%29">
     - **새로운 조건이 발생한 이후에도 원래 확률변수의 확률분포와 같다.**
     - 조건부 확률분포가 조건이 되는 확률변수의 값에 영향을 받지 않는다는 의미
-    - $f(x|y_1) = f(x|y_2) = f(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?f%28x%7Cy_1%29%20%3D%20f%28x%7Cy_2%29%20%3D%20f%28x%29">
     
 ### 독립 확률변수의 기댓값
 - 독립인 두 확률변수 X, Y의 기댓값은 다음의 성질을 만족한다.
-  - $\text{E}[XY] = \text{E}[X]\text{E}[Y]$
+  - <img src="$\text{E}[XY] = \text{E}[X]\text{E}[Y]$">
     - **독립인 확률변수 X,Y의 곱의 기댓값은 각각의 기댓값의 곱과 같다.**
-  - $\text{E}[(X-\mu_x)(Y-\mu_y)] = 0$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%3D%200">
 
 - 증명
-$$\begin{align}
-\begin{aligned}
-\text{E}[XY]
-&= \int \int xy p_{XY}(x,y)dxdy \\
-&= \int \int xy p_{X}(x) p_{Y}(y) dxdy \\
-\end{aligned}
-\end{align}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5BXY%5D%20%26%3D%20%5Cint%20%5Cint%20xy%20p_%7BXY%7D%28x%2Cy%29dxdy%20%5C%5C%20%26%3D%20%5Cint%20%5Cint%20xy%20p_%7BX%7D%28x%29%20p_%7BY%7D%28y%29%20dxdy%20%5C%5C%20%5Cend%7Baligned%7D">
   - 푸비니의 정리 : 다중적분의 값은 적분을 연속하여 한 값과 같다.
   - 푸비니의 정리를 사용하여 다중적분을 전개하면 연속확률변수의 기댓값의 공식으로 정리할 수 있다.
-$$\begin{align}
-\begin{aligned}
-\text{E}[XY]
-&= \int \left( \int xy p_{X}(x) p_{Y}(y) dx \right)dy \\
-&= \int \left( yp_{Y}(y) \left( \int xp_{X}(x)dx \right) \right)dy \\
-&= \left( \int x p_{X}(x)dx \right)\left( \int y p_{Y}(y) dy \right) \\
-&= \text{E}[X]\text{E}[Y]
-\end{aligned}
-\end{align}
-$$
-- 두 번쨰 등식 증명
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5BXY%5D%20%26%3D%20%5Cint%20%5Cleft%28%20%5Cint%20xy%20p_%7BX%7D%28x%29%20p_%7BY%7D%28y%29%20dx%20%5Cright%29dy%20%5C%5C%20%26%3D%20%5Cint%20%5Cleft%28%20yp_%7BY%7D%28y%29%20%5Cleft%28%20%5Cint%20xp_%7BX%7D%28x%29dx%20%5Cright%29%20%5Cright%29dy%20%5C%5C%20%26%3D%20%5Cleft%28%20%5Cint%20x%20p_%7BX%7D%28x%29dx%20%5Cright%29%5Cleft%28%20%5Cint%20y%20p_%7BY%7D%28y%29%20dy%20%5Cright%29%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BX%5D%5Ctext%7BE%7D%5BY%5D%20%5Cend%7Baligned%7D">
 
-$$\begin{align}
-\begin{aligned}
-\text{E}[(X-\mu_X)(Y-\mu_Y)]
-&= \text{E}[XY - \mu_{X}Y - \mu_{Y}X + \mu_{X} \mu_{Y}] \\
-&= \text{E}[XY] - \mu_{X}\text{E}[Y] - \mu_{Y}\text{E}[X] + \mu_{X}\mu_{Y}\;\;((E[X]=\mu_X, E[Y]=\mu_Y))\\
-&= \text{E}[XY] - \mu_X\mu_Y \\
-&= \text{E}[XY] - \text{E}[X]\text{E}[Y] = 0
-\end{aligned}
-\end{align}
-$$
+- 두 번쨰 등식 증명
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5B%28X-%5Cmu_X%29%28Y-%5Cmu_Y%29%5D%20%26%3D%20%5Ctext%7BE%7D%5BXY%20-%20%5Cmu_%7BX%7DY%20-%20%5Cmu_%7BY%7DX%20&plus;%20%5Cmu_%7BX%7D%20%5Cmu_%7BY%7D%5D%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BXY%5D%20-%20%5Cmu_%7BX%7D%5Ctext%7BE%7D%5BY%5D%20-%20%5Cmu_%7BY%7D%5Ctext%7BE%7D%5BX%5D%20&plus;%20%5Cmu_%7BX%7D%5Cmu_%7BY%7D%5C%3B%5C%3B%28%28E%5BX%5D%3D%5Cmu_X%2C%20E%5BY%5D%3D%5Cmu_Y%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BXY%5D%20-%20%5Cmu_X%5Cmu_Y%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5BXY%5D%20-%20%5Ctext%7BE%7D%5BX%5D%5Ctext%7BE%7D%5BY%5D%20%3D%200%20%5Cend%7Baligned%7D">
 
 ### 독립 확률변수의 분산
 - 독립인 확률변수 X,Y의 분산은 다음 성질을 만족한다.
-  - $\text{Var}[X + Y] = \text{Var}[X] + \text{Var}[Y]$
-  - $= \text{E}[\left(X + Y - (\mu_X + \mu_Y)\right)^2]$, 식을 풀이하면 증명된다
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%20&plus;%20Y%5D%20%3D%20%5Ctext%7BVar%7D%5BX%5D%20&plus;%20%5Ctext%7BVar%7D%5BY%5D">
+  - <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Ctext%7BE%7D%5B%5Cleft%28X%20&plus;%20Y%20-%20%28%5Cmu_X%20&plus;%20%5Cmu_Y%29%5Cright%29%5E2%5D">, 식을 풀이하면 증명된다
   
 ## 공분산과 상관계수
 - ```공분산 covariance, 상관계수 correlation coeffcient``` : 다변수 확률변수 간의 상관 관계를 숫자로 나타낸 것
 
 ### 표본공분산
 - ```표본공분산 sample covariance``` : 자료(데이터)가 평균값으로부터 얼마나 떨어져 있는지를 나타내는 값. x 평균값과 y 평균값을 두 축으로부터 표본(자료,데이터)의 위치를 연결하는 사각형의 면적을 더하는 것과 같다.
-  - $s_{xy} = \dfrac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y})$
+  - <img src="https://latex.codecogs.com/gif.latex?s_%7Bxy%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28x_i%20-%20%5Cbar%7Bx%7D%29%28y_i%20-%20%5Cbar%7By%7D%29">
   - x_i, y_i는 i번째 x,y 자료이다. 
   - x_i와 x평균의 거리의 제곱의 합으로 구한 표본분산과 유사하다.
 - 자료의 위치(데이터가 위치하는 평면)에 의해 공분산의 값(면적들의 합)의 부호가 달라진다. 
@@ -556,7 +474,7 @@ $$
 
 ### 표본상관계수
 - ```표본상관계수 sample correlation coefficient``` : 자료 분포의 방향성을 의미하는 값. **데이터 x에 대한 값**
-  - $r_{xy} = \dfrac{s_{xy}}{\sqrt{s_{x}^2 \cdot s_{y}^2}}$
+  - <img src="https://latex.codecogs.com/gif.latex?r_%7Bxy%7D%20%3D%20%5Cdfrac%7Bs_%7Bxy%7D%7D%7B%5Csqrt%7Bs_%7Bx%7D%5E2%20%5Ccdot%20s_%7By%7D%5E2%7D%7D">
   - 공분산을 각각의 표준편차값으로 나누어 정규화하여 구한다.
 - 표본공분산은 평균을 중심으로 각각의 자료들이 어떻게 분포되어 있는지 크기와 방향성을 같이 나타낸다. 분포의 크기는 공분산뿐만 아니라 분산만으로도 알 수 있다. 따라서 분포의 방향성만 알 수 있는 값이 표본상관계수이다.
 - 표본상관계수는 **피어슨 상관계수 Pearson** 라고도 한다.
@@ -564,11 +482,11 @@ $$
 
 ### 확률별수의 공분산과 상관계수
 - 확률변수 X, Y의 공분산
-  - $\text{Cov}[X, Y] = \text{E}[(X - \text{E}[X])(Y - \text{E}[Y])]$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BCov%7D%5BX%2C%20Y%5D%20%3D%20%5Ctext%7BE%7D%5B%28X%20-%20%5Ctext%7BE%7D%5BX%5D%29%28Y%20-%20%5Ctext%7BE%7D%5BY%5D%29%5D">
 - 두 확률변수 X, Y의 상관계수
-  - $\rho[X,Y] = \dfrac{\text{Cov}[X,Y]}{\sqrt{\text{Var}[X]\cdot\text{Var}[Y]}}$
+  - <img src="https://latex.codecogs.com/gif.latex?%5Crho%5BX%2CY%5D%20%3D%20%5Cdfrac%7B%5Ctext%7BCov%7D%5BX%2CY%5D%7D%7B%5Csqrt%7B%5Ctext%7BVar%7D%5BX%5D%5Ccdot%5Ctext%7BVar%7D%5BY%5D%7D%7D">
 - 확률변수의 상관계수의 성질
-  - $-1 \leq \rho \leq 1$
+  - <img src="https://latex.codecogs.com/gif.latex?-1%20%5Cleq%20%5Crho%20%5Cleq%201">
   - rho = 1 : 완전선형 상관관계
   - rho = 0 : 무상관(상관계수 값이 0이라고해서 반드시 독립은 아니다)
   - rho = -1 : 완전선형 반상관관계
@@ -601,45 +519,28 @@ $$
 - X1, X2, X3, ..., XM이라는 M개의 서로 다른 확률변수가 있을때, 이 확률변수들의 표본데이터가 각각 N개가 있으면 j번째(j=1,2,...M) 확률변수의 i번째(i=1,2,...N) 데이터를 x_i,j로 행렬로 표기할 수 있다.  
     - x_2,3 은 3번째 확률변수의 2번째 데이터라는 의미
 
-$$\text{X} =
-\begin{bmatrix}
-x_{1,1} & x_{1,2} & \cdots & x_{1,M} \\
-x_{2,1} & x_{2,2} & \cdots & x_{2,M} \\
-\vdots & \vdots & \ddots & \vdots \\
-x_{N,1} & x_{N,2} & \cdots & x_{N,M} \\
-\end{bmatrix}$$
+<img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BX%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_%7B1%2C1%7D%20%26%20x_%7B1%2C2%7D%20%26%20%5Ccdots%20%26%20x_%7B1%2CM%7D%20%5C%5C%20x_%7B2%2C1%7D%20%26%20x_%7B2%2C2%7D%20%26%20%5Ccdots%20%26%20x_%7B2%2CM%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20x_%7BN%2C1%7D%20%26%20x_%7BN%2C2%7D%20%26%20%5Ccdots%20%26%20x_%7BN%2CM%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D">
 
 - ```표본공분산행렬 sample covariance matrix``` : M개의 서로 다른 확률변수의 모든 조합에 대해 공분산을 한꺼번에 표기위한 행렬 
     - 대각성분 : 각각의 확률변수의 분산
     - 비대각성분 : 서로 다른 두 확률변수의 공분산
 
-$$\text{S} =
-\begin{bmatrix}
-s_{x_1}^2 & s_{x_{1}x_{2}} & \cdots & s_{x_{1}x_{M}} \\
-s_{x_{1}x_{2}} & s_{x_{2}}^2 & \cdots & s_{x_{2}x_{M}} \\
-\vdots & \vdots & \ddots & \vdots \\
-s_{x_{1}x_{M}} & s_{x_{2}x_{M}} & \cdots & s_{x_{M}}^2 \\
-\end{bmatrix}$$
+<img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BS%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20s_%7Bx_1%7D%5E2%20%26%20s_%7Bx_%7B1%7Dx_%7B2%7D%7D%20%26%20%5Ccdots%20%26%20s_%7Bx_%7B1%7Dx_%7BM%7D%7D%20%5C%5C%20s_%7Bx_%7B1%7Dx_%7B2%7D%7D%20%26%20s_%7Bx_%7B2%7D%7D%5E2%20%26%20%5Ccdots%20%26%20s_%7Bx_%7B2%7Dx_%7BM%7D%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20s_%7Bx_%7B1%7Dx_%7BM%7D%7D%20%26%20s_%7Bx_%7B2%7Dx_%7BM%7D%7D%20%26%20%5Ccdots%20%26%20s_%7Bx_%7BM%7D%7D%5E2%20%5C%5C%20%5Cend%7Bbmatrix%7D">
 
 - 표본공분산행렬의 값을 구하는 과정
     - 각 확률변수의 x_j 표본평균을 계산한다.
-        - $\bar{x_j} = \dfrac{1}{N} \sum_{i=1}^{N} x_{i,j}$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7Bx_j%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_%7Bi%2Cj%7D">
     - 각 확률변수 x_j의 분산을 계산한다.
-        - $s_{j}^2 = \dfrac{1}{N} \sum_{i=1}^{N} (x_{i,j} - \bar{x_j})^2$
+        - <img src="https://latex.codecogs.com/gif.latex?s_%7Bj%7D%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28x_%7Bi%2Cj%7D%20-%20%5Cbar%7Bx_j%7D%29%5E2">
     - 두 확률변수 x_j, x_k의 공분산을 구한다. 
-        - $s_{j,k}^2 = \dfrac{1}{N} \sum_{i=1}^{N} (x_{i,j} - \bar{x_j}) (x_{i,k} - \bar{x_k})$
+        - <img src="https://latex.codecogs.com/gif.latex?s_%7Bj%2Ck%7D%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28x_%7Bi%2Cj%7D%20-%20%5Cbar%7Bx_j%7D%29%20%28x_%7Bi%2Ck%7D%20-%20%5Cbar%7Bx_k%7D%29">
     - x_i(i=1,...,N)가 M-차원 표본벡터로 정의될 경우 : 각 확률변수의 i번째 데이터를 열벡터로 모아놓은 형태, i=1이면 각 확률변수들의 1번째 데이터를 열벡터로 만들어 놓은 것
-        $$x_i = 
-        \begin{bmatrix}
-        x_{i,1} \\
-        \vdots \\
-        x_{i, M}\\
-        \end{bmatrix}$$
+        <img src="https://latex.codecogs.com/gif.latex?x_i%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_%7Bi%2C1%7D%20%5C%5C%20%5Cvdots%20%5C%5C%20x_%7Bi%2C%20M%7D%5C%5C%20%5Cend%7Bbmatrix%7D">
 - 표본공분산 행렬 S
-    - $\text{S} = \dfrac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})(x_i - \bar{x})^T$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BS%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28x_i%20-%20%5Cbar%7Bx%7D%29%28x_i%20-%20%5Cbar%7Bx%7D%29%5ET">
     - **(열벡터 - 열벡터)(행벡터-행벡터)^T = 정방행렬**
-- ```평균값제거 행렬의 분산행렬의 형태로 나타내면``` : $X_0^T X_0$
-    - $\text{S} =  \dfrac{1}{N} X_{0}^T X_{0}$
+- ```평균값제거 행렬의 분산행렬의 형태로 나타내면``` : <img src="https://latex.codecogs.com/gif.latex?X_0%5ET%20X_0">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BS%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20X_%7B0%7D%5ET%20X_%7B0%7D">
     - 표본공분산 행렬을 구하는 식을 벡터 형태로 정리하면, X_0 행렬의 곱으로 나타낼 수 있게 된다.
     - **고윳값분해에서 나온 분산행렬의 X^TX에 대한 정의이다.**
         - 분산행렬의 이차형식을 구하면 어떤 벡터 u의 제곱합의 형태가 된다.
@@ -648,60 +549,28 @@ s_{x_{1}x_{M}} & s_{x_{2}x_{M}} & \cdots & s_{x_{M}}^2 \\
 
 ### 다변수 확률변수의 공분산
 - M개의 다변수 확률변수 벡터
-$$\text{X}=
-\begin{bmatrix}
-X_1 \\
-X_2 \\
-\vdots \\
-X_M 
-\end{bmatrix}
-$$
-
+<img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BX%7D%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%5C%5C%20X_2%20%5C%5C%20%5Cvdots%20%5C%5C%20X_M%20%5Cend%7Bbmatrix%7D">
 - 이 벡터를 이론적 공분산행렬로 표기하면 다음과 같다. 
 
-$$\Sigma = \text{Cov}[X] = \begin{bmatrix}
-\sigma_{x_1}^2 & \sigma_{x_1x_2} & \sigma_{x_1x_3} & \cdots & \sigma_{x_1x_M} \\
-\sigma_{x_1x_2} & \sigma_{x_2}^2 & \sigma_{x_2x_3} & \cdots & \sigma_{x_2x_M} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-\sigma_{x_1x_M} & \sigma_{x_2x_M} & \sigma_{x_3x_M} & \cdots & \sigma_{x_M}^2 \\
-\end{bmatrix} 
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5CSigma%20%3D%20%5Ctext%7BCov%7D%5BX%5D%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Csigma_%7Bx_1%7D%5E2%20%26%20%5Csigma_%7Bx_1x_2%7D%20%26%20%5Csigma_%7Bx_1x_3%7D%20%26%20%5Ccdots%20%26%20%5Csigma_%7Bx_1x_M%7D%20%5C%5C%20%5Csigma_%7Bx_1x_2%7D%20%26%20%5Csigma_%7Bx_2%7D%5E2%20%26%20%5Csigma_%7Bx_2x_3%7D%20%26%20%5Ccdots%20%26%20%5Csigma_%7Bx_2x_M%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20%5Csigma_%7Bx_1x_M%7D%20%26%20%5Csigma_%7Bx_2x_M%7D%20%26%20%5Csigma_%7Bx_3x_M%7D%20%26%20%5Ccdots%20%26%20%5Csigma_%7Bx_M%7D%5E2%20%5C%5C%20%5Cend%7Bbmatrix%7D">
 
-$$
-=\text{E}\begin{bmatrix}
-(X_1 - \text{E}[X_1])^2 & \cdots & (X_1 - \text{E}[X_1])(X_M - \text{E}[X_M])\\
-(X_1 - \text{E}[X_1])(X_2 - \text{E}[X_2]) & \cdots & (X_2 - \text{E}[X_2])(X_M - \text{E}[X_M])\\
-\vdots & \ddots & \vdots \\
-(X_1 - \text{E}[X_1])(X_M - \text{E}[X_M]) & \cdots & (X_M - \text{E}[X_M])^2\\
-\end{bmatrix}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%3D%5Ctext%7BE%7D%5Cbegin%7Bbmatrix%7D%20%28X_1%20-%20%5Ctext%7BE%7D%5BX_1%5D%29%5E2%20%26%20%5Ccdots%20%26%20%28X_1%20-%20%5Ctext%7BE%7D%5BX_1%5D%29%28X_M%20-%20%5Ctext%7BE%7D%5BX_M%5D%29%5C%5C%20%28X_1%20-%20%5Ctext%7BE%7D%5BX_1%5D%29%28X_2%20-%20%5Ctext%7BE%7D%5BX_2%5D%29%20%26%20%5Ccdots%20%26%20%28X_2%20-%20%5Ctext%7BE%7D%5BX_2%5D%29%28X_M%20-%20%5Ctext%7BE%7D%5BX_M%5D%29%5C%5C%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20%28X_1%20-%20%5Ctext%7BE%7D%5BX_1%5D%29%28X_M%20-%20%5Ctext%7BE%7D%5BX_M%5D%29%20%26%20%5Ccdots%20%26%20%28X_M%20-%20%5Ctext%7BE%7D%5BX_M%5D%29%5E2%5C%5C%20%5Cend%7Bbmatrix%7D">
 
 - 행렬을 정리하면 다음과 같이 나타낼 수 있다.
 
-$$
-\Sigma = \text{E}[(X-\text{E}[X])(X-\text{E}[X])^T] \\
-= \text{E} 
-\begin{bmatrix}
-\begin{bmatrix} 
-X_1 - \text{E}[X_1] \\
-X_2 - \text{E}{X_2} \\
-\vdots \\
-X_M - \text{E}[X_M] \\
-\end{bmatrix} & [X_1-\text{E}[X_1] \;\; X_2-\text{E}[X_2] \;\; \cdots \;\; X_M-\text{E}[X_M]] \\
-\end{bmatrix}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5CSigma%20%3D%20%5Ctext%7BE%7D%5B%28X-%5Ctext%7BE%7D%5BX%5D%29%28X-%5Ctext%7BE%7D%5BX%5D%29%5ET%5D%20%5C%5C%20%3D%20%5Ctext%7BE%7D%20%5Cbegin%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20X_1%20-%20%5Ctext%7BE%7D%5BX_1%5D%20%5C%5C%20X_2%20-%20%5Ctext%7BE%7D%7BX_2%7D%20%5C%5C%20%5Cvdots%20%5C%5C%20X_M%20-%20%5Ctext%7BE%7D%5BX_M%5D%20%5C%5C%20%5Cend%7Bbmatrix%7D%20%26%20%5BX_1-%5Ctext%7BE%7D%5BX_1%5D%20%5C%3B%5C%3B%20X_2-%5Ctext%7BE%7D%5BX_2%5D%20%5C%3B%5C%3B%20%5Ccdots%20%5C%3B%5C%3B%20X_M-%5Ctext%7BE%7D%5BX_M%5D%5D%20%5C%5C%20%5Cend%7Bbmatrix%7D">
 
 - **표본분산은 어떤 확률변수 X의 분포에 관한 값, 공분산은 두 확률변수 X,Y의 상관관계에 대한 값**
 
 ## 조건부기댓값과 예측문제
 - ```조건부기댓값 conditional expectiation, 조건부평균 conditional mean``` : 확률변수 Y의 기댓값을 구할 떄 주변확률밀도함수 p_Y(y)가 아닌 조건부확률밀도함수 p_Y|X(y|x)를 이용하여 가중치를 계산하는 것
-    - $\text{E}_Y[Y|X] = \int_{y=-\infty}^{y=\infty} y p_{Y|X}(y|x) dy$
-    - $\text{E}[Y|X] = \int y p(y|x) dy$ (간단하게 씀)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D_Y%5BY%7CX%5D%20%3D%20%5Cint_%7By%3D-%5Cinfty%7D%5E%7By%3D%5Cinfty%7D%20y%20p_%7BY%7CX%7D%28y%7Cx%29%20dy">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BY%7CX%5D%20%3D%20%5Cint%20y%20p%28y%7Cx%29%20dy"> (간단하게 씀)
 - 조건이 되는 X의 값은 사용자가 지정해야하기 떄문에 독립변수와 같다. 따라서 **조건부기댓값은 조건이 되는 X의 값에 따라서 값이 달라지는 확률변수**와 같다.
     - 또한 E[Y|X]는 X의 값,표본 x를 입력으로 받은 함수이기도 하다. 
     - 조건부기댓값 그 자체도 확률변수이다. 따라서 기댓값, 분산, 공분산등에 넣어서 계산할 수 있다.
-    - $\text{E}[Y|X=x] = f(x)$  
-    - $\text{E}[Y|x] = f(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BY%7CX%3Dx%5D%20%3D%20f%28x%29">  
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BY%7Cx%5D%20%3D%20f%28x%29">
 - f(x)는 조건이 되는 확률변수 X의 값 x를 입력받아서 확률변수 Y의 기댓값(E[Y|x])을 출력하는 함수이다.
      - 어떤 일차원 함수 f가 있을 때, x_i에서 y_i값을 갖는 이유는, x_i지점에서의 조건부기댓값 y_i이기 때문이다.
      - 조건부기댓값은 조건부확률밀도함수를 가중치로하는 적분값이므로 이 pdf의 값이 가장 큰 지점이 곧 y_i가 된다. 
@@ -709,78 +578,57 @@ $$
 
 ### 예측문제
 - ```예측문제 prediction``` : 두 확률변수 X,Y에서 X의 값을 알고 있을 때 Y의 값을 알아내는 것.
-    - $x \rightarrow (prediction) \rightarrow \hat{y} = \text{E}[y|x] = f(x)$
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Crightarrow%20%28prediction%29%20%5Crightarrow%20%5Chat%7By%7D%20%3D%20%5Ctext%7BE%7D%5By%7Cx%5D%20%3D%20f%28x%29">
 - **Y가 연속확률변수이면 회귀분석 regression analysis, Y가 이산확률변수면 분류 classification 이라고 한다.**
 - 일반적으로 조건부확률분포의 기댓값인 조건부기댓값이 예측문제의 답이된다. 중앙값이나 최빈값을 사용할 수도 있다. 
 
 ### 조건부기댓값의 성질
 - 조건부기댓값은 확률변수 X의 함수의 변환 transform과 같다. 그러브로 조건부 기댓값 E[Y|X]도 확률변수이다.
 - X의 값을 독립변수로하는 결정론적 함수인 경우
-    - $Y = g(X)$
+    - <img src="https://latex.codecogs.com/gif.latex?Y%20%3D%20g%28X%29">
 - X의 값을 어떤 x로 정하는 순간 Y의 값도 결정된다. 따라서 Y = g(X)는 함수가 아니라 상수가 된다.
-    - $\text{E}[Y|X] = E[g(X)|X] = g(X)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BY%7CX%5D%20%3D%20E%5Bg%28X%29%7CX%5D%20%3D%20g%28X%29">
 - X,Y가 결정론적 함수가 아닌 경우
-    - $\text{E}[g(X)Y|X] = g(X)E[Y|X]$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5Bg%28X%29Y%7CX%5D%20%3D%20g%28X%29E%5BY%7CX%5D">
     - g(X)가 상수이므로 기댓값 바깥으로 바져나온다.
 - **X의 값에 따라서 Y가 완벽하게 결정되면, 조건부확률밀도함수의 분포의 폭이 0이 된다.**
 
 ### 전체기댓값의 법칙
 - ```전체기댓값의 법칙 law of total expectation, 반복 기댓값의 법칙 law of iterated expectation``` : 조건부기댓값은 확률변수와 같으므로 조건이 되는 확률변수 X에 대해서 다시 기댓값을 구할 수 있다.
 - **조건부기댓값의 기댓값은 원래 확률변수 Y의 기댓값과 같다.**
-    - $\text{E}_X[\text{E}[Y|X]] = \text{E}_Y[Y]$
-    - $\text{E}[\text{E}[Y|X]] = \text{E}[Y]$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D_X%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%20%3D%20%5Ctext%7BE%7D_Y%5BY%5D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%20%3D%20%5Ctext%7BE%7D%5BY%5D">
 - 증명
 
-$$\begin{align}
-\begin{aligned}
-\text{E}_X[\text{E}_Y[Y|X]]
-&= \sum_{x_i \in X} p(x_i) \text{E}_Y[Y|X] \\
-&= \sum_{x_i \in X} p(x_i) \sum_{y_i \in Y} p(y_j|x_i)y_j \\
-&= \sum_{x_i \in X} \sum_{y_i \in Y} p(x_i)p(y_j|x_i)y_j \;\; ((조건부pmf = 결합pmf / 주변pmf ))\\
-&= \sum_{x_i \in X} \sum_{y_i \in Y} p(x_i, y_j)y_j \\
-&= \sum_{y_i \in Y} p(y_j)y_j \\
-&= \text{E}_Y[Y]
-\end{aligned}
-\end{align}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D_X%5B%5Ctext%7BE%7D_Y%5BY%7CX%5D%5D%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20X%7D%20p%28x_i%29%20%5Ctext%7BE%7D_Y%5BY%7CX%5D%20%5C%5C%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20X%7D%20p%28x_i%29%20%5Csum_%7By_i%20%5Cin%20Y%7D%20p%28y_j%7Cx_i%29y_j%20%5C%5C%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20X%7D%20%5Csum_%7By_i%20%5Cin%20Y%7D%20p%28x_i%29p%28y_j%7Cx_i%29y_j%20%5C%3B%5C%3B%20%28%28cond%20pmf%20%3D%20joint%20pmf%20/%20marginal%20pmf%20%29%29%5C%5C%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20X%7D%20%5Csum_%7By_i%20%5Cin%20Y%7D%20p%28x_i%2C%20y_j%29y_j%20%5C%5C%20%26%3D%20%5Csum_%7By_i%20%5Cin%20Y%7D%20p%28y_j%29y_j%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D_Y%5BY%5D%20%5Cend%7Baligned%7D">
 
 - 전체기댓값의 법칙에 따라서 다음이 성립한다.
-    - $\text{E}[(Y-\text{E}[Y|X])g(X)] = 0$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28Y-%5Ctext%7BE%7D%5BY%7CX%5D%29g%28X%29%5D%20%3D%200">
 
 ### 조건부분산
 - ```조건부분산 conditional variance``` : 확률변수 X의 표본 x의 값을 알고 있을 때 이에 대한 조건부확률분포 p(y|x)의 분산이다.
-    - $\text{Var}[Y|X] = \text{E}_Y[(Y-\text{E}_Y[Y|X])^2 | X] = \int (Y-\text{E}_Y[Y|X])^2 f_{Y|X}(y|x) dy$
+    - <img src="https://latex.codecogs.com/gif.latex?text%7BVar%7D%5BY%7CX%5D%20%3D%20%5Ctext%7BE%7D_Y%5B%28Y-%5Ctext%7BE%7D_Y%5BY%7CX%5D%29%5E2%20%7C%20X%5D%20%3D%20%5Cint%20%28Y-%5Ctext%7BE%7D_Y%5BY%7CX%5D%29%5E2%20f_%7BY%7CX%7D%28y%7Cx%29%20dy">
     - 어떤 함수의 그래프에서 x_1 일때 y_1값이라는 것은 조건부기댓값이 y_1이라는 것이고, 기댓값의 신뢰도, 정확성인 조건부분산의 폭이 좁다는 것이다. 변동이 작다.
 - 예측문제의 관점으로 보면 조건부분산은 예측의 불확실성, 즉 예측으로 맞출 수 없는 범위를 뜻한다. 
     - 분산 자체가 신뢰도, 정확성을 의미하기 때문. 
     
 ### 전체 분산의 법칙
 - ```전체 분산의 법칙 law of total variance``` : 확률변수의 분산은 조건부분산의 기댓값과 조건부기댓값의 분산값의 합과 같다.
-    - $\text{Var}[Y] = \text{E}[\text{Var}[Y|X]] + \text{Var}[\text{E}[Y|X]]$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BY%5D%20%3D%20%5Ctext%7BE%7D%5B%5Ctext%7BVar%7D%5BY%7CX%5D%5D%20&plus;%20%5Ctext%7BVar%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D">
     - Var[] = E[Var[]] + Var[E[]]
 
 - 전체 기댓값의 법칙과 분산공식을 적용하면 증명할 수 있다.
 - 분산공식 : Var[X] = E[X^2] + (E[X])^2 (안에꺼만 제곱 + 전체제곱)
 
-$$\begin{align}
-\begin{aligned}
-\text{Var}[Y]
-&= \text{E}[Y^2] - (\text{E}[Y])^2 \;\; ((전체 기댓값의 법칙 적용))\\
-&= \text{E}[\text{E}[Y^2|X]] - (\text{E}[\text{E}[Y|X]])^2 \;\; ((분산 공식을 사용하여 1번 항 전개))\\
-&= \text{E}[\text{Var}[Y|X] + (\text{E}[Y|X])^2] - (\text{E}[\text{E}[Y|X]])^2 \\
-&= \text{E}[\text{Var}[Y|X]] + (\text{E}[(\text{E}[Y|X])^2] - (\text{E}[\text{E}[Y|X]])^2) \;\; ((분산 공식에 의해 2,3 항이 정리됨)) \\
-&= \text{E}[\text{Var}[Y|X]] + \text{Var}[\text{E}[Y|X]] \\
-\end{aligned}
-\end{align}
-$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5BY%5D%20%26%3D%20%5Ctext%7BE%7D%5BY%5E2%5D%20-%20%28%5Ctext%7BE%7D%5BY%5D%29%5E2%20%5C%3B%5C%3B%20%28%28sol%20%3A%20%5Ctext%7BE%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%3D%5Ctext%7BE%7D%5BY%5D%5D%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%5Ctext%7BE%7D%5BY%5E2%7CX%5D%5D%20-%20%28%5Ctext%7BE%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%29%5E2%20%5C%3B%5C%3B%20%28%28sol%20%3A%20%5Ctext%7BVar%7D%5BX%5D%29%29%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%5Ctext%7BVar%7D%5BY%7CX%5D%20&plus;%20%28%5Ctext%7BE%7D%5BY%7CX%5D%29%5E2%5D%20-%20%28%5Ctext%7BE%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%29%5E2%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%5Ctext%7BVar%7D%5BY%7CX%5D%5D%20&plus;%20%28%5Ctext%7BE%7D%5B%28%5Ctext%7BE%7D%5BY%7CX%5D%29%5E2%5D%20-%20%28%5Ctext%7BE%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%29%5E2%29%20%5C%3B%5C%3B%20%28%28sol%20%3A%20%5Ctext%7BVar%7D%5BE%5D%29%29%20%5C%5C%20%26%3D%20%5Ctext%7BE%7D%5B%5Ctext%7BVar%7D%5BY%7CX%5D%5D%20&plus;%20%5Ctext%7BVar%7D%5B%5Ctext%7BE%7D%5BY%7CX%5D%5D%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - E[Y|X] = yhat 으로 표현하면 다음과 같아진다.
-    - $\text{Var}[Y] = \text{E}[(\hat{y}-y)^2] + \text{Var}[\hat{y}]$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BY%5D%20%3D%20%5Ctext%7BE%7D%5B%28%5Chat%7By%7D-y%29%5E2%5D%20&plus;%20%5Ctext%7BVar%7D%5B%5Chat%7By%7D%5D">
     - 위의 식에서 E[Var[Y|X]]는 조건부분산의 공식을 적용한 후, 조건부기댓값의 성질에 을 적용하면 (Y-\haty)^2의 형태로 정리할 수 있다. Y는 y값에 해당하므로 (y-\haty)^2 = (\haty-y)^2과 같다.
     - 조건부분산의 기댓값을 (y-\haty)^2으로 나타낼 수 있다.
 - 전체분산의 법칙이 의미하는 것
-    - $\text{E}[(\hat{y}-y)^2]$ : 예측 오차, 편향 bias의 평균 크기
-    - $\text{Var}[\hat{y}]$ : 예측값의 변동 크기, 예측모형의 복잡성, 비선형성, 과최적화정도
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28%5Chat%7By%7D-y%29%5E2%5D"> : 예측 오차, 편향 bias의 평균 크기
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5B%5Chat%7By%7D%5D"> : 예측값의 변동 크기, 예측모형의 복잡성, 비선형성, 과최적화정도
     - **편향-분산 상충 bias-variance tradeoff : 따라서 Var[Y] 값이 일정하므로, 예측오차를 줄이면 예측값의 변동크기 즉 예측모델의 복잡성이 커져 과최적화되기 쉽고, 반대로 모형의 과최적화를 막기위해 모형을 단순하게 하면 예측오차가 증가하게 된다.**
 
 # Python
