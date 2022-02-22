@@ -431,7 +431,7 @@
     
 ### 독립 확률변수의 기댓값
 - 독립인 두 확률변수 X, Y의 기댓값은 다음의 성질을 만족한다.
-  - <img src="$\text{E}[XY] = \text{E}[X]\text{E}[Y]$">
+  - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BXY%5D%20%3D%20%5Ctext%7BE%7D%5BX%5D%5Ctext%7BE%7D%5BY%5D">
     - **독립인 확률변수 X,Y의 곱의 기댓값은 각각의 기댓값의 곱과 같다.**
   - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28X-%5Cmu_x%29%28Y-%5Cmu_y%29%5D%20%3D%200">
 
