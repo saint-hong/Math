@@ -887,7 +887,7 @@ plt.xlabel('x')
 plt.xticks(np.linspace(-4, 4, 17))
 plt.show() ;
 ```
-![img_2.png](./images/rv_corr/mg_2.png)
+![img_2.png](./images/rv_corr/img_2.png)
 
 ### [python] 단봉, 다봉 분포
 - 붓꽃 데이터의 분포 모양을 그래프로 그리기
@@ -908,7 +908,7 @@ plt.figure(figsize=(12, 8))
 sns.distplot(petal_length, rug=True, kde=False, bins=50)
 plt.show();
 ```
-![img_3.png](./images/rv_corr/mg_3.png)
+![img_3.png](./images/rv_corr/img_3.png)
 
 - histogram으로 분포확인
 ```python
@@ -917,7 +917,7 @@ df['petal length (cm)'].hist()
 plt.title("꽃잎의 길이")
 plt.show() ;
 ```
-![img_4.png](./images/rv_corr/mg_4.png)
+![img_4.png](./images/rv_corr/img_4.png)
 
 #### series에 target 값을 넣고 품종이름으로 변환하는 방법
 - 붓꽃 데이터의 타겟값 확인
@@ -1077,7 +1077,7 @@ plt.xlabel('x')
 plt.legend(loc='best')
 plt.show() ;
 ```
-![img_5.png](./imagesm/rv_corr/g_5.png)
+![img_5.png](./images/rv_corr/img_5.png)
 
 #### [python] 배열 이어 붙이기
 - np.hstack([a, b]) 또는 ((a, b)) : 배열을 행 기준으로 이어 붙여준다., 행의 갯수가 일치해야한다.
@@ -1242,7 +1242,7 @@ sample_statistics(x, 10)
 표본중앙값 5.55
 표본최빈값 5.5
 ```
-![img_6.png](./images/img_6.png)
+![img_6.png](./images/rv_corr/img_6.png)
 
 - 구간이 50개일 때
 
@@ -1256,7 +1256,7 @@ sample_statistics(x, 50)
 표본중앙값 5.55
 표본최빈값 5.5
 ```
-![img_7.png](./images/rv_corr/mg_7.png)
+![img_7.png](./images/rv_corr/img_7.png)
 
 - 구간이 100 개일 때
 - 최빈값은 변동이 거의 없지만, 표본평균과 표본중앙값은 변동한다.
@@ -1271,7 +1271,7 @@ sample_statistics(x, 100)
 표본중앙값 5.55
 표본최빈값 5.050000000000001
 ```
-![img_8.png](./images/img_8.png)
+![img_8.png](./images/rv_corr/img_8.png)
 
 ### [python] 표본분산, 표본표준편차
 - 표본분산 sample variance
@@ -1295,7 +1295,7 @@ plt.axvline(np.median(x), c='k', ls=':', label='median = {}'.format(int(np.media
 plt.legend(loc='best')
 plt.show() ;
 ```
-![img_9.png](./images/rv_corr/mg_9.png)
+![img_9.png](./images/rv_corr/img_9.png)
 
 - 편향표본분산과 표본표준편차
 
@@ -1890,16 +1890,867 @@ sample_variance * N / (N-1)
 
 ### [python] 다변수 확률변수
 
+#### 결합확률질량함수 joint probability mass function
+- X, Y 두 과목의 시험점수 결과와 학생의 수를 데이터프레임으로 생성
+   - 컬럼 : X 과목의 학점, 행 : Y 과목의 학점 (A, B, C, D, E, F)
+   - 숫자는 X, Y 과목의 학점에 해당하는 학생의 수  
+
+```python
+grades = ['A', 'B', 'C', 'D', 'E', 'F']
+scores = pd.DataFrame([
+    [1, 2, 1, 0, 0, 0],
+    [0, 2, 3, 1, 0, 0],
+    [0, 4, 7, 4, 1, 0],
+    [0, 1, 4, 5, 4, 0],
+    [0, 0, 1, 3, 2, 0],
+    [0, 0, 0, 1, 2, 1]
+], columns=grades, index=grades)
+
+scores.index.name = 'Y'
+scores.columns.name = 'X'
+
+scores
+```
+![img_18.png](./images/rv_corr/img_18.png)
+
+- 결합확률질량함수 pmf
+- 두 과목의 학점을 맞은 각각의 학생의 수를 전체 학생수로 나누어 준 값
+
+```python
+pmf = scores / scores.values.sum()
+pmf
+```
+![img_19.png](./images/rv_corr/img_19.png)
+
+- pmf를 히트맵으로 나타내기
+
+```python
+%matplotlib inline
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(pmf, cmap=mpl.cm.bone_r, annot=True,
+            xticklabels=['A', 'B', 'C', 'D', 'E', 'F'], yticklabels=['A', 'B', 'C', 'D', 'E', 'F'])
+plt.title('확률질량함수 p(x, y)', y=1.05, fontsize=15)
+plt.tight_layout()
+plt.show() ;
+```
+![img_20.png](./images/rv_corr/img_20.png)
 
 
+#### 주변확률질량함수 marginal probability mass function
+- 하나의 확률변수의 값이 고정되었을 때 나머지 확률변수의 표본의 확률값의 합
+   - 전체확률의 법칙
+- 확률변수 Y와의 결합확률질량함수 값을 모두 더해준다.
+- p_X(A) = p_XY(A, A) + p_XY(A, B) + p_XY(A, C) + p_XY(A, D) + p_XY(A, E) + p_XY(A, F)
+
+```python
+# 확률변수 X의 성적별 확률질량함수의 합
+pmf_marginal_x = pmf.sum(axis=0)
+pmf_marginal_x
+
+=====<print>=====
+
+X
+A    0.02
+B    0.18
+C    0.32
+D    0.28
+E    0.18
+F    0.02
+dtype: float64
+```
+
+```python
+# 확률변수 Y의 성적별 확률질량함수의 합
+pmf_marginal_y = pmf.sum(axis=1)
+
+# 배열의 차원을 변환시켜준다.
+pmf_marginal_y = pmf_marginal_y[:, np.newaxis]
+
+=====<python>=====
+
+array([[0.08],
+       [0.12],
+       [0.32],
+       [0.28],
+       [0.12],
+       [0.08]])
+```
+
+#### Y의 값이 주어진 경우의 결합확률질량 함수의 단면
+
+```python
+# 문자 데이터를 불러올 수 있는 모듈 : abcde...z, ABCDE...Z
+import string
+
+x = np.arange(6)
+plt.figure(figsize=(10, 8))
+
+# 알파벳 대문자를 6개 부러와서 그래프의 x축의 눈금 이름으로 사용
+for i, y in enumerate(string.ascii_uppercase[:6]) :
+    ax = plt.subplot(6, 1, i + 1)
+    # 그래프의 y축의 tick을 가로 형태로 만들어 준다.
+    ax.tick_params(labelleft=False)
+    plt.bar(x, pmf.iloc[i, :])
+    plt.ylabel('p(x, y={})'.format(y), rotation=0, labelpad=30)
+    plt.ylim(0, 0.15)
+    # 그래프의 x축 ticks에 특정 문자를 넣는 방법 
+    plt.xticks(range(6), ['A', 'B', 'C', 'D', 'E', 'F'])
+
+plt.suptitle('y가 주어진 경우의 결합확률질량함수의 단면', y=1.05)
+plt.tight_layout()
+plt.show();
+```
+![img_21.png](./images/rv_corr/img_21.png)
+
+- string.ascill_uppercase, string.ascii_lowercase
+
+```python
+# 알파벳 대문자
+string.ascii_uppercase
+
+=====<print>=====
+
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+# 알파벳 소문자
+string.ascii_lowercase
+
+=====<print>=====
+
+'abcdefghijklmnopqrstuvwxyz'
+```
+
+#### 조건부확률질량함수 conditional probability mass function
+- 결합확률질량함수 / 주변확률질량함수 = joint pmf / marginal pmf
+   - X=A 이면 p_xy(x, y) / p_X(A)
+- Y=A 일때 조건부확률질량함수
+
+```python
+cond_y0 = pmf.iloc[0, :] / pmf_marginal_y[0]
+cond_y0
+
+=====<print>=====
+
+X
+A    0.25
+B    0.50
+C    0.25
+D    0.00
+E    0.00
+F    0.00
+Name: A, dtype: float64
+```
+- cond pmf의 합은 1이다. 즉 Y=A일때의 전체 확률을 의미한다.
+
+```python
+np.sum(cond0)
+
+=====<print>=====
+
+1.0
+```
+- Y=A 일때의 joint pmf 그래프와 cond pmf 그래프 비교
+
+```python
+x = range(6)
+
+plt.subplot(211)
+plt.bar(x, pmf.iloc[0])
+plt.xticks(range(6), ['A', 'B', 'C', 'D', 'E', 'F'])
+plt.ylim(0, 0.15)
+plt.title('y=A일때 결합확률질량함수 p(x, y=A)')
+
+plt.subplot(212)
+plt.bar(x, cond_y0)
+plt.xticks(range(6), ['A', 'B', 'C', 'D', 'E', 'F'])
+plt.xlabel('X', fontsize=15)
+plt.ylim(0, 0.5)
+plt.title('y=A일때 조건부확률질량함수 p(x|y=A)')
+
+plt.tight_layout()
+plt.show() ;
+```
+![img_22.png](./images/rv_corr/img_22.png)
+
+### [python] 다변수 확률밀도함수
+- 연속확률변수의 확률분포
+
+#### 결합확률밀도함수 joint probability density function, joint pdf
+- 결합누적확률분포함수를 미분한 함수
+- 다변수 함수의 형태와 같다.
+   - z = f(x)f(y) : 경도와 위도의 함수관계로부터 고도를 출력하는 다변수 함수
+- 확률변수 X : 몸무게, 확률변수 Y : 키, 확률변수 Z는 키와 몸무게의 변환으로 만든 새로운 확률변수
+
+```python
+mu = [70, 170]
+cov = [[150, 140], [140, 300]]
+
+# 다변수 정규분포 생성
+rv = sp.stats.multivariate_normal(mu, cov)
+
+# 각각의 확률변수의 표본 생성
+xx = np.linspace(20, 120, 100)
+yy = np.linspace(100, 250, 100)
+XX, YY = np.meshgrid(xx, yy)
+
+# 두 확률변수로부터 확률밀도함수값을 갖는 ZZ 생성
+ZZ = rv.pdf(np.dstack([XX, YY]))
+ZZ
+
+=====<print>=====
+
+array([[4.80956464e-08, 5.87892243e-08, 7.09996294e-08, ...,
+        5.91605555e-24, 2.24679741e-24, 8.43066779e-25],
+       [5.88618862e-08, 7.25587289e-08, 8.83713615e-08, ...,
+        1.64105394e-23, 6.28518486e-24, 2.37837124e-24],
+       [7.10681108e-08, 8.83474034e-08, 1.08512357e-07, ...,
+        4.49082007e-23, 1.73454025e-23, 6.61926091e-24],
+       ...,
+       [5.99937040e-27, 1.66211031e-26, 4.54967526e-26, ...,
+        2.17854191e-08, 1.87525268e-08, 1.59485080e-08],
+       [1.97113449e-27, 5.50723936e-27, 1.52026059e-26, ...,
+        1.62232815e-08, 1.40830301e-08, 1.20786918e-08],
+       [6.38909029e-28, 1.80019789e-27, 5.01150145e-27, ...,
+        1.19185570e-08, 1.04338505e-08, 9.02468243e-09]])
+```
+- 컨투어플롯을 사용하여 다변수 함수를 그래프로 나타내기
+
+```python
+plt.figure(figsize=(10, 8))
+plt.contour(XX, YY, ZZ)
+plt.xlabel('x')
+plt.title('결합확률밀도함수 p(x, y)')
+plt.show() ;
+```
+![img_23.png](./images/rv_corr/img_23.png)
+
+#### np.dstack([])
+- x 배열 생성
+
+```python
+x_arr = np.array([1, 2, 3, 4, 5])
+x_arr
+
+=====<print>=====
+
+array([1, 2, 3, 4, 5])
+```
+
+- y 배열 생성
+
+```python
+y_arr = np.array([10, 10, 10, 10, 10])
+y_arr
+
+=====<print>=====
+
+array([10, 10, 10, 10, 10])
+```
+
+- x,y 배열을 dstack으로 합하면
+
+```python
+dstack_xy = np.dstack([x_arr, y_arr])
+dstack_xy
+
+=====<print>=====
+
+array([[[ 1, 10],
+        [ 2, 10],
+        [ 3, 10],
+        [ 4, 10],
+        [ 5, 10]]])
+```
+
+#### 주변확률밀도함수 marginal pdf
+- 결합확률밀도함수 joint pdf 에서 하나의 변수에 대해서만 가중평균, 즉 적분을 한 것
+
+```python
+from matplotlib.ticker import NullFormatter
+from matplotlib import transforms
+%matplotlib inline
+from scipy.integrate import simps # 심슨법칙(Simp's rule)을 사용한 적분계산
+
+# 다변수 정규분포 생성
+mu = [70, 170]
+cov = [[150, 140], [140, 300]]
+rv = sp.stats.multivariate_normal(mu, cov)
+
+# X, Y, Z 확률변수 생성
+xx = np.linspace(20, 120, 100)
+yy = np.linspace(100, 250, 100)
+XX, YY = np.meshgrid(xx, yy)
+ZZ = rv.pdf(np.dstack([XX, YY]))
+
+# simps(Z, yy)는 y로 적분한 값
+# Z는 100X100 행렬, yy는 100X1 열벡터
+fx = [simps(Z, yy) for Z in ZZ.T]   
+fy = [simps(Z, xx) for Z in ZZ]
+
+# 컨투어플롯으로 결합확률밀도함수를 나타내고
+# x, y에 대한 적분값을 나타내는 주변확률밀도함수를 각 축의 반대편에 나타낸다.
+plt.figure(figsize=(6, 6))
+
+# 그래프를 그릴 객체의 크기 설정
+left, width = 0.1, 0.65
+bottom, height = 0.1, 0.65
+bottom_h = left_h = left + width + 0.05
+
+rect1 = [left, bottom, width, height]
+rect2 = [left, bottom_h, width, 0.2]
+rect3 = [left_h, bottom, 0.2, height]
+
+ax1 = plt.axes(rect1)
+ax2 = plt.axes(rect2)
+ax3 = plt.axes(rect3)
+
+ax2.xaxis.set_major_formatter(NullFormatter())  # ax2의 x축 tick 값을 없애줌
+ax3.yaxis.set_major_formatter(NullFormatter())  # ax3의 y축 tick 값을 없애줌
+
+ax1.contour(XX, YY, ZZ)
+ax1.set_title('결합확률분포함수 $p_{XY}(x,y)$')
+ax1.set_xlabel('x')
+ax1.set_ylabel('y')
+
+ax2.plot(xx, fx)
+ax2.set_title('주변확률밀도함수 $p_X(x)$')
+
+# 객체의 그래프를 그릴 기준을 회전시켜준다. 
+base = ax3.transData
+rot = transforms.Affine2D().rotate_deg(-90)
+plt.plot(-yy, fy, transform=rot+base)
+plt.title('주변확률밀도함수 $p_Y(y)$')
+
+ax1.set_xlim(38, 102)
+ax1.set_ylim(120, 220)
+ax2.set_xlim(38, 102)
+ax3.set_xlim(0, 0.025)
+ax3.set_ylim(120, 220)
+
+plt.show() ;
+```
+![img_24.png](./images/rv_corr/img_24.png)
+
+#### 고정된 Y값에 대한 확률밀도함수의 단면 (1)
+
+```python
+from matplotlib.collections import PolyCollection
+from matplotlib import colors as mcolors
+
+xx = np.linspace(20, 120, 100)
+yy = np.linspace(100, 250, 16)
+XX, YY = np.meshgrid(xx, yy)
+ZZ = rv.pdf(np.dstack([XX, YY]))
+
+fig = plt.figure(dpi=150)
+ax = fig.gca(projection='3d')
+
+xs = np.hstack([0, xx, 0])
+zs = np.zeros_like(xs)
+
+verts = []
+for i, y in enumerate(yy) :
+    zs[1:-1] = ZZ[i]
+    verts.append(list(zip(xx, zs)))
+
+poly = PolyCollection(verts)
+poly.set_alpha(0.5)
+ax.add_collection3d(poly, zs=yy, zdir='y')
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_xlim(20, 120)
+ax.set_ylim(100, 250)
+ax.set_zlim3d(0, 0.0007)
+ax.view_init(50, -50)
+plt.title('결합확률밀도함수의 단면, joint pdf')
+plt.show() ;
+```
+![img_25.png](./images/rv_corr/img_25.png)
+
+#### 고정된 Y값에 대한 확률밀도함수의 단면 (2)
+
+```python
+plt.figure(figsize=(10, 8))
+
+for i, j in enumerate(range(9, 3, -1)) :
+    ax = plt.subplot(6, 1, i + 1)
+    ax.tick_params(labelleft=False)
+    plt.plot(xx, ZZ[j, :])
+    plt.ylim(0, 0.0012)
+    if i < 5 :
+        ax.xaxis.set_ticklabels([])
+    plt.ylabel('p(x, y={:.0f})'.format(yy[j]), rotation=0, labelpad=40)
+
+plt.xlabel('x')
+plt.tight_layout()
+plt.suptitle('결합확률밀도함수의 단면', y=1.05)
+plt.show() ;
+```
+![img_26.png](./images/rv_corr/img_26.png)
+
+#### 조건부확률밀도함수 conditional pdf
+- 결합확률밀도함수 joint pdf와 조건부확률밀도함수 cond pdf 비교
+
+```python
+plt.figure(figsize=(8, 6))
+
+for i, j in enumerate(range(9, 4, -1)) :
+    ax = plt.subplot(5, 1, i + 1)
+    ax.tick_params(labelleft=False)
+    plt.plot(xx, ZZ[j, :] * mag, 'r--', lw=2, label='결합확률밀도함수의 단면')
+    marginal = simps(ZZ[j, :], xx)
+    plt.plot(xx, ZZ[j, :] / marginal, 'b-', lw=2, label='조건부확률밀도함수')
+    plt.ylim(0, 0.05)
+    ax.xaxis.set_ticklabels([])
+    plt.ylabel('p(x, y={:.0f})'.format(yy[j]), rotation=0, labelpad=40)
+    if i == 0 :
+        plt.legend(loc=2)
+
+plt.xlabel('x')
+plt.tight_layout()
+plt.show() ;
+```
+![img_27.png](./images/rv_corr/img_27.png)
+
+### [python] 독립인 두 확률변수의 조건부확률분포
+- 독립인 두 확률변수 X, Y의 조건부확률밀도함수는 주변확률밀도함수의 값과 같다.
+   - conditional pdf = marginal pdf
+   - 새로운 조건, 경우, 사건이 발생해도 영향을 받지 않는다는 의미
+
+```python
+# 새로운 결합확률질량함수 생성
+pmf1 = np.array([
+    [1, 2, 4, 2, 1],
+    [2, 4, 8, 4, 2],
+    [4, 8, 16, 8, 4],
+    [2, 4, 8, 4, 2],
+    [1, 2, 4, 2, 1]
+])
+
+pmf1 = pmf1 / pmf1.sum()
+
+# 주변확률질량함수 
+pmf1_marginal_x = np.round(pmf1.sum(axis=0), 2)
+pmf1_marginal_y = np.round(pmf1.sum(axis=1), 2)
+
+# 독립의 조건 : 결합확률질량함수 = X, Y 주변확률질량함수의 곱 
+pmf1x = pmf1_marginal_x * pmf1_marginal_y[:, np.newaxis]
+
+# 결합확률질량함수와 주변확률질량함수의 곱을 각각 히트맵으로 나타내기
+# X, Y가 독립이므로 두 함수의 값이 같다.
+%matplotlib inline
+
+plt.figure(figsize=(8, 5))
+plt.subplot(121)
+sns.heatmap(pmf1, cmap=mpl.cm.bone_r, annot=True, square=True, linewidth=1, linecolor='k',
+           cbar=False, xticklabels=pmf1_marginal_x, yticklabels=pmf1_marginal_y)
+plt.title('독립인 두 확률변수의 결합확률질량함수')
+
+plt.subplot(122)
+sns.heatmap(pmf1x, cmap=mpl.cm.bone_r, annot=True, square=True, linewidth=1, linecolor='k',
+           cbar=False, xticklabels=pmf1_marginal_x, yticklabels=pmf1_marginal_y)
+plt.title('두 확률변수의 주변확률질량함수의 곱')
+
+plt.tight_layout()
+plt.show() ;
+```
+![img_28.png](./images/rv_corr/img_28.png)
 
 
+### [python] 상관관계가 있는 두 확률변수
+- 확률질량함수와 각각의 확률변수의 주변확률질량함수의 곱의 값이 다르다.
+
+```python
+pmf2 = np.array([
+    [0, 0, 0, 5, 5],
+    [0, 5, 5, 5, 5],
+    [0, 5, 30, 5, 0],
+    [5, 5, 5, 5, 0],
+    [5, 5, 0, 0, 0]
+])
+
+pmf2 = pmf2 / pmf2.sum()
+pmf2_marginal_x = np.round(pmf2.sum(axis=0), 2)
+pmf2_marginal_y = np.round(pmf2.sum(axis=1), 2)
+pmf2x = pmf2_marginal_x * pmf2_marginal_y[:, np.newaxis]
+
+plt.figure(figsize=(8, 5))
+plt.subplot(121)
+sns.heatmap(pmf2, cmap=mpl.cm.bone_r, annot=True, square=True, linewidth=1, linecolor='k',
+           cbar=False, xticklabels=pmf2_marginal_x, yticklabels=pmf2_marginal_y)
+plt.title('상관관계 : 결합확률질량함수')
+plt.subplot(122)
+sns.heatmap(pmf2x, cmap=mpl.cm.bone_r, annot=True, square=True, linewidth=1, linecolor='k',
+           cbar=False, xticklabels=pmf2_marginal_x, yticklabels=pmf2_marginal_y)
+plt.title('상관관계 : 조건부확률질량함수')
+
+plt.tight_layout()
+plt.show() ;
+```
+![img_29.png](./images/rv_corr/img_29.png)
+
+### [python] 공분산과 상관계수 covariance, correlation coefficient
+- 표본상관계수 sample correlation coefficient = 피어슨 상관계수 Pearson correlation coefficient
+    - 피어슨 상관계수는 scipy의 stats 서브패키지 pearsonr() 함수를 사용하여 구할 수 있다.
+
+- 붓꽃 데이터 로드
+
+```python
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+# 확률변수 생성 : 각각의 컬럼이 확률변수가 된다.
+x1 = iris.data[:, 0]
+x2 = iris.data[:, 1]
+x3 = iris.data[:, 2]
+x4 = iris.data[:, 3]
+```
+
+- pearsonr()은 상관계수와 유의확률 값을 반환한다. 
+   - 왼쪽이 상관계수
+
+```python
+from scipy.stats import pearsonr
+
+# pearsonr(확률변수1, 확률변수2)
+sp.stats.pearsonr(x1, x2)
+
+=====<print>=====
+
+(-0.11756978413300204, 0.15189826071144918)
+```
+
+- 붓꽃 데이터의 확률변수간의 상관관계 계산
+
+```python
+print("꽃받침 길이와 꽃받침 폭의 상관계수 : {}".format(round(sp.stats.pearsonr(x1, x2)[0], 3)))
+print("꽃잎 길이와 꽃잎 폭의 상관계수 : {}".format(round(sp.stats.pearsonr(x3, x4)[0], 3)))
+print("꽃받침 폭과 꽃잎 폭의 상관계수 : {}".format(round(sp.stats.pearsonr(x1, x4)[0], 3)))
+
+=====<print>=====
+
+꽃받침 길이와 꽃받침 폭의 상관계수 : -0.118
+꽃잎 길이와 꽃잎 폭의 상관계수 : 0.963
+꽃받침 폭과 꽃잎 폭의 상관계수 : 0.818
+```
+
+#### pandas의 상관관계 함수
+- df.corr(method='pearson', min_periods=1)
+- method로 여러가지 상관관계 함수를 사용할 수 있다.
+    - pearson : standard correlation coefficient
+    - kendall : Kendall Tau correlation coefficient
+    - spearman : Spearman rank correlation
+
+```python
+# 붓꽃데이터를 판다스 데이터프레임으로 생성
+iris_pd = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+```
+
+- pearson 상관계수
+
+```python
+iris_pd.corr(method='pearson')
+```
+![img_30.png](./images/rv_corr/img_30.png)
+
+- kendall 상관계수
+
+```python
+iris_pd.corr(method='kendall')
+```
+![img_31.png](./images/rv_corr/img_31.png)
+
+- spearman 상관계수
+
+```python
+iris_pd.corr(method='spearman')
+```
+![img_32.png](./images/rv_corr/img_32.png)
 
 
+- 붓꽃데이터의 확률변수별 상관관계 히트맵
+
+```python
+plt.figure(figsize=(8, 8))
+sns.heatmap(data=iris_pd.corr(), cmap='YlGn', annot=True, square=True, linewidth=1, linecolor='k')
+plt.show() ;
+```
+![img_33.png](./images/rv_corr/img_33.png)
 
 
+### [python] 확률변수의 공분산과 상관관계
+- $-1 <= \rho <= 1$
+    - $\rho = -1$ : 완전선형 반상관관계
+    - $\rho = 0$ : 무상관 (독립과 다름)
+    - $\rho = 1$ : 완전선형 상관관계
+- 데이터의 기울기가 양수이면 상관관계도 양수이다.
+- 데이터의 기울기가 음수이면 상관관계도 음수이다. 
+- 데이터의 분포가 직선에 가까울 수록 상관관계의 절대값이 크다.
+- 데이터의 분포가 원에 가까울 수록 상관관계의 절대값이 작다.
+
+```python
+np.random.seed(0)
+corrs = [1, 0.7, 0.3, 0, -0.3, -0.7, -1]
+
+plt.figure(figsize=(len(corrs)+2, 3))
+for i, r in enumerate(corrs) :
+    x, y = np.random.multivariate_normal([0, 0], [[1, r], [r, 1]], 1000).T
+    plt.subplot(1, len(corrs), i + 1)
+    plt.plot(x, y, 'ro', ms=1)
+    plt.axis('equal')
+    plt.xticks([])
+    plt.yticks([])
+    plt.title(r'$\rho$={}'.format(r))
+
+plt.suptitle('상관계수와 스캐터 플롯의 모양', y=1.1)
+plt.tight_layout()
+plt.show() ;
+```
+![img_34.png](./images/rv_corr/img_34.png)
+
+#### 상관계수는 스캐터 플롯의 기울기와 아무런 상관이 없다.
+- 기울기의 부호와 상관계수의 부호만 상관있음.
+
+```python
+np.random.seed(1)
+slope = [1, 0.7, 0.3, 0, -0.3, -0.7, -1]
+
+plt.figure(figsize=(len(slope)+3, 2))
+for i, s in enumerate(slope) :
+    x, y = np.random.multivariate_normal([0,0], [[1, 1], [1, 1]], 1000).T
+    y2 = s * y
+    plt.subplot(1, len(corrs), i + 1)
+    plt.plot(x, y2, 'ro', ms=1)
+    plt.axis('equal')
+    plt.xticks([])
+    plt.yticks([])
+    if s > 0 :
+        plt.title(r'$\rho$=1')
+    if s < 0 :
+        plt.title(r'$\rho=-1$')
+
+plt.suptitle('상관계수와 스케터플롯의 기울기', y=1.2)
+plt.show() ;
+```
+![img_35.png](./images/rv_corr/img_35.png)
+
+### [python] 표본상관계수와 이론적상관계수의 관계
+- 원소수가 10개인 두 벡터 생성, 두 벡터가 각각 확률변수에서 나왔다면 두 확률변수는 독립
+
+```python
+np.random.seed(0)
+x1 = np.random.normal(size=10)
+x2 = np.random.normal(size=10)
+
+print(x1)
+print(x2)
+
+=====<print>=====
+
+[ 1.76405235  0.40015721  0.97873798  2.2408932   1.86755799 -0.97727788
+  0.95008842 -0.15135721 -0.10321885  0.4105985 ]
+[ 0.14404357  1.45427351  0.76103773  0.12167502  0.44386323  0.33367433
+  1.49407907 -0.20515826  0.3130677  -0.85409574]
+```
+
+- 두 확률변수의 피어슨 상관관계
+
+```python
+print("상관관계 {}".format(sp.stats.pearsonr(x1, x2)[0]))
+
+=====<print>=====
+
+상관관계 0.07172529242772133
+```
+
+- 원소수가 10,000개인 벡터를 생성하고 표본상관관계 계산
+
+```python
+x3 = np.random.normal(size=100000)
+x4 = np.random.normal(size=100000)
+
+print(x3)
+print(x4)
+
+=====<print>=====
+
+[-0.30152952 -0.55980174 -1.04187691 ... -0.42043338  0.9063736
+ -0.44872444]
+[-0.5982113  -0.32535726 -0.2029989  ... -0.62872814 -2.50725211
+  0.85291862]
+```
+
+- 상관관계
+- 원소의 갯수가 많아지면 피어슨 상관관계의 값이 작아진다. 
+```python
+sp.stats.pearsonr(x3, x4)[0]
+
+=====<print>=====
+
+-0.00033323737932575105
+```
+
+### [python] 비선형 상관관계
+- 피어슨 상관계수는 선형적인 관계의 경우에만 의미가 있다.
+- 다음과 같은 겨우는 비선형 관계이지만 상관관계를 갖고 있다. 피어슨 상관계수값과 비교해본다.
+
+```python
+n = 500
+
+plt.figure(figsize=(15, 8))
+
+plt.subplot(221)
+x1 = np.random.uniform(-1, 1, n)
+y1 = 2 * x1**2 + np.random.uniform(-0.3, 0.3, n)
+plt.scatter(x1, y1)
+r1 = sp.stats.pearsonr(x1, y1)[0]
+plt.title(r'비선형 상관관계 1 : $\rho$={:4.3f}'.format(r1))
+
+plt.subplot(222)
+x2 = np.random.uniform(-1, 1, n)
+y2 = 4 * (x2**2 - 0.5)**2 + np.random.uniform(-1, 1, n)/5
+plt.scatter(x2, y2)
+r2 = sp.stats.pearsonr(x2, y2)[0]
+plt.title(r'비선형 상관관계 2 : $\rho$={:4.3f}'.format(r2))
+
+plt.subplot(223)
+x3 = np.random.uniform(-1, 1, n)
+y3 = np.cos(x3 * np.pi) + np.random.uniform(0, 1/8, n)
+x3 = np.sin(x3 * np.pi) + np.random.uniform(0, 1/8, n)
+plt.scatter(x3, y3)
+r3 = sp.stats.pearsonr(x3, y3)[0]
+plt.title(r'비선형 상관관계 3 : $\rho$={:4.3f}'.format(r3))
+
+plt.subplot(224)
+x4 = np.random.uniform(-1, 1, n)
+y4 = (x4**2 + np.random.uniform(0, 0.5, n)) * np.array([-1, 1])[np.random.random_integers(0, 1, size=n)]
+plt.scatter(x4, y4)
+r4 = sp.stats.pearsonr(x4, y4)[0]
+plt.title(r'비선형 상관관계 4 : $\rho$={:4.3f}'.format(r4))
+
+plt.tight_layout()
+plt.show() ;
+```
+![img_36.png](./images/rv_corr/img_36.png)
 
 
+#### 랜덤 데이터 생성 : random.uniform(lower, high, size)
+- 주어진 범위내에서 균일간 간격으로 숫자를 랜덤으로 생성
+- lower 포함, high 미포함
 
+```python
+test = np.random.uniform(-1, 1, 500)
 
+print(np.sort(test))
 
+=====<print>=====
+
+[-0.9994143  -0.99304367 -0.98786883 -0.98696972 -0.98228552 -0.97872265
+ -0.97525435 -0.97063997 -0.96622122 -0.96506155 -0.95519646 -0.95188967
+ -0.95119032 -0.94801427 -0.94489291 -0.94090204 -0.9407444  -0.93821052
+ -0.9348092  -0.92606027 -0.92457066 -0.91848785 -0.91767184 -0.91707988
+ -0.91357963 -0.91246132 -0.88968095 -0.88134191 -0.87094188 -0.86230522
+ -0.85774524 -0.85670106 -0.8550538  -0.85337944 -0.84807311 -0.84644904
+ -0.838017   -0.83395707 -0.81971477 -0.8134518  -0.81291455 -0.81289755...]
+```
+
+#### 랜덤 데이터 생성 : random_integers(lower, high, size)
+- lower <= x <= high 범위에서 size 만큼 정수 생성
+   - high 포함
+- random.randint(lower, high, size)
+   - lower <= x < high 범위에서 size 만큼 정수 생성
+   - high 가 포함되지 않는다.
+- 0과 1로 이루어진 랜덤 데이터 500개 생성
+
+```python
+np.random.random_integers(0, 1, size=500)
+
+=====<print>=====
+
+array([1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0,
+       0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+       1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1,
+       0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1,
+       0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0,
+       0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0,
+       1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0,...]
+```
+
+- 2 <= x < 4 사이의 정수로 이뤄진 랜덤데이터 생성
+   - random.randint()는 범위의 high는 포함되지 않는다.
+
+```python
+np.random.randint(2, 4, size=10)
+
+=====<print>=====
+
+array([3, 2, 3, 2, 2, 2, 2, 2, 3, 2])
+```
+
+### [python] 앤스콤 데이터
+- 프랭크 앤스콤의 논문에서 예시된 데이터
+   - 4개의 2차원 데이터 세트로 구성됨
+- 개별 자료가 상관계수에 미치는 영향을 보여준다.
+- 특잇값 outlier 에 의해 상관계수가 크게 달라질 수 있다.
+
+```python
+data = sm.datasets.get_rdataset('anscombe')
+df = data.data
+df
+```
+![img_37.png](./images/rv_corr/img_37.png)
+
+- 각 확률변수의 쌍을 regplot으로 그리고 상관계수 계산
+- outlier에 의해서 상관계수가 달라지는 것을 알 수 있다. 
+```python
+plt.figure(figsize=(10, 6))
+
+plt.subplot(221)
+sns.regplot(x='x1', y='y1', data=df)
+plt.title(r'상관계수 r={:.2f}'.format(sp.stats.pearsonr(df.x1.values, df.y1.values)[0]))
+
+plt.subplot(222)
+sns.regplot(x='x2', y='y2', data=df)
+plt.title(r'상관계수 r={:.2f}'.format(sp.stats.pearsonr(df.x2.values, df.y2.values)[0]))
+
+plt.subplot(223)
+sns.regplot(x='x3', y='y3', data=df)
+plt.title(r'상관계수 r={:.2f}'.format(sp.stats.pearsonr(df.x3.values, df.y3.values)[0]))
+
+plt.subplot(224)
+sns.regplot(x='x4', y='y4', data=df)
+plt.title(r'상관계수 r={:.2f}'.format(sp.stats.pearsonr(df.x4.values, df.y4.values)[0]))
+
+plt.tight_layout()
+plt.show() ;
+```
+
+#### X4, Y4 두 확률변수의 관계
+- 두 확률변수는 무상관 관계이지만 특잇값 outlier 하나에 의해서 피어슨 상관계수 값이 0.8이 나온다.
+- X4, Y4 확률변수의 표본집합 확인 : 8번째 데이터가 특잇값이다.
+
+```python
+test_df = df[['x4', 'y4']]
+test_df
+```
+![img_38.png](./images/rv_corr/img_38.png)
+
+- 두 확률변수의 피어슨 상관계수 : 특잇값 있는 경우
+
+```python
+sp.stats.pearsonr(test_df['x4'].values, test_df['y4'].values)[0]
+```
+
+- 특잇값을 제거 한 경우의 피어슨 상관계수
+- 특잇값을 제거하면 두 확률변수는 무상관이다. 
+
+```python
+sp.stats.pearsonr(test_df[test_df['x4']==8]['x4'].values, test_df[test_df['x4']==8]['y4'].values)[0]
+
+=====<print>=====
+
+nan
+```
