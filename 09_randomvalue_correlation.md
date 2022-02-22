@@ -826,7 +826,7 @@ plt.show() ;
 [-4.  -3.5 -3.  -2.5 -2.  -1.5 -1.  -0.5  0.   0.5  1.   1.5  2.   2.5
   3.   3.5  4. ]
 ```
-![img_1.png](./images/img_1.png)
+![img_1.png](./images/rv_corr/img_1.png)
 
 ### [python] 대푯값 구하기
 - 넘파이의 대표값 함수사용
@@ -887,7 +887,7 @@ plt.xlabel('x')
 plt.xticks(np.linspace(-4, 4, 17))
 plt.show() ;
 ```
-![img_2.png](./images/img_2.png)
+![img_2.png](./images/rv_corr/mg_2.png)
 
 ### [python] 단봉, 다봉 분포
 - 붓꽃 데이터의 분포 모양을 그래프로 그리기
@@ -908,7 +908,7 @@ plt.figure(figsize=(12, 8))
 sns.distplot(petal_length, rug=True, kde=False, bins=50)
 plt.show();
 ```
-![img_3.png](./images/img_3.png)
+![img_3.png](./images/rv_corr/mg_3.png)
 
 - histogram으로 분포확인
 ```python
@@ -917,7 +917,7 @@ df['petal length (cm)'].hist()
 plt.title("꽃잎의 길이")
 plt.show() ;
 ```
-![img_4.png](./images/img_4.png)
+![img_4.png](./images/rv_corr/mg_4.png)
 
 #### series에 target 값을 넣고 품종이름으로 변환하는 방법
 - 붓꽃 데이터의 타겟값 확인
@@ -1077,7 +1077,7 @@ plt.xlabel('x')
 plt.legend(loc='best')
 plt.show() ;
 ```
-![img_5.png](./images/img_5.png)
+![img_5.png](./imagesm/rv_corr/g_5.png)
 
 #### [python] 배열 이어 붙이기
 - np.hstack([a, b]) 또는 ((a, b)) : 배열을 행 기준으로 이어 붙여준다., 행의 갯수가 일치해야한다.
@@ -1256,7 +1256,7 @@ sample_statistics(x, 50)
 표본중앙값 5.55
 표본최빈값 5.5
 ```
-![img_7.png](./images/img_7.png)
+![img_7.png](./images/rv_corr/mg_7.png)
 
 - 구간이 100 개일 때
 - 최빈값은 변동이 거의 없지만, 표본평균과 표본중앙값은 변동한다.
@@ -1295,7 +1295,7 @@ plt.axvline(np.median(x), c='k', ls=':', label='median = {}'.format(int(np.media
 plt.legend(loc='best')
 plt.show() ;
 ```
-![img_9.png](./images/img_9.png)
+![img_9.png](./images/rv_corr/mg_9.png)
 
 - 편향표본분산과 표본표준편차
 
@@ -1366,7 +1366,7 @@ sample_statistics(r, 100, -0.09, 0.09)
 표본중앙값 0.0009158748248429704
 표본최빈값 0.000899999999999998
 ```
-![img_10.png](./images/img_10.png)
+![img_10.png](./images/rv_corr/img_10.png)
 
 #### [python] 다우지수의 연간변동성
 - 일간수익률의 표본표준편차에 연간거래일수 256일의 제곱근인 16을 곱해서 % 단위로 나타낸 것
@@ -1394,7 +1394,7 @@ sns.distplot(x, bins=50)
 plt.xlabel('x')
 plt.show() ;
 ```
-![img_11.png](./images/img_11.png)
+![img_11.png](./images/rv_corr/img_11.png)
 
 ### [python] 표본모멘트값 계산
 - 인수 : 모멘트의 차수 입력
@@ -1474,7 +1474,7 @@ plt.title('$xp(x)$ : 기대값은 아래 그래프의 면적과 같다')
 
 plt.show() ;
 ```
-![img_12.png](./images/img_12.png)
+![img_12.png](./images/rv_corr/img_12.png)
 
 
 #### 0~180도 사이에 나올 확률이 2배 높은 원반의 기댓값
@@ -1503,7 +1503,7 @@ plt.title('$xp$ : 기댓값은 아래 그래프의 면적과 같다')
 
 plt.show() ;
 ```
-![img_13.png](./images/img_13.png)
+![img_13.png](./images/rv_corr/img_13.png)
 
 ### 연속데이터의 기댓값은 해당 구간의 면적과 같다.
 - 수치적분을 적용하여 면적구하기
@@ -1599,7 +1599,7 @@ plt.xticks([0, 180, 360])
 
 plt.show() ;    
 ```
-![img_14.png](./images/img_14.png)
+![img_14.png](./images/rv_corr/img_14.png)
 
 #### 해당 부분의 면적으로 도형의 면적으로 구하기
 - 수치적분으로 구한 면적 : 74.95870953397335
@@ -1644,7 +1644,7 @@ plt.grid(ls=':', lw=1)
 plt.tight_layout()
 plt.show() ;
 ```
-![img_15.png](./images/img_15.png)
+![img_15.png](./images/rv_corr/img_15.png)
 
 
 ### [python] 확률변수의 변환과 확률질량함수 그래프로 나타내기
@@ -1696,7 +1696,7 @@ plt.stem(y, py)
 plt.tight_layout()
 plt.show() ;
 ```
-![img_16.png](./images/img_16.png)
+![img_16.png](./images/rv_corr/img_16.png)
 
 
 ### [python] 확률변수의 상관, 독립관계
@@ -1846,7 +1846,7 @@ plt.xlim(-2, 2)
 plt.legend()
 plt.show() ;
 ```
-![img_17.png](./images/img_17.png)
+![img_17.png](./images/rv_corr/img_17.png)
 
 #### 표본분산
 - 데이터와 표본평균 간의 거리(의 제곱)의 평균
