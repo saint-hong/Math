@@ -717,7 +717,7 @@ plt.ylabel('$F(x)$')
 plt.show() ;
 ```
 
-![p3](./images/proba_dist/p3)
+![p3.png](./images/proba_dist/p3.png)
 
 ### 무작위 표본 생성
 - 매서드 : rvs() : random value sampling
@@ -759,7 +759,7 @@ plt.ylabel('count')
 plt.show() ;
 ```
 
-![p4](./images/proba_dist/p4)
+![p4.png](./images/proba_dist/p4.png)
 
 ### 무작위 표본 생성 2
 - 정규분포 데이터 1000개 생성
@@ -848,7 +848,7 @@ plt.xlim(-0.2, 2.2)
 plt.show() ;
 ```
 
-![p5](./images/proba_dist/p5)
+![p5.png](./images/proba_dist/p5.png)
 
 #### 확률변수의 기술 통계값 계산
 - eval() 함수를 사용하여 위에서 만든 x1, x2 변수를 불러오기
@@ -958,7 +958,7 @@ s_median : 4.9923000582335035
 s_mode : 5.0
 ```
 
-![p6](./images/proba_dist/p6)
+![p6.png](./images/proba_dist/p6.png)
 
 - rvs 매서드에서 바로 설정
    - 10개의 샘플 생성을 1000번 반복
@@ -980,7 +980,7 @@ s_mean : 5.0032185283846236
 s_median : 5.004041721532175
 ```
 
-![p7](./images/proba_dist/p7)
+![p7.png](./images/proba_dist/p7.png)
 
 
 ## 베르누이 분포 Bernoulli Distribution
@@ -1010,7 +1010,7 @@ plt.title("베르누이 확률변수의 확률질량함수")
 plt.show() ;
 ```
 
-![p8](./images/proba_dist/p8)
+![p8.png](./images/proba_dist/p8.png)
 
 #### 1이 나올 확률이 0.7인 베르누이 확률분포
 
@@ -1032,7 +1032,7 @@ plt.title("베르누이 확률변수의 확률질량함수")
 plt.show() ;
 ```
 
-![p9](./images/proba_dist/p9)
+![p9.png](./images/proba_dist/p9.png)
 
 ### 표본값을 무작위로 100개 생성하고 countplot 그래프로 나타내기
 - 0, 1이 각각 나온 횟수
@@ -1077,7 +1077,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p10](./images/proba_dist/p10)
+![p10.png](./images/proba_dist/p10.png)
 
 ### 이론적 분포와 확률 분포를 함께 나타내기
 - 베르누이 분포 객체로 생성한 샘플의 확률 계산
@@ -1099,7 +1099,7 @@ df = pd.DataFrame({'이론':rv.pmf(xx), '시뮬레이션':y})
 df.index = [0, 1]
 df
 ```
-![p11](./images/proba_dist/p11)
+![p11.png](./images/proba_dist/p11.png)
 
 - stack() 명령어를 사용하여 표본별로 데이터를 정렬 후 series 타입으로 변환
 - reset_index() 로 새로 정렬한 데이터의 인덱스를 재설정
@@ -1110,7 +1110,7 @@ df2.columns = ["표본", "유형", "비율"]
 df2
 ```
 
-![p12](./images/proba_dist/p12)
+![p12.png](./images/proba_dist/p12.png)
 
 - 표본 0, 1 별로 정리한 이론과 시뮬레이션의 확률값 결과를 sns.barplot()을 사용하여 함께 시각화할 수 있다.
    - hue 옵션은 그래프에서 막대의 종류 : 유형은 이론과 시뮬레이션 값이 있다.
@@ -1121,7 +1121,7 @@ plt.title("베르누이분포의 이론적 분포와 시뮬레이션 분포")
 plt.show() ;
 ```
 
-![p13](./images/proba_dist/p13)
+![p13.png](./images/proba_dist/p13.png)
 
 ### 베르누이 확률분포와 시뮬레이션
 - 모수를 바꿔서 확률분포 객체를 생성
@@ -1175,7 +1175,7 @@ print("샘플 1000개일 때 표본평균 : {}, 표본분산 : {}".format(sample
 샘플 1000개일 때 표본평균 : 0.483, 표본분산 : 0.24971100000000002
 ```
 
-![p14](./images/proba_dist/p14)
+![p14.png](./images/proba_dist/p14.png)
 
 ### 함수를 사용하여 모수와 표본의 갯수 입력에 따라 다른 확률분포의 그래프롤 그려준다.
 
@@ -1222,7 +1222,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p15](./images/proba_dist/p15)
+![p15.png](./images/proba_dist/p15.png)
 
 
 ### 베르누이분포의 모멘트 계산
@@ -1290,7 +1290,7 @@ plt.ylabel('$p(x)$')
 plt.show() ;
 ```
 
-![p16](./images/proba_dist/p16)
+![p16.png](./images/proba_dist/p16.png)
 
 ### 이항분포에서 무작위 표본 생성
 - 표본하나는 10번의 시행을 했을 때 1이 나오는 횟수를 의미한다. 
@@ -1316,7 +1316,7 @@ plt.xlabel('$x$')
 plt.show() ;
 ```
 
-![p17](./images/proba_dist/p17)
+![p17.png](./images/proba_dist/p17.png)
 
 
 #### array 에서 같은 데이터가 몇개 있는지 계산하고 dict로 반환
@@ -1375,7 +1375,7 @@ plt.tight_layout()
 plt.show() ; 
 ```
 
-![p18](./images/proba_dist/p18)
+![p18.png](./images/proba_dist/p18.png)
 
 ## [python] 사이파이를 이용한 카테고리분포의 시뮬레이션
 - 사이파이에는 카테고리분포 클래스가 없으므로 다항분포 클래스를 사용하여 구현할 수 있다.
@@ -1408,7 +1408,7 @@ xx_ohe = pd.get_dummies(xx)
 xx_ohe
 ```
 
-![p19](./images/proba_dist/p19)
+![p19.png](./images/proba_dist/p19.png)
 
 - 원핫인코딩으로 변환한 행렬의 값의 카테고리분포의 확률밀도함수 객체에 인수로 입력한다.
 
@@ -1423,7 +1423,7 @@ plt.title("카테고리분포의 확률질량함수")
 plt.show() ;
 ```
 
-![p20](./images/proba_dist/p20)
+![p20.png](./images/proba_dist/p20.png)
 
 ### 카테고리분포의 rvs() 메서드로 샘플링을 한 결과는 원핫인코딩 벡터이다.
 - 확률변수의 표본이 1~100 사이의 정수일 때 이에 해당하는 원핫인코딩 벡터가 100개 생성된다.
@@ -1513,7 +1513,7 @@ plt.show();
 기댓값  [0.3, 0.3, 0.2, 0.2]   분산값  [0.21, 0.21, 0.16, 0.16]
 ```
 
-![p21](./images/proba_dist/p21)
+![p21.png](./images/proba_dist/p21.png)
 
 ## [python] 다중분류문제
 - 붓꽃 데이터의 꽃잎의 폭 데이터로 다중분류 모델 구현
@@ -1539,7 +1539,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p22](./images/proba_dist/p22)
+![p22.png](./images/proba_dist/p22.png)
 
 ## [python] 사이파이를 이용한 다항분포의 시뮬레이션
 - `multinomial` : 사이파이 패키지의 다항분포 클래스
@@ -1593,7 +1593,7 @@ df.columns = ['시도', '클래스', '표본값'] # 표본값은 주사위의 �
 df
 ```
 
-![p23](./images/proba_dist/p23)
+![p23.png](./images/proba_dist/p23.png)
 
 ```python
 %matplotlib inline
@@ -1603,7 +1603,7 @@ sns.violinplot(x='클래스', y='표본값', data=df, inner='quartile')
 plt.show() ;
 ```
 
-![p24](./images/proba_dist/p24)
+![p24.png](./images/proba_dist/p24.png)
 
 ### 맷플롯립 패키지의 박스 플롯 box plot
 - `boxplot()` : 박스 휘스커 플롯 box-whisker plot 또는 박스 플롯 box plot을 그리는 명령
@@ -1621,7 +1621,7 @@ plt.xlabel("클래스")
 plt.ylabel("표본값")
 plt.show() ;
 ```
-![p25](./images/proba_dist/p25)
+![p25.png](./images/proba_dist/p25.png)
 
 # [python] 사이파이를 사용한 정규분포의 시뮬레이션
 #### 표준 정규분포 생성
@@ -1653,7 +1653,7 @@ plt.title('정규분포의 확률밀도함수')
 plt.show() ;
 ```
 
-![p26](./images/proba_dist/p26)
+![p26.png](./images/proba_dist/p26.png)
 
 #### 샘플 20개를 생성한 후 분포확인
 
@@ -1669,7 +1669,7 @@ plt.ylabel('$p(x)$')
 plt.show() ;
 ```
 
-![p27](./images/proba_dist/p27)
+![p27.png](./images/proba_dist/p27.png)
 
 ### [python] 정규분포 : 붓꽃 데이터
 
@@ -1685,7 +1685,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p28](./images/proba_dist/p28)
+![p28.png](./images/proba_dist/p28.png)
 
 ### [python] 정규분포 : 주식 수익률
 - 과거 약 10년간의 미국 나스닥 주가지수
@@ -1699,7 +1699,7 @@ data[symbol] = web.DataReader(symbol, data_source='fred', start='2009-01-01', en
 data
 ```
 
-![p29](./images/proba_dist/p29)
+![p29.png](./images/proba_dist/p29.png)
 
 - null 값을 제거한 후 나스닥 지수를 그래프로 나타내기
 
@@ -1712,7 +1712,7 @@ plt.title('나스닥 지수')
 plt.show() ;
 ```
 
-![p30](./images/proba_dist/p30)
+![p30.png](./images/proba_dist/p30.png)
 
 ### 평균 일간수익률과 평균 일간변동성
 
@@ -1748,7 +1748,7 @@ plt.title("나스닥 지수의 일간수익률 분포")
 plt.show() ;
 ```
 
-![p31](./images/proba_dist/p31)
+![p31.png](./images/proba_dist/p31.png)
 
 #### plot에서 y축의 최대,최소값을 반환할 수 있다.
 
@@ -1786,7 +1786,7 @@ plt.tight_layout()
 plt.show() ; )
 ```
 
-![p32](./imgaes/proba_dist/p32)
+![p32.png](./imgaes/proba_dist/p32.png)
 
 ## [python] 정규분포 : Q-Q 플롯
 - 어떤 분포가 정규분포인지 아닌지 비교해주는 계산 방법
@@ -1863,6 +1863,7 @@ plt.title("Q-Q 플롯")
 
 plt.show() ;
 ```
+# 여기에 33_1 이미지 첨부할 것
 
 ### 사이파이 패키지의 stats 서브패키지의 probplot()
 - probplot() : Q-Q 플롯을 계산하고 그래프로 그려준다.
@@ -1899,7 +1900,7 @@ plt.axis('equal')
 plt.show() ;
 ```
 
-![p33](./images/proba_dist/p33)
+![p33.png](./images/proba_dist/p33.png)
 
 ### 정규분포를 따르지 않는 데이터 표본을 Q-Q 플롯으로 나타내면?
 - 정규분포가 아닌 데이터 표본은 양쪽 끝이 휘어진 형태의 직선으로 나타난다.
@@ -1917,7 +1918,7 @@ sp.stats.probplot(x, plot=plt)
 plt.show() ;
 ```
 
-![p34](./images/proba_dist/p34)
+![p34.png](./images/proba_dist/p34.png)
 
 ### [python] Q-Q 플롯 : 나스닥 주식 수익률
 - probaplot() 을 사용하여 나스탁 주식 데이터의 수익률이 정규분포인지 아닌지 확인한다.
@@ -1937,6 +1938,8 @@ plt.figure(figsize=(8, 6))
 sns.distplot(daily_returns, kde=False, fit=sp.stats.norm)
 plt.show() ;
 ```
+# 여기에 35_1 이미지 첨부하기
+
 
 - Q-Q 플롯을 계산하여 나타내기
 
@@ -1959,7 +1962,7 @@ plt.ylim(-0.05, 0.04)
 plt.show() ;
 ```
 
-![p35](./images/proba_dist/p35)
+![p35.png](./images/proba_dist/p35.png)
 
 - probaplot()을 사용하여 나타내기
 
@@ -1970,7 +1973,7 @@ plt.ylim(-0.05, 0.05)
 plt.show() ;
 ```
 
-![p36](./images/proba_dist/p36)
+![p36.png](./images/proba_dist/p36.png)
 
 ## [python] 중심극한정리 central limit theorem
 - 여러개의 확률변수를 합하여 반든 확률변수의 변환은 정규분포를 따른다.
@@ -1998,7 +2001,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p37](./images/proba_dist/p37)
+![p37.png](./images/proba_dist/p37.png)
 
 ### [python] 정규분포의 표본평균과 중심극한 정리
 - 정규분포로부터 나온 표본의 표본평균 N개가 정규분포가 된다는 것을 시뮬레이션과 Q-Q 플롯을 사용하여 보여라.
@@ -2022,7 +2025,7 @@ plt.ylim(-5, 5)
 
 plt.show() ;
 ```
-![p38](./images/proba_dist/p38)
+![p38.png](./images/proba_dist/p38.png)
 
 - 표본 10개를 1000번 생성하고 각각의 표본집합의 평균을 구한다.
 
@@ -2043,7 +2046,7 @@ sp.stats.probplot(s, plot=plt)
 plt.show() ;
 ```
 
-![p39](./images/proba_dist/p39)
+![p39.png](./images/proba_dist/p39.png)
 
 
 ## [python] 스튜던트 t분포
@@ -2060,7 +2063,7 @@ for sym in symbols :
 data = data.dropna()
 data.head()
 ```
-![p40](./images/proba_dist/p40)
+![p40.png](./images/proba_dist/p40.png)
 
 - 주식시장 별 주식의 수익률을 그래프로 나타내기
 
@@ -2074,7 +2077,7 @@ plt.ylabel('주가 수익률')
 plt.show() ;
 ```
 
-![p41](./images/proba_dist/p41)
+![p41.png](./images/proba_dist/p41.png)
 
 #### 각 지수의 일간 수익률을 구하고, 분포 형태 확인
 - 정규분포의 형태를 띈다.
@@ -2086,7 +2089,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p42](./images/proba_dist/p42)
+![p42.png](./images/proba_dist/p42.png)
 
 #### Q-Q 플롯으로 확인하면 정규분포보다 더 극단적인 경우들이 있다는 것을 알 수 있다.
 - 주식시장별 수익률 데이터에 정규분포의 범위를 넘어서는 극단적인 데이터들이 있다. 
@@ -2102,7 +2105,7 @@ plt.tight_layout()
 plt.show();
 ```
 
-![p43](./images/proba_dist/p43)
+![p43.png](./images/proba_dist/p43.png)
 
 ### 스튜던트t분포의 자유도 변화에 따른 분포 모양
 - 사이파이 패키지의 stats 서브패키지의 t 클래스
@@ -2126,7 +2129,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![p44](./images/proba_dist/p44)
+![p44.png](./images/proba_dist/p44.png)
 
 ## [python] t통계량
 - t통계량은 자유도가 N-1 인 스튜던트t분포를 이룬다.
@@ -2173,7 +2176,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![p45](./images/proba_dist/p45)
+![p45.png](./images/proba_dist/p45.png)
 
 ## [python] 카이제곱분포
 - 확률변수로부터 얻은 N개의 표본 x1~xn 의 제곱합을 하면 카이제곱분포를 따른다. 
@@ -2200,7 +2203,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![p46](./images/proba_dist/p46)
+![p46.png](./images/proba_dist/p46.png)
 
 ### N이 커지면 제곱합의 실제 분포는 어떻게 변할까?
 - 위의 그래프는 카이제곱분포를 직접 그린것
@@ -2238,7 +2241,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p47](./images/proba_dist/p47)
+![p47.png](./images/proba_dist/p47.png)
 
 ### 카이제곱분포에서 N이 커질 수록 0근처보다 0보다 큰 값이 더 많이 나오는 이유
 - N이 커질 수록 점차 정규분포로 수렴하기 때문이다.
@@ -2285,7 +2288,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p48](./images/proba_dist/p48)
+![p48.png](./images/proba_dist/p48.png)
 
 ## [python] F분포
 - 정규분포를 따르는 카이제곱분포 2개에서 각각 표본을 추출하여, 각각을 N으로 나눈 값의 비율
@@ -2307,7 +2310,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![p49](./images/proba_dist/p49)
+![p49.png](./images/proba_dist/p49.png)
 
 ### F분포에서 N1=N2가 같은 경우
 - N1=N2인 경우 1 근처의 값이 아닌 다른 값이 많이 나온다.
@@ -2338,7 +2341,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p50](./images/proba_dist/p50)
+![p50.png](./images/proba_dist/p50.png)
 
 
 ### 스튜던트t분포에서 나온 N개의 표본을 제곱하여 이루는 분포를 구하기
@@ -2376,7 +2379,7 @@ plot_t2_f(30)
 plt.show() ;
 ```
 
-![p51](./images/proba_dist/p51)
+![p51.png](./images/proba_dist/p51.png)
 
 
 ## [python] 다변수정규분포
@@ -2431,7 +2434,7 @@ plt.contour(XX, YY, rv.pdf(np.dstack([XX, YY])))   # 다변수 정규분포의 �
 plt.show() ;
 ```
 
-![p52](./images/proba_dist/p52)
+![p52.png](./images/proba_dist/p52.png)
 
 - 확대해서 다시 그리기
 
@@ -2455,7 +2458,7 @@ plt.title('이차원 다변수정규분포의 예')
 plt.show() ;
 ```
 
-![p53](./images/proba_dist/p53)
+![p53.png](./images/proba_dist/p53.png)
 
 ### [python] 다변수정규분포 2
 - x : [x1, x2]
@@ -2482,7 +2485,7 @@ plt.contour(XX, YY, rv.pdf(np.dstack([XX, YY])))
 plt.show() ;
 ```
 
-![p54](./images/proba_dist/p54)
+![p54.png](./images/proba_dist/p54.png)
 
 #### 피어슨 상관계수 확인
 - 상관계수가 0.8에 가깝다. 분포의 형태가 직선에 가까운 타원형이다.
@@ -2521,7 +2524,7 @@ plt.title('이차원 다변수정규분포의 예')
 plt.show() ;
 ```
 
-![p55](./images/proba_dist/p55)
+![p55.png](./images/proba_dist/p55.png)
 
 
 ## [python] 다변수정규분포와 고유분해
@@ -2594,7 +2597,7 @@ plt.tight_layout()
 plt.show();
 ```
 
-![p56](./images/proba_dist/p56)
+![p56.png](./images/proba_dist/p56.png)
 
 
 ### [python] 다변수정규분포의 확률밀도함수
@@ -2626,7 +2629,7 @@ plt.title('다변수정규분포의 확률밀도함수', y=1.05)
 plt.show() ;
 ```
 
-![p57](./images/proba_dist/p57)
+![p57.png](./images/proba_dist/p57.png)
 
 #### 피어슨 상관계수도 음수이다.
 ```python
@@ -2675,7 +2678,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p58](./images/proba_dist/p58)
+![p58.png](./images/proba_dist/p58.png)
 
 
 ### 베타분포의 모수의 변화에 따른 분포 모양의 변화
@@ -2706,7 +2709,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p59](./images/proba_dist/p59)
+![p59.png](./images/proba_dist/p59.png)
 
 ## [python] 감마분포의 분포 모양
 - stats 서브패키지의 gamma() 클래스로 만든다.
@@ -2741,7 +2744,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![p60](./images/proba_dist/p60)
+![p60.png](./images/proba_dist/p60.png)
 
 
 ## [python] 디리클레분포의 응용
@@ -2802,7 +2805,7 @@ ax.zaxis._PLANES = (
 )
 ```
 
-![p61](./images/proba_dist/p61)
+![p61.png](./images/proba_dist/p61.png)
 
 ### 2차원 공간의 삼각형의 면적에 난수를 생성하여 점의 분포로 나타내기
 - 삼각형 형태의 jointplot 을 만드는 함수
@@ -2839,7 +2842,7 @@ X1 = X1 / X1.sum(axis=1)[:, np.newaxis]
 plot_triangle(X1, kind='scatter')
 ```
 
-![p62](./images/proba_dist/p62)
+![p62.png](./images/proba_dist/p62.png)
 
 - 점이 아닌 육각형의 형태로 분포 확인
 
@@ -2847,7 +2850,7 @@ plot_triangle(X1, kind='scatter')
 plot_triangle(X1, kind='hex')
 ```
 
-![p63](./images/proba_dist/p63)
+![p63.png](./images/proba_dist/p63.png)
 
 #### 이 함수에 모수가 같은 디리클레분포로 생성한 샘플을 넣어주면 분포가 일정해진다.
 
@@ -2856,7 +2859,7 @@ X2 = sp.stats.dirichlet((1, 1, 1)).rvs(1000)
 plot_triangle(X2, kind='scatter')
 ```
 
-![p64](./images/proba_dist/p64)
+![p64.png](./images/proba_dist/p64.png)
 
 - 육각형의 분포로 확인
 
@@ -2864,7 +2867,7 @@ plot_triangle(X2, kind='scatter')
 plot_triangle(X2, kind='hex')
 ```
 
-![p65](./images/proba_dist/p65)
+![p65.png](./images/proba_dist/p65.png)
 
 ### 디리클레 분포를 사용하여 베이지안 추정 
 - 디리클레 분포의 모수값이 (1, 1, 1) 이 아니면 샘플이 특정한 곳에 집중되게 할 수 있다.
@@ -2880,7 +2883,7 @@ plt.tricontourf(triang2, pdf, cmap=plt.cm.bone)
 plt.axis('equal')
 plt.show()
 ```
-![p66](./images/proba_dist/p66)
+![p66.png](./images/proba_dist/p66.png)
 
 ### 디리클레 분포의 모수가 (0.3, 0.5, 0.2) 인 경우
 - 카테고리 분포의 모수가 (0.3, 0.5, 0.2) 라고 추정한 것과 같은 분포이다.
@@ -2894,7 +2897,7 @@ plt.axis('equal')
 plt.show() ;
 ```
 
-![p67](./images/proba_dist/p67)
+![p67.png](./images/proba_dist/p67.png)
 
 ### 디리클레 분포의 모수가 (30, 50, 20) 인 경우
 - 카테고리 분포의 모수가 (30, 50, 20) 이라고 높은 신뢰도로 추정한 것과 같은 의미이다.
@@ -2907,5 +2910,5 @@ plt.axis('equal')
 plt.show() ;
 ```
 
-![p68](./images/proba_dist/p68)
+![p68.png](./images/proba_dist/p68.png)
 
