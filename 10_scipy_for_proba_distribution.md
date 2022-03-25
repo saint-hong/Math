@@ -688,7 +688,7 @@ plt.title("pdf 2")
 plt.show() ;
 ```
 
-![p2](./images/proba_dist/p2)
+![p2.png](./images/proba_dist/p2.png)
 
 #### 최대값
 - 위의 분포는 x=0, 기댓값의 위치에서 최대값을 갖는다.
