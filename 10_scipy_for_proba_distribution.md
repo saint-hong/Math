@@ -1863,7 +1863,8 @@ plt.title("Q-Q 플롯")
 
 plt.show() ;
 ```
-# 여기에 33_1 이미지 첨부할 것
+
+![p33_1.png](./images/proba_dist/p33_1.png)
 
 ### 사이파이 패키지의 stats 서브패키지의 probplot()
 - probplot() : Q-Q 플롯을 계산하고 그래프로 그려준다.
@@ -1938,8 +1939,7 @@ plt.figure(figsize=(8, 6))
 sns.distplot(daily_returns, kde=False, fit=sp.stats.norm)
 plt.show() ;
 ```
-# 여기에 35_1 이미지 첨부하기
-
+![p35_1.png](./images/proba_dist/p35_1.png)
 
 - Q-Q 플롯을 계산하여 나타내기
 
