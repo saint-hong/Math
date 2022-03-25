@@ -660,7 +660,7 @@ plt.ylabel('$p(x)$')
 plt.show() ;
 ```
 
-![p1](./images/proba_dist/p1)
+![p1.png](./images/proba_dist/p1.png)
 
 ### 다른 모양의 정규분포
 - 기댓값 : loc = 0
