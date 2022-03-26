@@ -99,16 +99,13 @@
     
 ### 베르누이 확률분포
 - ```베르누이 확률분포``` : 베르누이 확률변수의 분포
-    - $X \sim Bern(x;\mu)$ : 확률변수 X가 베르누이 분포를 따른다. 
+    - <img src="https://latex.codecogs.com/gif.latex?X%20%5Csim%20Bern%28x%3B%5Cmu%29"> : 확률변수 X가 베르누이 분포를 따른다. 
     - \mu : 1이 나올 확률
-    - $Bern(x;\mu) = \left\{\begin{matrix}
-\mu \;\;\;\;\;\;\;\;\; if\;\;x=1 \\ 
-1-\mu \;\;\; if\;\;x=0 \\
-\end{matrix}\right.$
+    - <img src="https://latex.codecogs.com/gif.latex?Bern%28x%3B%5Cmu%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cmu%20%5C%3B%5C%3B%5C%3B%5C%3B%5C%3B%5C%3B%5C%3B%5C%3B%5C%3B%20if%5C%3B%5C%3Bx%3D1%20%5C%5C%201-%5Cmu%20%5C%3B%5C%3B%5C%3B%20if%5C%3B%5C%3Bx%3D0%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.">
 - 한줄의 수식으로 바꾸면
-    - $Bern(x;\mu) = \mu^{x}(1-\mu)^{(1-x)}$
+    - <img src="https://latex.codecogs.com/gif.latex?Bern%28x%3B%5Cmu%29%20%3D%20%5Cmu%5E%7Bx%7D%281-%5Cmu%29%5E%7B%281-x%29%7D">
 - 베르누이 확률변수의 표본값이 -1, 1 일때 수식
-    - $Bern(x;\mu) = \mu^{(1+x)/2}(1-\mu)^{(1-x)/2}$
+    - <img src="https://latex.codecogs.com/gif.latex?Bern%28x%3B%5Cmu%29%20%3D%20%5Cmu%5E%7B%281&plus;x%29/2%7D%281-%5Cmu%29%5E%7B%281-x%29/2%7D">
 
 ### 사이파이를 사용한 베르누이 확률변수의 시뮬레이션
 - 사이파이의 stats 패키지의 bernoulli 클래스를 사용하여 베르누이 확률변수 객체를 만든다.
@@ -120,74 +117,51 @@
     
 ### 베르누이분포의 모멘트
 - **베르누이분포의 기댓값**
-    - $\text{E}[X] = \mu$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20%5Cmu">
     - 베르누이분포의 기댓값은 mu이다. (mu=1이 나올 확률, 모수값)
 - 증명
     - 이산확률변수 X의 기댓값 공식 사용
     - 1과 0을 대입하여 계산
-    - $\begin{aligned}
-\text{E}[X] 
-&= \sum_{x_i \in \Omega} x_i p(x_i) \\
-&= 1 \cdot \mu + 0 \cdot (1-\mu) \\
-&= \mu
-\end{aligned}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5BX%5D%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20%5COmega%7D%20x_i%20p%28x_i%29%20%5C%5C%20%26%3D%201%20%5Ccdot%20%5Cmu%20&plus;%200%20%5Ccdot%20%281-%5Cmu%29%20%5C%5C%20%26%3D%20%5Cmu%20%5Cend%7Baligned%7D">
 
 - **베르누이분포의 분산**
-    - $\text{Var}[X] = \mu \cdot (1-\mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%5D%20%3D%20%5Cmu%20%5Ccdot%20%281-%5Cmu%29">
 - 증명
     - 이산확률변수 X의 분산 공식 사용
     - 0과 1을 대입하여 계산
-    - $\begin{aligned}
-    \text{Var}[X] = 
-    &= \sum_{x_i \in \Omega} (x_i - \bar{x})^2 p(xi) \\
-    &= \sum_{x_i \in \Omega} (x_i - \mu)^2 p(xi) \\
-    &= (0 - \mu)^2 p(0) + (1 - \mu)^2 p(1) \\
-    &= (-\mu)^2 \cdot (1-\mu) + (1-\mu)^2 \cdot \mu \\
-    &= \mu(1-\mu)(\mu + (1-\mu)) \\
-    &= \mu(1-\mu) \\
-    \end{aligned}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5BX%5D%20%3D%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20%5COmega%7D%20%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2%20p%28xi%29%20%5C%5C%20%26%3D%20%5Csum_%7Bx_i%20%5Cin%20%5COmega%7D%20%28x_i%20-%20%5Cmu%29%5E2%20p%28xi%29%20%5C%5C%20%26%3D%20%280%20-%20%5Cmu%29%5E2%20p%280%29%20&plus;%20%281%20-%20%5Cmu%29%5E2%20p%281%29%20%5C%5C%20%26%3D%20%28-%5Cmu%29%5E2%20%5Ccdot%20%281-%5Cmu%29%20&plus;%20%281-%5Cmu%29%5E2%20%5Ccdot%20%5Cmu%20%5C%5C%20%26%3D%20%5Cmu%281-%5Cmu%29%28%5Cmu%20&plus;%20%281-%5Cmu%29%29%20%5C%5C%20%26%3D%20%5Cmu%281-%5Cmu%29%20%5C%5C%20%5Cend%7Baligned%7D">
     
 ### 이항분포
 - ```이항분포 binomial distribution``` : N번 시행해서 X번 성공하여 성공할 확률이 \mu인 확률변수의 확률분포
-    - $X \sim Bin(x;N,\mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?X%20%5Csim%20Bin%28x%3BN%2C%5Cmu%29">
     - 확률변수 X는 성공한 횟수이므로 0~N 까지의 정수 중 하나이다.
 - 베르누이분포와 이항분포는 모두 베르누이 확률변수에서 나온 분포이다.
     - 표본데이터가 1개이면 베르누이분포, 표본데이터가 여러개이면 이항분포이다.
 - ```이항분포 확률변수 X의 확률질량함수 pmf```
-    - 베르누이 확률분포를 따르는 확률변수 Y : $Y \sim Bern(x;\mu)$
+    - 베르누이 확률분포를 따르는 확률변수 Y : <img src="https://latex.codecogs.com/gif.latex?Y%20%5Csim%20Bern%28x%3B%5Cmu%29">
     - 확률변수 Y의 N개의 표본 : y_1, y_2, ..., y_N (표본 각각 성공 아니면 실패 값을 갖는다.)
-    - 성공한 횟수 x : $x = \sum_{i=1}^{N} y_i$ (Y의 표본값의 합)
+    - 성공한 횟수 x : <img src="https://latex.codecogs.com/gif.latex?x%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20y_i"> (Y의 표본값의 합)
     - 베르누이 확률분포를 따르는 확률변수 Y의 확률질량함수를 대입하여 정리
-    - $Bin(x;N,\mu) = \binom{N}{x} \mu^{x} (1-\mu)^{N-x}$
-        - $\binom{N}{x}=\dfrac{N!}{x!(N-x)!}$ 는 N개 중에서 순서 상관 없이 x개를 선택할 경우의 수 : **조합 combination**
-        - $N! = N \cdot (N-1) \cdot (N-1) \cdots 2 \cdot 1$ : **팩토리얼 factorial**
+    - <img src="https://latex.codecogs.com/gif.latex?Bin%28x%3BN%2C%5Cmu%29%20%3D%20%5Cbinom%7BN%7D%7Bx%7D%20%5Cmu%5E%7Bx%7D%20%281-%5Cmu%29%5E%7BN-x%7D">
+        - <img src="https://latex.codecogs.com/gif.latex?%5Cbinom%7BN%7D%7Bx%7D%3D%5Cdfrac%7BN%21%7D%7Bx%21%28N-x%29%21%7D"> 는 N개 중에서 순서 상관 없이 x개를 선택할 경우의 수 : **조합 combination**
+        - <img src="https://latex.codecogs.com/gif.latex?N%21%20%3D%20N%20%5Ccdot%20%28N-1%29%20%5Ccdot%20%28N-1%29%20%5Ccdots%202%20%5Ccdot%201"> : **팩토리얼 factorial**
 
 ### 이항분포의 모멘트
 - **이항분포의 기댓값** 
-    - $\text{E}[X] = N\mu$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20N%5Cmu">
     - 이항분포의 기댓값은 전체시행횟수 * 모수값과 같다. (mu : 1이 나올 확률)
 - 증명
-    - $\begin{aligned}
-    \text{E}[X]
-    &= \text{E}[\sum_{i=1}^{N} Y_i] \\
-    &= \sum_{i=1}^{N} \text{E}[Y_i] \;\; ((sol:E[Y_i]=E[Y], copy))\\
-    &= N\mu \;\; ((sol:E[bern]=\mu))
-    \end{aligned}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BE%7D%5BX%5D%20%26%3D%20%5Ctext%7BE%7D%5B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20Y_i%5D%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Ctext%7BE%7D%5BY_i%5D%20%5C%3B%5C%3B%20%28%28sol%3AE%5BY_i%5D%3DE%5BY%5D%2C%20copy%29%29%5C%5C%20%26%3D%20N%5Cmu%20%5C%3B%5C%3B%20%28%28sol%3AE%5Bbern%5D%3D%5Cmu%29%29%20%5Cend%7Baligned%7D">
     - Y_i는 서로 독립인 베르누이분포이다. 베르누이분포의 기댓값은 mu이다.
 - **이항분포의 분산**
-    - $\text{Var}[X] = N\mu(1-\mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%5D%20%3D%20N%5Cmu%281-%5Cmu%29">
 - 증명
-    - $\begin{aligned}
-    \text{Var}[X]
-    &= \text{Var}[\sum_{i=1}^{N} Y_i] \\
-    &= \sum_{i=1}^{N} \text{Var}[Y_i] \;\; ((sol:Var[Y_i]=Var[Y], copy)) \\
-    &= N\mu(1-\mu) \;\; ((sol:Var[bern]=\mu(1-\mu)))
-    \end{aligned}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BVar%7D%5BX%5D%20%26%3D%20%5Ctext%7BVar%7D%5B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20Y_i%5D%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Ctext%7BVar%7D%5BY_i%5D%20%5C%3B%5C%3B%20%28%28sol%3AVar%5BY_i%5D%3DVar%5BY%5D%2C%20copy%29%29%20%5C%5C%20%26%3D%20N%5Cmu%281-%5Cmu%29%20%5C%3B%5C%3B%20%28%28sol%3AVar%5Bbern%5D%3D%5Cmu%281-%5Cmu%29%29%29%20%5Cend%7Baligned%7D">
     - Y_i는 서로 독립인 베르누이분포이다. 베르누이분포의 분산값은 mu(1-mu)이다.
     
 ### 베르누이분포와 이항분포의 모수추정
 - ```모수추정 parameter estimation``` : 데이터에서 모수값을 찾아내는 과정
-    - $\hat{\mu} = \dfrac{\sum_{i=1}^{N}x_i}{N} = \dfrac{N_1}{N}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7B%5Cmu%7D%20%3D%20%5Cdfrac%7B%5Csum_%7Bi%3D1%7D%5E%7BN%7Dx_i%7D%7BN%7D%20%3D%20%5Cdfrac%7BN_1%7D%7BN%7D">
     - N : 전체 데이터의 수, N_1 : 1이 나온 횟수
 - 베르누이분포와 이항분포는 공통된 모수 mu를 갖는다.
 - 일반적으로 데이터의 표본이 1개 보다 많기 때문에 이항분포가 된다. 
@@ -199,37 +173,25 @@
 
 ### 스팸메일 필터링에서 베르누이분포의 활용
 - 스팸메일과 정상메일을 구분하는 필터 : 전체 메일 10개 중 스팸메일이 6개라면 이 메일 계정으로 들어오는 메일이 스팸메일일 가능성은 60%라고 볼 수 있다.
-    - 모수가 0.6인 베르누이분포와 같다. $\mu = 0.6$
-    - $p(y) = \text{Bern}(y;\mu=0.6)$
+    - 모수가 0.6인 베르누이분포와 같다. <img src="https://latex.codecogs.com/gif.latex?%5Cmu%20%3D%200.6">
+    - <img src="https://latex.codecogs.com/gif.latex?p%28y%29%20%3D%20%5Ctext%7BBern%7D%28y%3B%5Cmu%3D0.6%29">
 - 스팸메일 필터에서 베르누이분포를 활용하는 방법, 스팸메일은 특정한 단어를 가지고 있을 확률이 높다. 따라서 어떤 키워드가 있는지 없는지를 BOW Bag of Words 방식으로 인코딩된 벡터로 나타낼 수 있다. 
-    - $x = \left[\begin{matrix}
-1 \\
-0 \\
-1 \\
-0 
-\end{matrix}\right]$
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%3D%20%5Cleft%5B%5Cbegin%7Bmatrix%7D%201%20%5C%5C%200%20%5C%5C%201%20%5C%5C%200%20%5Cend%7Bmatrix%7D%5Cright%5D">
     - 키워드가 있으면 1, 없으면 0으로 표시된다. 1번과 3번 키워드는 있고, 2번과 4번 키워드는 들어있지 않다.
 - 여러개의 메일을 키워드가 있는지 없는지 조사하여 BOW 벡터로 나타내면,
-    - $X_{spam} = \left[\begin{matrix}
-    1 & 0 & 1 & 0 \\
-    1 & 1 & 1 & 0 \\
-    1 & 1 & 0 & 1 \\
-    0 & 0 & 1 & 1 \\
-    1 & 1 & 0 & 0 \\
-    1 & 1 & 1 & 1 \\
-    \end{matrix}\right]$
+    - <img src="https://latex.codecogs.com/gif.latex?X_%7Bspam%7D%20%3D%20%5Cleft%5B%5Cbegin%7Bmatrix%7D%201%20%26%200%20%26%201%20%26%200%20%5C%5C%201%20%26%201%20%26%201%20%26%200%20%5C%5C%201%20%26%201%20%26%200%20%26%201%20%5C%5C%200%20%26%200%20%26%201%20%26%201%20%5C%5C%201%20%26%201%20%26%200%20%26%200%20%5C%5C%201%20%26%201%20%26%201%20%26%201%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright%5D">
     - 열은 키워드의 종류, 행은 메일을 의미한다. 2번째 행은 2번째 메일에 어느 키워드가 있는지 없는지를 나타낸다.
 - 스팸메일의 특성을 베르누이 확률변수의 튜플로 나타낼 수 있다. 
     - X1 : 스팸 메일(Y=1)이 첫번쨰 키워드를 가지고 있으면 1, 없으면 0이 되는 확률변수
-        - $p(X_1 = 1 | Y = 1) = Bern(x_1 ; \mu_{spam, 1})$
+        - <img src="https://latex.codecogs.com/gif.latex?p%28X_1%20%3D%201%20%7C%20Y%20%3D%201%29%20%3D%20Bern%28x_1%20%3B%20%5Cmu_%7Bspam%2C%201%7D%29">
     - X2 : 스팸 메일(Y=1)이 첫번쨰 키워드를 가지고 있으면 1, 없으면 0이 되는 확률변수
-        - $p(X_2 = 1 | Y = 1) = Bern(x_2 ; \mu_{spam, 2})$
+        - <img src="https://latex.codecogs.com/gif.latex?p%28X_2%20%3D%201%20%7C%20Y%20%3D%201%29%20%3D%20Bern%28x_2%20%3B%20%5Cmu_%7Bspam%2C%202%7D%29">
     - X1 : 스팸 메일(Y=1)이 첫번쨰 키워드를 가지고 있으면 1, 없으면 0이 되는 확률변수
-        - $p(X_3 = 1 | Y = 1) = Bern(x_3 ; \mu_{spam, 3})$
+        - <img src="https://latex.codecogs.com/gif.latex?p%28X_3%20%3D%201%20%7C%20Y%20%3D%201%29%20%3D%20Bern%28x_3%20%3B%20%5Cmu_%7Bspam%2C%203%7D%29">
     - X1 : 스팸 메일(Y=1)이 첫번쨰 키워드를 가지고 있으면 1, 없으면 0이 되는 확률변수
-        - $p(X_4 = 1 | Y = 1) = Bern(x_4 ; \mu_{spam, 4})$
+        - <img src="https://latex.codecogs.com/gif.latex?p%28X_4%20%3D%201%20%7C%20Y%20%3D%201%29%20%3D%20Bern%28x_4%20%3B%20%5Cmu_%7Bspam%2C%204%7D%29">
 - 모수추정을 사용하여 각 베르누이 확률분포의 모수값을 추정할 수 있다.
-    - $\mu_{spam, 1} = \dfrac{5}{6},\;\;\mu_{spam, 2} = \dfrac{4}{6},\;\;\mu_{spam, 3} = \dfrac{3}{6},\;\;\mu_{spam, 4} = \dfrac{3}{6}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu_%7Bspam%2C%201%7D%20%3D%20%5Cdfrac%7B5%7D%7B6%7D%2C%5C%3B%5C%3B%5Cmu_%7Bspam%2C%202%7D%20%3D%20%5Cdfrac%7B4%7D%7B6%7D%2C%5C%3B%5C%3B%5Cmu_%7Bspam%2C%203%7D%20%3D%20%5Cdfrac%7B3%7D%7B6%7D%2C%5C%3B%5C%3B%5Cmu_%7Bspam%2C%204%7D%20%3D%20%5Cdfrac%7B3%7D%7B6%7D">
     - 1이 나오는 경우 / 전체 데이터수
     - 키워드 1이 나오는 경우 / 전체 메일 수
 
@@ -252,42 +214,31 @@
     - x = 6 -> x = (0, 0, 0, 0, 0, 1)
     - K = 100 이면 100차원의 벡터로 표시된다. 
 - 확률변수의 값 : x = (x1, x2, x3, x4, x5, x6), 이 벡터 x의 원소의 제한 조건 2가지
-    - $x_i = \left\{\begin{matrix}
-    0 \\
-    1 \\
-    \end{matrix}\right.$, x_k 값은 0 또는 1만 가능하다는 의미이다.
-    - $\sum_{k=1}^{K} x_k = 1$, 모든 x_k는 0, 1 둘중 하나만 가능하고 총합이 1이므로 xk 중 하나만 1이라는 의미이다.
+    - <img src="https://latex.codecogs.com/gif.latex?x_i%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%200%20%5C%5C%201%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.">, x_k 값은 0 또는 1만 가능하다는 의미이다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bk%3D1%7D%5E%7BK%7D%20x_k%20%3D%201">, 모든 x_k는 0, 1 둘중 하나만 가능하고 총합이 1이므로 xk 중 하나만 1이라는 의미이다.
 - 확률변수의 값 x1, x2, ...는 모두 0, 1의 값을 갖는 베르누이 확률이므로 모수를 갖는다. 
-    - $\mu = (\mu_1, \mu_2, \cdots, \mu_k)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu%20%3D%20%28%5Cmu_1%2C%20%5Cmu_2%2C%20%5Ccdots%2C%20%5Cmu_k%29">
     - 모수 벡터의 원소들도 제한 조건 2가지를 갖는다.
-    - $\mu = \left\{\begin{matrix}
-    0 \leq \mu_k \leq 1 \\
-    \end{matrix}\right.$, 모수는 0과 1사이의 실수값을 갖는다.
-    - $\sum_{k=1}^{K} \mu_{k} = 1$, 모든 모수가 0과 1사이의 실수값이면서 총합이 1이므로 모든 경우의 확률이 1이라는 의미이다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%200%20%5Cleq%20%5Cmu_k%20%5Cleq%201%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.">, 모수는 0과 1사이의 실수값을 갖는다.
+    - <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bk%3D1%7D%5E%7BK%7D%20%5Cmu_%7Bk%7D%20%3D%201">, 모든 모수가 0과 1사이의 실수값이면서 총합이 1이므로 모든 경우의 확률이 1이라는 의미이다.
 
 ### 카테고리 확률분포
 - `카테고리 확률분포 categorical probability distribution` : 카테고리 확률변수의 확률분포
-    - $\text{Cat}(x_1, x_2, \cdots, x_k ; \mu_1, \mu_2, \cdots, \mu_k)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BCat%7D%28x_1%2C%20x_2%2C%20%5Ccdots%2C%20x_k%20%3B%20%5Cmu_1%2C%20%5Cmu_2%2C%20%5Ccdots%2C%20%5Cmu_k%29">
     - x와, \mu의 벡터로 묶으면
-    - $\text{Cat}(x;\mu)$, (x=(x1, x2, ..., xk), \mu=(mu1, mu2, ..., muk), 둘다 열벡터)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BCat%7D%28x%3B%5Cmu%29">, (x=(x1, x2, ..., xk), \mu=(mu1, mu2, ..., muk), 둘다 열벡터)
 - 카테고리 확률변수의 확률질량함수 pmf
-    - $\text{Cat}(x;\mu) = \left\{\begin{matrix}
-    \mu_1\;\;\;\;if x=(1,0,0,\cdots,0) \\
-    \mu_2\;\;\;\;if x=(0,1,0,\cdots,0) \\
-    \mu_3\;\;\;\;if x=(0,0,1,\cdots,0) \\
-    \vdots \\
-    \mu_k\;\;\;\;if x=(0,0,0,\cdots,1) \\
-    \end{matrix}\right.$ 
-    > $\text{Cat}(x;\mu) = \mu_{1}^{x_1}\mu_{2}^{x_2}\cdots\mu_{K}^{x_K} = \prod_{k=1}^{K} \mu_{k}^{x_K}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BCat%7D%28x%3B%5Cmu%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cmu_1%5C%3B%5C%3B%5C%3B%5C%3Bif%20x%3D%281%2C0%2C0%2C%5Ccdots%2C0%29%20%5C%5C%20%5Cmu_2%5C%3B%5C%3B%5C%3B%5C%3Bif%20x%3D%280%2C1%2C0%2C%5Ccdots%2C0%29%20%5C%5C%20%5Cmu_3%5C%3B%5C%3B%5C%3B%5C%3Bif%20x%3D%280%2C0%2C1%2C%5Ccdots%2C0%29%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cmu_k%5C%3B%5C%3B%5C%3B%5C%3Bif%20x%3D%280%2C0%2C0%2C%5Ccdots%2C1%29%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright."> 
+    > <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BCat%7D%28x%3B%5Cmu%29%20%3D%20%5Cmu_%7B1%7D%5E%7Bx_1%7D%5Cmu_%7B2%7D%5E%7Bx_2%7D%5Ccdots%5Cmu_%7BK%7D%5E%7Bx_K%7D%20%3D%20%5Cprod_%7Bk%3D1%7D%5E%7BK%7D%20%5Cmu_%7Bk%7D%5E%7Bx_K%7D">
 - 카테고리 확률변수의 확률질량함수는 베르누이 확률질량함수와 같다.
     - 카데고리 확률변수의 원소의 제한조건과 이 원소들의 모수의 제한조건을 사용하면 증명된다.
-    - $\text{Cat}(x;\mu) = \mu^{x}(1-\mu)^{1-x}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BCat%7D%28x%3B%5Cmu%29%20%3D%20%5Cmu%5E%7Bx%7D%281-%5Cmu%29%5E%7B1-x%7D">
     
 ### 카테고리 확률분포의 모멘트
 - 카테고리 확률분포의 기댓값
-    - $\text{E}[x_k] = \mu_{k}$, (베르누이 분포의 기댓값과 같으나 k번째 모수의 값이다.)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5Bx_k%5D%20%3D%20%5Cmu_%7Bk%7D">, (베르누이 분포의 기댓값과 같으나 k번째 모수의 값이다.)
 - 카테고리 확률분포의 분산값
-    - $\text{Var}[x_k] = \mu_{k} (1-\mu_{k})$, (베르누이 분포의 분산값과 같으나 k번째 모수의 값이다.)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5Bx_k%5D%20%3D%20%5Cmu_%7Bk%7D%20%281-%5Cmu_%7Bk%7D%29">, (베르누이 분포의 분산값과 같으나 k번째 모수의 값이다.)
 - 표본값 x_k가 열벡터이므로 기댓값과 분산값도 열벡터이다.
 
 ### 다중 분류 문제
@@ -304,8 +255,8 @@
     - x = (1, 2, 1, 2, 3, 1) 이면 1+2+1+2+3+1=10번 시행중에, k=1이 1번, k=2가 2번, k=3이 1번, k=4가 2번, k=5가 3번, k=6이 1번 나온 것과 같다. 
     - 다항분포의 표본값의 합은 N (시행, 실험 횟수) 이다.
 - 다항분포의 확률질량함수 pmf
-    - $\text{Mu}[x;N,\mu] = \binom{N}{x} \prod_{k=1}^{K} \mu_{k}^{x_k} = \binom{N}{x_1,\cdots,x_k} \prod_{k=1}^{K} \mu_{k}^{x_k}$
-    - $\binom{N}{x_1,\cdots,x_k} = \dfrac{N!}{x_{1}! \cdots x_{k}!}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BMu%7D%5Bx%3BN%2C%5Cmu%5D%20%3D%20%5Cbinom%7BN%7D%7Bx%7D%20%5Cprod_%7Bk%3D1%7D%5E%7BK%7D%20%5Cmu_%7Bk%7D%5E%7Bx_k%7D%20%3D%20%5Cbinom%7BN%7D%7Bx_1%2C%5Ccdots%2Cx_k%7D%20%5Cprod_%7Bk%3D1%7D%5E%7BK%7D%20%5Cmu_%7Bk%7D%5E%7Bx_k%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbinom%7BN%7D%7Bx_1%2C%5Ccdots%2Cx_k%7D%20%3D%20%5Cdfrac%7BN%21%7D%7Bx_%7B1%7D%21%20%5Ccdots%20x_%7Bk%7D%21%7D">
     - **다항분포의 확률질량함수는 이항분포의 확률질량함수와 같다.** (표본의 합=N, 모수 \mu의 합=1 이라는 조건을 사용하여 정리)
 
 ## 정규분포와 중심극한정리
@@ -313,14 +264,14 @@
 ### 정규분포와 가우스 정규분포
 - `정규분포 normal distribution`과 `가우스 정규분포 Gaussian normal distribution` : 자연현상의 숫자를 확률모형으로 구현할 때 사용하는 분포
 - 정규분포의 확률밀도 함수
-    - $\mathcal{N}(x;\mu, \sigma^2) = \dfrac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \dfrac{(x-\mu)^2}{2 \sigma^2} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmathcal%7BN%7D%28x%3B%5Cmu%2C%20%5Csigma%5E2%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%20%5Cpi%20%5Csigma%5E2%7D%7D%20%5Cexp%20%5Cleft%28-%20%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%20%5Csigma%5E2%7D%20%5Cright%29">
     - 평균(mu)과 분산(sigma^2) 두 모수만으로 정의된다.
 - 분산의 역수
-    - `정밀도 precision` : $\beta = \dfrac{1}{\sigma^2}$, (머신러닝의 예측모형의 성능 지표에서 나옴)
+    - `정밀도 precision` : <img src="https://latex.codecogs.com/gif.latex?%5Cbeta%20%3D%20%5Cdfrac%7B1%7D%7B%5Csigma%5E2%7D">, (머신러닝의 예측모형의 성능 지표에서 나옴)
 - `표준 정규분포 standard normal distribution` : 평균=0, 분산=1 인 정규분포
 - 정규분포의 확률밀도함수의 성질
-    - $x=\mu$ 에서 확률밀도가 가장 크다. (평균값의 위치에서 확률밀도값이 가장 크다)
-    - $x=\infty, x=-\infty$ 로 다가갈 수록 확률밀도가 작아진다.
+    - <img src="https://latex.codecogs.com/gif.latex?x%3D%5Cmu"> 에서 확률밀도가 가장 크다. (평균값의 위치에서 확률밀도값이 가장 크다)
+    - <img src="https://latex.codecogs.com/gif.latex?x%3D%5Cinfty%2C%20x%3D-%5Cinfty"> 로 다가갈 수록 확률밀도가 작아진다.
     - **확률밀도함수는 누적분포함수의 도함수이고, 확률밀도함수에서의 확률은 면적과 같다.**
 - 정규분포 확률변수에서 데이터 집합을 생성하여 히스토그램을 보면 정규분포 형태가 아닌것 처럼 보인다. 그런데 정규분포를 따르는게 맞다.
     - 반대로 어떤 현실 데이터 집합이 정규분포가 아니라고 해도 확률변수는 정규분포 일 수 있다는 의미로 해석한다.
@@ -328,13 +279,10 @@
 ### 로그정규분포
 - 나스닥 주가의 수익률 그래프가 정규분포라면, 주가 자체는 어떤 분포일까?
 - `로그정규분포 log-normal distribution` : 데이터에 로그를 한 값 또는 변화율(수익률)이 정규분포가 되는 분포를 말한다.
-    - $ln(X) \sim \mathcal{N}(x;\mu, \sigma^2)$
+    - <img src="https://latex.codecogs.com/gif.latex?ln%28X%29%20%5Csim%20%5Cmathcal%7BN%7D%28x%3B%5Cmu%2C%20%5Csigma%5E2%29">
     - **로그정규분포를 띄는 분포는 항상 양수이다.** 그러므로 로그변환을 한 다음 사용하는 것이 일반적이다.
 - 로그정규분포의 확률밀도함수
-    - $f(x;\mu, \sigma^2) = \left\{\begin{matrix}
-\dfrac{1}{x \sigma \sqrt{2\pi}} \exp \left(- \dfrac{(ln x - \mu)^2}{2\sigma^2}\right)\;\;\;(x \geq 0) \\ 
-0 \;\;\;(x \leq 0) \\
-\end{matrix}\right.$
+    - <img src="https://latex.codecogs.com/gif.latex?f%28x%3B%5Cmu%2C%20%5Csigma%5E2%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cdfrac%7B1%7D%7Bx%20%5Csigma%20%5Csqrt%7B2%5Cpi%7D%7D%20%5Cexp%20%5Cleft%28-%20%5Cdfrac%7B%28ln%20x%20-%20%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%5Cright%29%5C%3B%5C%3B%5C%3B%28x%20%5Cgeq%200%29%20%5C%5C%200%20%5C%3B%5C%3B%5C%3B%28x%20%5Cleq%200%29%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.">
 - 위키피디아 참조
 
 ### Q-Q플롯
@@ -358,20 +306,20 @@
     - central은 확률이론의 중심이라는 뜻으로, 중요하다는 의미이다.
     - 중심극한정리에 의해서 실세계에서 발생하는 많은 현상을 정규분포를 이용해서 모형화할 수 있다. 
 - 기댓값이 \mu, 분산이 \sigma^2 인 확률변수 X1, X2,...,X_N이 서로 독립일 때, 각 확률변수에서 표본 데이터 x1, x2, ..., xn을 뽑으면 평균은 다음과 같다.
-    - $\bar{x}_{n} = \dfrac{1}{N}(x_1, x_2, \cdots, x_N)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7Bx%7D_%7Bn%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%28x_1%2C%20x_2%2C%20%5Ccdots%2C%20x_N%29">
     - 이러한 평균값도 예측할 수 없는 확률변수이다. $\bar{X}_N$
 - `중심극한정리` : N개의 **임의의 분포**로부터 얻은 표본의 평균은 N이 증가할 수록 기댓값이 \mu, 분산이 \sigma^2 / N 인 **정규분포로 수렴**한다. 
-    - $\bar{X}_{N} \overset{d}{\rightarrow} \mathcal{N}(x;\mu, \dfrac{\sigma^2}{N})$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cbar%7BX%7D_%7BN%7D%20%5Coverset%7Bd%7D%7B%5Crightarrow%7D%20%5Cmathcal%7BN%7D%28x%3B%5Cmu%2C%20%5Cdfrac%7B%5Csigma%5E2%7D%7BN%7D%29">
     - d ->는 N이 커질수록 특정한 분포의 형태로 수렴한다는 의미
 - 정규화 : N개의 **임의의 분포**로부터 얻은 표본의 평균을 **정규화**하면 N이 증가할 수록 기대값이 0, 분산이 1인 **표준정규분포로 수렴**한다.
-    - $\dfrac{\bar{X}_{N} - \mu}{\dfrac{\sigma}{\sqrt{N}}} \overset{d}{\rightarrow} \mathcal{N}(x;0, 1)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cbar%7BX%7D_%7BN%7D%20-%20%5Cmu%7D%7B%5Cdfrac%7B%5Csigma%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Coverset%7Bd%7D%7B%5Crightarrow%7D%20%5Cmathcal%7BN%7D%28x%3B0%2C%201%29">
 
 ### 정규분포의 통계량 분포
 - 중심극한정리와 다르게 임의의 분포가 N개가 아닌 N개의 정규분포로부터 얻은 표본 평균은 어떤 분포가 될까?
 - N개의 정규분포로부터 얻은 표본의 합은 기대값이 N\mu, 분산이 N\sigma^2 인 정규분포이다.
-    - $x_i \sim \mathcal{N}(x;\mu, \sigma^2) \rightarrow \sum_{i=1}^{N}x_i \sim \mathcal{N}(x;N\mu, N\sigma^2)$
+    - <img src="https://latex.codecogs.com/gif.latex?x_i%20%5Csim%20%5Cmathcal%7BN%7D%28x%3B%5Cmu%2C%20%5Csigma%5E2%29%20%5Crightarrow%20%5Csum_%7Bi%3D1%7D%5E%7BN%7Dx_i%20%5Csim%20%5Cmathcal%7BN%7D%28x%3BN%5Cmu%2C%20N%5Csigma%5E2%29">
 - 정규화하면 표준정규분포가 된다.
-    - $x_i \sim \mathcal{N}{x;\mu, \sigma^2} \rightarrow z=\dfrac{\bar{x}-\mu}{\dfrac{\sigma}{\sqrt{N}}} \sim \mathcal{N}(x;0,1)$
+    <img src="https://latex.codecogs.com/gif.latex?x_i%20%5Csim%20%5Cmathcal%7BN%7D%7Bx%3B%5Cmu%2C%20%5Csigma%5E2%7D%20%5Crightarrow%20z%3D%5Cdfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Cdfrac%7B%5Csigma%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Csim%20%5Cmathcal%7BN%7D%28x%3B0%2C1%29">
 - `z 통계량` : 정규분포의 표본의 평균
     - 중심극한정리는 N이 증가할 수록 표준정규분포로 수렴한다. N이 무한대가 되기전에는 정확한 정규분포가 아니다.
     - **z통계량은 N에 상관없이 항상 정확하게 표준정규분포이다.**
@@ -380,17 +328,17 @@
 - 정규분포는 선형회귀 모형에서 **잡음 disturbance** 을 모형화는데 사용된다.
     - 잡음이 예측값에 영향을 줄 수 있기 때문에 잡음을 모형화하는 작업 필요
 - 선형회귀모형 : 입력변수(데이터 표본)이 종속변수에 선형적으로 영향을 미치는 모형
-    - $\hat{y} = w_1x_1 + \cdots + w_Nx_N \approx y$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7By%7D%20%3D%20w_1x_1%20&plus;%20%5Ccdots%20&plus;%20w_Nx_N%20%5Capprox%20y">
 - `잡음 disturbance` : 데이터 분석에 있어서 측정할 수 없는 값을 의미한다.
-    - $y = w_1x_1 + \cdots + w_Nx_N + \epsilon $
-    - $y = w_1x_1 + \cdots + w_Nx_N + w_{N+1}x_{N+1} + w_{N+2}x_{N+2} + \cdots +  $
+    - <img src="https://latex.codecogs.com/gif.latex?y%20%3D%20w_1x_1%20&plus;%20%5Ccdots%20&plus;%20w_Nx_N%20&plus;%20%5Cepsilon">
+    - <img src="https://latex.codecogs.com/gif.latex?y%20%3D%20w_1x_1%20&plus;%20%5Ccdots%20&plus;%20w_Nx_N%20&plus;%20w_%7BN&plus;1%7Dx_%7BN&plus;1%7D%20&plus;%20w_%7BN&plus;2%7Dx_%7BN&plus;2%7D%20&plus;%20%5Ccdots%20&plus;">
     - 예측값과 실제값의 차이인 잔차 residual 과는 다른 개념이다.
     - 선형회귀 모형을 만들 때 영향력이 작거나 일일이 측정하기 어려운 값들을 하나로 합친 것을 의미한다.
     - N번째 이후의 입력데이터들은 사실상 영향력이 미미하다.
     - 집값 데이터의 여러가지 피쳐들 중 귀신이 나오는지, 경비실이 있는지, 벌레가 몇마리 나오는지 등은 측정하기 어렵다. 이러한 요소들을 하나로 합친것
 - 중심극한 정리에 의해서 임의의 확률변수의 합은 정규분포와 비슷한 형태이다.
-    - $\epsilon = w_1x_1 + w_2x_2 + \cdots$
-    - $\epsilon \sim \mathcal{N}(0, \sigma^2)$ : 기대값이 0인 정규분포라고 가정할 수 있다.    
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cepsilon%20%3D%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20%5Ccdots">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cepsilon%20%5Csim%20%5Cmathcal%7BN%7D%280%2C%20%5Csigma%5E2%29"> : 기대값이 0인 정규분포라고 가정할 수 있다.    
 
 # 스튜던트t분포, 카이제곱분포, F분포
 - 연속확률분포
@@ -405,11 +353,11 @@
     - 블랙스완 : 자주 발생할 수 없는 극단적 현상을 금융계에서 일컫는 말
 - 과거 주가 데이터 통해서 이러한 현상을 확인 할 수 있다.
 - `스튜던트 t분포 student-t distribution` : 팻테일을 보이는 데이터 모형에 적합한 분포이다. t분포라고도 부른다.
-    - pdf : $t(x;\mu,\lambda,\nu) = \dfrac{\sqrt{\lambda}}{\sqrt{\nu\pi}} \dfrac{\Gamma(\dfrac{\nu+1}{2})}{\Gamma(\dfrac{\nu}{2})} \left( 1 + \lambda\dfrac{(x-\mu)^2}{\nu} \right)^{-\dfrac{\nu+1}{2}}$ 
+    - pdf : <img src="https://latex.codecogs.com/gif.latex?t%28x%3B%5Cmu%2C%5Clambda%2C%5Cnu%29%20%3D%20%5Cdfrac%7B%5Csqrt%7B%5Clambda%7D%7D%7B%5Csqrt%7B%5Cnu%5Cpi%7D%7D%20%5Cdfrac%7B%5CGamma%28%5Cdfrac%7B%5Cnu&plus;1%7D%7B2%7D%29%7D%7B%5CGamma%28%5Cdfrac%7B%5Cnu%7D%7B2%7D%29%7D%20%5Cleft%28%201%20&plus;%20%5Clambda%5Cdfrac%7B%28x-%5Cmu%29%5E2%7D%7B%5Cnu%7D%20%5Cright%29%5E%7B-%5Cdfrac%7B%5Cnu&plus;1%7D%7B2%7D%7D"> 
 - 모수
     - mu : 1이 될 확률
     - lambda : 정규분포의 정밀도 (분산의 역수, beta, precision)
-    - Gamma : 감마함수, 특수함수 $\Gamma(x) = \int_{0}^{\infty} u^{x-1} e^{-u} du$
+    - Gamma : 감마함수, 특수함수 <img src="https://latex.codecogs.com/gif.latex?%5CGamma%28x%29%20%3D%20%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%20u%5E%7Bx-1%7D%20e%5E%7B-u%7D%20du">
     - nu : 자유도
 - 스튜던트 t분포에서 nu는 자유도 값을 의미한다. 
     - **코시 분포 cauchy dist-** : 자유도가 1인 t분포
@@ -417,8 +365,8 @@
     - 자유도가 작아질 수록 : 분산이 커지고, 높이가 낮아지고, 꼬리가 두터워진다.
     - 자유도가 커질 수록 : 정규분포에 수렴한다.
 - 스튜던트 t분포의 모멘트
-    - 기댓값 : $\text{E}[X] = \mu$
-    - 분산값 : $\text{Var}[X] = \dfrac{\nu}{\lambda(\nu-2)}$ (\nu > 2일때만 성립, \nu=1, 2이면 분산이 무한대가 된다.)
+    - 기댓값 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20%5Cmu">
+    - 분산값 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%5D%20%3D%20%5Cdfrac%7B%5Cnu%7D%7B%5Clambda%28%5Cnu-2%29%7D"> (\nu > 2일때만 성립, \nu=1, 2이면 분산이 무한대가 된다.)
     
 ### t통계량
 - `z 통계량` : 정규분포의 표본을 표준편차로 나눠서 정규화한 것, z통계량은 N의 증감에 상관없이 항상 정규분포이다.
@@ -426,7 +374,7 @@
     - 따라서 표본으로부터 표본표준편차로 정규화 할 수 밖에 없다.
 - `t 통계량` : 정규분포로부터 얻은 N개의 표본 x1, x2, ..., xn 에서 계산한 표본평균을 표본표준편차로 정규화한 값.
     - t 통계량은 자유도가 N - 1인 스튜던트 t분포를 따른다.
-    - $t = \dfrac{\bar{x}-\mu}{\dfrac{s}{\sqrt{N}}} \sim t \; (x;0, 1, N-1)$
+    - <img src="https://latex.codecogs.com/gif.latex?t%20%3D%20%5Cdfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Cdfrac%7Bs%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Csim%20t%20%5C%3B%20%28x%3B0%2C%201%2C%20N-1%29">
     - xbar와 s는 각각 표본평균, 표본표준편차(비편향)이다.
 - 시뮬레이션을 사용하여 t 통계량 분포를 그려보면 N이 작으면 스튜던트 t분포의 형태이고, N이 커지면 정규분포와 비슷해진다.
 
@@ -434,20 +382,20 @@
 - t 통계량 : 확률변수 X로부터 얻은 N개의 표본 x1, x2, ..., xn의 표본평균 또는 표본의 합을 표본분산으로 정규화하면 스튜던트t분포를 따른다.
     - 모수 nu가 N-1 인 스튜던트t분포가 된다.
 - `카이제곱분포 chi-squared dist-` : 확률변수 X에서 얻은 N개의 표본 x1~xn을 제곱합하면 양수값만 가지는 카이제곱분포가 된다. 
-    - $x_i \sim \mathcal{N}(x;\mu, \sigma^2) \rightarrow \sum_{i=1}^{N} x_{i}^2 \sim \chi^2(x;\nu=N)$
+    - <img src="https://latex.codecogs.com/gif.latex?x_i%20%5Csim%20%5Cmathcal%7BN%7D%28x%3B%5Cmu%2C%20%5Csigma%5E2%29%20%5Crightarrow%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_%7Bi%7D%5E2%20%5Csim%20%5Cchi%5E2%28x%3B%5Cnu%3DN%29">
     - 표본 xi가 정규분포를 따를때 표본들의 제곱합은 카이제곱분포를 따른다.
     - nu=N 은 표본의 갯수
 - `카이제곱분포의 확률밀도함수 pdf`
-    - $\dfrac{x^{(\dfrac{\nu}{2}-1)} \exp^{\left(-\dfrac{x}{2}\right)}} {2^{\left(\dfrac{\nu}{2}\right)} \cdot \Gamma\left(\dfrac{\nu}{2}\right)}$
-    - 감마함수 : $\Gamma(x) = \dfrac{\nu}{\lambda(\nu-2)}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7Bx%5E%7B%28%5Cdfrac%7B%5Cnu%7D%7B2%7D-1%29%7D%20%5Cexp%5E%7B%5Cleft%28-%5Cdfrac%7Bx%7D%7B2%7D%5Cright%29%7D%7D%20%7B2%5E%7B%5Cleft%28%5Cdfrac%7B%5Cnu%7D%7B2%7D%5Cright%29%7D%20%5Ccdot%20%5CGamma%5Cleft%28%5Cdfrac%7B%5Cnu%7D%7B2%7D%5Cright%29%7D">
+    - 감마함수 : <img src="https://latex.codecogs.com/gif.latex?%5CGamma%28x%29%20%3D%20%5Cdfrac%7B%5Cnu%7D%7B%5Clambda%28%5Cnu-2%29%7D">
 - 카이제곱분포의 확률밀도함수에 따라서 N=nu 가 커지면 분모가 커지기때문에 0근처의 값들이 많이 나올 것 같다. 그러나 N이 2보다 커지면 0보다 조금 큰 1-2 근처의 값이 많이 나온다. 
 
 ### F분포
 - `F분포` : 카이제곱분포를 따르는 독립적인 두 확률변수의 확률변수 표본을 각각 x1, x2라고 할때 이를 각각 N1, N2로 나눈뒤 비율을 구한 값.
-    - $x_1 \sim \chi^2(N_1),\;\; x_2 \sim \chi^2(N_2) \rightarrow \dfrac{\dfrac{x_1}{N_1}}{\dfrac{x_2}{N_2}} \sim \text{F}(x;N_1, N_2)$
+    - <img src="https://latex.codecogs.com/gif.latex?x_1%20%5Csim%20%5Cchi%5E2%28N_1%29%2C%5C%3B%5C%3B%20x_2%20%5Csim%20%5Cchi%5E2%28N_2%29%20%5Crightarrow%20%5Cdfrac%7B%5Cdfrac%7Bx_1%7D%7BN_1%7D%7D%7B%5Cdfrac%7Bx_2%7D%7BN_2%7D%7D%20%5Csim%20%5Ctext%7BF%7D%28x%3BN_1%2C%20N_2%29">
     - 스튜던트 t분포와 카이제곱분포는 정규분포를 따르는 확률변수 X로부터 나온 N개의 표본으로부터 만들 수 있었다. F분포도 같다.
 - F분포의 확률밀도함수
-     - $f(x;N_1, N_2) = \dfrac{\sqrt{\dfrac{(N_1x)^{N_1} \; N_2^{N_2}}{(N_1x + N_2)^{N_1 + N_2}}}} {x\;\text{B} \left( \dfrac{N_1}{2}, \dfrac{N_2}{2} \right)}$ 
+     - <img src="https://latex.codecogs.com/gif.latex?f%28x%3BN_1%2C%20N_2%29%20%3D%20%5Cdfrac%7B%5Csqrt%7B%5Cdfrac%7B%28N_1x%29%5E%7BN_1%7D%20%5C%3B%20N_2%5E%7BN_2%7D%7D%7B%28N_1x%20&plus;%20N_2%29%5E%7BN_1%20&plus;%20N_2%7D%7D%7D%7D%20%7Bx%5C%3B%5Ctext%7BB%7D%20%5Cleft%28%20%5Cdfrac%7BN_1%7D%7B2%7D%2C%20%5Cdfrac%7BN_2%7D%7B2%7D%20%5Cright%29%7D"> 
      - B(x) : 베타함수
 - 스튜던트 t분포의 표본도 제곱을 하면 F분포가 될 수 있다. (정규분포의 표본을 제곱합을 하면 카이제곱분포가 된다.)
     - t(N)^2 = F(1, N)
@@ -463,23 +411,17 @@
     - **카이제곱분포 : 오차 제곱합에 대한 확률분포**
     - **F분포 : 비교 대상이 되는 선형모형의 오차 제곱합에 대한 비율의 확률분포**
 - 정규분포를 따르는 확률변수 X에서 뽑은 N개의 표본집합 {xi}에 대하여
--    $X \rightarrow {x_i} = \left\{\begin{matrix}
-     \sum x_i \rightarrow normal\;distribution \\
-     \dfrac{\bar{x}-\mu}{\dfrac{\sigma}{\sqrt{N}}} \rightarrow z\;statistics \\
-     \dfrac{\bar{x}-\mu}{\dfrac{s}{\sqrt{N}}} \rightarrow t\;statistics \\
-     \sum_{i=1}^{N} x_{i}^2 \rightarrow chi^2\;distribution \\
-     \dfrac{\sum_{i=1}^{N_1}x_{1}^2}{\sum_{i=1}^{N_2}x_{2}^2} \rightarrow F\;distribution \\
-    \end{matrix}\right.$
+-    <img src="https://latex.codecogs.com/gif.latex?X%20%5Crightarrow%20%7Bx_i%7D%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Csum%20x_i%20%5Crightarrow%20normal%5C%3Bdistribution%20%5C%5C%20%5Cdfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Cdfrac%7B%5Csigma%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Crightarrow%20z%5C%3Bstatistics%20%5C%5C%20%5Cdfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Cdfrac%7Bs%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Crightarrow%20t%5C%3Bstatistics%20%5C%5C%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_%7Bi%7D%5E2%20%5Crightarrow%20chi%5E2%5C%3Bdistribution%20%5C%5C%20%5Cdfrac%7B%5Csum_%7Bi%3D1%7D%5E%7BN_1%7Dx_%7B1%7D%5E2%7D%7B%5Csum_%7Bi%3D1%7D%5E%7BN_2%7Dx_%7B2%7D%5E2%7D%20%5Crightarrow%20F%5C%3Bdistribution%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.">
 
 # 다변수 정규분포
 
 ### 다변수 정규분포
 - D차원의 `다변수정규분포 MVN, multivariate gaussian normal distribution`의 확률밀도함수
 - 다변수정규분포의 확률밀도함수는 벡터를 입력받아서 이 벡터가 나올 확률=스칼라 값을 출력해준다.
-    - $\mathcal{N}(x;\mu,\sum) = \dfrac{1}{\left(2\pi\right)^{D/2}|\sum|^{1/2}} \exp\left( -\dfrac{1}{2}(x-\mu)^{T} \cdot \sum^{-1} \cdot (x-\mu) \right)$
-    - $x \in \text{R}^D$
-    - $\mu \in \text{R}^D$, 평균벡터
-    - $\sum \in \text{R}^{DxD}$, 공분산행렬
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmathcal%7BN%7D%28x%3B%5Cmu%2C%5Csum%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Cleft%282%5Cpi%5Cright%29%5E%7BD/2%7D%7C%5Csum%7C%5E%7B1/2%7D%7D%20%5Cexp%5Cleft%28%20-%5Cdfrac%7B1%7D%7B2%7D%28x-%5Cmu%29%5E%7BT%7D%20%5Ccdot%20%5Csum%5E%7B-1%7D%20%5Ccdot%20%28x-%5Cmu%29%20%5Cright%29">
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Cin%20%5Ctext%7BR%7D%5ED">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu%20%5Cin%20%5Ctext%7BR%7D%5ED">, 평균벡터
+    - <img src="https://latex.codecogs.com/gif.latex?%5Csum%20%5Cin%20%5Ctext%7BR%7D%5E%7BDxD%7D">, 공분산행렬
     - 괄호안의 수식은 x^TAx 인 이차형식이다. 즉 스칼라 값이 된다.
     - 지수함수 값도 상수가 된다. 
 - 다변수정규분포에서 공분산행렬은 양의 정부호인 대칭행렬이어야 한다. 따라서 항상 역행렬이 존재한다.
@@ -493,9 +435,9 @@
     - 따라서 행렬식이 0보다 크므로 항상 역행렬을 갖는다.
 - 2차원 다변수 정규분포 일때 : x = [x1, x2], mu = [2, 3], 공분산행렬 = [[1, 0], [0, 1]] (항등행렬) 이라고 가정
     - 확률밀도함수에 대입하여 정리하면 다음과 같다.
-    - $\mathcal{N}(x_1, x_2) = \dfrac{1}{2\pi} \exp \left(- \dfrac{1}{2} ((x_1-2)^2 + (x_2-3)^2)\right)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmathcal%7BN%7D%28x_1%2C%20x_2%29%20%3D%20%5Cdfrac%7B1%7D%7B2%5Cpi%7D%20%5Cexp%20%5Cleft%28-%20%5Cdfrac%7B1%7D%7B2%7D%20%28%28x_1-2%29%5E2%20&plus;%20%28x_2-3%29%5E2%29%5Cright%29">
     - 지수함수의 거듭제곱이 + 인경우 두개의 지수함수로 나눌 수 있다. (분리가능 함수) : 
-        - $\text{e}^{(x_1-2)^{2} + (x_2-3)^{2}} \rightarrow \text{e}^{(x_1-2)^2} \text{e}^{(x_2-3)^2}$
+        - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7Be%7D%5E%7B%28x_1-2%29%5E%7B2%7D%20&plus;%20%28x_2-3%29%5E%7B2%7D%7D%20%5Crightarrow%20%5Ctext%7Be%7D%5E%7B%28x_1-2%29%5E2%7D%20%5Ctext%7Be%7D%5E%7B%28x_2-3%29%5E2%7D">
     - 이렇게 분리하면 **결합확률밀도함수 = 주변확률밀도함수의 곱**의 형태가 된다. 이런경우 **두 확률변수는 독립이다.** (독립과 상관에서 나옴)
         - p(x, y) = p(x1)p(x2)
     - 따라서 원형의 분포나, 각각의 축에 평행한 분포형태가 된다. (기울어지지 않음)
@@ -503,7 +445,7 @@
 - 2차원 다변수 정규분포 일때 : x = [x1, x2], mu = [2, 3], 공분산행렬 = [[2, 3], [3, 7]] 이라고 가정
     - 두 확률변수의 **상관관계 공식**에 의해 공분산행렬의 원소를 대입해 계산하면 **양의 상관관계**라는 것을 알 수 있다.
     - 확률밀도 함수에 대입하여 정리하면 다음과 같다.
-    - $\mathcal{N}(x_1, x_2) = \dfrac{1}{2\sqrt{5}\pi} \exp \left( \dfrac{7}{5}(x_1-2)^2 - \dfrac{6}{5}(x_1-2)(x_2-3) + \dfrac{2}{5}(x_2-3)^2 \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmathcal%7BN%7D%28x_1%2C%20x_2%29%20%3D%20%5Cdfrac%7B1%7D%7B2%5Csqrt%7B5%7D%5Cpi%7D%20%5Cexp%20%5Cleft%28%20%5Cdfrac%7B7%7D%7B5%7D%28x_1-2%29%5E2%20-%20%5Cdfrac%7B6%7D%7B5%7D%28x_1-2%29%28x_2-3%29%20&plus;%20%5Cdfrac%7B2%7D%7B5%7D%28x_2-3%29%5E2%20%5Cright%29">
     - 이 식에서는 지수함수의 곱으로 분리할 수 없다. - 가 있기 때문이다.
     - 이 조건에서는 타원의 분포가 나온다.
     - 조건부확률분포로 단면의 분포를 나타내보면 독립이 아니라는 것을 알 수 있다. 
@@ -512,24 +454,24 @@
 - 다변수정규분포의 공분산행렬은 양의 정부호인 대칭행렬이다. 따라서 **대각화 가능 diagonalizable** 이다.
     - 양의 정부호인 대칭행렬이면 고윳값이 모두 양수이다.
     - 고윳값이 모두 양수이면 대각화 가능하다. 
-    - 대칭행렬을 대각화 할 수 있다. $\sum = V \Lambda V^T$
-    - 또한 양의 정부호이면 역행렬이 존재하기 때문에 대각화를 역행렬로 만들 수 있다. $\sum^{-1} = V \Lambda^{-1} V^T$
+    - 대칭행렬을 대각화 할 수 있다. <img scr="https://latex.codecogs.com/gif.latex?%5Csum%20%3D%20V%20%5CLambda%20V%5ET">
+    - 또한 양의 정부호이면 역행렬이 존재하기 때문에 대각화를 역행렬로 만들 수 있다. <img src="https://latex.codecogs.com/gif.latex?%28%5Csum%29%5E%7B-1%7D%20%3D%20V%20%5CLambda%5E%7B-1%7D%20V%5ET">
 - 공분산행렬의 역행렬(=정밀도 행렬)의 고유분해
-    - $\sum^{-1} = V \Lambda V^{T}$, ($\sum^{-1} = (V \Lambda V^{-1})^{-1} = V \Lambda^{-1} V^{-1} = V \Lambda^{-1} V^{T}$)
+    - <img src="https://latex.codecogs.com/gif.latex?%28%5Csum%29%5E%7B-1%7D%20%3D%20V%20%5CLambda%20V%5E%7BT%7D">, (<img src="https://latex.codecogs.com/gif.latex?%28%5Csum%29%5E%7B-1%7D%20%3D%20%28V%20%5CLambda%20V%5E%7B-1%7D%29%5E%7B-1%7D%20%3D%20V%20%5CLambda%5E%7B-1%7D%20V%5E%7B-1%7D%20%3D%20V%20%5CLambda%5E%7B-1%7D%20V%5E%7BT%7D">)
 - 정밀도 행렬의 고유분해를 다변수정규분포의 확률밀도함수에 대입하면,
-    - $\mathcal{N} \propto \exp \left( \dfrac{1}{2} (x-\mu)^{T} \sum^{-1} (x-\mu) \right)$
-    >- $= \exp \left( \dfrac{1}{2} (x-\mu)^{T} V \Lambda^{-1} V^{T} (x-\mu) \right)$
-    >- $= \exp \left( \dfrac{1}{2} (V^{T}(x-\mu))^{T} \Lambda^{-1} (V^{T} (x-\mu)) \right)$ 
-    >- $= \exp \left( \dfrac{1}{2} (V^{-1}(x-\mu))^{T} \Lambda^{-1} (V^{-1} (x-\mu)) \right)$, ((sol : V^{T} => V^{-1}}))
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmathcal%7BN%7D%20%5Cpropto%20%5Cexp%20%5Cleft%28%20%5Cdfrac%7B1%7D%7B2%7D%20%28x-%5Cmu%29%5E%7BT%7D%20%28%5Csum%29%5E%7B-1%7D%20%28x-%5Cmu%29%20%5Cright%29">
+    >- <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Cexp%20%5Cleft%28%20%5Cdfrac%7B1%7D%7B2%7D%20%28x-%5Cmu%29%5E%7BT%7D%20V%20%5CLambda%5E%7B-1%7D%20V%5E%7BT%7D%20%28x-%5Cmu%29%20%5Cright%29">
+    >- <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Cexp%20%5Cleft%28%20%5Cdfrac%7B1%7D%7B2%7D%20%28V%5E%7BT%7D%28x-%5Cmu%29%29%5E%7BT%7D%20%5CLambda%5E%7B-1%7D%20%28V%5E%7BT%7D%20%28x-%5Cmu%29%29%20%5Cright%29"> 
+    >- <img src="https://latex.codecogs.com/gif.latex?%3D%20%5Cexp%20%5Cleft%28%20%5Cdfrac%7B1%7D%7B2%7D%20%28V%5E%7B-1%7D%28x-%5Cmu%29%29%5E%7BT%7D%20%5CLambda%5E%7B-1%7D%20%28V%5E%7B-1%7D%20%28x-%5Cmu%29%29%20%5Cright%29">, ((sol : V^{T} => V^{-1}}))
 - 정밀도 행렬의 고유분해값을 대입하여 식을 정리하면, **확률밀도함수의 좌표변환을 의미한다.**
-    - $x^{'} = V^{-1}(x-\mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?x%5E%7B%27%7D%20%3D%20V%5E%7B-1%7D%28x-%5Cmu%29">
     - x를 mu만큼 평행이동 한다. 이 값에 변환행렬을 곱해주는 형태. 
         - 고유벡터행렬은 고유벡터를 열벡터로 가지는 행렬인데, 이러한 행렬의 역행렬을 **변환행렬** 이라고 한다. (좌표변환에 필요한 행렬)
         - 변환행렬의 열벡터는 새로운 좌표의 베이시스 벡터이다.
         - 즉 V^-1의 열벡터인 고유벡터들이 새로운 베이시스 벡터가 되고 타원의 축이 된다. 
     - 따라서 x를 mu만큼 이동한 후 V^-1 로 좌표변환 한다는 의미이다. 
 - 따라서 확률밀도함수는 원래좌표에서 고유벡터 방향으로 회전시킨 모양이다.
-    - $\mathcal{N} \propto \exp \left(- \dfrac{1}{2} x^{'T} \Lambda^{-1} x^{'} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmathcal%7BN%7D%20%5Cpropto%20%5Cexp%20%5Cleft%28-%20%5Cdfrac%7B1%7D%7B2%7D%20x%5E%7B%27T%7D%20%5CLambda%5E%7B-1%7D%20x%5E%7B%27%7D%20%5Cright%29">
     - 확률밀도함수는 \mu가 중심이고 반지름은 고윳값에 비례하는 타원이다.
 - 즉, 다변수정규분포의 정밀도행렬을 고유분해하여 식에 대입하면 좌표변환을 하는 것과 같아진다.
     - 공분산행렬의 고윳값이 타원의 가로와 세로 폭이 된다. 
@@ -542,7 +484,7 @@
 - `다변수정규분포인 확률변수벡터 중 어떤 원소의 값이 주어지면 다른 확률변수의 조건부확률분포는 다변수정규분포이다.`
     - 즉 다변수 정규분포의 확률밀도함수를 자른 단면(x1, x2 중 하나의 값을 고정시킨 후 자름)의 분포도 정규분포라는 의미이다.
 - x2를 임의의 값으로 고정시킨 후 자른 단면의 분포의 중심값은(\mu_{1|2}) 원래 다변수정규분포의 중심값(\mu_{1})과 차이가 생긴다. 
-    - $\mu_{1|2} = \mu_1 - \Lambda_{11}^{-1} \Lambda_{12} (x_2 - \mu_2)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu_%7B1%7C2%7D%20%3D%20%5Cmu_1%20-%20%5CLambda_%7B11%7D%5E%7B-1%7D%20%5CLambda_%7B12%7D%20%28x_2%20-%20%5Cmu_2%29">
     
 ### 다변수정규분포의 주변확률분포
 - `다변수정규분포의 주변확률분포는 다변수정규분포이다.`
@@ -559,26 +501,26 @@
 
 ### 베타분포
 - `베타분포 beta distribution` : 모수 a,b를 갖는다. 표본공간은 0과 1사이의 실수이다. 0과 1사이의 실수값만 표본으로 갖는다.
-    - $\text{Beta}(x;a,b),\;\;\; 0 \leq x \leq 1$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BBeta%7D%28x%3Ba%2Cb%29%2C%5C%3B%5C%3B%5C%3B%200%20%5Cleq%20x%20%5Cleq%201">
 - `베타분포의 pdf`
-    - $\text{Beta}(x;a,b) = \dfrac{\Gamma(a + b)}{\Gamma(a) \Gamma(b)} x^{a-1} (1-x)^{b-1}$
-    - $\Gamma(a) = \int_{0}^{\infty} x^{a-1} e^{-x} dx$, ((570p에도 나온다.))
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BBeta%7D%28x%3Ba%2Cb%29%20%3D%20%5Cdfrac%7B%5CGamma%28a%20&plus;%20b%29%7D%7B%5CGamma%28a%29%20%5CGamma%28b%29%7D%20x%5E%7Ba-1%7D%20%281-x%29%5E%7Bb-1%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5CGamma%28a%29%20%3D%20%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%20x%5E%7Ba-1%7D%20e%5E%7B-x%7D%20dx">, ((570p에도 나온다.))
 - `베타분포의 모양`
     - sp.stats.beta(a, b)
     - a와 b의 값이 커질 수록 분포의 분산이 작아진다. 즉 폭이 좁아진다.
 - `베타분포의 모멘트`
-    - $\text{E}(x) = \dfrac{a}{a+b}$
-    - $mode = \dfrac{a-1}{a+b-2}$, ((a와 b의 값이 같을때 식을 정리하면 0.5의 최빈값이 된다.))
-    - $\text{Var}(x) = \dfrac{ab}{(a+b)^2(a+b+1)}$, ((분산의 식에 따라서 a, b의 값이 커지면 분모가 커진다는 것을 알 수 있다.))
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%28x%29%20%3D%20%5Cdfrac%7Ba%7D%7Ba&plus;b%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?mode%20%3D%20%5Cdfrac%7Ba-1%7D%7Ba&plus;b-2%7D">, ((a와 b의 값이 같을때 식을 정리하면 0.5의 최빈값이 된다.))
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%28x%29%20%3D%20%5Cdfrac%7Bab%7D%7B%28a&plus;b%29%5E2%28a&plus;b&plus;1%29%7D">, ((분산의 식에 따라서 a, b의 값이 커지면 분모가 커진다는 것을 알 수 있다.))
 
 
 ### 감마분포
 - `감마분포 gamma distribution` : 모수가 a, b이고, 어떤 모수의 베이지안 추정에 사용된다. 0부터 무한대의 양수값에 대한 추정에 사용된다.
-    - $\text{Gam}(x;a,b) = \dfrac{1}{\Gamma(a)} b^{a} x^{a-1} e^{-bx}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BGam%7D%28x%3Ba%2Cb%29%20%3D%20%5Cdfrac%7B1%7D%7B%5CGamma%28a%29%7D%20b%5E%7Ba%7D%20x%5E%7Ba-1%7D%20e%5E%7B-bx%7D">
 - `감마분포의 모멘트`
-    - $\text{E}[X] = \dfrac{a}{b}$
-    - $\text{mode} = \dfrac{a-1}{b}$
-    - $\text{Var}[X] = \dfrac{a}{b^2}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20%5Cdfrac%7Ba%7D%7Bb%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7Bmode%7D%20%3D%20%5Cdfrac%7Ba-1%7D%7Bb%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5BX%5D%20%3D%20%5Cdfrac%7Ba%7D%7Bb%5E2%7D">
 - `감마분포의 분포모양`
     - 베타분포와 마찬가지로 어떤 모수값에 대한 베이지안 확률론의 추정에 사용되므로, 분포의 분산의 크기가 모수값의 추정에 대한 신뢰도를 의미한다.
     - 사이파이의 stapts 서브패키지의 gamma() 클래스를 사용하여 만들 수 있다. 모수 b의 값이 1로 고정되어 있다.
@@ -588,27 +530,22 @@
     - 3개의 변수가 사용된 경우 : (0.5, 0.6, 0.7) 또는 (1, 0, 0) 등의 0과 1사이의 값으로 이루어진 다변수를 입력받는다.
     - 베타분포는 0과 1사이의 단일(univariate) 확률변수의 베이지안 모형에 사용 됨 : (0.4) 또는 (0.145) 등 0과 1사이의 값으로 이루어진 단변수를 입력받는다.
 - `디리클레분포의 확률밀도함수`
-    - $\text{Dir}(x_1, x_2, \cdots, x_k ; \alpha_1, \alpha_2, \cdots, \alpha_k) = \dfrac{1}{\text{B}(\alpha_1, \alpha_2, \cdots, \alpha_k)} \prod_{i=1}^{K} x_{i}^{\alpha_i -1}$
-    - 베타함수 : $B(\alpha_1, \alpha_2, \cdots, \alpha_k) = \dfrac{\prod_{i=1}^{K} \Gamma(\alpha_i)}{\Gamma\left( \sum_{i=1}^{K} \alpha_i\right)}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BDir%7D%28x_1%2C%20x_2%2C%20%5Ccdots%2C%20x_k%20%3B%20%5Calpha_1%2C%20%5Calpha_2%2C%20%5Ccdots%2C%20%5Calpha_k%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Ctext%7BB%7D%28%5Calpha_1%2C%20%5Calpha_2%2C%20%5Ccdots%2C%20%5Calpha_k%29%7D%20%5Cprod_%7Bi%3D1%7D%5E%7BK%7D%20x_%7Bi%7D%5E%7B%5Calpha_i%20-1%7D">
+    - 베타함수 : <img src="https://latex.codecogs.com/gif.latex?B%28%5Calpha_1%2C%20%5Calpha_2%2C%20%5Ccdots%2C%20%5Calpha_k%29%20%3D%20%5Cdfrac%7B%5Cprod_%7Bi%3D1%7D%5E%7BK%7D%20%5CGamma%28%5Calpha_i%29%7D%7B%5CGamma%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20%5Calpha_i%5Cright%29%7D">
     - 표본값 벡터 x = (x_1, x_2, ..., x_k), 모수값 벡터 \alpha = (\alpha_1, \alpha_2, ..., \alpha_k)
 - `디리클레분포의 확률값 x의 제한조건`
-    - $0 \leq x_i \leq 1$, $\sum_{i=1}^{K} x_i = 1$
+    - <img src="https://latex.codecogs.com/gif.latex?0%20%5Cleq%20x_i%20%5Cleq%201%24%2C%20%24%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20x_i%20%3D%201">
 
 ### 베타분포와 디리클레분포의 관계
 - **베타분포는 K=2 즉 입력변수가 2개인 디레클레분포와 같다.** x1 = x, x2 = 1-x, \alpha_1 = a, \alpha_2 = b 라고 한후, 베타분포의 확률밀도함수에 각각을 대입하여 정리한다.
 - 디리클레분포의 확률밀도함수에 사용된 베타분포의 형태가 감마함수의 곱의 형태와 모수의 합을 입력받는 감마함수의 분수형태이므로, 위의 식의 형태와 같아진다.
 
-$\begin{aligned}
-    \text{Beta}(x;a,b)
-    &= \dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} x^{a-1} (1-x)^{b-1} \\
-    &= \dfrac{\Gamma(\alpha_1+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)} x_{1}^{\alpha_1-1} x_{2}^{\alpha_2-1} \\
-    &= \dfrac{1}{\text{B}(\alpha_1, \alpha_2)} \prod_{i=1}^{K} x_{i}^{\alpha_i-1}\\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BBeta%7D%28x%3Ba%2Cb%29%20%26%3D%20%5Cdfrac%7B%5CGamma%28a&plus;b%29%7D%7B%5CGamma%28a%29%5CGamma%28b%29%7D%20x%5E%7Ba-1%7D%20%281-x%29%5E%7Bb-1%7D%20%5C%5C%20%26%3D%20%5Cdfrac%7B%5CGamma%28%5Calpha_1&plus;%5Calpha_2%29%7D%7B%5CGamma%28%5Calpha_1%29%5CGamma%28%5Calpha_2%29%7D%20x_%7B1%7D%5E%7B%5Calpha_1-1%7D%20x_%7B2%7D%5E%7B%5Calpha_2-1%7D%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7B%5Ctext%7BB%7D%28%5Calpha_1%2C%20%5Calpha_2%29%7D%20%5Cprod_%7Bi%3D1%7D%5E%7BK%7D%20x_%7Bi%7D%5E%7B%5Calpha_i-1%7D%5C%5C%20%5Cend%7Baligned%7D">
 
 ### 디리클레분포의 모멘트
-- 기댓값 : $\text{E}[x_k] = \dfrac{\alpha_k}{\sum \alpha}$
-- 최빈값 : $mode = \dfrac{\alpha_k - 1}{\sum \alpha - K}$
-- 분산 : $\text{Var}[x_k] = \dfrac{\alpha_k \left( \sum \alpha - \alpha_k \right)}{\left( \sum \alpha \right)^{2} \left( \sum \alpha + 1 \right)}$
+- 기댓값 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5Bx_k%5D%20%3D%20%5Cdfrac%7B%5Calpha_k%7D%7B%5Csum%20%5Calpha%7D">
+- 최빈값 : <img src="https://latex.codecogs.com/gif.latex?mode%20%3D%20%5Cdfrac%7B%5Calpha_k%20-%201%7D%7B%5Csum%20%5Calpha%20-%20K%7D">
+- 분산 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BVar%7D%5Bx_k%5D%20%3D%20%5Cdfrac%7B%5Calpha_k%20%5Cleft%28%20%5Csum%20%5Calpha%20-%20%5Calpha_k%20%5Cright%29%7D%7B%5Cleft%28%20%5Csum%20%5Calpha%20%5Cright%29%5E%7B2%7D%20%5Cleft%28%20%5Csum%20%5Calpha%20&plus;%201%20%5Cright%29%7D">
 - **기댓값 공식에서의 모수 \alpha 벡터는 입력변수인 x_k 벡터 중에서 어떤 수가 나올 가능성이 더 큰지를 결정하는 형상인자 shape factor이다.** 모든 모수의 값이 같으면 모든 xi의 확률분포가 같아진다. 나올확률이 같다.
 - **분산 공식에서 모수 벡터가 값이 클 수록 값이 작아진다.** 즉 디리클레분포의 표본값 x가 어떤 특정한 값 근처에서 나올 가능성이 높다는 의미이다.
 
