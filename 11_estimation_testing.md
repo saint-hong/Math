@@ -28,18 +28,18 @@
 - `모멘트 방법 method of moment` : 표본자료에 대한 표본모멘트가 확률분포의 이론적 모멘트와 같다고 가정하여 모수를 구하는 방법.
     - 즉 표본자료의 모멘트값을 구한다. 이 값이 확률분포의 모멘트와 같다고 가정한다.
 - **베르누이 분포의 모수추정**
-    - $\text{E}[X] = \mu \triangleq \bar{x} = \dfrac{1}{N} \sum_{i=1}^{N} x_i = \dfrac{N_1}{N}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20%5Cmu%20%5Ctriangleq%20%5Cbar%7Bx%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_i%20%3D%20%5Cdfrac%7BN_1%7D%7BN%7D">
     - N1은 1의 갯수, 베르누이 분포의 표본은 0 아니면 1이므로 xi를 다 더하면 1의 갯수와 같다.
 - **정규분포의 모수추정**
-    - $\text{E}[X] = \mu \triangleq \bar{x} = \dfrac{1}{N} \sum_{i=1}^{N} x_i$
-    - $\text{E}[(X-\mu)^2] = \sigma^2 \triangleq s^2 = \dfrac{1}{N-1} \sum_{i=1}^{N} (x_i - \bar{x})^2$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20%5Cmu%20%5Ctriangleq%20%5Cbar%7Bx%7D%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_i">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5B%28X-%5Cmu%29%5E2%5D%20%3D%20%5Csigma%5E2%20%5Ctriangleq%20s%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN-1%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2">
     - 정규분포의 모수는 모멘트로 정의되어 있다. 따라서 모멘트 방법으로 쉽게 구할 수 있다.
 - **베타 분포의 모수추정**
-    - $Beta(x; a, b), \;\; 0 \leq x \leq 1, \;\; x \in R$
-    - $\text{E}[X] = \dfrac{a}{a+b} \triangleq \bar{x}$
-    - $\text{E}[X-\mu)^2] = \dfrac{ab}{(a+b)(a+b+1)} \triangleq s^2$
+    - <img src="https://latex.codecogs.com/gif.latex?Beta%28x%3B%20a%2C%20b%29%2C%20%5C%3B%5C%3B%200%20%5Cleq%20x%20%5Cleq%201%2C%20%5C%3B%5C%3B%20x%20%5Cin%20R">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX%5D%20%3D%20%5Cdfrac%7Ba%7D%7Ba&plus;b%7D%20%5Ctriangleq%20%5Cbar%7Bx%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BE%7D%5BX-%5Cmu%29%5E2%5D%20%3D%20%5Cdfrac%7Bab%7D%7B%28a&plus;b%29%28a&plus;b&plus;1%29%7D%20%5Ctriangleq%20s%5E2">
     - 위의 두 모멘트 식을 풀어 a와 b 모수값을 구한다.
-    - $a = \bar{x}\left( \dfrac{\bar{x}(1-\bar{x})}{s^2} - 1 \right), \;\; b = (1-\bar{x})\left( \dfrac{\bar{x}(1-\bar{x})}{s^2} - 1 \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?a%20%3D%20%5Cbar%7Bx%7D%5Cleft%28%20%5Cdfrac%7B%5Cbar%7Bx%7D%281-%5Cbar%7Bx%7D%29%7D%7Bs%5E2%7D%20-%201%20%5Cright%29%2C%20%5C%3B%5C%3B%20b%20%3D%20%281-%5Cbar%7Bx%7D%29%5Cleft%28%20%5Cdfrac%7B%5Cbar%7Bx%7D%281-%5Cbar%7Bx%7D%29%7D%7Bs%5E2%7D%20-%201%20%5Cright%29">
 
 
 # 1-4. [python] 보스턴 집값데이터와 확률분포
@@ -421,28 +421,28 @@ plt.show()
 
 ### 2-1. 가능도 함수란?
 - `가능도 함수 likelihood function` : 확률밀도함수에서 모수를 변수로 보는 경우
-    - $L(\theta ; x) = p(x ; \theta)$
+    - <img src="https://latex.codecogs.com/gif.latex?L%28%5Ctheta%20%3B%20x%29%20%3D%20p%28x%20%3B%20%5Ctheta%29">
     - 일반적인 확률밀도함수에서는 표본인 x가 변수이고, 모수는 이미 알고있는 상수계수이다.
     - 가능도 함수에서는 모수 θ가 변수이고, 표본 x가 상수계수로 생각한다. 
     - 확률분포에 따라서 모수값이 다르므로 가능도함수의 모수 θ도 다르다.
 
 #### **정규분포의 가능도함수**
 - 정규분포의 확률밀도함수의 변수는 x이고 모수가 mu, sigma2 인데, 가능도 함수에서는 반대가 된다. 변수가 모수이고, 상수계수가 x가 된다.
-    - 원래 정규분포의 확률밀도함수 : $p(x;\mu, \sigma_0^2) = \dfrac{1}{\sqrt{2 \pi \sigma_0^2}} \exp \left( - \dfrac{(x - \mu_0)^2}{2\sigma_0^2} \right)$
-    - 정규분포의 가능도 함수 : $L(\mu, \sigma^2 ; x_0) = \dfrac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \dfrac{(x_0 - \mu)^2}{2 \sigma^2} \right)$
+    - 원래 정규분포의 확률밀도함수 : <https://latex.codecogs.com/gif.latex?p%28x%3B%5Cmu%2C%20%5Csigma_0%5E2%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%20%5Cpi%20%5Csigma_0%5E2%7D%7D%20%5Cexp%20%5Cleft%28%20-%20%5Cdfrac%7B%28x%20-%20%5Cmu_0%29%5E2%7D%7B2%5Csigma_0%5E2%7D%20%5Cright%29>
+    - 정규분포의 가능도 함수 : <img src="https://latex.codecogs.com/gif.latex?L%28%5Cmu%2C%20%5Csigma%5E2%20%3B%20x_0%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%20%5Cpi%20%5Csigma%5E2%7D%7D%20%5Cexp%20%5Cleft%28%20-%20%5Cdfrac%7B%28x_0%20-%20%5Cmu%29%5E2%7D%7B2%20%5Csigma%5E2%7D%20%5Cright%29">
 
 #### **베르누이분포의 가능도함수**
 - 베르누이분포의 확률질량 함수 : 변수 x는 0 또는 1의 값만 갖는다.
-    - $p(x ; \mu_0) = \mu_0^x (1 - \mu_0)^{1-x}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x%20%3B%20%5Cmu_0%29%20%3D%20%5Cmu_0%5Ex%20%281%20-%20%5Cmu_0%29%5E%7B1-x%7D">
 - 베르누이분포의 가능도 함수 : 변수가 모수 mu이므로 0~1까지의 실수값을 입력받는 함수가 된다. x0는 고정 된 상수계수와 같다.
-    - $p(\mu ; x_0) = \mu^{x_0} (1 - \mu)^{1-x_{0}}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28%5Cmu%20%3B%20x_0%29%20%3D%20%5Cmu%5E%7Bx_0%7D%20%281%20-%20%5Cmu%29%5E%7B1-x_%7B0%7D%7D">
 - 가능도 함수와 확률밀도함수(확률질량함수)의 수식은 같지만 의미는 다르다.
     - 확률밀도함수는 모든 표본값 x에 대해 적분하면 값이 1이다. 전체 면적 = 1 = 전체확률과 같다.
     - 가능도함수는 가능한 모든 θ에 대해 적분하면 1이 된다는 보장이 없다.
 
 ### 2-2. 최대가능도 추정법
 - `최대가능도 추정법 MLE(maximum likelihood estimation)` : 주어진 표본에 대해 가능도 함수를 가장 크게 하는 모수 θ를 찾는 방법
-    - $\hat{\theta}_{MLE} = argmax_{theta} L(\theta ; x)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7B%5Ctheta%7D_%7BMLE%7D%20%3D%20argmax_%7Btheta%7D%20L%28%5Ctheta%20%3B%20x%29">
     - 가능도함수 L의 값을 가장 크게하는 θ를 찾는다는 의미
 - 가능도함수를 구하고, 이 함수를 미분하여 도함수를 구하고, 이 도함수가 0인 지점 θ를 찾는다. 
     - 도함수가 0인 지점이 원래함수의 최대 또는 최소 지점이다.
@@ -452,55 +452,29 @@ plt.show()
 ### 2-3. 복수의 표본데이터가 있는 경우의 가능도 함수
 - 복수의 표본데이터가 주어진 경우 가능도 함수는 결합확률밀도함수(joint probability density function)가 된다.
 - 복수의 표본데이터가 확률변수 X에서 생성된 독립적인 값이므로 결합확률밀도함수는 각 확률값의 곱이된다. 
-    - $L(\theta ; x_1, \cdots, x_N) = p(x_1, \cdots, x_N ; \theta) = \prod_{i=1}{N} p(x_i ; \theta)$
+    - <img src="https://latex.codecogs.com/gif.latex?L%28%5Ctheta%20%3B%20x_1%2C%20%5Ccdots%2C%20x_N%29%20%3D%20p%28x_1%2C%20%5Ccdots%2C%20x_N%20%3B%20%5Ctheta%29%20%3D%20%5Cprod_%7Bi%3D1%7D%7BN%7D%20p%28x_i%20%3B%20%5Ctheta%29">
 
 #### 정규분포로부터 복수의 표본데이터 {1, 0, -3}이 주어진 경우 가능도함수
 
-$$\begin{aligned} 
-&L(\theta; x_1, x_2, x_3) \\ &= 
-\mathcal{N}(x_1, x_2, x_3;\theta)  \\
-&=
-\mathcal{N}(x_1;\theta) \cdot \mathcal{N}(x_2;\theta) \cdot \mathcal{N}(x_3;\theta) \\
-&=
-\dfrac{1}{\sqrt{2\pi\sigma^2}} \exp\left({-\frac{(1-\mu)^2}{2\sigma^2}}\right) \cdot
-\dfrac{1}{\sqrt{2\pi\sigma^2}} \exp\left({-\frac{(0-\mu)^2}{2\sigma^2}}\right) \cdot
-\\
-&\;\;\;\; \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp\left({-\frac{(-3-\mu)^2}{2\sigma^2}}\right) \\
-&=
-\dfrac{1}{(2\pi\sigma^2)^{\frac{3}{2}}} 
-\exp\left({-\frac{\mu^2 + (1-\mu)^2 + (-3-\mu)^2}{2\sigma^2}}\right) \\
-&=
-\dfrac{1}{(2\pi\sigma^2)^{\frac{3}{2}}} 
-\exp\left({-\frac{3\mu^2+4\mu+10}{2\sigma^2}}\right) \cdot \\
-&=
-\dfrac{1}{(2\pi\sigma^2)^{\frac{3}{2}}} 
-\exp\left({-\frac{3(\mu+\frac23)^2+\frac{26}3}{2\sigma^2}}\right) \cdot
-\end{aligned}$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%26L%28%5Ctheta%3B%20x_1%2C%20x_2%2C%20x_3%29%20%5C%5C%20%26%3D%20%5Cmathcal%7BN%7D%28x_1%2C%20x_2%2C%20x_3%3B%5Ctheta%29%20%5C%5C%20%26%3D%20%5Cmathcal%7BN%7D%28x_1%3B%5Ctheta%29%20%5Ccdot%20%5Cmathcal%7BN%7D%28x_2%3B%5Ctheta%29%20%5Ccdot%20%5Cmathcal%7BN%7D%28x_3%3B%5Ctheta%29%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%20%5Cexp%5Cleft%28%7B-%5Cfrac%7B%281-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7D%5Cright%29%20%5Ccdot%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%20%5Cexp%5Cleft%28%7B-%5Cfrac%7B%280-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7D%5Cright%29%20%5Ccdot%20%5C%5C%20%26%5C%3B%5C%3B%5C%3B%5C%3B%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%20%5Cexp%5Cleft%28%7B-%5Cfrac%7B%28-3-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7D%5Cright%29%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7B%282%5Cpi%5Csigma%5E2%29%5E%7B%5Cfrac%7B3%7D%7B2%7D%7D%7D%20%5Cexp%5Cleft%28%7B-%5Cfrac%7B%5Cmu%5E2%20&plus;%20%281-%5Cmu%29%5E2%20&plus;%20%28-3-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7D%5Cright%29%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7B%282%5Cpi%5Csigma%5E2%29%5E%7B%5Cfrac%7B3%7D%7B2%7D%7D%7D%20%5Cexp%5Cleft%28%7B-%5Cfrac%7B3%5Cmu%5E2&plus;4%5Cmu&plus;10%7D%7B2%5Csigma%5E2%7D%7D%5Cright%29%20%5C%5C%20%26%3D%20%5Cdfrac%7B1%7D%7B%282%5Cpi%5Csigma%5E2%29%5E%7B%5Cfrac%7B3%7D%7B2%7D%7D%7D%20%5Cexp%5Cleft%28%7B-%5Cfrac%7B3%28%5Cmu&plus;%5Cfrac23%29%5E2&plus;%5Cfrac%7B26%7D3%7D%7B2%5Csigma%5E2%7D%7D%5Cright%29%20%5Cend%7Baligned%7D">
 
 - 루트가 있는 경우 2 * 1/2 = 1의 형태로 거듭제곱을 바꿔주면 루트를 제거할 수 있다. 이러한 규칙을 적용하여 좌측 수식을 정리할 수 있다.
-- 지수 함수의 곱은 지수의 거듭제곱의 합이 된다. $e^a \cdot e^b = e^{a+b}$ 이러한 규칙을 적용하여 정리하면 우측 지수함수의 수식이 2차함수의 형태가 된다. 
+- 지수 함수의 곱은 지수의 거듭제곱의 합이 된다. <img src="https://latex.codecogs.com/gif.latex?e%5Ea%20%5Ccdot%20e%5Eb%20%3D%20e%5E%7Ba&plus;b%7D"> 이러한 규칙을 적용하여 정리하면 우측 지수함수의 수식이 2차함수의 형태가 된다. 
 
 #### 베르누이분포로부터 복수의 표본데이터 {1, 0, 1}을 얻은 경우 가능도 함수
 
-$$\begin{aligned}
-&L(\mu ; x_1=1, x_2=0, x_3=1) \\
-&= p(x_1=1, x_2=0, x_3=1 ; \mu) \\
-&= p(x_1=1;\mu) p(x_2=0;\mu) p(x_3=1;\mu)\\
-&= \mu^{1} (1-\mu)^{1-1} \cdot \mu^{0} (1-\mu)^{1-0} \cdot \mu^{1} (1-\mu)^{1-1} \\
-&= \mu \cdot (1-\mu) \cdot \mu \\
-&= -\mu^3 + \mu^2
-\end{aligned}$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%26L%28%5Cmu%20%3B%20x_1%3D1%2C%20x_2%3D0%2C%20x_3%3D1%29%20%5C%5C%20%26%3D%20p%28x_1%3D1%2C%20x_2%3D0%2C%20x_3%3D1%20%3B%20%5Cmu%29%20%5C%5C%20%26%3D%20p%28x_1%3D1%3B%5Cmu%29%20p%28x_2%3D0%3B%5Cmu%29%20p%28x_3%3D1%3B%5Cmu%29%5C%5C%20%26%3D%20%5Cmu%5E%7B1%7D%20%281-%5Cmu%29%5E%7B1-1%7D%20%5Ccdot%20%5Cmu%5E%7B0%7D%20%281-%5Cmu%29%5E%7B1-0%7D%20%5Ccdot%20%5Cmu%5E%7B1%7D%20%281-%5Cmu%29%5E%7B1-1%7D%20%5C%5C%20%26%3D%20%5Cmu%20%5Ccdot%20%281-%5Cmu%29%20%5Ccdot%20%5Cmu%20%5C%5C%20%26%3D%20-%5Cmu%5E3%20&plus;%20%5Cmu%5E2%20%5Cend%7Baligned%7D">
 
 - **이 가능도함수를 최대화하는 모수는 미분을 하여 구한 도함수가 0이 되는 위치와 같다.**
-    - $\dfrac{dL}{d\mu} = -3\mu^2 + 2\mu = -3\mu \left( \mu - \dfrac{2}{3} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7BdL%7D%7Bd%5Cmu%7D%20%3D%20-3%5Cmu%5E2%20&plus;%202%5Cmu%20%3D%20-3%5Cmu%20%5Cleft%28%20%5Cmu%20-%20%5Cdfrac%7B2%7D%7B3%7D%20%5Cright%29">
     - mu = 0 또는 -2/3 이다. 그런데 mu=0이면 베르누이분포에서 1이 나올 수 없다. 따라서 가능도함수를 최대화하는 mu=-2/3가 된다. 
     
 ### 2-4. 로그가능도함수
 - 최대가능도 추정법을 사용하여 가능도가 최대가 되는 θ를 계산하려면 **수치적 최적화**를 해야한다. 
-    - $\hat{\theta_{ML}} = argmax_{\theta} L(\theta ; {x_i})$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7B%5Ctheta_%7BML%7D%7D%20%3D%20argmax_%7B%5Ctheta%7D%20L%28%5Ctheta%20%3B%20%7Bx_i%7D%29">
 - 가능도를 직접사용하는 것보다 로그함수를 사용하여 변환환 **로그가능도함수**를 사용하는 것이 더 유용하다.
-    - $LL = log L$
-    - $\hat{\theta_{ML}} = argmax_{\theta} \; log L(\theta ; {x_i})$
+    - <img src="https://latex.codecogs.com/gif.latex?LL%20%3D%20log%20L">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Chat%7B%5Ctheta_%7BML%7D%7D%20%3D%20argmax_%7B%5Ctheta%7D%20%5C%3B%20log%20L%28%5Ctheta%20%3B%20%7Bx_i%7D%29">
 - 로그변환을 하면 좋은점 (로그함수의 특징)
     - 로그 변환을 해도 최대값(또는 최소값)의 위치가 변하지 않는다.
     - 복수의 독립적인 표본 데이터를 입력으로 받는 가능도함수의 경우 결합확률밀도함수가 되므로 각 변수마다의 확률의 곱이 된다. 이런경우 로그변환을 하면 곱하기의 형태가 더하기의 형태로 바뀌어 계산이 단순해진다.
@@ -515,86 +489,62 @@ $$\begin{aligned}
 
 ### 2-6. 베르누이분포의 최대가능도 모수추정
 - 모수가 mu인 베르누이분포의 pmf
-    - $p(x;\mu) = Bern(x;\mu) = \mu^x (1-\mu)^{1-x}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x%3B%5Cmu%29%20%3D%20Bern%28x%3B%5Cmu%29%20%3D%20%5Cmu%5Ex%20%281-%5Cmu%29%5E%7B1-x%7D">
 - N번 반복시행 한 경우 표본 데이터가 {x1, x2, ..., xN} 된다. 각 표본은 모두 하나의 확률변수로부터 나온 독립된 표본이므로 **전체 확률질량함수는 각 확률질량함수의 곱과 같다.**(가능도함수=결합확률질량함수)
-    - $L(\mu ;x_1,\cdots,x_N)=p(x_1,\cdots,x_N ; \mu) = \prod_{i=1}^{N} \mu^{x_i} (1-\mu)^{1-x_i}$
+    - <img src="https://latex.codecogs.com/gif.latex?L%28%5Cmu%20%3Bx_1%2C%5Ccdots%2Cx_N%29%3Dp%28x_1%2C%5Ccdots%2Cx_N%20%3B%20%5Cmu%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5E%7BN%7D%20%5Cmu%5E%7Bx_i%7D%20%281-%5Cmu%29%5E%7B1-x_i%7D">
 - 로그변환을 하여 로그가능도함수를 구한다.
 
-$\begin{aligned}
-\log L 
-&= \log p(x_1, \cdots, x_N;\mu)  \\
-&= \sum_{i=1}^N \big\{ {x_i} \log\mu + (1-x_i)\log(1 - \mu) \big\} \\
-&=  \sum_{i=1}^N {x_i} \log\mu +  \left( N-\sum_{i=1}^N x_i \right) \log( 1 - \mu ) \\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Clog%20L%20%26%3D%20%5Clog%20p%28x_1%2C%20%5Ccdots%2C%20x_N%3B%5Cmu%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Cbig%5C%7B%20%7Bx_i%7D%20%5Clog%5Cmu%20&plus;%20%281-x_i%29%5Clog%281%20-%20%5Cmu%29%20%5Cbig%5C%7D%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%7Bx_i%7D%20%5Clog%5Cmu%20&plus;%20%5Cleft%28%20N-%5Csum_%7Bi%3D1%7D%5EN%20x_i%20%5Cright%29%20%5Clog%28%201%20-%20%5Cmu%20%29%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - x=1 또는 x=0의 횟수
-    - $N_1 = \sum_{i=1}^{N} x_i, \;\; N_0 = N - \sum_{i=1}^{N} x_i$
+    - <img src="https://latex.codecogs.com/gif.latex?N_1%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_i%2C%20%5C%3B%5C%3B%20N_0%20%3D%20N%20-%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x_i">
 
 - 위의 가능도함수를 로그변환한다.
-    - $logL = N_1 log \mu + N_0 log (1-\mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?logL%20%3D%20N_1%20log%20%5Cmu%20&plus;%20N_0%20log%20%281-%5Cmu%29">
 
 - 로그가능도함수를 mu로 미분한 도함수의 값이 0인 모수값을 구한다.
     - 로그를 미분하면 역수의 형태가 된다.
 
-$\begin{aligned}
-\dfrac{\partial \log L}{\partial \mu} 
-&= \dfrac{\partial}{\partial \mu} \big\{ N_1 \log\mu  + N_0 \log(1 - \mu)  \big\} = 0\\
-&= \dfrac{N_1}{\mu}  - \dfrac{N_0}{1-\mu} = 0 \\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cdfrac%7B%5Cpartial%20%5Clog%20L%7D%7B%5Cpartial%20%5Cmu%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cmu%7D%20%5Cbig%5C%7B%20N_1%20%5Clog%5Cmu%20&plus;%20N_0%20%5Clog%281%20-%20%5Cmu%29%20%5Cbig%5C%7D%20%3D%200%5C%5C%20%26%3D%20%5Cdfrac%7BN_1%7D%7B%5Cmu%7D%20-%20%5Cdfrac%7BN_0%7D%7B1-%5Cmu%7D%20%3D%200%20%5C%5C%20%5Cend%7Baligned%7D">
 
-$\dfrac{N_1}{\mu}  = \dfrac{N_0}{1-\mu}, \;\; \dfrac{1-\mu}{\mu} = \dfrac{N_0}{N_1} = \dfrac{N-N_1}{N_1}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7BN_1%7D%7B%5Cmu%7D%20%3D%20%5Cdfrac%7BN_0%7D%7B1-%5Cmu%7D%2C%20%5C%3B%5C%3B%20%5Cdfrac%7B1-%5Cmu%7D%7B%5Cmu%7D%20%3D%20%5Cdfrac%7BN_0%7D%7BN_1%7D%20%3D%20%5Cdfrac%7BN-N_1%7D%7BN_1%7D">
 
-$\dfrac{1}{\mu} - 1 = \dfrac{N}{N_1} - 1$ 이므로
+<img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B1%7D%7B%5Cmu%7D%20-%201%20%3D%20%5Cdfrac%7BN%7D%7BN_1%7D%20-%201"> 이므로
 
 - **mu = N1 / N 이다.**
 - `최대가능도 추정법으로 구한 베르누이분포의 모수는 1이 나온 횟수와 전체 실행횟수의 비율과 같다.`
 
 ### 2-7. 카테고리분포의 최대가능도 모수추정
 - 모수가 mu = (mu1, mu2, ..., muN) 인 카테고리분포의 pmf (모수는 벡터의 형태이다.)
-    - $p(x ; \mu_1, \cdots, \mu_K ) = \text{Cat}(x ; \mu_1, \cdots, \mu_K) = \prod_{k=1}^K \mu_k^{x_k}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x%20%3B%20%5Cmu_1%2C%20%5Ccdots%2C%20%5Cmu_K%20%29%20%3D%20%5Ctext%7BCat%7D%28x%20%3B%20%5Cmu_1%2C%20%5Ccdots%2C%20%5Cmu_K%29%20%3D%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu_k%5E%7Bx_k%7D">
 
 - 카테고리분포의 mu 제한조건
-    - 모든 mu를 합하면 1이 된다. : $\sum_{k=1}^K \mu_k = 1$ 
-    - mu는 0과 1사이의 실수값이다. : $0 \leq mu_k \leq 1$
+    - 모든 mu를 합하면 1이 된다. : <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%20%3D%201"> 
+    - mu는 0과 1사이의 실수값이다. : <img src="https://latex.codecogs.com/gif.latex?0%20%5Cleq%20%5Cmu_k%20%5Cleq%201">
 
 - x는 k개의 원소를 갖는 원핫인코딩 벡터이다. x1=(1,0,0,...,0)
 - N번 반복시행하여 얻은 표본 x1~xN은 모두 독립이므로 확률밀도함수는 각각의 확률질량함수의 곱과 같다.
-    - $L(\mu_1, \cdots, \mu_K ; x_1,\cdots, x_N) = \prod_{i=1}^N \prod_{k=1}^K \mu_k^{x_{i,k}}$
+    - <img src="https://latex.codecogs.com/gif.latex?L%28%5Cmu_1%2C%20%5Ccdots%2C%20%5Cmu_K%20%3B%20x_1%2C%5Ccdots%2C%20x_N%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu_k%5E%7Bx_%7Bi%2Ck%7D%7D">
     - x_i,k는 i번째 시행 결과인 x_i의 k번째 원소를 의미한다. x_i는 원핫인코딩 벡터이므로 0과 1로 되어 있다. 
 
 - 로그가능도함수를 구한다.
 
-$\begin{aligned}
-\log L 
-&= \log p(x_1, \cdots, x_N;\mu_1, \cdots, \mu_K)  \\
-&= \sum_{i=1}^N \sum_{k=1}^K  \left( {x_{i,k}} \log\mu_k  \right) \\
-&= \sum_{k=1}^K  \sum_{i=1}^N  \left(  \log\mu_k \cdot {x_{i,k}}\right) \\
-&= \sum_{k=1}^K \left( \log\mu_k \left( \sum_{i=1}^N {x_{i,k}}   \right)  \right)
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Clog%20L%20%26%3D%20%5Clog%20p%28x_1%2C%20%5Ccdots%2C%20x_N%3B%5Cmu_1%2C%20%5Ccdots%2C%20%5Cmu_K%29%20%5C%5C%20%26%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cleft%28%20%7Bx_%7Bi%2Ck%7D%7D%20%5Clog%5Cmu_k%20%5Cright%29%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20%5Csum_%7Bi%3D1%7D%5EN%20%5Cleft%28%20%5Clog%5Cmu_k%20%5Ccdot%20%7Bx_%7Bi%2Ck%7D%7D%5Cright%29%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cleft%28%20%5Clog%5Cmu_k%20%5Cleft%28%20%5Csum_%7Bi%3D1%7D%5EN%20%7Bx_%7Bi%2Ck%7D%7D%20%5Cright%29%20%5Cright%29%20%5Cend%7Baligned%7D">
 
 - k번째 원소가 나온 횟수를 N_k라고 할 수 있다.
-    - $N_k = \sum_{i=1}^N {x_{i,k}}$
+    - <img src="https://latex.codecogs.com/gif.latex?N_k%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%7Bx_%7Bi%2Ck%7D%7D">
     
 - 위의 식을 가능도함수에 대입하여 정리한다.
-    - $\log L = \sum_{k=1}^K \left( \log\mu_k  \cdot N_k  \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Clog%20L%20%3D%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cleft%28%20%5Clog%5Cmu_k%20%5Ccdot%20N_k%20%5Cright%29">
     
 - 카테고리분포의 제한 조건이 있으므로, 라그랑주 승수법을 사용하여 로그가능도함수에 제한조건을 추가한 새로운 목적함수를 만든다. 
-    - $J = \sum_{k=1}^K \log\mu_k N_k  + \lambda \left(1- \sum_{k=1}^K \mu_k \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?J%20%3D%20%5Csum_%7Bk%3D1%7D%5EK%20%5Clog%5Cmu_k%20N_k%20&plus;%20%5Clambda%20%5Cleft%281-%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%20%5Cright%29">
     
 - 목적함수 J를 모수와 라그랑주 승수로 각각 미분한 후 0이 되는 모수값을 찾는다.  
 - k개의 도함수가 나온다.
 - 제한조건에 의해서 muk로 미분한 경우 라그랑주 승수만 남는다.
 
-$\begin{aligned}
-\dfrac{\partial J}{\partial \mu_k} 
-&= \dfrac{\partial}{\partial \mu_k} \left\{ \sum_{k=1}^K \log\mu_k N_k  + \lambda \left(1- \sum_{k=1}^K \mu_k\right)  \right\} = 0  \;\; (k=1, \cdots, K) \\
-\dfrac{\partial J}{\partial \lambda} 
-&= \dfrac{\partial}{\partial \lambda} \left\{ \sum_{k=1}^K \log\mu_k N_k  + \lambda \left(1- \sum_{k=1}^K \mu_k \right)  \right\} = 0 & \\
-&= \dfrac{N_1}{\mu_1}  = \dfrac{N_2}{\mu_2} = \cdots = \dfrac{N_K}{\mu_K} = \lambda \\
-&= N_k = \lambda \mu_k \\
-&= \sum_{k=1}^K N_k = \lambda \sum_{k=1}^K \mu_k  = \lambda = N \\
-&= \mu_k = \dfrac{N_k}{N} \\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cdfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20%5Cmu_k%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cmu_k%7D%20%5Cleft%5C%7B%20%5Csum_%7Bk%3D1%7D%5EK%20%5Clog%5Cmu_k%20N_k%20&plus;%20%5Clambda%20%5Cleft%281-%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%5Cright%29%20%5Cright%5C%7D%20%3D%200%20%5C%3B%5C%3B%20%28k%3D1%2C%20%5Ccdots%2C%20K%29%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20%5Clambda%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Clambda%7D%20%5Cleft%5C%7B%20%5Csum_%7Bk%3D1%7D%5EK%20%5Clog%5Cmu_k%20N_k%20&plus;%20%5Clambda%20%5Cleft%281-%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%20%5Cright%29%20%5Cright%5C%7D%20%3D%200%20%26%20%5C%5C%20%26%3D%20%5Cdfrac%7BN_1%7D%7B%5Cmu_1%7D%20%3D%20%5Cdfrac%7BN_2%7D%7B%5Cmu_2%7D%20%3D%20%5Ccdots%20%3D%20%5Cdfrac%7BN_K%7D%7B%5Cmu_K%7D%20%3D%20%5Clambda%20%5C%5C%20%26%3D%20N_k%20%3D%20%5Clambda%20%5Cmu_k%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20N_k%20%3D%20%5Clambda%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%20%3D%20%5Clambda%20%3D%20N%20%5C%5C%20%26%3D%20%5Cmu_k%20%3D%20%5Cdfrac%7BN_k%7D%7BN%7D%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - `최대가능도 추정법을 사용하여 구한 카테고리분포의 모수는 각 범줏값이 나온 횟수와 전체 시행 횟수의 비율과 같다.`
 
@@ -605,9 +555,9 @@ $\begin{aligned}
 - 정규분포의 모수는 기댓값과 분산이므로 각각의 값으로 편미분하여 도함수를 구한다.
 - mu와 sigma2로 미분한 도함수가 0이 되는 값을 구한다. 
 - `최대가능도 추정법으로 구한 정규분포의 기댓값은 표본평균과 같다.`
-    - $\mu = \dfrac{1}{N}\sum_{i=1}^N x_i = \bar{x}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5EN%20x_i%20%3D%20%5Cbar%7Bx%7D">
 - `최대가능도 추정법으로 구한 정규분포의 분산은 편향 표본분산과 같다.`
-    - $\sigma^2  =  \dfrac{1}{N}\sum_{i=1}^N (x_i-\mu)^2 = \dfrac{1}{N}\sum_{i=1}^N (x_i-\bar{x})^2 = s^2$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Csigma%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5EN%20%28x_i-%5Cmu%29%5E2%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5EN%20%28x_i-%5Cbar%7Bx%7D%29%5E2%20%3D%20s%5E2">
 
 ### 2-9. 다변수 정규분포의 최대가능도 모수추정
 - 다변수 정규분포의 pdf를 구한다. 
@@ -619,9 +569,9 @@ $\begin{aligned}
 - 로그가능도함수의 값이 최대가 되는 모수값을 찾으려면 모수로 미분한 도함수의 값이 0이 되게끔 하는 모수값을 찾는다.
 - 다변수 정규분포의 로그가능도함수를 미분하려면, **대각합의 트레이스 공식**과 **미분공식 5가지**를 사용하여야 한다. 
 - `최대가능도 추정법에 의한 다변수 정규분포의 기댓값은 표본평균벡터와 같다.`
-    - $\mu = \dfrac{1}{N}\sum_{i=1}^N x_i = \bar{x}$ 
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cmu%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5EN%20x_i%20%3D%20%5Cbar%7Bx%7D">
 - `최대가능도 추정법에 의한 다변수 정규분포의 분산은 표본공분산행렬과 같다.`
-    - $\Lambda^{-1} = \Sigma = \dfrac{1}{N}\sum_{i=1}^N (x_i-\bar{x})(x_i-\bar{x})^T$
+    - <img src="https://latex.codecogs.com/gif.latex?%5CLambda%5E%7B-1%7D%20%3D%20%5CSigma%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5EN%20%28x_i-%5Cbar%7Bx%7D%29%28x_i-%5Cbar%7Bx%7D%29%5ET">
 
 # 2-10. [python] 가능도함수
 - 정규분포의 가능도함수
@@ -752,7 +702,7 @@ plt.show() ;
 - 주어진 데이터를 기반으로 모수인 mu의 조건부 확률분포를 계산하는 것과 같다.
     - 데이터 : {x1, x2, ..., xN}
     - 모수값 : mu
-    - $p(\mu \mid x_{1},\ldots,x_{N}) = \dfrac{p(x_{1},\ldots,x_{N} \mid \mu) \cdot p(\mu)}{p(x_{1},\ldots,x_{N})} \propto p(x_{1},\ldots,x_{N}  \mid \mu )  \cdot p(\mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28%5Cmu%20%5Cmid%20x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%29%20%3D%20%5Cdfrac%7Bp%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20%5Ccdot%20p%28%5Cmu%29%7D%7Bp%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%29%7D%20%5Cpropto%20p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%20%29%20%5Ccdot%20p%28%5Cmu%29">
     - 확률론의 베이즈 정리와 같다. : 어떤 데이터가 주어졌을 때 조건부확률을 구하는 공식
 - `p(mu)` : 모수의 **사전(Prior)분포** 이다. 사전분포는 베이지안 추정 작업을 하기 전에 이미 알고 있던 모수의 분포를 의미한다. 만약 모수의 분포에 대해서 알지 못하면 대신 **균일분포(uniform)인 Beta(1, 1)분포** 또는 **기대값이 0인 정규분포**를 사용할 수 있다. 이러한 분포를 무정보분포(non-infromative distribution)이라고 한다. 
 - `p(mu | x1, x2, ..., xN)` : 모수의 **사후(Posterior)분포**이다. 데이터가 주어진 상태에서의 mu에대한 조건부확률분포이다. 베이즈 추정법으로 구하려고 하는 값이다.
@@ -774,23 +724,19 @@ plt.show() ;
 - 따라서 이러한 모수값의 범위와 일치하는 사전분포로 하이퍼 모수가 a=b=1인 베타분포를 사용한다. 
 - 베르누이분포의 모수를 추정하기위해 이 모수의 분포로 베타분포를 사용하겠다는 의미이다.
     - 베타분포의 표본값의 범위도 0과 1사이의 값을 갖는다.
-    - $p(\mu) \propto \mu^{a-1}(1-\mu)^{b-1} \;\;\; (a=1, b=1)$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28%5Cmu%29%20%5Cpropto%20%5Cmu%5E%7Ba-1%7D%281-%5Cmu%29%5E%7Bb-1%7D%20%5C%3B%5C%3B%5C%3B%20%28a%3D1%2C%20b%3D1%29">
 
 - 가능도 함수 : 주어진 데이터가 모두 독립이다. 따라서 베르누이분포의 곱과 같다.
-    - $p(x_{1},\ldots,x_{N} \mid \mu) = \prod_{i=1}^N  \mu^{x_i} (1 - \mu)^{1-x_i}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20%5Cmu%5E%7Bx_i%7D%20%281%20-%20%5Cmu%29%5E%7B1-x_i%7D">
 
 - 베이즈 정리를 사용하면, 사후분포가 하이퍼모수 a', b'를 가지는 또다른 베타분포가 된다. 
-    - $\begin{aligned}
-p(\mu \mid x_{1},\ldots,x_{N})
-&\propto p(x_{1},\ldots,x_{N} \mid \mu)  p(\mu) \\
-&= \prod_{i=1}^N  \mu^{x_i} (1 - \mu)^{1-x_i} \cdot \mu^{a-1}(1-\mu)^{b-1}  \\
-&= \mu^{\sum_{i=1}^N x_i + a-1} (1 - \mu)^{\sum_{i=1}^N (1-x_i) + b-1 }   \\
-&= \mu^{N_1 + a-1} (1 - \mu)^{N_0 + b-1 }   \\
-&= \mu^{a'-1} (1 - \mu)^{b'-1}   \\
-\end{aligned}$
+
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20p%28%5Cmu%20%5Cmid%20x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%29%20%26%5Cpropto%20p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20p%28%5Cmu%29%20%5C%5C%20%26%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20%5Cmu%5E%7Bx_i%7D%20%281%20-%20%5Cmu%29%5E%7B1-x_i%7D%20%5Ccdot%20%5Cmu%5E%7Ba-1%7D%281-%5Cmu%29%5E%7Bb-1%7D%20%5C%5C%20%26%3D%20%5Cmu%5E%7B%5Csum_%7Bi%3D1%7D%5EN%20x_i%20&plus;%20a-1%7D%20%281%20-%20%5Cmu%29%5E%7B%5Csum_%7Bi%3D1%7D%5EN%20%281-x_i%29%20&plus;%20b-1%20%7D%20%5C%5C%20%26%3D%20%5Cmu%5E%7BN_1%20&plus;%20a-1%7D%20%281%20-%20%5Cmu%29%5E%7BN_0%20&plus;%20b-1%20%7D%20%5C%5C%20%26%3D%20%5Cmu%5E%7Ba%27-1%7D%20%281%20-%20%5Cmu%29%5E%7Bb%27-1%7D%20%5C%5C%20%5Cend%7Baligned%7D">
+
     - 밑이 같은 거듭제곱항의 곱은 거듭제곱의 합으로 바꿀 수 있다. 
     - 2^2 * 2^3 = 2^{2 + 3}
     - 1 - N1 = N0
+    
 - **켤레사전확률분포 conjugate prior** : 사전분포와 사후분포가 모수값만 다르고 함수형태가 같도록 하는 사전분포.
 - 베이즈 정리를 사용하여 계산을 하고나면 사전분포와 사후분포가 함수형태가 같아지게 된다. 
 - 이렇게 구해진 하이퍼모수를 사전분포에 대입하면 a', b'을 모수로 갖는 베타분포가 되고, 이 베타분포가 우리가 구하고자 하는 최초의 모수의 분포가 된다. 
@@ -808,48 +754,35 @@ p(\mu \mid x_{1},\ldots,x_{N})
 ### 3-6. 베이즈 추정법을 사용한 카테고리분포의 모수추정
 - 클래스 즉 법주값의 개수가 K개인 카테고리분포의 모수 mu 벡터의 추정
 - 카테고리분포의 모수 벡터는 원핫인코딩 벡터이므로 모든 원소가 0 또는 1의 값이다. 이러한 조건과 같은 분포인 **디리클레분포**를 사전분포로 사용할 수 있다. 
-    - $p(\mu) \propto \prod_{k=1}^K \mu_k^{\alpha_k - 1} \;\;\; (\alpha_k = 1, \; \text{ for all } k)$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28%5Cmu%29%20%5Cpropto%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu_k%5E%7B%5Calpha_k%20-%201%7D%20%5C%3B%5C%3B%5C%3B%20%28%5Calpha_k%20%3D%201%2C%20%5C%3B%20%5Ctext%7B%20for%20all%20%7D%20k%29">
     
 - 가능도 함수 : 주어진 데이터는 모두 독립이므로 각 확률밀도함수의 곱이된다. (다항분포) 
-    - $p(x_{1},\ldots,x_{N} \mid \mu) = \prod_{i=1}^N  \prod_{k=1}^K \mu_k^{x_{i,k}}$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu_k%5E%7Bx_%7Bi%2Ck%7D%7D">
 
 - 베이즈 정리를 계산하여 사후분포를 구하면 갱신된 하이퍼파라미터를 갖는 디리클레분포가 된다. 
-    - $\begin{aligned}
-p(\mu \mid x_{1},\ldots,x_{N})
-&\propto p(x_{1},\ldots,x_{N} \mid \mu)  p(\mu) \\
-&= \prod_{i=1}^N  \prod_{k=1}^K \mu_k^{x_{i,k}} \cdot \prod_{k=1}^K \mu_k^{\alpha_k - 1}  \\
-&= \prod_{k=1}^K  \mu^{\sum_{i=1}^N x_{i,k} + \alpha_k - 1}   \\
-&= \prod_{k=1}^K  \mu^{N_k + \alpha_k -1}   \\
-&= \prod_{k=1}^K  \mu^{\alpha'_k -1}   \\
-\end{aligned}$
+
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20p%28%5Cmu%20%5Cmid%20x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%29%20%26%5Cpropto%20p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20p%28%5Cmu%29%20%5C%5C%20%26%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu_k%5E%7Bx_%7Bi%2Ck%7D%7D%20%5Ccdot%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu_k%5E%7B%5Calpha_k%20-%201%7D%20%5C%5C%20%26%3D%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu%5E%7B%5Csum_%7Bi%3D1%7D%5EN%20x_%7Bi%2Ck%7D%20&plus;%20%5Calpha_k%20-%201%7D%20%5C%5C%20%26%3D%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu%5E%7BN_k%20&plus;%20%5Calpha_k%20-1%7D%20%5C%5C%20%26%3D%20%5Cprod_%7Bk%3D1%7D%5EK%20%5Cmu%5E%7B%5Calpha%27_k%20-1%7D%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - 사전분포와 사후분포의 함수형태가 같으므로 사전분포는 켤레사전분포이다.
-- 갱신된 하이퍼파라미터 : $\alpha'_k = N_k + \alpha_k$
+- 갱신된 하이퍼파라미터 : <img src="https://latex.codecogs.com/gif.latex?%5Calpha%27_k%20%3D%20N_k%20&plus;%20%5Calpha_k">
 
 ### 3-7. 베이즈 추정법을 사용한 정규분포의 모수추정
 - 정규분포의 분산 sigma^2를 알고있다는 가정하에 기댓값을 추정한다.
 - 정규분포의 기댓값은 음의 무한대에서 양의 무한대까지 가능하기때문에 사전분포를 정규분포로 사용한다. 
-    - $p(\mu) = N(\mu_0, \sigma^2_0) = \dfrac{1}{\sqrt{2\pi\sigma_0^2}} \exp \left(-\dfrac{(\mu-\mu_0)^2}{2\sigma_0^2}\right)$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28%5Cmu%29%20%3D%20N%28%5Cmu_0%2C%20%5Csigma%5E2_0%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma_0%5E2%7D%7D%20%5Cexp%20%5Cleft%28-%5Cdfrac%7B%28%5Cmu-%5Cmu_0%29%5E2%7D%7B2%5Csigma_0%5E2%7D%5Cright%29">
     - mu - mu0 는 mu0 근처의 값이 라는 의미이다. 
 - 가능도 함수 : 데이터는 모두 독립이므로 정규분포의 곱의 형태가 된다. 
 
-$p(x_{1},\ldots,x_{N} \mid \mu) = \prod_{i=1}^N N(x_i \mid \mu )  = \prod_{i=1}^N  \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp \left(-\dfrac{(x_i-\mu)^2}{2\sigma^2}\right)$
+<img src="https://latex.codecogs.com/gif.latex?p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20N%28x_i%20%5Cmid%20%5Cmu%20%29%20%3D%20%5Cprod_%7Bi%3D1%7D%5EN%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%20%5Cexp%20%5Cleft%28-%5Cdfrac%7B%28x_i-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%5Cright%29">
 
 - 베이즈 정리는 다음과 같아진다. (사전분포와 가능도함수의 곱의 풀이는 생략됨) 
 
-$\begin{aligned}
-p(\mu \mid x_{1},\ldots,x_{N})  
-&\propto p(x_{1},\ldots,x_{N} \mid \mu) p(\mu) \\
-&\propto \exp \left(-\dfrac{(\mu-\mu'_0)^2}{2\sigma_0^{'2}}\right) \\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20p%28%5Cmu%20%5Cmid%20x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%29%20%26%5Cpropto%20p%28x_%7B1%7D%2C%5Cldots%2Cx_%7BN%7D%20%5Cmid%20%5Cmu%29%20p%28%5Cmu%29%20%5C%5C%20%26%5Cpropto%20%5Cexp%20%5Cleft%28-%5Cdfrac%7B%28%5Cmu-%5Cmu%27_0%29%5E2%7D%7B2%5Csigma_0%5E%7B%272%7D%7D%5Cright%29%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - 베이즈 정리를 계산하면 갱신된 하이퍼파라미터를 가지는 정규분포가 된다.
 - 사전분포와 사후분포의 함수형태가 같으므로 사전분포는 켤레사전확률분포이다. 
 
-$\begin{aligned}
-\mu'_0 &= \dfrac{\sigma^2}{N\sigma_0^2 + \sigma^2}\mu_0 + \dfrac{N\sigma_0^2}{N\sigma_0^2 + \sigma^2} \dfrac{\sum x_i}{N} \\
-\dfrac{1}{\sigma_0^{'2}} &= \dfrac{1}{\sigma_0^{2}} + \dfrac{N}{\sigma^{'2}}
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cmu%27_0%20%26%3D%20%5Cdfrac%7B%5Csigma%5E2%7D%7BN%5Csigma_0%5E2%20&plus;%20%5Csigma%5E2%7D%5Cmu_0%20&plus;%20%5Cdfrac%7BN%5Csigma_0%5E2%7D%7BN%5Csigma_0%5E2%20&plus;%20%5Csigma%5E2%7D%20%5Cdfrac%7B%5Csum%20x_i%7D%7BN%7D%20%5C%5C%20%5Cdfrac%7B1%7D%7B%5Csigma_0%5E%7B%272%7D%7D%20%26%3D%20%5Cdfrac%7B1%7D%7B%5Csigma_0%5E%7B2%7D%7D%20&plus;%20%5Cdfrac%7BN%7D%7B%5Csigma%5E%7B%272%7D%7D%20%5Cend%7Baligned%7D">
 
 - 갱신된 모수인 mu0'의 의미는 다음과 같다.
     - 원래 우리가 알고 있던 mu0의 값과 새로운 데이터의 평균값의 가중합의 형태가 된다. 이 의미는 w1 x mu0 근처의 값에서 w2 x barx 와 같다.
@@ -1266,17 +1199,17 @@ plt.show() ;
     - 데이터를 만드는 확률변수가 따르는 확률분포의 모수 θ가 특정한 실수값이라는 가정을 한다. 
     - 표기 : H_0
 - 검정에서의 귀무가설은 특정 사실을 고정화하는 작업이므로 반드시 등식으로 이루어져야 한다. 
-    - $H_0 : \theta = \theta_0$
+    - <img src="https://latex.codecogs.com/gif.latex?H_0%20%3A%20%5Ctheta%20%3D%20%5Ctheta_0">
     - 확률분포의 모수에 대한 귀무가설은 다음과 같다 : 모수는 어떤 실수값이다.
 - 귀무가설에서 고정한 실수값이 검정으로 증명할 가설에 대한 기준이 되는 값이다. 즉 이 값이 맞느냐 틀리느냐, 이 값보다 크냐 작냐 등의 검정에 대한 기준이다.
 
 #### 동전은 공정한가? 에 대한 귀무가설
-- $H_0 : \mu = 0.5$
+- <img src="https://latex.codecogs.com/gif.latex?H_0%20%3A%20%5Cmu%20%3D%200.5">
 - theta = mu, 실수값 = 0.5
 - 이 동전은 1이 나올 확률 즉 기대값이 0.5이다. (기대값이 0.5이면 0과 1이 나올 확률이 같기 때문)
 
 #### 주식의 수익률의 전망에 대한 귀무가설
-- $H_0 : \mu = 0$
+- <img src="https://latex.codecogs.com/gif.latex?H_0%20%3A%20%5Cmu%20%3D%200">
 - 기대값이 0이면 이익도 손해도 아니다. 
 - 이 값이 검정의 기준값이 되며, 이 값보다 기대값이 크면 이 주식은 이익이 날 것이고, 이 값보다 기대값이 작으면 주식은 손해가 날 것이다. 
 
@@ -1305,16 +1238,13 @@ plt.show() ;
 
 ### 4-4. 검정통계량
 - `검정통계량 test statistics` : 표본데이터 집합을 입력으로 계산되는 함수의 값
-    - $t = f(x_1, x_2, ..., x_N)$
+    - <img src="https://latex.codecogs.com/gif.latex?t%20%3D%20f%28x_1%2C%20x_2%2C%20...%2C%20x_N%29">
     - 귀무가설이 맞거나 틀렸다는 것을 증명하기위해 필요한 증거에 해당한다.
 - 검정통계량은 확률변수 X의 표본에서 계산된 함수의 값이다. 따라서 어떤 값이 나올지 정확하게 알 수 없다. 따라서 검정통계량 t도 **검정통계량확률변수 T**라는 새로운 확률변수와 같다.
     - 데이터 표본을 생성한 것도 확률변수, 표본으로 계산된 t 검정통계량의 값도 확률변수에서 생성 됐다는 의미
 - 입력데이터가 되는 확률변수 X의 확률분포함수 p_x(x)와 검정통계량 수식 f(x)가 이미 결정되어 있기 때문에 검정통계량 확률변수 T의 확률분포함수 p_T(t)도 수식으로 유도가 가능하다. 
 
-$\begin{bmatrix}
-p(x) \\
-f(x_1, x_2, \ldots, x_N) \\
-\end{bmatrix} \rightarrow p_T(t)$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%20p%28x%29%20%5C%5C%20f%28x_1%2C%20x_2%2C%20%5Cldots%2C%20x_N%29%20%5C%5C%20%5Cend%7Bbmatrix%7D%20%5Crightarrow%20p_T%28t%29">
 
 - 데이터 표본의 확률변수의 확률분포함수와 검정통계량 수식으로 검정통계량 확률변수 T의 확률분포함수 p_T(t)를 유도하는 과정은 어렵다.
 - 따라서 시뮬레이션을 해서 유사한 분포를 만들거나, 기존에 이미 구해놓은 검정통계량 확률분포를 이용한다. 
@@ -1322,11 +1252,11 @@ f(x_1, x_2, \ldots, x_N) \\
 ### 4-5. 베르누이분포 확률변수
 - 모수 mu를 가지는 베르누이분포 확률변수에 대해서는 전체 시도 횟수 N번 중 성공한 횟수 n 자체를 검정통계량으로 사용할 수 있다.
 - 이 검정통계량 t는 자유도가 N이고 기댓값 모수가 mu인 이항분포를 따른다. 
-    - $x \sim Bern(x ; \mu) \rightarrow t = \sum_{i=1}^{N} x ~ Bin(t ; \mathcal, \mu)$
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Csim%20Bern%28x%20%3B%20%5Cmu%29%20%5Crightarrow%20t%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20x%20%7E%20Bin%28t%20%3B%20%5Cmathcal%2C%20%5Cmu%29">
 
 ### 4-6. 정규분포 확률변수 : 분산 sigma^2를 알고 있는 경우
 - 분산 sigma^2을 알고 있는 정규분포 확률변수의 검정통계량 : z통계량
-    - $x \sim \mathcal{N}(\mu, \sigma^2) \;\; \rightarrow \;\; z = \dfrac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{N}}} \sim \mathcal{N}(z;0,1)$
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Csim%20%5Cmathcal%7BN%7D%28%5Cmu%2C%20%5Csigma%5E2%29%20%5C%3B%5C%3B%20%5Crightarrow%20%5C%3B%5C%3B%20z%20%3D%20%5Cdfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Cfrac%7B%5Csigma%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Csim%20%5Cmathcal%7BN%7D%28z%3B0%2C1%29">
     - z통계량은 표준정규분포를 따른다. 
     - \bar_x 는 표본평이다. 
 - z통계량 : 정규분포의 표본평균을 정규화한 통계량. 중심극한 정리와 다르다. 중심극한정리는 N이 커질수록 표준정규분포로 다가가는데, z통계량은 N에 상관없이 항상 표준정규분포를 따른다.
@@ -1334,7 +1264,7 @@ f(x_1, x_2, \ldots, x_N) \\
 ### 4-7. 정규분포 확률변수 : 분산 sigma^2를 모르는 경우
 - 분산을 모르는 정규분포의 확률변수에서 통계량은 모수값 mu와 sigma^2에 대한 두가지 이다.
 - `모수 mu에 대한 검정을 할 때` : 표본평균을 표본분산으로 정규화한 값을 검정통계로 사용한다. 
-    - $x \sim \mathcal{N}(\mu, \sigma^2) \;\; \rightarrow \;\; t = \dfrac{m-\mu}{\frac{s}{\sqrt{N}}} \sim t(t;0,1,N-1)$
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Csim%20%5Cmathcal%7BN%7D%28%5Cmu%2C%20%5Csigma%5E2%29%20%5C%3B%5C%3B%20%5Crightarrow%20%5C%3B%5C%3B%20t%20%3D%20%5Cdfrac%7Bm-%5Cmu%7D%7B%5Cfrac%7Bs%7D%7B%5Csqrt%7BN%7D%7D%7D%20%5Csim%20t%28t%3B0%2C1%2CN-1%29">
     - t통계량은 자유도가 N-1인 스튜던트t분포를 따른다.
     - 스튜던트t 분포의 모수 : 기댓값 mu, 정밀도 lambda, 자유도 nu
     - s^2 : 비편향 표본분산
@@ -1342,7 +1272,7 @@ f(x_1, x_2, \ldots, x_N) \\
 - z통계량은 항상 정규분포이다. 그러나 z통계량을 계산하려면 **확률분포의 표준편차**를 알아야 하는데 이 값을 구하기 어렵다. 따라서 t통계량 처럼 **표본의 표준편차**를 사용하여 통계량을 계산 할 수 있다.
 
 - `모수 sigma^2에 대한 검정을 할 때` : 표본분산을 정규화한 값을 검정통계량을 사용한다. 
-    - $x \sim \mathcal{N}(\mu, \sigma^2) \;\; \rightarrow \;\; t = (N-1)\dfrac{s^2}{\sigma^2} \sim \chi^2 (t;N-1)$
+    - <img src="https://latex.codecogs.com/gif.latex?x%20%5Csim%20%5Cmathcal%7BN%7D%28%5Cmu%2C%20%5Csigma%5E2%29%20%5C%3B%5C%3B%20%5Crightarrow%20%5C%3B%5C%3B%20t%20%3D%20%28N-1%29%5Cdfrac%7Bs%5E2%7D%7B%5Csigma%5E2%7D%20%5Csim%20%5Cchi%5E2%20%28t%3BN-1%29">
     - sigma^2 : 확률변수의 분산, s^2 : 표본의 분산
     - 자유도가 N-1인 카이제곱분포를 따른다. 
 
@@ -1366,14 +1296,11 @@ f(x_1, x_2, \ldots, x_N) \\
 - **유의확률의 계산** : 누적확률분포함수 F(x)를 사용하여 계산할 수 있다.
     - 연속확률변수인 경우
 
-$$\begin{aligned}
-p-value  &= 2 * (P(t \leq t_0), P(t \geq t_0)) \\
-&= 2 * (F(t_0), 1-F(t_0)) \\
-\end{aligned}$$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20p-value%20%26%3D%202%20*%20%28P%28t%20%5Cleq%20t_0%29%2C%20P%28t%20%5Cgeq%20t_0%29%29%20%5C%5C%20%26%3D%202%20*%20%28F%28t_0%29%2C%201-F%28t_0%29%29%20%5C%5C%20%5Cend%7Baligned%7D">
 
     - 이산확률변수인 경우 : 등호가 성립하는 부분을 제외한다.
 
-$$p-value = 2 * (F(t_0), 1 - F(t_0 - 1))$$
+<img src="https://latex.codecogs.com/gif.latex?p-value%20%3D%202%20*%20%28F%28t_0%29%2C%201%20-%20F%28t_0%20-%201%29%29">
 
 #### 검정의 관점에서의 유의확률의 의미
 - `귀무가설이 맞음에도 불구하고 현재 검정통계량값과 같은 혹은 대립가설을 더 옹호하는 검정통계량값이 나올 확률`
@@ -1388,17 +1315,17 @@ $$p-value = 2 * (F(t_0), 1 - F(t_0 - 1))$$
 - 모수가 특정값보다 크다는 것을 증명할 떄의 가설
     - H_0 : theta = theta_0, H_a : theta > theta_0
 - 우측검정 유의확률은 귀무가설이 맞음에도 불구하고 검정통계랴이 현재 검정통계량과 같거나 더 큰 값이 나오는 확률이다. 
-    - $p-value = P( t \geq t_0 | H_0 ) =1 - F(t_0)$
+    - <img src="https://latex.codecogs.com/gif.latex?p-value%20%3D%20P%28%20t%20%5Cgeq%20t_0%20%7C%20H_0%20%29%20%3D1%20-%20F%28t_0%29">
 - 이산확률분포인 경우
-    - $p-value = 1 - F(t_0 - 1)$
+    - <img src="https://latex.codecogs.com/gif.latex?p-value%20%3D%201%20-%20F%28t_0%20-%201%29">
     
 #### 좌측검정 유의확률 left-side test
 - 모수가 특정값보다 작다는 것을 증명할 때의 가설
     - H_0 : theta = theta_0, H_a : theta < theta_0
 - 좌측검정 유의확률은 귀무가설이 맞음에도 불구하고 실제로 나온 검정통계량과 같거나 더 작은 값이 나오는 확률이다. 
-    - $p-value = P( t \leq t_0 | H_0 ) = F(t_0)$
+    - <img src="https://latex.codecogs.com/gif.latex?p-value%20%3D%20P%28%20t%20%5Cleq%20t_0%20%7C%20H_0%20%29%20%3D%20F%28t_0%29">
 - 이산확률분포인 경우
-    - $p-value = F(t_0)$ 
+    - <img src="https://latex.codecogs.com/gif.latex?p-value%20%3D%20F%28t_0%29">
     
 #### 고혈압 판단의 예
 - 어떤 환자가 고혈압인지 아닌지 증명하기 위한 가설
@@ -2161,9 +2088,9 @@ plt.show() ;
 # 5-1. [python] 카이제곱검정
 - `카이제곱검정 chi-squared test` : 카테고리분포의 통계량 분포 검정 방법
     - 카테고리분포의 표본의 합은 스칼라가 아닌 벡터이므로 이항분포를 사용할 수 없으므로 카이제곱분포를 사용한다.
-    - `적합도 검정 goodness of fit test` : 범주형 확률분포의 모수 mu=(mu1, mu2, mu3, ..., muN)에 대한 가설을 조사하는 검정 방법\
+    - `적합도 검정 goodness of fit test` : 범주형 확률분포의 모수 mu=(mu1, mu2, mu3, ..., muN)에 대한 가설을 조사하는 검정 방법`
 - 원래 범주형 값 k가 나와야 할 횟수에 대한 기댓값 mk와 실제 나온 횟수 xk의 차이를 이용하여 검정통계량을 구한다.
-    - $\sum_{k=1}^{K} \dfrac{(x_k - m_k)^2}{m_k}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bk%3D1%7D%5E%7BK%7D%20%5Cdfrac%7B%28x_k%20-%20m_k%29%5E2%7D%7Bm_k%7D">
 
 ### scipy로 계산하기
 - scipy의 서브패키지 stats의 chisquare 명령을 사용한다.
@@ -2482,10 +2409,10 @@ Ttest_1sampResult(statistic=0.45059592812857185, pvalue=0.6527713473979802)
 # 5-5. [python] 독립표본 t검정
 - `독립표본 t검정 independent-two-sample t-test` : 두 독립적인 정규분포에서 나온 N1, N2개의 데이터셋을 사용하여 두 정규분포의 기댓값이 동일한지를 검정하는 방법이다.
 - 두 정규분포의 분산이 같은 경우와 분산이 다른 경우에 따라 검정통계량 수식이 다르다.
-- 분산이 같은 경우 : $t = \dfrac{\bar{x_1} - \bar{x_2}}{s \cdot \sqrt{\dfrac{1}{N_1} + \dfrac{1}{N_2}}}$
+- 분산이 같은 경우 : <img src="https://latex.codecogs.com/gif.latex?t%20%3D%20%5Cdfrac%7B%5Cbar%7Bx_1%7D%20-%20%5Cbar%7Bx_2%7D%7D%7Bs%20%5Ccdot%20%5Csqrt%7B%5Cdfrac%7B1%7D%7BN_1%7D%20&plus;%20%5Cdfrac%7B1%7D%7BN_2%7D%7D%7D">
     - 자유도(dof) = N1 + N2 - 2인 스튜던트t분포를 따른다.
-- 분산이 다른 경우 : $t = \dfrac{\bar{x_1} - \bar{x_2}}{\sqrt{\dfrac{s_1^2}{N_1} + \dfrac{s_2^2}{N_2}}}$
-    - 자유도(dof) = $\dfrac{\left( \dfrac{s_1^2}{N_1} + \dfrac{s_2^2}{N_2}  \right)^2}{\dfrac{\left( s_1^2 / N_1 \right)^2}{N_1 - 1} + \dfrac{\left( s_2^2 / N_2 \right)^2}{N_2 -1}}$ 인 스튜던트t분포를 따른다.
+- 분산이 다른 경우 : <img src="https://latex.codecogs.com/gif.latex?t%20%3D%20%5Cdfrac%7B%5Cbar%7Bx_1%7D%20-%20%5Cbar%7Bx_2%7D%7D%7B%5Csqrt%7B%5Cdfrac%7Bs_1%5E2%7D%7BN_1%7D%20&plus;%20%5Cdfrac%7Bs_2%5E2%7D%7BN_2%7D%7D%7D">
+    - 자유도(dof) = <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cleft%28%20%5Cdfrac%7Bs_1%5E2%7D%7BN_1%7D%20&plus;%20%5Cdfrac%7Bs_2%5E2%7D%7BN_2%7D%20%5Cright%29%5E2%7D%7B%5Cdfrac%7B%5Cleft%28%20s_1%5E2%20/%20N_1%20%5Cright%29%5E2%7D%7BN_1%20-%201%7D%20&plus;%20%5Cdfrac%7B%5Cleft%28%20s_2%5E2%20/%20N_2%20%5Cright%29%5E2%7D%7BN_2%20-1%7D%7D"> 인 스튜던트t분포를 따른다.
     
 ### scipy로 독립표본 t검정 계산하기
 - sp.stats.ttest_inds(a, b, equal_var=True)
@@ -2615,8 +2542,8 @@ Ttest_indResult(statistic=0.623010926550264, pvalue=0.5415458608473267)
 
 # 5-6. [python] 대응표본 t검정
 - `대응표본 t검정 paired-two-sample t-test` : 두 독립된 정규분포에서 나온 표본집단 N1, N2개로 각 표본끼리 대응시켜 두 정규분포의 기대값이 같은지 검정하는 방법이다.
-    - $t = \dfrac{\bar{x_d} - \mu_0}{\dfrac{s_d}{\sqrt{N}}}$
-    - $x_d = x_{i,1} - x_{i, 2}$ : 대응하는 두 표본의 차이
+    - <img src="https://latex.codecogs.com/gif.latex?t%20%3D%20%5Cdfrac%7B%5Cbar%7Bx_d%7D%20-%20%5Cmu_0%7D%7B%5Cdfrac%7Bs_d%7D%7B%5Csqrt%7BN%7D%7D%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?x_d%20%3D%20x_%7Bi%2C1%7D%20-%20x_%7Bi%2C%202%7D"> : 대응하는 두 표본의 차이
     - 두 정규분포의 기대값의 일치여부를 검정하므로 독립표본 t검정과 유사하다.
     - **독립표본 t검정은 표본간의 차이로 발생하는 영향을 받는다.**
     - 이러한 문제점을 보완한 검정 방법이다.
@@ -2683,12 +2610,12 @@ Ttest_indResult(statistic=-0.5452403591738114, pvalue=0.6004549807079278)
     
 ### 등분산 검정의 종류
 - **바틀렛 bartlett** : 등분산을 분산의 동질성이라고 표현한다. 분산 분석과 같은 통계 실험에서 그룹 또는 샘플간에 분산이 같다고 가정한다. 바틀렛 검정을 사용하여 이러한 귀무가설을 검정할 수 있다. 바틀렛 검정은 데이터가 정규분포에서 나온경우 좋은 성능을 보인다. 비정규성 분포의 표본에 민감하다(값이 튄다). 이러한 정규성 이탈에 덜 민감한 검정이 levene 검정이다
-    - $T=\dfrac{ (N−k)ln s_{p}^2 − \sum_{i=1}^{k} (N_i − 1)ln s_{i}^2 }{ 1 + (1/(3(k−1)))((\sum_{i=1}^{k} 1/(N_i−1))−1/(N−k)) }$
+    - <img src="https://latex.codecogs.com/gif.latex?T%3D%5Cdfrac%7B%20%28N-K%29ln%20s_%7Bp%7D%5E2%20-%20%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%20%28N_i%20-%201%29ln%20s_%7Bi%7D%5E2%20%7D%7B%201%20&plus;%20%281/%283%28k%20-%201%29%29%29%28%28%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%201/%28N_i%20-%201%29%29%20-%201/%28N%20-%20k%29%29%20%7D">
     - scipy.stats.bartlett(*samples)
     - https://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm
 
 - **레빈 levene** : 정규분포에서 큰 편차가 있는 경우 바틀렛분포의 대안 검정방법이다. 바틀렛 검정보다 정규성 이탈에 덜 민감하다. 3가지 다른 사용법이 가능하다. 비대칭분포(skew)에서 median값의 검정, 분포의 꼬리가 중간인 대칭분포(symmetric)에서 mean값의 검정, 분포의 꼬리가 두터운 경우 trimmed값의 검정
-    - $W=\dfrac{(N−k)(k−1)\sum_{i=1}^{k}N_i(\bar{Z_{i.}} − \bar{Z_{..}})^2}{\sum_{i=1}^{k}∑_{j=1}^{N_i}(Z_{ij} − \bar{Z_{i.}})^2}$
+    - <img src="https://latex.codecogs.com/gif.latex?W%3D%5Cdfrac%7B%28N%20-%20k%29%28k%20-%201%29%5Csum_%7Bi%3D1%7D%5E%7Bk%7DN_i%28%5Cbar%7BZ_%7Bi.%7D%7D%20-%20%5Cbar%7BZ_%7B..%7D%7D%29%5E2%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%5Csum_%7Bj%3D1%7D%5E%7BN_i%7D%28Z_%7Bij%7D%20-%20%5Cbar%7BZ_%7Bi.%7D%7D%29%5E2%7D">
     - scipy.stats.levene(*samples, center='median', proportiontocut=0.05)
     - https://www.itl.nist.gov/div898/handbook/eda/section3/eda35a.htm
 
