@@ -2849,7 +2849,7 @@ sp.stats.shapiro(x2)
 ShapiroResult(statistic=0.9792245030403137, pvalue=0.11565004289150238)
 ```
 
-### statsmodels의 옴니버스 검정
+#### statsmodels의 옴니버스 검정
 
 ```python
 import statsmodels as sm
