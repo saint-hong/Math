@@ -428,7 +428,7 @@ plt.show()
 
 #### **정규분포의 가능도함수**
 - 정규분포의 확률밀도함수의 변수는 x이고 모수가 mu, sigma2 인데, 가능도 함수에서는 반대가 된다. 변수가 모수이고, 상수계수가 x가 된다.
-    - 원래 정규분포의 확률밀도함수 : <https://latex.codecogs.com/gif.latex?p%28x%3B%5Cmu%2C%20%5Csigma_0%5E2%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%20%5Cpi%20%5Csigma_0%5E2%7D%7D%20%5Cexp%20%5Cleft%28%20-%20%5Cdfrac%7B%28x%20-%20%5Cmu_0%29%5E2%7D%7B2%5Csigma_0%5E2%7D%20%5Cright%29>
+    - 원래 정규분포의 확률밀도함수 : <img src="https://latex.codecogs.com/gif.latex?p%28x%3B%5Cmu%2C%20%5Csigma_0%5E2%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%20%5Cpi%20%5Csigma_0%5E2%7D%7D%20%5Cexp%20%5Cleft%28%20-%20%5Cdfrac%7B%28x%20-%20%5Cmu_0%29%5E2%7D%7B2%5Csigma_0%5E2%7D%20%5Cright%29">
     - 정규분포의 가능도 함수 : <img src="https://latex.codecogs.com/gif.latex?L%28%5Cmu%2C%20%5Csigma%5E2%20%3B%20x_0%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%20%5Cpi%20%5Csigma%5E2%7D%7D%20%5Cexp%20%5Cleft%28%20-%20%5Cdfrac%7B%28x_0%20-%20%5Cmu%29%5E2%7D%7B2%20%5Csigma%5E2%7D%20%5Cright%29">
 
 #### **베르누이분포의 가능도함수**
