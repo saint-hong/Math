@@ -438,3 +438,408 @@ sp.stats.entropy(p_docs, base=2)
 
 2.0
 ``
+
+## 1-6 엔트로피의 최대화
+- 기대값=0, 분산=sigma^2 이 주어진 경우 엔트로피 H[p(x)]를 가장 크게 만드는 확률밀도함수 p(x)는 정규분포가 된다.
+- 정규분포는 기댓값과 표준편차를 알고있는 확률분포들 중에서 엔트로피가 가장 크다.
+    - 따라서 가장 정보가 적은 확률분포이기도 하다.
+    - 정규분포는 **무정보 사전확률분포**로서 베이즈추정의 사전분포에 사용되는 경우가 많다.
+#### 증명 
+- 목적범함수인 엔트로피의 값을 최대화한다. 이 과정에서 입력변수인 확률밀도함수의 제한조건이 라그랑주 승수법으로 추가된다. 엔트로피함수에 제한조건이 추가되어 새로운 목적함수가 된다. 이 목적함수를 풀면 정규분포의 형태가 된다. 
+- **pdf의 제한조건 1 : 면적의 총합은 1이다.**
+    - $\int_{-\infty}^{\infty} p(x)dx = 1$
+- **pdf의 제한조건 2 : 기대값은 0이다. (연속확률변수의 기대값 공식)**
+    - $\int_{-\infty}^{\infty} xp(x)dx = 0$
+- **pdf의 제한조건 3 : 분산은 sigma^2 이다.**
+    - $\int_{-\infty}^{\infty} x^2p(x)dx = \sigma^2$
+- **목적범함수 objective functional**인 엔트로피를 최대화 한다. 
+    - $\text{H}[Y] = - \int_{-\infty}^{\infty}p(x)logp(x)dx$
+- 목적범함수에 pdf의 제한조건 3가지를 라그랑주 승수법으로 추가한다. 
+$\begin{aligned}
+\text{H}[Y]
+&= - \int_{-\infty}^{\infty}p(x)\log p(x)dx + \lambda_1 \left( \int_{-\infty}^{\infty} p(x)dx -1 \right) \\
+&+ \lambda_2 \left( \int_{-\infty}^{\infty} xp(x)dx \right) + \lambda_3 \left( \int_{-\infty}^{\infty} x^2p(x)dx - \sigma^2 \right) \\
+&= \int_{-\infty}^{\infty} ( -p(x)\log p(x) + \lambda_1p(x) + \lambda_2xp(x) + \lambda_3x^2p(x) - \lambda_1 - \lambda_3\sigma^2) dx\\
+\end{aligned}$
+- 최대값을 구하기위해서 목적함수를 확률밀도함수로 편미분한다.
+    - $\dfrac{\delta H}{\delta p(x)} = - logp(x) - 1 + \lambda_1 + \lambda_2x + \lambda_3x^2 = 0$
+- 양변에 지수함수를 적용하여 정리하면 다음과 같아진다. 
+    - $p(x) = exp( - 1 + \lambda_1 + \lambda_2x + \lambda_3x^2  )$
+- pdf의 제한조건 3가지와 이 제한조건을 만족하는 연립방정식을 계산하면 라그랑주 승수 3개가 나온다. (이 과정은 생략함)
+    - $\lambda_1 = 1 - \dfrac{1}{2} \log 2 \pi \sigma^2$
+    - $\lambda_2 = 0$
+    - $\lambda_3 = - \dfrac{1}{2\sigma^2}$
+- 라그랑주 승수값을 각각 위의 식에 대입하면 정규분포의 확률밀도함수가 된다.
+    - $p(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp \left(- \dfrac{x^2}{2\sigma^2} \right)$
+    
+#### 정규분포의 확률밀도함수에 대한 엔트로피
+- $\text{H}[p(x)] = \dfrac{1}{2}\left( 1 + \log 2 \pi \sigma^2 \right)$
+
+## 1-7 조건부 엔트로피
+- 두 확률변수의 결합엔트로피(joint entropy)와 조건부엔트로피(conditional entropy)를 구하고 분류문제에 적용한다. 
+
+### 결합엔트로피
+- `결합엔트로피 joint entropy` : 결합확률분포를 사용하여 정의한 엔트로피이다.
+- 이산확률변수 : $\text{H}[X, Y] = - \sum_{i=1}^{K_x} \sum_{j=1}^{K_Y} p(x_i, y_i)\log_2 p(x_i, y_i)$
+    - K_X, K_Y 는 X의 갯수, Y의 갯수
+    - p(x)는 확률질량함수
+- 연속화률변수 : $\text{H}[X, Y] = - \int_{x} \int_{y} p(x, y) \log_2 p(x, y) dx dy$
+    - p(x)는 확률밀도함수
+- 결합엔트로피도 엔트로피와 같다. 확률분포가 고르게 퍼져있으면 엔트로피 값이 증가하고, 확률분포가 하나의 값에 치우쳐져 있으면 엔트로피 값이 감소한다.     
+    
+### 조건부엔트로피
+- `조건부엔트로피 conditioanl entropy` : 어떤 확률변수 X가 다른 확률변수 Y의 값을 예측하는데 도움이 되는지를 측정하는 방법이다. 
+- 확률변수 X가 하나의 값을 갖고 확률변수 Y도 하나의 값만 갖는다면 X로 Y를 예측할 수 있다.
+- 확률변수 X가 하나의 값을 갖고 확률변수 Y가 여러개의 값에 퍼져있다면 X로 Y를 예측할 수 없다. 
+- 수학적 정의
+    - $\text{H}[Y|X=x_i] = - \sum_{j=1}^{K_Y} p(y_j | x_i) \log_2 p(y_j | x_i)$
+- 조건부엔트로피는 확률변수 X가 가질 수 있는 모든 경우에 대해 H[Y|X=x_i]를 가중평균한 값과 같다.
+- 이산확률변수
+    - $\text{H}[Y|X] = \sum_{i=1}^{K_x} p(x_i) \text{H}[Y|X=x_i] = - \sum_{i=1}^{K_x} \sum_{j=1}^{K_Y} p(x_i, y_i) \log_2 p(y_j | x_i)$
+- 연속확률변수
+    - $\text{H}[Y|X] = - \int_{y} p(y|x) \log_2 p(y|x) dy = - \int_{x} \int_{y} p(x, y) \log_2 p(y|x) dx dy$
+
+### [python] 조건부엔트로피, 결합 엔트로피
+
+#### 확률변수 X가 확률변수 Y의 예측에 도움이 되는 경우
+- **X가 특정한 값일 때 Y도 특정한 값이 될때 예측에 도움이 된다.**
+- 두 확률변수 X, Y의 관계가 다음과 같다.
+
+```
+    | Y=0 | Y=1
+----------------
+X=0 | 0.4 | 0.0
+----------------
+X=1 | 0.0 | 0.6
+```
+- 조건부확률분포 : conditional = joint / marginal
+    - P(Y=0|X=0) = P(X=0, Y=0) / P(X=0) = 1
+    - P(Y=1|X=0) = P(X=0, Y=1) / P(X=0) = 0
+    - P(Y=0|X=1) = P(X=1, Y=0) / P(X=1) = 0
+    - P(Y=1|X=1) = P(X=1, Y=1) / P(X=1) = 1
+- Y의 엔트로피는 모두 0이다.
+    - H[Y|X=0] = - 1 log2(1) - 0 log2(0) = 0
+    - H[Y|X=1] = - 0 log2(0) - 1 log2(1) = 0
+- 조건부 엔트로피도 0이 된다.
+    - H[Y|X] = 0
+
+- X=0 이면 Y=0 이다.
+- X=1 이면 Y=1 이다.
+
+```python
+plt.figure(figsize=(8, 5))
+ax1 = plt.subplot(121)
+pXY = [[0.4, 0], [0, 0.6]]
+sns.heatmap(pXY, annot=True, cbar=False)
+plt.xlabel("Y")
+plt.ylabel("X")
+
+plt.subplot(222)
+plt.bar([0, 1], [1.0, 0])
+plt.ylim(0, 1)
+plt.title("조건부확률분포 p(Y|X=0)")
+
+plt.subplot(224)
+plt.bar([0, 1], [0, 1.0])
+plt.ylim(0, 1)
+plt.title("조건부확률분포 p(Y|X=1)")
+
+plt.suptitle("조건부 엔트로피 H[Y|X]=0")
+plt.tight_layout()
+plt.show() ;
+```
+
+![ent_5.png](./images/entropy/ent_5.png)
+
+#### 확률변수 X가 확률변수 Y의 예측에 도움이 되지 않는 경우
+- **X가 특정한 값일때 Y는 여러값의 분포가 생길 때 예측에 도움이 되지 않는다.**
+- 두 확률변수 X, Y의 관계가 다음과 같다.
+
+```
+    | Y=0 | Y=1
+----------------
+X=0 | 1/9 | 2/9
+----------------
+X=1 | 2/9 | 4/9
+```
+- 조건부확률분포 : conditional = joint / marginal
+    - P(Y=0|X=0) = P(X=0, Y=0) / P(X=0) = 1/3 
+    - P(Y=1|X=0) = P(X=0, Y=1) / P(X=0) = 2/3
+    - P(Y=0|X=1) = P(X=1, Y=0) / P(X=1) = 1/3
+    - P(Y=1|X=1) = P(X=1, Y=1) / P(X=1) = 2/3
+- Y의 엔트로피는 0.92에 가깝다.
+    - H[Y|X=0] = H[Y|X=1] = - 1/3 log2(1/3) - 2/3 log2(2/3) = 0.92
+- 가중평균한 조건부엔트로피도 0.92에 가깝다.
+    - H[Y|X] = 1/3 H[Y|X=0] + 2/3 H[Y|X=1] = 0.92 
+
+#### Y의 엔트로피
+
+```python
+sp.stats.entropy([1/3, 2/3], base=2)
+
+>>>
+
+0.9182958340544894
+```
+
+```python
+pXY = [[1/9, 2/9], [2/9, 4/9]]
+
+plt.figure(figsize=(8, 5))
+ax1 = plt.subplot(121)
+sns.heatmap(pXY, annot=True, cbar=False)
+plt.xlabel("Y")
+plt.ylabel("X")
+
+plt.subplot(222)
+plt.bar([0, 1], [1/3, 2/3])
+plt.ylim(0, 1)
+plt.title("조건부확률분포 p(Y|X=0)")
+
+plt.subplot(224)
+plt.bar([0, 1], [1/3, 2/3])
+plt.ylim(0, 1)
+plt.title("조건부확률분포 p(Y|X=1)")
+
+plt.suptitle("조건부엔트로피 H[Y|X]=0.92")
+plt.tight_layout()
+plt.show() ;
+```
+
+![ent_6.png](./images/entropy/ent_6.png)
+
+### [python] 조건부엔트로피를 사용한 스팸메일 분류문제
+- 학습용 메일 80개 중 정상메일 40개 (Y=0), 스팸메일 40개 (Y=1)이 있다고 가정한다.
+- 스팸메일인지 아닌지 구분하기 위해 특정 키워드가 존재하면 X=1, 키워드가 존재하지 않으면 X=0으로 정의한다.
+- 키워드로 X1, X2, X3이 있다.
+
+#### 키워드 X1과 Y의 관계
+```
+     | Y=0 | Y=1
+---------------------
+X1=0 | 30  | 10  | 40
+---------------------
+X1=1 | 10  | 30  | 40
+---------------------
+       40  | 40  | 80
+```
+
+#### 키워드 X2과 Y의 관계
+```
+     | Y=0 | Y=1
+---------------------
+X2=0 | 20  | 40  | 60
+---------------------
+X2=1 | 20  |  0  | 20
+---------------------
+       40  | 40  | 80
+```
+
+#### 키워드 X3과 Y의 관계
+```
+     | Y=0 | Y=1
+---------------------
+X3=0 |  0  | 40  | 40
+---------------------
+X3=1 | 40  |  0  | 40
+---------------------
+       40  | 40  | 80
+```
+
+- 스팸메일인지 아닌지 확인할 수 있는 키워드는 X3이다. X3이 있는 경우와 없는 경우의 정상메일, 스팸메일의 구분이 명확하다.
+- X1과 X2 중에서는 어떤 키워드가 스팸메일을 구분하기에 더 좋을까?
+
+#### **조건부엔트로피값을 사용하여 구할 수 있다.**
+- X1과 Y의 조건부엔트로피
+    - H[Y|X1]=p(X1=0)H[Y|X1=0] + p(X1=1)H[Y|X1=1] = 40/80x0.81 + 40/80x0.81 = 0.81
+    - H[Y|X1=0]와 H[Y|X1=1]는 각각 따로 구할 수 있다.
+
+- X2와 Y의 조건부엔트로피
+    - H[Y|X2]=p(X2=0)H[Y|X2=0] + p(X2=1)H[Y|X2=1] = 60/80x0.92 + 20/80x0 = 0.69
+
+- X3와 Y의 조건부엔트로피
+    - H[Y|X3]=p(X3=0)H[Y|X3=0] + p(X3=1)H[Y|X3=1] = 0
+
+- `X2가 X1 보다 좋은 키워드 이다.` : 엔트로피값이 낮다는 것에 의하여, X2의 값이 0 또는 1일때 Y가 정상인지 스팸인지 한쪽값에 확률이 더 쏠린다는 것을 알 수 있다.
+
+#### 조건부엔트로피는 의사결정나무에 사용된다.
+- `의사결정나무 decision tree` 분류모형은 조건부엔트로피를 사용하여 가장 좋은 특징값과 기준점을 찾아준다.
+
+### [python] 조건부엔트로피를 사용한 붓꽃 분류문제
+- 붓꽃 데이터에서 버지니카와 베르시칼라 품종을 꽃받침의 길이(sepal length)로 분류하려고 한다.
+- 꽃받침의 길이 중 특정한 값을 기준으로 품종의 갯수를 구한뒤, 조건부엔트로피를 계산한다.
+    - 조건부엔트로피 값이 작을 수록 X로 Y를 예측하는데 더 도움이 된다는 의미이다.
+    - 즉 6cm 가 6.5cm 보다 베르시칼라와 버지니카 품종을 구분하는데 더 도움이 된다.
+
+#### 버지니카와 베르시칼라 품종만 임포트
+
+```python
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+idx = np.in1d(iris.target, [1, 2])
+X = iris.data[idx, :]
+y = iris.target[idx]
+
+df = pd.DataFrame(X, columns=iris.feature_names)
+df['species'] = iris.target[idx]
+df.tail() ;
+```
+
+![ent_7.png](./images/entropy/ent_7.png)
+
+#### 확률밀도 확인
+- 기준점을 어떻게 잡아야 두 품종을 구분할 수 있을까?
+- 조건부엔트로피 값이 작은 기준점을 찾는다.
+
+```python
+plt.figure(figsize=(8, 6))
+
+sns.distplot(df[df.species==1]["sepal length (cm)"], hist=True, rug=True, label="버지니카")
+sns.distplot(df[df.species==2]["sepal length (cm)"], hist=True, rug=True, label="베르시칼라")
+plt.xlabel("꽃받침의 길이")
+plt.title("꽃받침의 길이와 붓꽃의 품종")
+plt.legend()
+plt.show() ;
+```
+
+![ent_8.png](./images/entropy/ent_8.png)
+
+#### 6cm 로 기준을 잡았다면?
+- 6보다 큰 것과 6보다 작은 것 중 각 품종의 갯수
+
+```python
+df["x1"] = df["sepal length (cm)"] > 6
+pivot_table1 = df.groupby(["x1", "species"]).size().unstack().fillna(0)
+pivot_table1
+```
+
+![ent_9.png](./images/entropy/ent_9.png)
+
+#### 조건부 엔트로피 계산
+
+```python
+def cond_entropy(v) :
+    # conditional = joint / marginal
+    pYX0 = v[0, :] / np.sum(v[0, :])
+    pYX1 = v[1, :] / np.sum(v[1, :])
+    HYX0 = sp.stats.entropy(pYX0, base=2)
+    HYX1 = sp.stats.entropy(pYX1, base=2)
+
+    # 조건부엔트로피는 H[Y|X=xi]를 가중평균한 값과 같다.
+    HYX = np.sum(v, axis=1) @ [HYX0, HYX1] / np.sum(v)
+
+    return HYX
+```
+
+#### 6cm 로 기준을 잡은 경우의 조건부 엔트로피
+
+```python
+cond_entropy(pivot_table1.values)
+
+>>>
+
+0.860714271586387
+```
+
+#### 6.5cm 를 기준으로 구분하는 경우
+
+```python
+df["x2"] = df["sepal length (cm)"] > 6.5
+pivot_table2 = df.groupby(["x2", "species"]).size().unstack()
+pivot_table2
+```
+
+![ent_10.png](./images/entropy/ent_10.png)
+
+```python
+cond_entropy(pivot_table2.values)
+
+>>>
+
+0.9306576387006182
+```
+
+#### 기준값이 6cm 엔트로피 값이 더 작으므로 6cm를 기준으로 삼는 것이 더 좋다.
+
+### [python] quiz
+
+#### - 붓꽃데이터에서 꽃받침의 길이 sepal length의 최소값과 최대값 구간을 0.05 간격으로 나누어 각각의 값을 기준값으로 했을 때 조건부엔트로피가 어떻게 변하는지 그래프로 그리시오.
+
+- 붓꽃 데이터로 데이터 프레임 생성
+
+```python
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+X = iris.data
+y = iris.target
+df_ir = pd.DataFrame(X, columns=iris.feature_names)
+df_ir['species'] =iris.target
+
+df_ir.head(3)
+```
+
+![ent_11.png](./images/entropy/ent_11.png)
+
+
+- 기준값과 컬럼명을 파라미터로 받아 조건부 엔트로피를 계산하는 함수
+
+```python
+def calc_cond_entropy(col, threshold) :
+    df_ir['X1'] = df_ir[col] > threshold
+    ptb = df_ir.groupby(['X1', 'species']).size().unstack().fillna(0)
+    v = ptb.values
+    pYX0 = v[0, :] / np.sum(v[0, :])
+    pYX1 = v[1, :] / np.sum(v[1, :])
+    HYX0 = sp.stats.entropy(pYX0, base=2)
+    HYX1 = sp.stats.entropy(pYX1, base=2)
+    HYX = np.sum(v, axis=1) @ [HYX0, HYX1] / np.sum(v)
+
+    return HYX
+```
+
+- 컬럼명을 파라미터로 입력받아서 조건부 엔트로피 값을 반환받아 그래프를 그려주는 함수
+
+```python
+def plot_min_cond_entropy(col) :
+    th_min = df_ir[col].min()
+    th_max = df_ir[col].max()
+    th_range = np.arange(th_min, th_max + 0.05, 0.05)
+
+    cond_entropies = []
+    for th in th_range :
+        cond_entropies.append(calc_cond_entropy(col, th))
+
+    id_min = np.argmin(cond_entropies)
+    th_min = th_range[id_min]
+    ce_min = np.min(cond_entropies)
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(th_range, cond_entropies, 'r-')
+    plt.plot(th_min, ce_min, 'bo')
+    plt.title("{} 기준값에 따른 조건부엔트로피 ({:.3} 일 때 최소값 {:.3})" \
+             .format(col, th_min, ce_min), y=1.03)
+    plt.xlabel(col)
+    plt.show()
+```
+
+#### 꽃받침의 길이를 0.05 간격으로 변화시켰을 때 조건부 엔트로피 값의 변화
+
+```python
+plot_min_cond_entropy('sepal length (cm)')
+```
+![ent_12.png](./images/entropy/ent_12.png)
+
+#### 꽃받침의 폭을 0.05 간격으로 변화시켰을 때 조건부 엔트로피 값의 변화
+
+```python
+plot_min_cond_entropy('sepal width (cm)')
+```
+
+![ent_13.png](./images/entropy/ent_13.png)
+
+- 베르시칼라와 버지니카 품종을 구분하기 위한 기준값은 꽃받침의 길이에서 찾는 것이 더 정확하다.
+    - 조건부엔트로피 값이 낮기 떄문.
+
+
