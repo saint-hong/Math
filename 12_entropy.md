@@ -55,6 +55,8 @@
 - $\text{H}[Y_3] = - 1 log_2 1 - 0 log_2 0 = 0$
 
 ### [python] Y_1, Y_2, Y_3의 확률분포
+- 엔트로피의 크기 순서 : 확률이 골고루 분포되어있으면 엔트로피가 크고, 확률이 한쪽에 몰려있으면 엔트로피가 작다.
+    - Y_1 > Y_2 > Y_3
 
 ```python
 %matplotlib inline
@@ -120,19 +122,19 @@ y_3
     - 즉 P(Y=1) = 0.3 이면, P(Y=0) = 0.7 이다.
 
 ```python
-# 엔트로피 계산 함수
 def entropy(x) :
-    return - x * np.log(x) - (1-x) * np.log(1-x)
+    a = x
+    b = 1-x
+    return - a * np.log2(a) - (b) * np.log2(b)
 
-# 0.001부터 1까지 P(Y=1)의 값의 범위
-xx = np.linspace(0.001, 1, 100)
+xx = np.linspace(0.001, 1-0.001, 1000)
 
 plt.figure(figsize=(8, 6))
-plt.plot(xx, entropy(xx))
-plt.title("베르누이 분포 Y_1의 엔트로피")
+plt.plot(xx, entropy(xx), 'b-')
 plt.xticks(np.arange(0, 11)/10)
 plt.xlabel("$P(Y=1)$")
 plt.ylabel("entropy")
+plt.title("베르누이 분포 Y_1의 엔트로피")
 plt.show() ;
 ```
 
@@ -371,6 +373,7 @@ len(encoded_doc)
 
 #### 인코딩한 문서의 문자별 빈도수를 분포로 확인
 - A > B > C = D 의 순으로 사용 횟수가 다르다.
+- sns.countplot(list(doc), order="ABCD") : list의 원소를 order의 인수로 입력하면 자동으로 count해서 bar로 표현해준다.
 
 ```python
 plt.figure(figsize=(8, 6))
@@ -434,5 +437,4 @@ sp.stats.entropy(p_docs, base=2)
 >>>
 
 2.0
-```
-
+``
