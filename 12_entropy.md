@@ -865,38 +865,244 @@ def calc_cond_entropy(col, threshold) :
     return HYX
 ```
 
+## 1-8 교차엔트로피와 쿨벡-라이블러 발산
+
+### 교차엔트로피
+- `교차엔트로피 cross-entropy` : 두 확률분포를 입력받아 엔트로피를 계산한다.
+    - 분류문제의 성능을 평가해준다.
+    - 예측의 틀린정도를 나타내는 오차함수 역할을 할 수 있다.
+- **이산확률분포** 
+    - $\text{H}[p, q] = - \sum_{k=1}^{K} p(y_k) \log_2 p(y_k)$
+- **연속확률분포**
+    - $\text{H}[p, q] = - \int_{y} p(y) \log_2 p(y) dy$
+
+### 교차엔트로피를 사용한 분류 성능 측정
+- 교차엔트로피는 분류성능을 측정하는 데 사용된다.
+
+#### 확률변수 Y가 0과 1의 값는 이진분류 문제
+- p는 X값이 정해졌을 때 Y의 확률분포
+    - 정답이 Y=1 : p(Y=0)=0, p(Y=1)=1
+    - 정답이 Y=0 : p(Y=0)=1, p(Y=1)=0
+- q는 X값이 정해졌을 때 예측값의 확률분포
+    - 정답이 Y=1 : q(Y=1)=mu
+    - 정답이 Y=0 : q(Y=0)=1-mu
+- **p와 q의 교차엔트로피**
+    - 정답이 Y=1 : - p(Y=1) log2 q(Y=1) = - 1 log2 mu
+    - 정답이 Y=0 : - p(Y=0) log2 q(Y=0) = - 1 log2 (1-mu)
+- **mu에 따른 분류성능**
+    - Y=1 일때 mu가 작아지면 -log2mu 가 커진다. (예측이 잘 못된 경우), mu가 커지면 -log2mu가 작아진다.(예측이 잘 된 경우) 
+    - Y=0 일때 mu가 커지면 -log2(1-mu)가 커진다. (예측이 잘 못된 경우), mu가 작아지면 -log2(1-mu)가 작아진다. (예측이 잘 된 경우)
+
+- `로그손실 log-loss` : 이진분류에서의 교차엔트로피가 오차의 정도를 나타낸다고 할 때(손실함수), 교차엔트로피의 평균값
+    - $\text{log-loss}= - \dfrac{1}{N} \sum_{i=1}^{N} (y_i log2 \mu_i + (1 - y_i) log2 (1 - mu_i))$
+- `카테고리 로그손실` : 다중분류에서의 교차엔트로피 손실함수
+    - $\text{categorical log-loss}= - \dfrac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} (\mathbb{I}(y_i = k) log2 p(y_i = k))$
+    - $(\mathbb{I}(y_i = k)$ : y_i=k 이면 1, 아니면 0을 출력하는 지시함수(indicator function)
+    - $p(y_i = k)$ : 분류모델이 계산한 y_i=k 일 확률
+
+### [python] 교차엔트로피 계산
+
+```python
+p = [1/4, 1/4, 1/4, 1/4]
+q = [1/2, 1/4, 1/8, 1/8]
+
+H_pq = - 1/4 * np.log2(1/2) - 1/4 * np.log2(1/4) - 1/4 * np.log2(1/8) - 1/4 * np.log2(1/8)
+H_pq
+
+>>>
+
+2.25
+```
+### [python] 로그함수 그래프
+
+```python
+def log_2(x) :
+    return np.log2(x)
+
+def log(x) :
+    return np.log(x)
+
+def log_10(x) :
+    return np.log10(x)
+```
+
+```python
+plt.figure(figsize=(8, 6))
+
+xx = np.linspace(0, 3, 1000)
+
+plt.plot(xx, log_2(xx), label="log_2")
+plt.plot(xx, log(xx), label="log")
+plt.plot(xx, log_10(xx), label="log_10")
+
+plt.xlim(0, 3)
+plt.ylim(-2, 2)
+
+plt.legend()
+plt.show() ;
+```
+
+![ent_14.png](./images/entropy/ent_14.png)
+
+#### - 로그함수
+
+```python
+def log_2_minus(x) :
+    return -np.log2(x)
+
+def log_22_minus(x) :
+    return -np.log2(1-x)
 
 
+plt.figure(figsize=(8, 6))
+
+xx = np.linspace(-2, 3, 1000)
+plt.plot(xx, log_2_minus(xx), label="-log2x")
+plt.plot(xx, log_22_minus(xx), label="-log2(1-x)")
+
+plt.axvline(1, linestyle='--', color='k', linewidth=1)
+plt.axhline(0, linestyle='-', color='k', linewidth=0.7)
+plt.ylim(-2.1, 7)
+
+plt.legend()
+plt.show() ;     
+```
+
+![ent_15.png](./images/entropy/ent_15.png)
+
+### [python] scikit-learn으로 로그손실 계산하기
+
+```python
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+idx = np.in1d(iris.target, [0, 1])
+idx
+
+>>>
+
+array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True,  True,  True,  True,  True,  True,  True,  True,  True,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False])
+```
+
+```python
+X = iris.data[idx, :]
+y = iris.target[idx]
+
+df = pd.DataFrame(X, columns=iris.feature_names)
+df['y'] = iris.target[idx]
+df['y_hat'] = (df['sepal length (cm)'] > 5.4).astype(int)
+df.head()
+```
+
+![ent_16.png](./images/entropy/ent_16.png)
+
+#### `scikit learn의 metrics 서브패키지의 log_logg 함수 사용`
+
+```python
+from sklearn.metrics import log_loss
+
+log_loss(df['y'], df['y_hat'])
+
+>>>
+
+3.799305383311686
+```
+### [python] quiz
+- 붓꽃 데이터에서 꽃받침 길이의 최솟값과 최대값 구간을 0.5 간격으로 나누어 각각의 값을 기준값으로 했을 때 로그손실이 어떻게 변하는지 그래프로 그려라. 세토사와 베르시 칼라만 사용.
+- 꽃받침의 폭도 같은 방식으로 로그손실을 계산하고 그래프로 그려라.
+- 꽃받침의 길이와 꽃받침의 폭 둘 중 어떤 것을 사용해야 로그 손실이 더 작은가?
+
+#### 붓꽃 데이터 생성
+- 세토사와 베르시칼라 컬럼만 사용
+    - 라벨값 : 0, 1
+
+```python
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+idx = np.in1d(iris.target, [0, 1])
+X = iris.data[idx, :]
+y = iris.target[idx]
+
+df_ir = pd.DataFrame(X, columns=iris.feature_names)
+df_ir['y'] = iris.target[idx]
+df_ir.head()
+```
+
+#### 로그손실 값을 계산하는 함수
+- reverse 파라미터가 False 이면 if문을 실행하고 True이면 else문을 실행한다.
+    - 컬럼에 따라서 로그손실값이 반대로 될 수 있다.
+
+```python
+def calc_log_loss(col, threshold, reverse) :
+    if reverse == False :
+        df_ir['y_hat'] = (df_ir[col] > threshold).astype(int)
+    else :
+        df_ir['y_hat'] = (df_ir[col] < threshold).astype(int)
+    logloss = log_loss(df_ir['y'], df_ir['y_hat'])
+
+    return logloss
+```
+
+#### 로그손실 그래프를 그리는 함수
+- 컬럼의 최소, 최대값을 구하고 0.05 간격으로 기준값 threshold 를 만든다.
+- 기준값, 컬럼, reverse 아규먼트를 로그손실 값 계산 함수에 입력하여 호출한다.
+    - sepal width 는 로그손실 값이 반대로 나온다. reverse 키워드 아규스 값을 True로 호출한다.
+
+```python
+def plot_log_loss(col, reverse=False) :
+    th_min = df_ir[col].min()
+    th_max = df_ir[col].max()
+    th_range = np.arange(th_min, th_max, 0.05)
+
+    l_loss = []
+    for th in th_range :
+        l_loss.append(calc_log_loss(col, th, reverse))
+
+    idx_min = np.argmin(l_loss)
+    th_min = th_range[idx_min]
+    l_loss_min = l_loss[idx_min]
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(th_range, l_loss, '-', label="log_loss")
+    plt.plot(th_min, l_loss_min, 'ro')
+    plt.title("기준값 {} 일 때 로그 손실 ({:.3} 에서 최저 로그손실 값 {:.3})" \
+              .format(col, th_min, l_loss_min), y=1.03)
+
+    plt.legend()
+    plt.show()
+```
+
+#### 꽃받침의 길이를 기준값으로 한 경우 로그손실 값 그래프
+
+```python
+plot_log_loss("sepal length (cm)")
+```
+
+![ent_17.png](./images/entropy/ent_17.png)
 
 
+#### 꽃받침의 폭을 기준값으로 한 경우 로그손실 값 그래프
 
+```python
+plot_log_loss("sepal width (cm)", reverse=True)
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![ent_18.png](./images/entropy/ent_18.png)
 
