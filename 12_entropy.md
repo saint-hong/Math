@@ -842,4 +842,61 @@ plot_min_cond_entropy('sepal width (cm)')
 - 베르시칼라와 버지니카 품종을 구분하기 위한 기준값은 꽃받침의 길이에서 찾는 것이 더 정확하다.
     - 조건부엔트로피 값이 낮기 떄문.
 
+#### petal 컬럼을 적용하면 에러 발생
+- petal 컬럼을 적용하면 특정 기준값(threshold)에서 피벗테이블이 (1,2)가 되어 pYX1이 계산되지 않는다.
+- 피벗테이블을 만드는 조건으로 th보다 큰 값을 사용했는데, 이때 th보다 큰 값이 없는 경우 False행만 만들어지기 때문이다.
+- 이러한 경우 try, except를 사용하여 error가 발생하면 바로 이전th값(th-0.05)으로 함수를 다시 호출하게 했다.
+
+```python
+def calc_cond_entropy(col, threshold) :
+    df_ir["X1"] = df_ir[col] > threshold
+    pt = df_ir.groupby(["X1", "species"]).size().unstack().fillna(0)
+    v = pt.values
+    # threshold 값에 따라서 피벗테이블의 크기가 달라지면 이전 threshold 값을 적용한다.
+    try :
+        pYX0 = v[0, :] / np.sum(v[0, :])
+        pYX1 = v[1, :] / np.sum(v[1, :])
+        HYX0 = sp.stats.entropy(pYX0, base=2)
+        HYX1 = sp.stats.entropy(pYX1, base=2)
+        HYX = np.sum(v, axis=1) @ [HYX0, HYX1] / np.sum(v)
+    except :
+        HYX = calc_entropy(col, threshold-0.05)
+
+    return HYX
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
