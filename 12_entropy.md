@@ -1128,13 +1128,7 @@ plot_log_loss("sepal width (cm)", reverse=True)
 - p분포와 q분포의 글자수의 차이와 같다.
 - 확률분포 q와 확률분포 p의 모양이 다른 정도를 정량화한 것과 같다.
 
-$\begin{aligned}
-KL(p||q)
-&= \sum_{i=1}^{K} p(y_i) log_2 \left( \dfrac{p(y_i)}{q(y_i)} \right) \\
-&= -\sum_{i=1}^{K} p(y_i) log_2 q(y_i) - (- \sum_{i=1}^{K} p(y_i) log_2 p(y_i)) \\
-&= H[p, q] - H[p] \\
-&= 2.0 - 1.75 = 0.25 \\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20KL%28p%7C%7Cq%29%20%26%3D%20%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20p%28y_i%29%20log_2%20%5Cleft%28%20%5Cdfrac%7Bp%28y_i%29%7D%7Bq%28y_i%29%7D%20%5Cright%29%20%5C%5C%20%26%3D%20-%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20p%28y_i%29%20log_2%20q%28y_i%29%20-%20%28-%20%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20p%28y_i%29%20log_2%20p%28y_i%29%29%20%5C%5C%20%26%3D%20H%5Bp%2C%20q%5D%20-%20H%5Bp%5D%20%5C%5C%20%26%3D%202.0%20-%201.75%20%3D%200.25%20%5C%5C%20%5Cend%7Baligned%7D">
 
 - entropy 함수에 두 확률분포를 list로 넣으면 두 확률분포의 닮음 여부를 값으로 반환해준다.
 
