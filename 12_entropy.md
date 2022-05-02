@@ -1413,7 +1413,7 @@ newsgroups.data[0:3]
 >>>
 ```
 
-![ent_19](./images/entropy/ent_19)
+![ent_19.png](./images/entropy/ent_19.png)
 
 #### 카테고리 값
 - 3개의 카테고리가 있으며 0, 1, 2 값으로 라벨링 된다.
