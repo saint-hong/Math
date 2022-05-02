@@ -1413,7 +1413,7 @@ newsgroups.data[0:3]
 >>>
 ```
 
-![ent_19](../images/entropy/ent_19)
+![ent_19](./images/entropy/ent_19)
 
 #### 카테고리 값
 - 3개의 카테고리가 있으며 0, 1, 2 값으로 라벨링 된다.
@@ -1540,7 +1540,7 @@ plt.title("뉴스그룹 카테고리와 키워드 사이의 상호정보량")
 plt.xlabel("키워드 번호")
 plt.show() ;
 ```
-![ent_20.png](../images/entropy/ent_20.png)
+![ent_20.png](./images/entropy/ent_20.png)
 
 
 #### 가장 상호정보량이 큰 10개의 키워드
@@ -1709,5 +1709,5 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![ent_21.png](../images/entropy/ent_21.png)
+![ent_21.png](./images/entropy/ent_21.png)
 
