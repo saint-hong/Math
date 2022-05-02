@@ -35,24 +35,24 @@
 - 엔트로피는 확률분포함수를 입력으로 받아 숫자를 출력하는 **범함수 functional**와 같다.
 - 범함수의 표기 방법에 따라서 "H[ ]" 이렇게 표기 한다.
 - 확률변수 Y가 카테고리분포와 같은 이산확률변수인 경우 엔트로피
-    - $\text{H}[Y] = - \sum_{k=1}^{K} p(y_k) log_2 p(y_k)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%5D%20%3D%20-%20%5Csum_%7Bk%3D1%7D%5E%7BK%7D%20p%28y_k%29%20log_2%20p%28y_k%29">
     - K : X가 가질 수 있는 클래스(범주값)의 수
     - p(y_k) : 확률질량함수(pmf)
     - 확률의 로그값은 항상 음수이므로 -를 곱하여 양수값으로 만들어 준다.
     - 확률은 0과 1사이의 값이고 로그함수에서 0과 1 사이의 영역은 음수값이다.
 - 확률변수 Y가 정규분포와 같은 연속확률변수인 경우 엔트로피
-    - $\text{H}[Y] = - \int_{- \infty}^{\infty} p(y) log_2 p(y) dy$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%5D%20%3D%20-%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20p%28y%29%20log_2%20p%28y%29%20dy">
     - p(y) : 확률밀도함수(pdf)
     - log2 : 정보통신 분야에서의 로그값 사용관례
 - 엔트로피 계산에서 p(y) = 0 인 경우는 로그값이 정의되지 않는다. 따라서 로피탈의 정리(l'Hopitals rule)를 따라서 0으로 수렴하는 값으로 계산한다.
-    - $\lim_{p \rightarrow 0} p log_2 p = 0$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Clim_%7Bp%20%5Crightarrow%200%7D%20p%20log_2%20p%20%3D%200">
 
 #### Y_1, Y_2, Y_3의 이산확률분포에 대한 엔트로피
-- $\text{H}[Y_1] = - \dfrac{1}{2} log_2 \dfrac{1}{2} - \dfrac{1}{2} log_2 \dfrac{1}{2} = 1$
+- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY_1%5D%20%3D%20-%20%5Cdfrac%7B1%7D%7B2%7D%20log_2%20%5Cdfrac%7B1%7D%7B2%7D%20-%20%5Cdfrac%7B1%7D%7B2%7D%20log_2%20%5Cdfrac%7B1%7D%7B2%7D%20%3D%201">
     - -1log_2 1/2 = log_2 1/2^-1 = log_2 2 = 1
-- $\text{H}[Y_2] = - \dfrac{8}{10} log_2 \dfrac{8}{10} - \dfrac{2}{10} log_2 \dfrac{2}{10} \approx 0.72$
+- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY_2%5D%20%3D%20-%20%5Cdfrac%7B8%7D%7B10%7D%20log_2%20%5Cdfrac%7B8%7D%7B10%7D%20-%20%5Cdfrac%7B2%7D%7B10%7D%20log_2%20%5Cdfrac%7B2%7D%7B10%7D%20%5Capprox%200.72">
     - (- 8/10 * np.log2(8/10)) - (2/10 * np.log2(2/10)) = 0.7219280948873623
-- $\text{H}[Y_3] = - 1 log_2 1 - 0 log_2 0 = 0$
+- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY_3%5D%20%3D%20-%201%20log_2%201%20-%200%20log_2%200%20%3D%200">
 
 ### [python] Y_1, Y_2, Y_3의 확률분포
 - 엔트로피의 크기 순서 : 확률이 골고루 분포되어있으면 엔트로피가 크고, 확률이 한쪽에 몰려있으면 엔트로피가 작다.
@@ -194,14 +194,14 @@ Y2
 ## 1-2 엔트로피의 성질
 - **엔트로피의 최소값** : 확률변수가 결정론적이면 확률분포에서 어떤 값이 나올 확률은 1과 같다. 따라서 이러한 경우 엔트로피는 0이다. 이 값이 엔트로피가 가질 수 있는 최소값이다.
 - **엔트로피의 최대값** : 이산확률변수의 클래스의 개수에 따라서 엔트로피의 값이 달라진다. 이산확률분포가 가질 수 있는 클래스의 개수가 2^K개일때 엔트로피의 최대값은 K이다.
-    - $H = - 2^K \cdot \dfrac{1}{2^K} log_2 \dfrac{1}{2^K} = K$
+    - <img src="https://latex.codecogs.com/gif.latex?H%20%3D%20-%202%5EK%20%5Ccdot%20%5Cdfrac%7B1%7D%7B2%5EK%7D%20log_2%20%5Cdfrac%7B1%7D%7B2%5EK%7D%20%3D%20K">
     - 만약 이산확률분포의 클래스의 개수가 2^3=8이면 위의 계산에 의해 엔트로피가 가질 수 있는 최대값은 3이 된다.
 
 ## 1-3 엔트로피의 추정
 - 이론적인 확률밀도함수가 없는 경우, 실제 데이터로부터 확률질량함수를 추정하여 엔트로피를 계산한다.
     - **데이터 -> 확률질량함수 추정 -> 엔트로피 계산**
 - 전체 데이터 수 80개, Y=0인 데이터가 40개, Y=1인 데이터가 40개 있는 경우의 엔트로피
-    - $\text{H}[Y] = - \dfrac{40}{80} log_2(\dfrac{40}{80}) - \dfrac{40}{80} log_2(\dfrac{40}{80}) = \dfrac{1}{2} + \dfrac{1}{2} = 1$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%5D%20%3D%20-%20%5Cdfrac%7B40%7D%7B80%7D%20log_2%28%5Cdfrac%7B40%7D%7B80%7D%29%20-%20%5Cdfrac%7B40%7D%7B80%7D%20log_2%28%5Cdfrac%7B40%7D%7B80%7D%29%20%3D%20%5Cdfrac%7B1%7D%7B2%7D%20&plus;%20%5Cdfrac%7B1%7D%7B2%7D%20%3D%201">
 
 ### [python] 사이파이로 entropy 계산
 
@@ -279,10 +279,10 @@ sp.stats.entropy(p2, base=2)
     - A가 가장 많이 등장하고 다음으로 B가 많이 등장하고 C와 D는 빈도수가 같다.
 - 이러한 경우 가장 많이 나오는 A의 인코딩 문자의 갯수를 줄이고 C와 D의 인코딩 문자의 갯수를 늘일 수 있다.
 - 가변길이 인코딩 방식으로 인코딩 된 문서의 한 글자당 비트수를 계산하면 엔트로피의 값과 같다.
-    - $\left( 200 \text{X} \dfrac{1}{2} \right) \cdot 1 + \left( 200 \text{X} \dfrac{1}{4} \right) \cdot 2 + \left( 200 \text{X} \dfrac{1}{8} \right) \cdot 3 + \left( 200 \text{X} \dfrac{1}{8} \right) \cdot 3 = 350$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cleft%28%20200%20%5Ctimes%20%5Cdfrac%7B1%7D%7B2%7D%20%5Cright%29%20%5Ccdot%201%20&plus;%20%5Cleft%28%20200%20%5Ctimes%20%5Cdfrac%7B1%7D%7B4%7D%20%5Cright%29%20%5Ccdot%202%20&plus;%20%5Cleft%28%20200%20%5Ctimes%20%5Cdfrac%7B1%7D%7B8%7D%20%5Cright%29%20%5Ccdot%203%20&plus;%20%5Cleft%28%20200%20%5Ctimes%20%5Cdfrac%7B1%7D%7B8%7D%20%5Cright%29%20%5Ccdot%203%20%3D%20350">
     - **한 문자당 바이트 수 : 350 / 200 = 1.75**
     - 각 문자의 확률에 대한 엔트로피 :
-$H=-\dfrac{1}{2}log_2\dfrac{1}{2} - \dfrac{1}{4}log_2\dfrac{1}{4} - \dfrac{1}{8}log_2\dfrac{1}{8} - \dfrac{1}{8}log_2\dfrac{1}{8}=1.75$
+<img src="https://latex.codecogs.com/gif.latex?H%3D-%5Cdfrac%7B1%7D%7B2%7Dlog_2%5Cdfrac%7B1%7D%7B2%7D%20-%20%5Cdfrac%7B1%7D%7B4%7Dlog_2%5Cdfrac%7B1%7D%7B4%7D%20-%20%5Cdfrac%7B1%7D%7B8%7Dlog_2%5Cdfrac%7B1%7D%7B8%7D%20-%20%5Cdfrac%7B1%7D%7B8%7Dlog_2%5Cdfrac%7B1%7D%7B8%7D%3D1.75">
 
 ### [python] 가변길이 인코딩
 
@@ -447,43 +447,38 @@ sp.stats.entropy(p_docs, base=2)
 #### 증명 
 - 목적범함수인 엔트로피의 값을 최대화한다. 이 과정에서 입력변수인 확률밀도함수의 제한조건이 라그랑주 승수법으로 추가된다. 엔트로피함수에 제한조건이 추가되어 새로운 목적함수가 된다. 이 목적함수를 풀면 정규분포의 형태가 된다. 
 - **pdf의 제한조건 1 : 면적의 총합은 1이다.**
-    - $\int_{-\infty}^{\infty} p(x)dx = 1$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p%28x%29dx%20%3D%201">
 - **pdf의 제한조건 2 : 기대값은 0이다. (연속확률변수의 기대값 공식)**
-    - $\int_{-\infty}^{\infty} xp(x)dx = 0$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20xp%28x%29dx%20%3D%200">
 - **pdf의 제한조건 3 : 분산은 sigma^2 이다.**
-    - $\int_{-\infty}^{\infty} x^2p(x)dx = \sigma^2$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20x%5E2p%28x%29dx%20%3D%20%5Csigma%5E2">
 - **목적범함수 objective functional**인 엔트로피를 최대화 한다. 
-    - $\text{H}[Y] = - \int_{-\infty}^{\infty}p(x)logp(x)dx$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%5D%20%3D%20-%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28x%29logp%28x%29dx">
 - 목적범함수에 pdf의 제한조건 3가지를 라그랑주 승수법으로 추가한다. 
-$\begin{aligned}
-\text{H}[Y]
-&= - \int_{-\infty}^{\infty}p(x)\log p(x)dx + \lambda_1 \left( \int_{-\infty}^{\infty} p(x)dx -1 \right) \\
-&+ \lambda_2 \left( \int_{-\infty}^{\infty} xp(x)dx \right) + \lambda_3 \left( \int_{-\infty}^{\infty} x^2p(x)dx - \sigma^2 \right) \\
-&= \int_{-\infty}^{\infty} ( -p(x)\log p(x) + \lambda_1p(x) + \lambda_2xp(x) + \lambda_3x^2p(x) - \lambda_1 - \lambda_3\sigma^2) dx\\
-\end{aligned}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BH%7D%5BY%5D%20%26%3D%20-%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28x%29%5Clog%20p%28x%29dx%20&plus;%20%5Clambda_1%20%5Cleft%28%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p%28x%29dx%20-1%20%5Cright%29%20%5C%5C%20%26&plus;%20%5Clambda_2%20%5Cleft%28%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20xp%28x%29dx%20%5Cright%29%20&plus;%20%5Clambda_3%20%5Cleft%28%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20x%5E2p%28x%29dx%20-%20%5Csigma%5E2%20%5Cright%29%20%5C%5C%20%26%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20%28%20-p%28x%29%5Clog%20p%28x%29%20&plus;%20%5Clambda_1p%28x%29%20&plus;%20%5Clambda_2xp%28x%29%20&plus;%20%5Clambda_3x%5E2p%28x%29%20-%20%5Clambda_1%20-%20%5Clambda_3%5Csigma%5E2%29%20dx%5C%5C%20%5Cend%7Baligned%7D">
 - 최대값을 구하기위해서 목적함수를 확률밀도함수로 편미분한다.
-    - $\dfrac{\delta H}{\delta p(x)} = - logp(x) - 1 + \lambda_1 + \lambda_2x + \lambda_3x^2 = 0$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20H%7D%7B%5Cdelta%20p%28x%29%7D%20%3D%20-%20logp%28x%29%20-%201%20&plus;%20%5Clambda_1%20&plus;%20%5Clambda_2x%20&plus;%20%5Clambda_3x%5E2%20%3D%200">
 - 양변에 지수함수를 적용하여 정리하면 다음과 같아진다. 
-    - $p(x) = exp( - 1 + \lambda_1 + \lambda_2x + \lambda_3x^2  )$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x%29%20%3D%20exp%28%20-%201%20&plus;%20%5Clambda_1%20&plus;%20%5Clambda_2x%20&plus;%20%5Clambda_3x%5E2%20%29">
 - pdf의 제한조건 3가지와 이 제한조건을 만족하는 연립방정식을 계산하면 라그랑주 승수 3개가 나온다. (이 과정은 생략함)
-    - $\lambda_1 = 1 - \dfrac{1}{2} \log 2 \pi \sigma^2$
-    - $\lambda_2 = 0$
-    - $\lambda_3 = - \dfrac{1}{2\sigma^2}$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Clambda_1%20%3D%201%20-%20%5Cdfrac%7B1%7D%7B2%7D%20%5Clog%202%20%5Cpi%20%5Csigma%5E2">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Clambda_2%20%3D%200">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Clambda_3%20%3D%20-%20%5Cdfrac%7B1%7D%7B2%5Csigma%5E2%7D">
 - 라그랑주 승수값을 각각 위의 식에 대입하면 정규분포의 확률밀도함수가 된다.
-    - $p(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp \left(- \dfrac{x^2}{2\sigma^2} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?p%28x%29%20%3D%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%20%5Cexp%20%5Cleft%28-%20%5Cdfrac%7Bx%5E2%7D%7B2%5Csigma%5E2%7D%20%5Cright%29">
     
 #### 정규분포의 확률밀도함수에 대한 엔트로피
-- $\text{H}[p(x)] = \dfrac{1}{2}\left( 1 + \log 2 \pi \sigma^2 \right)$
+- <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5Bp%28x%29%5D%20%3D%20%5Cdfrac%7B1%7D%7B2%7D%5Cleft%28%201%20&plus;%20%5Clog%202%20%5Cpi%20%5Csigma%5E2%20%5Cright%29">
 
 ## 1-7 조건부 엔트로피
 - 두 확률변수의 결합엔트로피(joint entropy)와 조건부엔트로피(conditional entropy)를 구하고 분류문제에 적용한다. 
 
 ### 결합엔트로피
 - `결합엔트로피 joint entropy` : 결합확률분포를 사용하여 정의한 엔트로피이다.
-- 이산확률변수 : $\text{H}[X, Y] = - \sum_{i=1}^{K_x} \sum_{j=1}^{K_Y} p(x_i, y_i)\log_2 p(x_i, y_i)$
+- 이산확률변수 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BX%2C%20Y%5D%20%3D%20-%20%5Csum_%7Bi%3D1%7D%5E%7BK_x%7D%20%5Csum_%7Bj%3D1%7D%5E%7BK_Y%7D%20p%28x_i%2C%20y_i%29%5Clog_2%20p%28x_i%2C%20y_i%29">
     - K_X, K_Y 는 X의 갯수, Y의 갯수
     - p(x)는 확률질량함수
-- 연속화률변수 : $\text{H}[X, Y] = - \int_{x} \int_{y} p(x, y) \log_2 p(x, y) dx dy$
+- 연속화률변수 : <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BX%2C%20Y%5D%20%3D%20-%20%5Cint_%7Bx%7D%20%5Cint_%7By%7D%20p%28x%2C%20y%29%20%5Clog_2%20p%28x%2C%20y%29%20dx%20dy">
     - p(x)는 확률밀도함수
 - 결합엔트로피도 엔트로피와 같다. 확률분포가 고르게 퍼져있으면 엔트로피 값이 증가하고, 확률분포가 하나의 값에 치우쳐져 있으면 엔트로피 값이 감소한다.     
     
@@ -492,12 +487,12 @@ $\begin{aligned}
 - 확률변수 X가 하나의 값을 갖고 확률변수 Y도 하나의 값만 갖는다면 X로 Y를 예측할 수 있다.
 - 확률변수 X가 하나의 값을 갖고 확률변수 Y가 여러개의 값에 퍼져있다면 X로 Y를 예측할 수 없다. 
 - 수학적 정의
-    - $\text{H}[Y|X=x_i] = - \sum_{j=1}^{K_Y} p(y_j | x_i) \log_2 p(y_j | x_i)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%7CX%3Dx_i%5D%20%3D%20-%20%5Csum_%7Bj%3D1%7D%5E%7BK_Y%7D%20p%28y_j%20%7C%20x_i%29%20%5Clog_2%20p%28y_j%20%7C%20x_i%29">
 - 조건부엔트로피는 확률변수 X가 가질 수 있는 모든 경우에 대해 H[Y|X=x_i]를 가중평균한 값과 같다.
 - 이산확률변수
-    - $\text{H}[Y|X] = \sum_{i=1}^{K_x} p(x_i) \text{H}[Y|X=x_i] = - \sum_{i=1}^{K_x} \sum_{j=1}^{K_Y} p(x_i, y_i) \log_2 p(y_j | x_i)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%7CX%5D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BK_x%7D%20p%28x_i%29%20%5Ctext%7BH%7D%5BY%7CX%3Dx_i%5D%20%3D%20-%20%5Csum_%7Bi%3D1%7D%5E%7BK_x%7D%20%5Csum_%7Bj%3D1%7D%5E%7BK_Y%7D%20p%28x_i%2C%20y_i%29%20%5Clog_2%20p%28y_j%20%7C%20x_i%29">
 - 연속확률변수
-    - $\text{H}[Y|X] = - \int_{y} p(y|x) \log_2 p(y|x) dy = - \int_{x} \int_{y} p(x, y) \log_2 p(y|x) dx dy$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%7CX%5D%20%3D%20-%20%5Cint_%7By%7D%20p%28y%7Cx%29%20%5Clog_2%20p%28y%7Cx%29%20dy%20%3D%20-%20%5Cint_%7Bx%7D%20%5Cint_%7By%7D%20p%28x%2C%20y%29%20%5Clog_2%20p%28y%7Cx%29%20dx%20dy">
 
 ### [python] 조건부엔트로피, 결합 엔트로피
 
@@ -872,9 +867,9 @@ def calc_cond_entropy(col, threshold) :
     - 분류문제의 성능을 평가해준다.
     - 예측의 틀린정도를 나타내는 오차함수 역할을 할 수 있다.
 - **이산확률분포** 
-    - $\text{H}[p, q] = - \sum_{k=1}^{K} p(y_k) \log_2 p(y_k)$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5Bp%2C%20q%5D%20%3D%20-%20%5Csum_%7Bk%3D1%7D%5E%7BK%7D%20p%28y_k%29%20%5Clog_2%20p%28y_k%29">
 - **연속확률분포**
-    - $\text{H}[p, q] = - \int_{y} p(y) \log_2 p(y) dy$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5Bp%2C%20q%5D%20%3D%20-%20%5Cint_%7By%7D%20p%28y%29%20%5Clog_2%20p%28y%29%20dy">
 
 ### 교차엔트로피를 사용한 분류 성능 측정
 - 교차엔트로피는 분류성능을 측정하는 데 사용된다.
@@ -894,11 +889,11 @@ def calc_cond_entropy(col, threshold) :
     - Y=0 일때 mu가 커지면 -log2(1-mu)가 커진다. (예측이 잘 못된 경우), mu가 작아지면 -log2(1-mu)가 작아진다. (예측이 잘 된 경우)
 
 - `로그손실 log-loss` : 이진분류에서의 교차엔트로피가 오차의 정도를 나타낸다고 할 때(손실함수), 교차엔트로피의 평균값
-    - $\text{log-loss}= - \dfrac{1}{N} \sum_{i=1}^{N} (y_i log2 \mu_i + (1 - y_i) log2 (1 - mu_i))$
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7Blog-loss%7D%3D%20-%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20log2%20%5Cmu_i%20&plus;%20%281%20-%20y_i%29%20log2%20%281%20-%20mu_i%29%29">
 - `카테고리 로그손실` : 다중분류에서의 교차엔트로피 손실함수
-    - $\text{categorical log-loss}= - \dfrac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} (\mathbb{I}(y_i = k) log2 p(y_i = k))$
-    - $(\mathbb{I}(y_i = k)$ : y_i=k 이면 1, 아니면 0을 출력하는 지시함수(indicator function)
-    - $p(y_i = k)$ : 분류모델이 계산한 y_i=k 일 확률
+    - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7Bcategorical%20log-loss%7D%3D%20-%20%5Cdfrac%7B1%7D%7BN%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%5Csum_%7Bk%3D1%7D%5E%7BK%7D%20%28%5Cmathbb%7BI%7D%28y_i%20%3D%20k%29%20log2%20p%28y_i%20%3D%20k%29%29">
+    - <img src="https://latex.codecogs.com/gif.latex?%28%5Cmathbb%7BI%7D%28y_i%20%3D%20k%29"> : y_i=k 이면 1, 아니면 0을 출력하는 지시함수(indicator function)
+    - <img src="https://latex.codecogs.com/gif.latex?p%28y_i%20%3D%20k%29"> : 분류모델이 계산한 y_i=k 일 확률
 
 ### [python] 교차엔트로피 계산
 
@@ -1110,12 +1105,12 @@ plot_log_loss("sepal width (cm)", reverse=True)
 - `쿨백-라이블러 발산 Kullback-Leibler divergence` : 두 확률분포 p(y), q(y)의 분포모양이 얼마나 다른지를 숫자로 계산한 값.
     - KL(p||q)
 - **이산확률분포의 쿨백-라이블러 발산**
-    - $KL(p||q) = H[p, q] - H[p] = \sum_{i=1}^{K}p(y_i)log2 \left( \dfrac{p(y_i)}{q(y_i)} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?KL%28p%7C%7Cq%29%20%3D%20H%5Bp%2C%20q%5D%20-%20H%5Bp%5D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BK%7Dp%28y_i%29log2%20%5Cleft%28%20%5Cdfrac%7Bp%28y_i%29%7D%7Bq%28y_i%29%7D%20%5Cright%29">
     - 교차엔트로피 - 엔트로피
-    - $log a - logb = log \dfrac{a}{b}$ 를 사용하여 정리
+    - <img src="https://latex.codecogs.com/gif.latex?log%20a%20-%20logb%20%3D%20log%20%5Cdfrac%7Ba%7D%7Bb%7D"> 를 사용하여 정리
     
 - **연속확률분포의 쿨백-라이블러 발산**
-    - $KL(p||q) = H[p, q] - H[p] = \int p(y) log_2 \left( \dfrac{p(y)}{q(y)} \right) dy$
+    - <img src="https://latex.codecogs.com/gif.latex?KL%28p%7C%7Cq%29%20%3D%20H%5Bp%2C%20q%5D%20-%20H%5Bp%5D%20%3D%20%5Cint%20p%28y%29%20log_2%20%5Cleft%28%20%5Cdfrac%7Bp%28y%29%7D%7Bq%28y%29%7D%20%5Cright%29%20dy">
 
 #### `상대엔트로피 relative entropy` : 쿨백-라이블러 발산은 교차엔트로피에서 기준이 되는 p분포의 엔트로피 값을 뺀 것과 같다.
 - H[p, q] - H[p]
@@ -1362,14 +1357,14 @@ sp.stats.entropy(p, fix_p, base=2)
 - 두 확률변수 X, Y가 독립일 때 결합확률밀도함수는 주변확률밀도함수의 곱과 같다.
     - p(x, y) = p(x)p(y)
 
-- 쿨백-라이블러 발산은 두 확률분포가 얼마나 다른지를 정량적으로 나타내는 수치이다.
+- **쿨백-라이블러 발산은 두 확률분포가 얼마나 다른지를 정량적으로 나타내는 수치이다.**
     - 두 확률분포가 같으면 쿨백-라이블러 발산은 0이고, 두 확률분포가 다를 수록 값이 커진다.
-    - $KL(p||q) = \sum_{i=1}^{K} p(y_i) log_2 \left( \dfrac{p(y_i)}{q(y_i)} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?KL%28p%7C%7Cq%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20p%28y_i%29%20log_2%20%5Cleft%28%20%5Cdfrac%7Bp%28y_i%29%7D%7Bq%28y_i%29%7D%20%5Cright%29">
 
 - `상호정보량 mutual information` : 결합확률밀도함수 p(x, y)와 주변확률밀도함수의 곱인 p(x)p(y)dml 쿨백-라이블러 발산이다.
     - 결합확률밀도함수와 주변확률밀도함수의 차이를 측정하여 두 확률변수의 상관관계를 계산하는 방법이다.
     - 두 확률변수가 독립이면 결합확률밀도함수는 주변확률밀도함수의 곱과 같으므로 상호정보량은 0이 된다.
-    - $MI[X, Y] = KL(p(x, y) || p(x)p(x)) = \sum_{i=1}^{K} p(x_i, y_i) log_2 \left(\dfrac{p(x_i, y_i)}{p(x_i)p(y_i)} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?MI%5BX%2C%20Y%5D%20%3D%20KL%28p%28x%2C%20y%29%20%7C%7C%20p%28x%29p%28x%29%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BK%7D%20p%28x_i%2C%20y_i%29%20log_2%20%5Cleft%28%5Cdfrac%7Bp%28x_i%2C%20y_i%29%7D%7Bp%28x_i%29p%28y_i%29%7D%20%5Cright%29">
 
 - **상호정보량은 엔트로피와 조건부엔트로피의 차이와 같다**
     - MI[X, Y] = H[X] - H[X|Y]
@@ -1385,11 +1380,11 @@ sp.stats.entropy(p, fix_p, base=2)
     - **N_j** : Y = j 인 데이터의 개수
     - **N_ij** : X = i, Y = j 인 데이터의 개수
 - 결합확률밀도함수와 주변확률밀도함수
-    - $p_X(i) = \dfrac{N_i}{N}$
-    - $p_Y(j) = \dfrac{N_j}{N}$
-    - $p_{XY}(i, j) = \dfrac{N_{ij}}{N}$
+    - <img src="https://latex.codecogs.com/gif.latex?p_X%28i%29%20%3D%20%5Cdfrac%7BN_i%7D%7BN%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?p_Y%28j%29%20%3D%20%5Cdfrac%7BN_j%7D%7BN%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?p_%7BXY%7D%28i%2C%20j%29%20%3D%20%5Cdfrac%7BN_%7Bij%7D%7D%7BN%7D">
 - 확률밀도함수를 대입하여 상호정보량을 구한다.
-    - $MI[X, Y] = \sum_{i=1}^{I} \sum_{j=1}^{J} \dfrac{N_{ij}}{N} log_2 \left( \dfrac{N N_{ij}}{N_i N_j} \right)$
+    - <img src="https://latex.codecogs.com/gif.latex?MI%5BX%2C%20Y%5D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7BI%7D%20%5Csum_%7Bj%3D1%7D%5E%7BJ%7D%20%5Cdfrac%7BN_%7Bij%7D%7D%7BN%7D%20log_2%20%5Cleft%28%20%5Cdfrac%7BN%20N_%7Bij%7D%7D%7BN_i%20N_j%7D%20%5Cright%29">
 
 ### [python] 상호정보량
 - 사이킷런 패키지 -> metrics 서브패키지 -> mutual_info_score 명령어
@@ -1710,4 +1705,3 @@ plt.show() ;
 ```
 
 ![ent_21.png](./images/entropy/ent_21.png)
-
