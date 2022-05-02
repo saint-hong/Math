@@ -1106,3 +1106,608 @@ plot_log_loss("sepal width (cm)", reverse=True)
 
 ![ent_18.png](./images/entropy/ent_18.png)
 
+## 1-9 쿨백-라이블러 발산
+- `쿨백-라이블러 발산 Kullback-Leibler divergence` : 두 확률분포 p(y), q(y)의 분포모양이 얼마나 다른지를 숫자로 계산한 값.
+    - KL(p||q)
+- **이산확률분포의 쿨백-라이블러 발산**
+    - $KL(p||q) = H[p, q] - H[p] = \sum_{i=1}^{K}p(y_i)log2 \left( \dfrac{p(y_i)}{q(y_i)} \right)$
+    - 교차엔트로피 - 엔트로피
+    - $log a - logb = log \dfrac{a}{b}$ 를 사용하여 정리
+    
+- **연속확률분포의 쿨백-라이블러 발산**
+    - $KL(p||q) = H[p, q] - H[p] = \int p(y) log_2 \left( \dfrac{p(y)}{q(y)} \right) dy$
+
+#### `상대엔트로피 relative entropy` : 쿨백-라이블러 발산은 교차엔트로피에서 기준이 되는 p분포의 엔트로피 값을 뺀 것과 같다.
+- H[p, q] - H[p]
+- 상대엔트로피 값은 항상 양수이다.
+- 두 확률분포 p(x), q(x)가 완전히 동일한 분포일 때만 값이 0이다.
+- 쿨백-라이블러 발산 값이 0이면 두 확률분포는 같다. (증명 복잡)
+    - **KL(p||q) = 0 <-> p(x) = q(x)**
+
+####   쿨백-라이블러 발산의 의미
+- 쿨백-라이블러 발산은 두 확률분포의 거리(distance)를 계산하여 유사한지를 따지는 방법이 아니라 q가 기준확률분포 p와 얼마나 다른지를 계산하다.
+- 따라서 기분이 되는 확률분포의 위치가 달라지면 쿨백-라이블러 발산의 값도 달라진다.
+    - **KL(p||q) ≠ KL(q||p)**
+
+#### 쿨백-라이블러 발산과 가변길이 인코딩
+- p분포와 q분포의 글자수의 차이와 같다.
+- 확률분포 q와 확률분포 p의 모양이 다른 정도를 정량화한 것과 같다.
+
+$\begin{aligned}
+KL(p||q)
+&= \sum_{i=1}^{K} p(y_i) log_2 \left( \dfrac{p(y_i)}{q(y_i)} \right) \\
+&= -\sum_{i=1}^{K} p(y_i) log_2 q(y_i) - (- \sum_{i=1}^{K} p(y_i) log_2 p(y_i)) \\
+&= H[p, q] - H[p] \\
+&= 2.0 - 1.75 = 0.25 \\
+\end{aligned}$
+
+- entropy 함수에 두 확률분포를 list로 넣으면 두 확률분포의 닮음 여부를 값으로 반환해준다.
+
+
+### [python] 가변길이 인코딩과 쿨백-라이블러 발산
+
+#### A, B, C, D로 이루어진 어떤 문서를 가변길이 인코딩하는 경우
+- A, B, C, D 를 각각의 확률로 생성한 후 join함수로 합친다.
+- list로 변환하면 각각의 데이터가 str 형태로 떨어지게 된다.
+
+```python
+N = 200
+p = [1/2, 1/4, 1/8, 1/8]
+doc0 = list("".join([int(N * p[i]) * c for i, c in enumerate("ABCD")]))
+doc0
+
+>>>
+
+['A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',...]
+```
+
+- 원소를 무작위로 섞어준 후 join함수를 사용하여 이어준다.
+- 전체 200개의 문자가 생성된다.
+
+```python
+np.random.shuffle(doc0)
+doc = "".join(doc0)
+doc
+
+>>>
+
+'AABABDAAAABAAAADAABBADDBBABDBAABABACAAAAACCBAABABCADBABDABBDABACAAAAABDBBACDDBAADAADAABAADBABBCAAAAAAAAADAAAAAAAADDCBCCACCACBBACCAABAACAACDABBAAADADAAABABBCDBBAADAABBAABCAABACDCBBBAADABBBAABCAABACCCAD'
+```
+
+#### 문서를 구성하는 글자의 분포
+- Counter 함수로 A, B, C, D 각각의 갯수를 계산하고 전체 길이로 나누어준다.
+
+```python
+from collections import Counter
+
+p = np.array(list(Counter(doc).values())) / len(doc)
+p
+
+>>>
+
+array([0.5  , 0.25 , 0.125, 0.125])
+
+# 문서의 각 원소의 갯수 계산
+Counter(doc)
+
+>>>
+
+Counter({'A': 100, 'B': 50, 'D': 25, 'C': 25})
+```
+
+#### 한글자당 인코딩된 글자수 = q 분포의 엔트로피
+
+```python
+sp.stats.entropy(p, base=2)
+
+>>>
+
+1.75
+```
+
+#### A, B, C, D를 가변길이 인코딩하여 다시 문서를 만들고 글자수를 확인
+- A, B, C, D를 0과 1로 인코딩한다
+- 각 문자의 확률에 따라 인코딩 길이를 다르게 한다.
+    - 전체 길이는 변하지 않는다.
+
+```python
+v1_encoder = {"A" : "0", "B" : "10", "C" : "110", "D" : "111"}
+v1_encoder_doc = "".join(v1_encoder[a] for a in doc)
+v1_encoder_doc
+
+>>>
+
+'00100101110000100000111001010011111110100101111000100100110000001101101000100101100111100101110101011101001100000010111101001101111111000111001110010001111001010110000000000111000000001111111101011011001101100110101001101100010001100011011101010000111011100010010101101111010001110010100010110001001101111101010100011101010100010110001001101101100111'
+```
+
+- 가변길이 인코딩 된 문서를 원래 문서의 길이로 나누어주면 엔트로피 값과 같다.
+
+```python
+len(v1_encoder_doc) / len(doc)
+
+>>>
+
+1.75
+```
+
+#### 가변길이 인코딩이 아닌 고정길이 인코딩을 사용하면?
+- 문자의 확률에 따른 가변길이가 아닌 모두 같은길이의 고정길이 인코딩을 사용하면 한글자당 인코딩 된 글자수는 어떻게 변할까?
+    - q(Y=A) = 1/4, q(Y=B) = 1/4, q(Y=C) = 1/4, q(Y=D) = 1/4
+
+```python
+sp.stats.entropy([1/4]*4, base=2)
+
+>>>
+
+2.0
+```
+
+```python
+v2_encoder = {"A" : "00", "B" : "01", "C" : "01", "D" : "11"}
+v2_encoder_doc = "".join(v2_encoder[a] for a in doc)
+len(v2_encoder_doc) / len(doc)
+
+>>>
+
+2.0
+```
+
+#### 쿨벡-라이블러 발산은 p분포와 q분포의 글자수의 차이와 같다. 
+- entropy 함수에 두 확률분포를 list로 넣으면 두 확률분포의 닮은 정도를 값으로 반환해준다.
+
+```python
+sp.stats.entropy([1/2, 1/4, 1/8, 1/8], [1/4, 1/4, 1/4, 1/4], base=2)
+```
+
+### [python] quiz
+- A, B, C, D, E, F, G, H 8글자로 이루어지 문서가 있다.
+- 각 글자가 나올 확률이 다음과 같다.
+    - p = [1/2, 1/4, 1/8, 1/16, 1/64, 1/64, 1/64, 1/64]
+- 확률분포 p와 균일 확률분포 q의 쿨백-라이블러 발산값을 계산하시오.
+- 이 문서를 가변길이 인코딩을 할 떄와 고정길이 인코딩을 할 때 한글자당 인코딩된 글자수를 비교하시오
+
+```python
+N = 100
+p = [1/2, 1/4, 1/8, 1/16, 1/64, 1/64, 1/64, 1/64]
+doc1 = list("".join(int(N * p[i]) * c for i, c in enumerate("ABCDEFGH")))
+doc1
+
+>>>
+
+['A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',
+ 'A',...]
+```
+
+#### 가변길이 인코딩을 한 후 한글자당 분포는 = 엔트로피 값과 같다.
+
+```python
+np.random.shuffle(doc1)
+doc = "".join(doc1)
+doc
+
+>>>
+
+'CBAAAABAAAAABBABADACACABABCBADADAABAABAAABAAACBADAADAABDFCABCABBABAABAACBBAHACACAABCAAEAGACBBBABA'
+```
+
+#### entropy 확인
+
+```python
+ent1 = sp.stats.entropy(p, base=2)
+ent1
+
+>>>
+
+2.0
+```
+
+#### 고정길이의 확률분포 fix_p의 한글자당 분포 = 엔트로피 값과 같다.
+
+```python
+fix_p = [1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8]
+
+ent2 = sp.stats.entropy(fix_p, base=2)
+ent2
+
+>>>
+
+3.0
+```
+
+#### 쿨백-라이블러 발산
+- 가변길이 인코딩의 한글자당 글자수와 고정길이 인코딩의 한글자당 글자수의 차이와 같다.
+
+```python
+ent2 - ent1
+
+>>>
+
+1.0
+```
+
+```python
+sp.stats.entropy(p, fix_p, base=2)
+
+>>>
+
+1.0
+```
+
+
+## 1-10 상호정보량
+- 상호정보량은 상관계수를 대체할 수 있는 확률변수의 특성이다.
+
+### 상호정보량
+- 두 확률변수 X, Y가 독립일 때 결합확률밀도함수는 주변확률밀도함수의 곱과 같다.
+    - p(x, y) = p(x)p(y)
+
+- 쿨백-라이블러 발산은 두 확률분포가 얼마나 다른지를 정량적으로 나타내는 수치이다.
+    - 두 확률분포가 같으면 쿨백-라이블러 발산은 0이고, 두 확률분포가 다를 수록 값이 커진다.
+    - $KL(p||q) = \sum_{i=1}^{K} p(y_i) log_2 \left( \dfrac{p(y_i)}{q(y_i)} \right)$
+
+- `상호정보량 mutual information` : 결합확률밀도함수 p(x, y)와 주변확률밀도함수의 곱인 p(x)p(y)dml 쿨백-라이블러 발산이다.
+    - 결합확률밀도함수와 주변확률밀도함수의 차이를 측정하여 두 확률변수의 상관관계를 계산하는 방법이다.
+    - 두 확률변수가 독립이면 결합확률밀도함수는 주변확률밀도함수의 곱과 같으므로 상호정보량은 0이 된다.
+    - $MI[X, Y] = KL(p(x, y) || p(x)p(x)) = \sum_{i=1}^{K} p(x_i, y_i) log_2 \left(\dfrac{p(x_i, y_i)}{p(x_i)p(y_i)} \right)$
+
+- **상호정보량은 엔트로피와 조건부엔트로피의 차이와 같다**
+    - MI[X, Y] = H[X] - H[X|Y]
+    - MI[X, Y] = H[Y] - H[Y|X]
+- 조건부엔트로피는 두 확률변수의 상관관계가 강할 수록 원래 엔트로피 값보다 작아진다.
+- **따라서 상관관계가 강할 수록 상호정보량의 값은 커진다.**
+
+### 이산확률변수의 상호정보량
+- 상관관계가 있는 두 확률변수 X, Y에서 나온 표본데이터 N개가 있을 때, 이 데이터를 이용하여 상호정보량을 알기 위해서 필요한 값들
+    - **I** : X의 카테고리 개수
+    - **J** : Y의 카테고리 개수
+    - **N_i** : X = i 인 데이터의 개수
+    - **N_j** : Y = j 인 데이터의 개수
+    - **N_ij** : X = i, Y = j 인 데이터의 개수
+- 결합확률밀도함수와 주변확률밀도함수
+    - $p_X(i) = \dfrac{N_i}{N}$
+    - $p_Y(j) = \dfrac{N_j}{N}$
+    - $p_{XY}(i, j) = \dfrac{N_{ij}}{N}$
+- 확률밀도함수를 대입하여 상호정보량을 구한다.
+    - $MI[X, Y] = \sum_{i=1}^{I} \sum_{j=1}^{J} \dfrac{N_{ij}}{N} log_2 \left( \dfrac{N N_{ij}}{N_i N_j} \right)$
+
+### [python] 상호정보량
+- 사이킷런 패키지 -> metrics 서브패키지 -> mutual_info_score 명령어
+    - X, Y의 카테고리 값을 2차원 배열로 입력한다. 
+
+#### 문서 카테고리 분류문제
+- rec.autos, sci.med, rec.sport.baseball 세 클래스의 문서 데이터 사용
+- 각 문서의 키워드와 카테고리 사이의 상호정보량 계산
+
+```python
+from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import mutual_info_score
+```
+
+```python
+categories = ['rec.autos', 'sci.med', 'rec.sport.baseball']
+newsgroups = fetch_20newsgroups(subset='train', categories=categories)
+newsgroups.data[0:3]
+
+>>>
+```
+
+![ent_19](../images/entropy/ent_19)
+
+#### 카테고리 값
+- 3개의 카테고리가 있으며 0, 1, 2 값으로 라벨링 된다.
+
+```python
+newsgroups.target
+
+>>>
+
+array([1, 0, 0, ..., 0, 2, 1], dtype=int64)
+```
+
+#### 카운트벡터라이저로 문서의 키워드 분석
+- 전체 데이터에서 token_pattern에 따라서 말뭉치(키워드)를 만든다.
+- 23805개가 만들어 진다.
+
+```python
+vect = CountVectorizer(stop_words='english', token_pattern="[a-zA-Z]+")
+vect
+
+>>>
+
+CountVectorizer(stop_words='english', token_pattern='[a-zA-Z]+')
+```
+
+- 어떤 키워드들이 있는지 확인해보기
+
+```python
+words = vect.get_feature_names_out()
+words[:20]
+
+>>>
+
+array(['aa', 'aaa', 'aaai', 'aamir', 'aanerud', 'aardvark', 'aaron',
+       'aaronson', 'aas', 'ab', 'abacus', 'abandon', 'abates',
+       'abberation', 'abbie', 'abbot', 'abbott', 'abbrev', 'abbreviation',
+       'abbreviations'], dtype=object)
+```
+
+#### 카운트벡터라이즈 훈련
+- 3개의 카테고리 뉴스 데이터를 학습시킨다.
+- 1785개의 문서 데이터마다 23805개의 키워드가 있는지 없는지 배열로 반환된다.
+
+```python
+X = vect.fit_transform(newsgroups.data).toarray()
+X
+
+>>>
+
+array([[0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       ...,
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0]], dtype=int64)
+```
+
+- X 배열의 모양
+- 1785개의 문서 각각에 대한 키워드 분석 배열이 행으로 되어 있다.
+    - 행은 각각의 문서이고
+    - 열은 각각의 문서에서 23806개의 키워드에 대한 갯수를 의미한다.
+
+```python
+X.shape
+
+>>>
+
+(1785, 23805)
+```
+
+#### 첫번째 문서데이터에서 가장 많이 나온 키워드는?
+- fry 라는 키워드이다.
+- 카운트벡터라이저가 키워드를 구분할 때 의미가 있는 단어를 구분하는 것은 아니다.
+
+```python
+# 첫번쨰 문서에서 가장 큰 숫자는 해당 위치의 키워드의 등장 개숫이다.
+X[0].argmax()
+
+>>>
+
+8055
+
+# 현재 문서에서 가장 많이 등장한 단어
+words[X[0].argmax()]
+
+>>>
+
+'fry'
+```
+
+#### 라벨 데이터
+
+```python
+y = newsgroups.target
+y
+
+>>>
+
+array([1, 0, 0, ..., 0, 2, 1], dtype=int64)
+```
+
+### 상호정보량 계산
+- 키워드별 나온 횟수(X의 열)와 라벨 데이터의 상호정보량을 계산한다.
+
+```python
+mi = np.array([mutual_info_score(X[:, i], y) for i in range(X.shape[0])])
+mi
+
+>>>
+
+array([0.00310637, 0.01482766, 0.00061673, ..., 0.00077476, 0.00061673,
+       0.00348708])
+```
+
+- 뉴스그룹 카테고리와 키워드 사이의 상호정보량을 그래프로 그리기
+
+```python
+%matplotlib inline
+
+plt.figure(figsize=(8, 6))
+plt.stem(mi)
+plt.title("뉴스그룹 카테고리와 키워드 사이의 상호정보량")
+plt.xlabel("키워드 번호")
+plt.show() ;
+```
+![ent_20.png](../images/entropy/ent_20.png)
+
+
+#### 가장 상호정보량이 큰 10개의 키워드
+- 상호정보량은 두 확률변수이 상관관계가 클 수록 크다.
+- 카운터벡터라이저로 만든 말뭉치와 갯수 확인
+
+```python
+voca = vect.vocabulary_
+voca
+
+>>>
+
+{'subject': 20358,
+ 'jewish': 10868,
+ 'baseball': 1664,
+ 'players': 15868,
+ 'fry': 8055,
+ 'zariski': 23746,
+ 'harvard': 9062,
+ 'edu': 6432,
+ 'david': 5046,
+ 'organization': 14839,
+ 'math': 12749,
+ 'department': 5347,
+ 'nntp': 14254,
+ 'posting': 16079,
+ 'host': 9586,...}
+```
+
+#### key와 values 의 위치를 바꾼 후 상호정보량이 큰 10개의 키워드 확인
+- auto, med, baseball 문서이므로 키워드도 이와 관련된 것들이 상호정보량이 크다.
+
+```python
+inv_vocabulary = {v : k for k, v in vect.vocabulary_.items()}
+inv_vocabulary
+
+>>>
+
+{20358: 'subject',
+ 10868: 'jewish',
+ 1664: 'baseball',
+ 15868: 'players',
+ 8055: 'fry',
+ 23746: 'zariski',
+ 9062: 'harvard',
+ 6432: 'edu',
+ 5046: 'david',
+ 14839: 'organization',
+ 12749: 'math',...}
+```
+
+- 상호정보량 값을 정렬한다.
+- 상호정보량 배열을 작은값 순으로 인덱스를 반환한다.
+- np.flip()을 사용하여 뒤집으면 큰 값 순으로 인덱스가 정렬된다.
+
+```python
+idx = np.flip(np.argsort(mi))
+idx
+
+>>>
+
+array([1664, 1606, 1404, ..., 1009,  687,  187], dtype=int64)
+```
+
+- 상호정보량 값이 큰 10개의 키워드 확인
+- 문서의 카테고리와 키워드의 의미가 어느정도 일치하는 것 같다.
+
+```python
+[inv_vocabulary[idx[i]] for i in range(10)]
+
+>>>
+
+['baseball',
+ 'banks',
+ 'automotive',
+ 'auto',
+ 'ball',
+ 'autos',
+ 'batting',
+ 'atlanta',
+ 'alomar',
+ 'bat']
+```
+
+## 1-11 최대정보 상관계수
+- 연속확률변수에서 상호정보량을 계산하려면 확률분포함수를 알아야 한다.
+    - 확률분포함수는 히스토그램을 사용하여 유한개의 구간으로 나누어 측정한다. 
+    - 구간의 개수나 경계 위치에 따라서 추정오차가 커진다.
+- `최대정보 상관계수 maximum information coefficient MIC` : 따라서 여러 구간을 나누는 방법을 다양하게 시도하고, 그 결과로 구한 다양한 상호정보량 중에서 가장 큰 값을 선택하고 정규화한다.
+- **minepy 패키지를 사용하여 최대정보 상관계수를 구할 수 있다.**
+    - conda 패키지 매니저로 설치
+- 선형상관계수(피어슨상관계수)가 0이지만, 비선형적 상관관계를 갖는 데이터들에 대해서 최대정보 상관계수를 구할 수 있다.
+    - 비선형적 상관관계의 데이터들은 피어슨 상관계수값이 0이지만, 상관관계를 갖는다.
+    - 여러 구간으로 나누어 상호정보량을 측정하고 가장 큰 값을 선택하면 최대정보 상관계수 값을 구할 수 있다.
+    - 즉 비선형적 상관관계의 데이터들도 최대정보 상관계수로 정량화 할 수 있다.
+
+### minepy
+- 최대 상호정보량을 계산해주는 패키지 설치
+- 아나콘다 홈페이지에서 minepy 패키지 페이지로 들어가면 설치 명령어를 확인할 수 있다.
+    - https://anaconda.org/conda-forge/minepy
+- conda install minepy 명령어로는 설치가 안된다.
+- **conda install -c conda-forge minepy** 로 설치해야한다.
+    - conda-forge 명령어 안에 scikitlearn 패키지도 있다. 
+    - 뭔지 알아볼 것    
+
+```python
+from minepy import MINE
+
+%matplotlib inline
+
+mine = MINE()
+n = 500
+
+plt.figure(figsize=(8, 6))
+plt.subplot(231)
+x1 = np.random.uniform(-1, 1, n)
+y1 = 2 * x1**2 + np.random.uniform(-1, 1, n)
+plt.scatter(x1, y1)
+# 최대상호정보량 계산
+mine.compute_score(x1, y1)
+plt.title("MIC={0:0.3f}".format(mine.mic()))
+
+plt.subplot(232)
+x2 = np.random.uniform(-1, 1, n)
+y2 = 4 * (x2**2 - 0.5)**2 + np.random.uniform(-1, 1, n) / 5
+plt.scatter(x2, y2)
+mine.compute_score(x2, y2)
+plt.title("MIC={0:0.3f}".format(mine.mic()))
+
+plt.subplot(233)
+x3 = np.random.uniform(-1, 1, n)
+y3 = np.cos(x3 * np.pi) + np.random.uniform(0, 1/8, n)
+x3 = np.sin(x3 * np.pi) + np.random.uniform(0, 1/8, n)
+plt.scatter(x3, y3)
+mine.compute_score(x3, y3)
+plt.title("MIC={0:0.3f}".format(mine.mic()))
+
+plt.subplot(234)
+x4 = np.random.uniform(-1, 1, n)
+y4 = np.random.uniform(-1, 1, n)
+plt.scatter(x4, y4)
+mine.compute_score(x4, y4)
+plt.title("MIC={0:0.3f}".format(mine.mic()))
+
+plt.subplot(235)
+x5 = np.random.uniform(-1, 1, n)
+y5 = (x5**2 + np.random.uniform(0, 0.5, n)) * np.array([-1, 1])\
+[np.random.random_integers(0, 1, size=n)]
+plt.scatter(x5, y5)
+mine.compute_score(x5, y5)
+plt.title("MIC={0:0.3f}".format(mine.mic()))
+
+plt.subplot(236)
+xy1 = np.random.multivariate_normal([3, 3], [[1, 0], [0, 1]], int(n/4))
+xy2 = np.random.multivariate_normal([-3, 3], [[1, 0], [0, 1]], int(n/4))
+xy3 = np.random.multivariate_normal([-3, -3], [[1,0], [0, 1]], int(n/4))
+xy4 = np.random.multivariate_normal([3, -3], [[1, 0], [0, 1]], int(n/4))
+xy = np.concatenate((xy1, xy2, xy3, xy4), axis=0)
+x6 = xy[:, 0]
+y6 = xy[:, 1]
+plt.scatter(x6, y6)
+mine.compute_score(x6, y6)
+plt.title("MIC={0:0.3f}".format(mine.mic()))
+
+plt.tight_layout()
+plt.show() ;
+```
+
+![ent_21.png](../images/entropy/ent_21.png)
+
