@@ -393,7 +393,7 @@ get_make_subset(omega)
 - ``콜모고로프의 공리 kolmogorov's axioms`` : 확률이라는 함수를 정의하는 3가지 규칙
 - 모든 확률은 콜모고로프의 공리를 따라야 한다. 
   1. 모든 사건에 대해 확률은 실수이고 0 또는 양수이다.
-      - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28A%29%20%5Cleq%200">
+      - <img src="https://latex.codecogs.com/gif.latex?P%28A%29%20%5Cgeq%200">
   2. 표본공간(전체집합)이라는 사건(부분집합)에 대한 확률은 1이다.
       - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20P%28%5COmega%29%20%3D%201">
   3. 공통 원소가 없는 두 사건의 합집합의 확률은 사건별 확률의 합이다.
