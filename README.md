@@ -285,7 +285,7 @@
     - 멀티클래스 분류
     - 베이즈 정리의 확장 2
 
-### 8. 확률변수와 상관관계(randomvalue and correlation)
+### 9. 확률변수와 상관관계(randomvalue and correlation)
 - 확률변수와 상관관계
     - 확률적 데이터의 의미
     - 분포
@@ -348,7 +348,7 @@
     - 전체분산의 법칙
     - 편향-분산 상충(bias-variance tradeoff)
 
-### 9. 사이파이로 공부하는 확률분포(scipy for proba distribution)
+### 10. 사이파이로 공부하는 확률분포(scipy for proba distribution)
 - 확률분포의 종류
     - 이산확률분포 : 범주값 출력
         - 베르누이분포
@@ -395,7 +395,7 @@
 - 디리클레분포
 - 베이지안 추정
 
-### 10. 추정과 검정(estimation and testing)
+### 11. 추정과 검정(estimation and testing)
 - 확률분포의 추정
     - 확률분포 결정 과정
     - 모수추정 방법론(parameter estimation)
@@ -446,7 +446,7 @@
     - 옴니버스 검정
     - 자크베라 검정
 
-### 11. 엔트로피(entropy)
+### 12. 엔트로피(entropy)
 - 엔트로피
     - 엔트로피의 정의
     - 수학적 의미
