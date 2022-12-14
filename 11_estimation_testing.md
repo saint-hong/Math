@@ -504,6 +504,7 @@ plt.show()
 
 - 로그가능도함수를 mu로 미분한 도함수의 값이 0인 모수값을 구한다.
     - 로그를 미분하면 역수의 형태가 된다.
+    - 미분법칙 "체인룰"을 사용하면 $\dfrac{d\mu}{d(N_0 \log(1-\mu)} = -\dfrac{N_0}{1-\mu}$ 가 된다.
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cdfrac%7B%5Cpartial%20%5Clog%20L%7D%7B%5Cpartial%20%5Cmu%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cmu%7D%20%5Cbig%5C%7B%20N_1%20%5Clog%5Cmu%20&plus;%20N_0%20%5Clog%281%20-%20%5Cmu%29%20%5Cbig%5C%7D%20%3D%200%5C%5C%20%26%3D%20%5Cdfrac%7BN_1%7D%7B%5Cmu%7D%20-%20%5Cdfrac%7BN_0%7D%7B1-%5Cmu%7D%20%3D%200%20%5C%5C%20%5Cend%7Baligned%7D">
 
