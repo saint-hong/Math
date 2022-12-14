@@ -504,7 +504,7 @@ plt.show()
 
 - 로그가능도함수를 mu로 미분한 도함수의 값이 0인 모수값을 구한다.
     - 로그를 미분하면 역수의 형태가 된다.
-    - 미분법칙 "체인룰"을 사용하면 $\dfrac{d\mu}{d(N_0 \log(1-\mu)} = -\dfrac{N_0}{1-\mu}$ 가 된다.
+    - 미분법칙 "체인룰"을 사용 : $\dfrac{d(N_0 \log(1-\mu)}{d\mu} = -\dfrac{N_0}{1-\mu}$ 가 된다.
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cdfrac%7B%5Cpartial%20%5Clog%20L%7D%7B%5Cpartial%20%5Cmu%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cmu%7D%20%5Cbig%5C%7B%20N_1%20%5Clog%5Cmu%20&plus;%20N_0%20%5Clog%281%20-%20%5Cmu%29%20%5Cbig%5C%7D%20%3D%200%5C%5C%20%26%3D%20%5Cdfrac%7BN_1%7D%7B%5Cmu%7D%20-%20%5Cdfrac%7BN_0%7D%7B1-%5Cmu%7D%20%3D%200%20%5C%5C%20%5Cend%7Baligned%7D">
 
@@ -544,6 +544,9 @@ plt.show()
 - 목적함수 J를 모수와 라그랑주 승수로 각각 미분한 후 0이 되는 모수값을 찾는다.  
 - k개의 도함수가 나온다.
 - 제한조건에 의해서 muk로 미분한 경우 라그랑주 승수만 남는다.
+    - 람다로 미분하면 $1-\sum \mu_k=0$ 이 남는다.
+    - muk로 미분한 결과에서 양변을 모든 k에 대해서 더하면 : $\sum N_k = \sum \lambda \mu_k = \lambda \times 1 = N$ 이 된다.
+    - 즉 $N_k = \lambda \mu_k = N \mu_k$ 이므로 $\mu_k = \dfrac{N_k}{N}$ 이 된다. 
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cdfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20%5Cmu_k%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cmu_k%7D%20%5Cleft%5C%7B%20%5Csum_%7Bk%3D1%7D%5EK%20%5Clog%5Cmu_k%20N_k%20&plus;%20%5Clambda%20%5Cleft%281-%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%5Cright%29%20%5Cright%5C%7D%20%3D%200%20%5C%3B%5C%3B%20%28k%3D1%2C%20%5Ccdots%2C%20K%29%20%5C%5C%20%5Cdfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20%5Clambda%7D%20%26%3D%20%5Cdfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Clambda%7D%20%5Cleft%5C%7B%20%5Csum_%7Bk%3D1%7D%5EK%20%5Clog%5Cmu_k%20N_k%20&plus;%20%5Clambda%20%5Cleft%281-%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%20%5Cright%29%20%5Cright%5C%7D%20%3D%200%20%26%20%5C%5C%20%26%3D%20%5Cdfrac%7BN_1%7D%7B%5Cmu_1%7D%20%3D%20%5Cdfrac%7BN_2%7D%7B%5Cmu_2%7D%20%3D%20%5Ccdots%20%3D%20%5Cdfrac%7BN_K%7D%7B%5Cmu_K%7D%20%3D%20%5Clambda%20%5C%5C%20%26%3D%20N_k%20%3D%20%5Clambda%20%5Cmu_k%20%5C%5C%20%26%3D%20%5Csum_%7Bk%3D1%7D%5EK%20N_k%20%3D%20%5Clambda%20%5Csum_%7Bk%3D1%7D%5EK%20%5Cmu_k%20%3D%20%5Clambda%20%3D%20N%20%5C%5C%20%26%3D%20%5Cmu_k%20%3D%20%5Cdfrac%7BN_k%7D%7BN%7D%20%5C%5C%20%5Cend%7Baligned%7D">
 
