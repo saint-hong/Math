@@ -456,11 +456,16 @@ sp.stats.entropy(p_docs, base=2)
     - <img src="https://latex.codecogs.com/gif.latex?%5Ctext%7BH%7D%5BY%5D%20%3D%20-%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28x%29logp%28x%29dx">
 - 목적범함수에 pdf의 제한조건 3가지를 라그랑주 승수법으로 추가한다. 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Ctext%7BH%7D%5BY%5D%20%26%3D%20-%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28x%29%5Clog%20p%28x%29dx%20&plus;%20%5Clambda_1%20%5Cleft%28%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20p%28x%29dx%20-1%20%5Cright%29%20%5C%5C%20%26&plus;%20%5Clambda_2%20%5Cleft%28%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20xp%28x%29dx%20%5Cright%29%20&plus;%20%5Clambda_3%20%5Cleft%28%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20x%5E2p%28x%29dx%20-%20%5Csigma%5E2%20%5Cright%29%20%5C%5C%20%26%3D%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20%28%20-p%28x%29%5Clog%20p%28x%29%20&plus;%20%5Clambda_1p%28x%29%20&plus;%20%5Clambda_2xp%28x%29%20&plus;%20%5Clambda_3x%5E2p%28x%29%20-%20%5Clambda_1%20-%20%5Clambda_3%5Csigma%5E2%29%20dx%5C%5C%20%5Cend%7Baligned%7D">
+
 - 최대값을 구하기위해서 목적함수를 확률밀도함수로 편미분한다.
-- $-p(x)\logp(x)$ 은 미분의 곱셈법칙을 사용하여 정리할 수 있다. : $-\logp(x) -1$
+- -p(x)logp(x) 은 미분의 곱셈법칙을 사용하여 정리할 수 있다. : -logp(x) -1
+
     - <img src="https://latex.codecogs.com/gif.latex?%5Cdfrac%7B%5Cdelta%20H%7D%7B%5Cdelta%20p%28x%29%7D%20%3D%20-%20logp%28x%29%20-%201%20&plus;%20%5Clambda_1%20&plus;%20%5Clambda_2x%20&plus;%20%5Clambda_3x%5E2%20%3D%200">
+
 - 양변에 지수함수를 적용하여 정리하면 다음과 같아진다. 
+    
     - <img src="https://latex.codecogs.com/gif.latex?p%28x%29%20%3D%20exp%28%20-%201%20&plus;%20%5Clambda_1%20&plus;%20%5Clambda_2x%20&plus;%20%5Clambda_3x%5E2%20%29">
+
 - pdf의 제한조건 3가지와 이 제한조건을 만족하는 연립방정식을 계산하면 라그랑주 승수 3개가 나온다. (이 과정은 생략함)
     - <img src="https://latex.codecogs.com/gif.latex?%5Clambda_1%20%3D%201%20-%20%5Cdfrac%7B1%7D%7B2%7D%20%5Clog%202%20%5Cpi%20%5Csigma%5E2">
     - <img src="https://latex.codecogs.com/gif.latex?%5Clambda_2%20%3D%200">
